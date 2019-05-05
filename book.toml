@@ -1,0 +1,8 @@
+[book]
+authors = ["Yoshitaka Moriwaki"]
+multilingual = false
+src = "src"
+title = "pymol-book"
+[output.html]
+theme = "src/theme"
+mathjax-support = true
