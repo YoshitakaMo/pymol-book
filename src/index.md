@@ -1,6 +1,6 @@
 # PyMOL Tutorial
 
-PyMOLの本の試作品です。
+PyMOLの機能をまとめた本です。
 (c) 2019 YoshitakaMo All Rights Reserved.
 
 ## Contribution

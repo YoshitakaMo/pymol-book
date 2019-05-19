@@ -1,1 +1,3 @@
-# Appendix 1. インストール方法
+# Appendix
+
+{{#include ./installation.md}}
