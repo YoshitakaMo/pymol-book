@@ -12,6 +12,31 @@
 <img src="./image/compare1.png" alt="1ALK（緑）と1EW2（青）の2量体表示" title="1ALK（緑）と1EW2（青）の2量体表示">
 
 ### 2つのアルカリホスファターゼの構造の重ね合わせ
-では、大腸菌とヒトのアルカリホスファターゼの構造をそれぞれ重ね合わせることで比較してみましょう。ここではPyMOLの`super`という機能を使います。
+では、大腸菌とヒトのアルカリホスファターゼの構造をそれぞれ重ね合わせることで比較してみましょう。ここではPyMOLの`super`という重ね合わせ用のコマンドを使います。
 
-7.6	両者のアミノ酸一致度を確認したいときは，UCSF ChimeraのTools > Sequence > Align Chain sequences を選び、続いて“Make Sequence Alignment from Chainsの窓でCtrlボタンを押しながら2つの配列（ともにChain A）を選択し、Applyボタンを押す（Alignment ProgramはClustal Omegaを使う）。“Clustal Omega Alignment”の窓が現れたら、InfoのメニューからPercent Identityを選択し、Compare:とwith:の欄にそれぞれ1ALK, 1EW2の配列を選択し、Applyボタンを押す。すると、Clustal Omega Alignmentの窓の下にアミノ酸一致度（%）が表示される。
+今、画面には`1alk`と`1ew2_0001`, `1ew2_0002`のオブジェクトが存在しているはずです。ここで、`1alk`オブジェクトを`1ew2_0001`オブジェクトに重ね合わせることを以下のコマンドで行います（※**`1ew2_0001`を`1alk`に、ではないことに注意**）。このコマンドは
+
+    super 1alk, 1ew2_0001
+
+です。これを行うと、
+
+<img src="./image/compare2.png" alt="1ALK（緑）と1EW2（青）の重ね合わせ結果" title="1ALK（緑）と1EW2（青）の重ね合わせ結果">
+
+図のように大腸菌ホスファターゼとヒトアルカリホスファターゼを重ねることができます（図では背景をグレーにしています）。また、画面上部のPyMOLコンソール画面には2つの構造のRMSD値が表示されます。
+
+<img src="./image/compare3.png" alt="PyMOLコンソール画面" title="PyMOLコンソール画面">
+
+```
+PyMOL>super 1alk, 1ew2_0001
+ MatchAlign: aligning residues (898 vs 479)...
+ MatchAlign: score 740.851
+ ExecutiveAlign: 1947 atoms aligned.
+ ExecutiveRMS: 83 atoms rejected during cycle 1 (RMSD=4.31).
+ ExecutiveRMS: 135 atoms rejected during cycle 2 (RMSD=2.64).
+ ExecutiveRMS: 187 atoms rejected during cycle 3 (RMSD=2.03).
+ ExecutiveRMS: 135 atoms rejected during cycle 4 (RMSD=1.39).
+ ExecutiveRMS: 87 atoms rejected during cycle 5 (RMSD=1.03).
+ Executive: RMSD =    0.864 (1320 to 1320 atoms)
+```
+
+この結果、0.864 Åというとても小さなRMSD値が得られました。これはこの2つの構造の差が小さいことを表しています。
