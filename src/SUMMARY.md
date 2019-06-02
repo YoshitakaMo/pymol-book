@@ -38,6 +38,8 @@
 - [第4章 PyMOL の様々な機能](./ch04/index.md)
   - [結晶構造の電子密度マップを表示する](./ch04/xtal_elecmap.md)
   - [APBSプラグインを使った表面電荷表示](./ch04/apbs.md)
+  - [表示形式のプリセット](./ch04/preset.md)
 - [第5章 プラグインのこととか](./ch05/index.md)
 - [Appendix](./append01/index.md)
   - [インストール方法](./append01/installation.md)
+  - [用語](./append01/term.md)
