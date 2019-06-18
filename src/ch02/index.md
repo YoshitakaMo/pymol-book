@@ -1,7 +1,9 @@
-# 第2章 PyMOLのGUIの使い方
+# 第2章 Internal GUIの使い方
 
 # GUIによる基本的な操作方法
-GUIとはGraphical User Interfaceのことで、マウスを使ってタンパク質オブジェクトを操作したり、設定を変更したりできるユーザーインターフェースのことです。
+GUIとはGraphical User Interfaceのことで、マウスを使ってタンパク質オブジェクトを操作したり、設定を変更したりできるユーザーインターフェースのことです。またPyMOLには**Internal GUI**と**External GUI**と呼ばれるメニューが存在し、マウスのクリックを使った直感的な操作が行えるようになっています。
+
+<img src="./image/gui.png" width="80%">
 
 {{#include ./loadmol.md}}
 {{#include ./dispseq.md}}

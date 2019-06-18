@@ -1,6 +1,10 @@
-# 第3章 コマンドラインの使い方
+# 第3章 External GUIの使い方
 
-{{#include ./cmd_load.md}}
-{{#include ./cmd_save.md}}
-{{#include ./cmd_showandhide.md}}
-{{#include ./cmd_super.md}}
+{{#include ./build.md}}
+{{#include ./edit.md}}
+{{#include ./setting.md}}
+{{#include ./scene.md}}
+{{#include ./mouse.md}}
+{{#include ./wizard.md}}
+{{#include ./plugin.md}}
+{{#include ./help.md}}
