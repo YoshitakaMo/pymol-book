@@ -32,7 +32,7 @@ function FindProxyForURL(url,host)
 	|| shExpMatch(host, "scifinder.cas.org")
 	|| shExpMatch(host, "www.ems-ph.org")
 	|| shExpMatch(host, "192.168.0.201")
-	|| shExpMatch(host, "tostofs3-b")
+	|| shExpMatch(host, "aip.scitation.org")
 	   )
 	{
 		return "SOCKS5 127.0.0.1:8192; DIRECT";
