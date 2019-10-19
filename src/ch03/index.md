@@ -1,5 +1,6 @@
 # 第3章 External GUIの使い方
 
+{{#include ./file.md}}
 {{#include ./build.md}}
 {{#include ./edit.md}}
 {{#include ./setting.md}}

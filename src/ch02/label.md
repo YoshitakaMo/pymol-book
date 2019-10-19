@@ -35,7 +35,7 @@
 <img src="./image/label/label_chain.png" width="50%">
 
 ### segments
-今となっては使用が廃止されたsegment identifierの情報をchainsと同様に表示します。詳しくは[Appendix: 用語#セグメント](../append01/term.md#セグメントsegment-identifier)を参照してください。今となってはあまり使うことはないと思います。
+すでに使用が廃止されたsegment identifierの情報を、chainsと同様に表示します。詳しくは[Appendix: 用語#セグメント](../append01/term.md#セグメントsegment-identifier)を参照してください。今となってはあまり使うことはないと思います。
 
 <hr>
 
@@ -59,7 +59,7 @@
 | CD|側鎖のδ位の炭素|
 | CE|側鎖のε位の炭素|
 | CZ|側鎖のζ位の炭素（チロシンなど）|
-| Oη|側鎖のη位の炭素（チロシンなど）|
+| OH|側鎖のη位の炭素（チロシンなど）|
 
 主鎖に近い原子の個数順にβ→γ→δ→ε→ζ→ηと付ける命名規則があります。複数原子が存在するようなアミノ酸（ヒスチジン）などはND1, CD1, CE2, NE2というふうに番号をつけて区別します。
 
