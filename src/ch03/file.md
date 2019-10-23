@@ -1,6 +1,6 @@
 # File
 
-<img src="./image/file/filemenu.png" width="40%">
+<img src="./image/file/filemenu.png" width="30%">
 
 ## New PyMOL Window
 **新しくPyMOLのウィンドウを別に立ち上げることができます**。ある構造ファイルを開いている時にまったく別の構造ファイルを開く必要があるときには、このNew PyMOL Windowを使って立ち上げると良いでしょう。一方で類似構造のファイルと比較したいという場合には、新しいPyMOL Windowを開かずに1つのPyMOLウィンドウの中で開くと、構造比較する上で便利です。
@@ -18,7 +18,7 @@
 ## Get PDB...
 PDBに登録されている構造ファイルや電子密度ファイルのIDを指定することで、インターネットから直接ダウンロードして開くことができます。これはまずこのメニューを選択すると次のような別メニューが開きます。
 
-<img src="../ch02/image/load/bunit3.png" width="50%">
+<img src="../ch02/image/load/bunit3.png" width="30%">
 
 PDB IDのところにデータベースのIDを入力します。また、下の方にはPDB Structure Optionsが存在し、chain nameの箇所で表示したいChainを指定できます。A chainのみを表示したい場合はAを入力します（指定しない場合はすべて表示されます）。
 
@@ -33,7 +33,7 @@ PDB IDのところにデータベースのIDを入力します。また、下の
 
 拡張子はPyMOL Session File（`.pse`）とPyMOL Show File（`.psw`）の2つを選ぶことができます。`pse`ファイル形式で保存すると、再びこのファイルを開いたときにPyMOLの作業状態をそのまま復元するのに対し、`psw`ファイル形式で保存した場合は、このファイルを開くと全画面表示＋Internal GUIとExternal GUIが表示されない状態で開かれます。つまり、pswファイルは編集用というよりは完全に表示用に向いています。
 
-<img src="../ch03/image/file/psw.png" width="50%">
+<img src="../ch03/image/file/psw.png" width="30%">
 
 pswファイルを開いたときの例。Internal GUIとExternal GUIが表示されません。
 
@@ -46,7 +46,7 @@ pswファイルを開いたときの例。Internal GUIとExternal GUIが表示�
 
 `.ccp4`などの電子密度マップなどを出力します。電子密度マップについては[第5章 結晶構造の電子密度マップを表示する](../ch05/xtal_elecmap.html)などで参照してください。マップオブジェクトがロードされた状態で選択すると以下のようなダイアログが現れます。
 
-<img src="../ch03/image/file/savemap.png" width="50%">
+<img src="../ch03/image/file/savemap.png" width="30%">
 
 保存したいマップオブジェクトを選びSaveボタンを押してファイル名を入力することで保存されます。デフォルト拡張子は`.ccp4`です。
 

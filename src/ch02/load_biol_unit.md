@@ -9,8 +9,8 @@ Global Stoichiometryには`Homo 2-mer - A2`という情報が記されていま�
 
 そこで、場合によっては2量体の状態でタンパク質構造を表示してみたいということがあると思います。PyMOL 1.8からはこのBiological Unitを考慮した構造のロードが簡単に行えるようになりましたので、それを`1EW2`ファイルに対してやってみます。以下の画像のように、[File]->[Get PDB...]を選び、続くウィンドウの画面でIDとAssembly情報を入力します。
 
-<img src="./image/load/bunit2.png" width="30%"><br>
-<img src="./image/load/bunit3.png" width="30%">
+<img src="./image/load/bunit2.png" width="25%"><br>
+<img src="./image/load/bunit3.png" width="40%">
 
 これにより、1EW2の構造がホモ2量体構造で表示されました。
 
