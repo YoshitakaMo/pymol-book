@@ -1,6 +1,5 @@
 ## PyVOL GUIプラグイン
-2019年10月24日、BioRxivにPyMOLプラグインの**PyVOL**というのを開発したよという論文が投稿されました。
-https://www.biorxiv.org/content/10.1101/816702v1
+2019年10月24日、[BioRxivにPyMOLプラグインの**PyVOL**というのを開発したよという論文](https://www.biorxiv.org/content/10.1101/816702v1)が投稿されました。
 
 <img src="./image/pyvol1.jpg" width="100%" alt="PyVOL" title="PyVOL">
 
@@ -11,9 +10,9 @@ https://www.biorxiv.org/content/10.1101/816702v1
 
 ### PyVOLのインストール
 以下のGitHubにてこのプラグインをメンテナンスしてくれているようです。
-https://github.com/schlessingerlab/pyvol/
+[https://github.com/schlessingerlab/pyvol/](https://github.com/schlessingerlab/pyvol/)
 
-ここの https://github.com/schlessingerlab/pyvol/blob/master/pyvolgui.zip にプラグインのZIPファイルが置いてあるのでDownloadボタンを押すと、`pyvolgui.zip`というファイルがダウンロードされます。これを展開すると、中には`pyvolgui`と`pyvol_plugin`というディレクトリの2つがあるのですが、たぶん`pyvolgui`だけで動作してくれるように思えます。よって、このディレクトリをPyMOLのプラグインディレクトリにコピーしてあげます。
+ここの [https://github.com/schlessingerlab/pyvol/blob/master/pyvolgui.zip](https://github.com/schlessingerlab/pyvol/blob/master/pyvolgui.zip) にプラグインのZIPファイルが置いてあるのでDownloadボタンを押すと、`pyvolgui.zip`というファイルがダウンロードされます。これを展開すると、中には`pyvolgui`と`pyvol_plugin`というディレクトリの2つがあるのですが、たぶん`pyvolgui`だけで動作してくれるように思えます。よって、このディレクトリをPyMOLのプラグインディレクトリにコピーしてあげます。
 お使いのmacOSにて、インストーラー版でPyMOLをインストールした場合（Licenseを求められる方）は`/Applications/PyMOL.app/Contents/share/pymol/data/startup/`に、Homebrewを使ってOpen-source版をインストールした場合（Licenseがいらない方）には`/usr/local/Cellar/pymol/2.3.0/libexec/lib/python3.7/site-packages/pmg_tk/startup`に、それぞれコピーしてあげます。Linuxの場合はpymolがインストールされているディレクトリを見つけて`python3.x/site-packages/pmg_tk/startup`あたりを探ればたどり着けるんじゃないですかね（適当）。
 
 コピーしたら、PyMOLを起動している場合はいったん閉じて改めて起動します。すると、PluginメニューのところにPyVOLが増えているはずです。
