@@ -70,7 +70,7 @@ APBS Electrostaticsの計算のパラメータはデフォルトでも十分問�
 
 オープンソース版PyMOLを使っている人向けの説明です。やり方は3通りあって、Homebrewを使う方法と、バイナリインストールとソースコードからのインストールがあります。macOSの方やLinuxbrewが使える方はHomebrewの方法、またはバイナリをダウンロードしてきてインストールするのが楽です。ソースコードからのインストールの方法は上級者向けです。
 
-### HomebrewでAPBS, PDB2PQRをインストールする（おすすめ）###
+### HomebrewでAPBS, PDB2PQRをインストールする（おすすめ）
 
 macOS（Linux OSの場合はLinuxbrewが必要）を使っている方は、私が作成したHomebrewのFormulaを使うことで簡単にインストールすることができます。
 
@@ -121,7 +121,7 @@ rm -rf ~/pymolplugin
 
 と入力します。このコピーを行った後にopen-source版PyMOLを立ち上げると、上部メニューのPluginのところにAPBS Electrostaticsの文字が現れているはずです。
 
-<img src="./image/apbs2.png" title="APBSの表示例">
+<img src="./image/apbsmenu1.png" width="200" title="APBSmenu1">
 
 この文字をクリックし、Advanced Configurationのタブをクリックします。このProgram Locationsを自身の環境にあわせて設定する必要があります。
 
