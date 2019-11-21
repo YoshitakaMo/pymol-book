@@ -3,36 +3,53 @@
 #### 回転 (Rota)
 **マウスの左ボタンを押しながらマウスを動かす（ドラッグ）** すると、表示されている分子を回転させることができます。
 
-<img src="./image/mouse/select_rota1.png" width="40%"><img src="./image/mouse/select_rota2.png" width="40%">
+<video width="100%" height="100%" autoplay loop>
+<source src="./image/mouse/rotate.mp4" type="video/mp4">
+</video>
 
 #### 並進 (Move)
 **マウスのホイールボタンを押しながらドラッグ** すると、表示されている分子を視点に対して平行に移動させることができます。
 
-<img src="./image/mouse/select_move1.png" width="40%"><img src="./image/mouse/select_move2.png" width="40%">
+<video width="100%" height="100%" autoplay loop>
+<source src="./image/mouse/move.mp4" type="video/mp4">
+</video>
 
 #### ズームイン・アウト (MovZ)
 **マウスの右ボタンを押しながらマウスを前後にドラッグ、またはCtrlとShiftキーを押しながらマウスのホイールを上下** させると、分子構造を拡大・縮小することができます。
 
-<img src="./image/mouse/select_movz1.png" width="40%"><img src="./image/mouse/select_movz2.png" width="40%">
+<video width="100%" height="100%" autoplay loop>
+<source src="./image/mouse/movz.mp4" type="video/mp4">
+</video>
 
 #### 選択 (+/-)
 **表示されているオブジェクトの原子の上でマウスの左ボタンを押す** と、四角のマークが付きます。
 
-<img src="./image/mouse/mark1.png" width="40%"><img src="./image/mouse/mark2.png" width="40%">
+<video width="100%" height="100%" autoplay loop>
+<source src="./image/mouse/select.mp4" type="video/mp4">
+</video>
 
 この四角マークは、現在選択されている原子の範囲を示しています。この左クリックによる選択はクリックするたびに選択範囲に追加され、もう一度押すと選択範囲から外されます。
 
 #### 選択範囲に追加/除去 (+Box/-Box)
-選択範囲の追加または除去を行います。**+Box**では画面上に黒い四角が現れ、ボタンを離すと、その四角で囲まれた部分が選択範囲に追加されます。反対に、**-Box**では四角で囲んだ範囲を選択範囲から除去することができます。同様の操作を繰り返すことも可能です。
+選択範囲の追加または除去を行います。**+Box(Shiftを押しながらマウスの左クリック＆ドラッグ)** では画面上に黒い四角が現れ、ボタンを離すと、その四角で囲まれた部分が選択範囲に追加されます。反対に、**-Box(Shiftを押しながらマウスのホイールクリック＆ドラッグ)** では四角で囲んだ範囲を選択範囲から除去することができます。同様の操作を繰り返すことも可能です。
 
-<img src="./image/mouse/select_plusbox1.png" width="40%">　　<img src="./image/mouse/select_plusbox2.png" width="40%">
+<video width="100%" height="100%" autoplay loop>
+<source src="./image/mouse/plusbox.mp4" type="video/mp4">
+</video>
 
 #### センタリング (Cent)
 **表示されているオブジェクトの原子の上でマウスのホイールボタンを押す** と、その原子が画面中央に来るように視点が移動します。また、回転操作の中心もその点に移動します。
 
+<video width="100%" height="100%" autoplay loop>
+<source src="./image/mouse/center.mp4" type="video/mp4">
+</video>
+
 #### Origin指定 (Orig)
 **表示されているオブジェクトの原子の上でCtrlとShiftを押しながらマウスのホイールボタンを押す** と、その原子を回転中心の原点(origin)に指定することができます。上記センタリングのときと異なり、視点は移動しません。
 
+<video width="100%" height="100%" autoplay loop>
+<source src="./image/mouse/origin.mp4" type="video/mp4">
+</video>
 
 #### メニュー表示 (Menu)
 
