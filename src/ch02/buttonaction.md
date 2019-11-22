@@ -61,12 +61,15 @@
 
 #### 原子ピッキング（PkAt/Pk1）
 
-オブジェクト上の原子の上で**Ctrlボタンを押しながらホイールクリック**、または**マウス右ボタンのダブルクリック**を行うと、その原子をピッキングした状態になります(**PkAt**)。<br><img src="./image/mouse/select_pk1.png" width="40%"><img src="./image/mouse/select_pk2.png" width="40%">
+オブジェクト上の原子の上で**Ctrlボタンを押しながらホイールクリック**、または**マウス右ボタンのダブルクリック**を行うと、その原子をピッキングした状態になります(**PkAt**)。
 
-このピッキング状態は先述の選択範囲とは異なる選択形式で、図のような球体のマーカーが付きます。このピッキングは画面上に同時に4原子まで選択することができ、各ピッキングマーカーは図のように二重、三重、四重の球体マーカーで示されます。
+このピッキング状態は先述の選択範囲とは異なる選択形式で、図のような球体のマーカーが付きます。このピッキングは画面上に同時に4原子まで選択することができ、各ピッキングマーカーは図のように二重、三重、四重の球体マーカーで示されます。<br><img src="./image/mouse/select_pk1.png" width="40%"><img src="./image/mouse/select_pk2.png" width="40%">
 
-- **Ctrlボタンを押しながら右クリック (Pk1)** の場合では、上の操作と異なり、1つめの原子ピッキングのみを行います。
-- ピッキングされた原子が2つ、3つ、4つになると、自動でそのピッキングされた原子についての**距離(distance)**、**角度(angle)**、**二面角(dihedral)** を表示してくれます。
+**Ctrlボタンを押しながら右クリック (Pk1)** の場合では、上の操作と異なり、1つめの原子ピッキングのみを行います。ピッキングされた原子が2つ、3つ、4つになると、自動でそのピッキングされた原子についての**距離(distance)**、**角度(angle)**、**二面角(dihedral)** を表示してくれます。
+
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/pkatom.mp4" type="video/mp4">
+</video>
 
 #### クリッピング（Clip）
 Viewing Modeで**Shiftとマウスの右ボタン（またはCtrl+Shift+マウス右ボタン）を押しながらマウスを上下左右に動かす** と、分子の内部を覗けたり霧をかけたりすることができます。分子内部の一部の領域を強調した画像を取りたいときに作ります。
@@ -84,6 +87,10 @@ Viewing Modeで**Shiftとマウスの右ボタン（またはCtrl+Shift+マウ�
 
 Viewing Modeで**マウスホイールを回転させる** ことで、スラブの厚さを調節することができます。クリッピングとともに、分子構造の内部領域をみたい時に有用です。
 
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/slab.mp4" type="video/mp4">
+</video>
+
 画面上部メニューの[Display]→[Clip]には[8 Angstroam Slab]を始めとして30 Åまでの厚さのスラブを選ぶことができます。[Nothing]を選択した場合には、全原子が含まれるように自動的にスラブの厚みを調節します。
 
 #### スラブの移動（MovS）
@@ -93,7 +100,7 @@ Viewing Modeで**Shiftを押しながらマウスホイールを回転させる*
 Viewing Modeで**Ctrlを押しながらマウスホイールを回転させる** と、スラブ平面に対して視点を移動させることができます。視点がスラブ内部に入ることもできます。
 
 ### Editing Mode専用コマンド
-以下ではEditing Modeで扱う操作方法について記述します。Editing Modeは**オブジェクト・原子の座標自体に変更を加える**ことが多いため、このモードで操作するときは注意が必要です。もし誤って座標を動かしてしまった場合、数回であれば**Ctrl-z**でUndo（もとに戻す）ことが可能です。
+以下ではEditing Modeで扱う操作方法について記述します。Editing Modeは**オブジェクト・原子の座標自体に変更を加える**ことが多いため、このモードで操作するときは注意が必要です。**もし誤って座標を動かしてしまった場合、数回であればCtrl-zでUndo（もとに戻す）ことが可能です**。
 
 #### オブジェクトの回転(RotO)・XY軸方向への移動(MovO)・Z軸方向への移動(MvOZ)
 EditingモードでShiftキーとマウスの左ボタン・ホイールボタン・右ボタンを押しながらマウスを移動させることで、オブジェクトの座標に対しそれぞれ回転・XY軸への並進・Z軸へ移動操作を行うことができます。特に、複数のオブジェクトが存在する場合に効果がわかりやすいです。以下の例では緑色と青色で別々のオブジェクトとした上で、青色オブジェクトに対して操作を適用しています。
@@ -102,10 +109,24 @@ EditingモードでShiftキーとマウスの左ボタン・ホイールボタ�
 <img src="./image/mouse/roto3.png" width="40%">　　<img src="./image/mouse/roto4.png" width="40%">
 
 #### 原子の移動(MovA)・Z軸方向への移動(MvAZ)
-EditingモードでCtrlキーとマウスの左ボタンを押しながらマウスを移動させることで、マウスカーソル上に存在する原子の座標を移動させることができます。Ctrl+Shiftキーとマウスの左ボタンを押しながらだとZ軸方向への移動が行えます。下の例では、黄緑色の原子（Mgイオン）について操作を適用しています。
+EditingモードでCtrlキーとマウスの左ボタンを押しながらマウスを移動させることで、マウスカーソル上に存在する原子の座標を移動させることができます。Ctrl+Shiftキーとマウスの左ボタンを押しながらだとZ軸方向への移動が行えます。下の例では、オレンジ色の原子（リン酸イオンPO4のリン原子）について操作を適用しています。
 
-<img src="./image/mouse/mova1.png" width="40%">　　<img src="./image/mouse/mova2.png" width="40%"><br>
-<img src="./image/mouse/mova3.png" width="40%">
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/mova.mp4" type="video/mp4">
+</video>
+
+#### フラグメントの回転(RotF)・移動(MovF)・Z軸方向への移動(MvFZ)
+Editingモードで特定の原子を左クリックすると原子がピックされた状態になります。このとき操作メニューが変化して、MovF, MvFZが現れるようになります。RotF（Shift+左クリック）とMovF（Shift+ホイールクリック）はピックされた原子と結合している原子のまとまり（**フラグメント**）を回転させたり、平行移動させたりすることができます。この操作は必ず選択されたフラグメントの上でShiftキーとクリック入力を行う必要があります。
+
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/movf.mp4" type="video/mp4">
+</video>
+
+MvFZ（Shift＋右クリックしながら上下にドラッグ）はピックされたフラグメントを手前または奥に移動させることができます。
+
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/mvfz.mp4" type="video/mp4">
+</video>
 
 #### 二面角をピッキング(PkTB)
 
@@ -122,6 +143,9 @@ Editingモードで描画されている結合に対してCtrlキーとマウス
 
 <img src="./image/mouse/pktb3.png" width="40%">　　<img src="./image/mouse/pktb5.png" width="40%">
 
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/pktb.mp4" type="video/mp4">
+</video>
 
 #### 分子構造をドラッグモードにする(DrgM)
 Editingモードでホイールボタンをダブルクリックすると、オブジェクト内のひとつながりの分子構造(Molecule)について"drag"状態にします。このドラッグモードではこれまでのカメラ操作のような感覚で分子の座標を変更することが可能になります。
