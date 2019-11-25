@@ -76,11 +76,19 @@ Viewing Modeで**Shiftとマウスの右ボタン（またはCtrl+Shift+マウ�
 
 この機能は2枚の**クリッピング平面（Clipping plane）** によって調節しています。マウスの上下の動きは前面のクリッピング平面(front clipping plane)の位置を、左右の動きは背面のクリッピング平面(rear clipping plane)の位置を調節できます<br>図解<br><img src="./image/mouse/select_clip1.png" width="80%"><br>**画面上にはこの2枚のClipping Planeの間に存在する領域だけが表示されます**。
 
-マウスを画面下に移動させるとfront clipping planeは視点から見て奥へ移動し、分子の内部が見えるようになります。反対に、マウスを上へ移動させると、clipping planeは手前に移動します。<br><img src="./image/mouse/select_clip2.png" width="40%"><img src="./image/mouse/select_clip3.png" width="40%">
+マウスを画面下に移動させるとfront clipping planeは視点から見て奥へ移動し、分子の内部が見えるようになります。反対に、マウスを上へ移動させると、front clipping planeは手前に移動します。
 
-マウスを左に移動させるとrear clipping planeが視点から見て奥へ移動します。反対に手前に移動させると、rear clipping planeが手前に移動し、分子の奥側が霧がかかって徐々に見えなくなります。<br><img src="./image/mouse/select_clip2.png" width="40%"><img src="./image/mouse/select_clip4.png" width="40%">
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/frontclip.mp4" type="video/mp4">
+</video>
 
-霧は画面上部のメニューの[Display]→[Depth Cue(Fogging)]のチェックでON/OFFを選択できます（デフォルトはONです）。<br><img src="./image/mouse/select_clip5.png" width="80%">
+マウスを左に移動させるとrear clipping planeが視点から見て奥へ移動します。反対に手前に移動させると、rear clipping planeが手前に移動し、分子の奥側が霧がかかって徐々に見えなくなります。
+
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/rearclip.mp4" type="video/mp4">
+</video>
+
+霧は画面上部のメニューの[Display]→[Depth Cue(Fogging)]のチェックでON/OFFを選択できます（デフォルトはONです）。<br><img src="./image/mouse/select_clip5.png" width="100%">
 
 #### スラビング（Slab）
 スラブとは英語で厚板、平板という名詞、または「平板にする」という動詞です。PyMOLにおいて**スラブ（Slab、Visible Slabとも）とは、上述の2枚のクリッピング平面の間に挟まれた可視化領域のこと**を指します。
@@ -96,8 +104,16 @@ Viewing Modeで**マウスホイールを回転させる** ことで、スラブ
 #### スラブの移動（MovS）
 Viewing Modeで**Shiftを押しながらマウスホイールを回転させる** と、スラブ領域を、その厚みを保ったまま手前・奥に移動させることができます。効果を実感したい場合は、例として[8 Angstroam Slab]設定をした直後に使ってみるとわかりやすいでしょう。
 
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/movs.mp4" type="video/mp4">
+</video>
+
 #### スラブに対する視点の移動（MvSZ）
 Viewing Modeで**Ctrlを押しながらマウスホイールを回転させる** と、スラブ平面に対して視点を移動させることができます。視点がスラブ内部に入ることもできます。
+
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/mvsz.mp4" type="video/mp4">
+</video>
 
 ### Editing Mode専用コマンド
 以下ではEditing Modeで扱う操作方法について記述します。Editing Modeは**オブジェクト・原子の座標自体に変更を加える**ことが多いため、このモードで操作するときは注意が必要です。**もし誤って座標を動かしてしまった場合、数回であればCtrl-zでUndo（もとに戻す）ことが可能です**。
@@ -105,8 +121,9 @@ Viewing Modeで**Ctrlを押しながらマウスホイールを回転させる**
 #### オブジェクトの回転(RotO)・XY軸方向への移動(MovO)・Z軸方向への移動(MvOZ)
 EditingモードでShiftキーとマウスの左ボタン・ホイールボタン・右ボタンを押しながらマウスを移動させることで、オブジェクトの座標に対しそれぞれ回転・XY軸への並進・Z軸へ移動操作を行うことができます。特に、複数のオブジェクトが存在する場合に効果がわかりやすいです。以下の例では緑色と青色で別々のオブジェクトとした上で、青色オブジェクトに対して操作を適用しています。
 
-<img src="./image/mouse/roto1.png" width="40%">　　<img src="./image/mouse/roto2.png" width="40%"><br>
-<img src="./image/mouse/roto3.png" width="40%">　　<img src="./image/mouse/roto4.png" width="40%">
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/roto.mp4" type="video/mp4">
+</video>
 
 #### 原子の移動(MovA)・Z軸方向への移動(MvAZ)
 EditingモードでCtrlキーとマウスの左ボタンを押しながらマウスを移動させることで、マウスカーソル上に存在する原子の座標を移動させることができます。Ctrl+Shiftキーとマウスの左ボタンを押しながらだとZ軸方向への移動が行えます。下の例では、オレンジ色の原子（リン酸イオンPO4のリン原子）について操作を適用しています。
