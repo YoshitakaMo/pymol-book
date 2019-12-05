@@ -51,6 +51,7 @@
   - [結晶構造の電子密度マップを表示する](./ch05/xtal_elecmap.md)
   - [APBSプラグインを使った表面電荷表示](./ch05/apbs.md)
   - [表示形式のプリセット](./ch05/preset.md)
+  - [Gaussian 16のcubeファイルを開いて分子軌道を表示する](./ch05/gaussian.md)
 - [第6章 プラグインを使う](./ch06/index.md)
   - [プラグインのインストール方法](./ch06/installation.md)
   - [DSSPプラグイン](./ch06/dssp.md)
