@@ -35,7 +35,7 @@ PyMOLで表示されている画像を保存することができます。上部
 
 これをクリックすると設定メニューが表示されます。
 
-<img src="./image/saveimage/saveimage5.png">
+<img src="./image/saveimage/saveimage5.png" width="60%">
 
 先述のメニューでは出力される縦と横の画像サイズは指定できませんでしたが、先にここのメニューで縦(Height)と横(Width)の値を目的の値に変更しておけば指定することができます。
 

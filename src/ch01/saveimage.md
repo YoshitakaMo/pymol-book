@@ -9,8 +9,8 @@
 
 この設定の後、PyMOL画面の右上に存在するDraw/Rayボタンを押し、`Draw (fast)`または`Ray (slow)`ボタンを押すと、きれいな画像となって表示されます。
 
-<img src="../ch02/image/saveimage/saveimage5.png" alt="白背景">
+<img src="../ch02/image/saveimage/saveimage5.png" alt="白背景" width="60%">
 
 問題がなければ、`Save Image to File`ボタンを押し、ファイル名を設定して保存しましょう。ちなみに、`transparent background`にチェックを入れると背景透過画像を生成することができます（ただし`Ray (slow)`を適用した場合のみ）。背景透過処理を行うとレポートやスライドの上で扱いやすくなるので、ぜひ利用しましょう。
 
-その他の詳しい項目については[画像の保存](../ch02/session.md)を参照してください。
+その他の詳しい項目については[2.7 画像の保存](../ch02/saveimage.md)を参照してください。
