@@ -85,7 +85,8 @@ brew install apbspdb2pqr
 https://github.com/Electrostatics/apbs-pdb2pqr/releases にアクセスし、まず`APBS-1.5.dmg`をダウンロードして展開し、APBSのバイナリを `/Applications` フォルダに入れておきます。これだけ。
 
 次に`pdb2pqr-osx-bin64-2.1.1.tar.gz`を同じページからダウンロードしてきて、ダブルクリックで解凍します。これだけ。
-###ソースコードからインストールする場合###
+
+### ソースコードからインストールする場合 ###
 ```bash
 brew install git # if not installed
 brew install cmake # if not installed

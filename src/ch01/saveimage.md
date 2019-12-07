@@ -3,7 +3,7 @@
 
 <img src="./image/saveimage1.png" alt="黒背景のままの保存">
 
-これを白背景で出力します。上部のDispaly > Backgroundメニューから、Whiteを選択します。
+これを白背景で出力します。上部のDisplay > Backgroundメニューから、Whiteを選択します。
 
 <img src="./image/saveimage2.png" alt="白背景">
 
