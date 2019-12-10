@@ -2,5 +2,6 @@
 
 {{#include ./xtal_elecmap.md}}
 {{#include ./apbs.md}}
+{{#include ./movieschool.md}}
 {{#include ./preset.md}}
 {{#include ./gaussian.md}}

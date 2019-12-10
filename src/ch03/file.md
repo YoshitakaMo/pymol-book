@@ -109,12 +109,46 @@ cd ~/Desktop
 PyMOLを起動したときに自動的に実行される設定である`pymolrc`ファイルを編集することができます。bash, zshで言うところの`.bashrc`, `.zshrc`と同様に、`pymolrc`に設定を書き込んでおけば、描画に関する設定やPATH設定などを上書きしておくことができます。macOS, Linuxの場合は`pymolrc`ファイルはホームディレクトリ上に生成されます。
 
 <img src="./image/file/editpymolrc.png" width="80%">
+```
+set sphere_scale, .22
+set sphere_scale, .13, elem H
+set dash_gap, 0
+set dash_gap, .15
+set dash_length, .05
+set dash_round_ends, 0
+set dash_radius, .05
+set label_size, 18
+set cartoon_loop_radius, 0.1
+set cartoon_putty_radius, 0.2
+set cartoon_oval_length, 0.8
+set label_digits, 3
+set ray_opaque_background, 0
+set dash_length, 0.2500
+set cartoon_gap_cutoff, 0
+```
 
 設定はPyMOLコマンド形式で記述する必要があります。
 
 ## Reinitialize
+Reinitializeはその名の通りPyMOLを再初期化してくれます。表示されているオブジェクトを含め再起動したかのようにしてくれるEverythingと、設定値だけを再起動するもののsettings系のどちらかを選ぶことができます。
 
 ### Everything
+Everythingを選ぶと、PyMOLで現在開いているすべての生体分子オブジェクトは消去され、完全にPyMOLを再起動したような状態になります。**それまで保存していなかった作業内容も予告内容なしに消えてしまう**ので、慎重にこのボタンを押してください。
 ### Original Settings
+これらのOriginal Settings, Stored Settingsのメニューでは、現在表示されている生体分子オブジェクトは消去されません。こちらで再初期化してくれるのは**PyMOLの描画の設定値**です。例えばPyMOLのヘリックスの描画の太さ(`set cartoon_oval_length, 0.8`)やループの太さ(`set cartoon_loop_radius, 0.1`)、ミッシング領域の描画の有無(`set cartoon_gap_cutoff, 0`)……などといった、PyMOLの描画全体に影響を及ぼす値を初期値に修正した状態で再び描画し直してくれるのがこの`Original Settings`です。
+
+上の`Edit pymolrc`で描画設定を変更していた場合でも、この`Original Settings`を押すとPyMOL内部の設定値で上書きされてしまうので注意してください。
 ### Stored Settings
+保存しておいた描画の設定値を呼び出してくれます。これは下記の`Store Current Settings`の機能と対応しています。
 ### Store Current Settings
+現在の描画の設定値を保存しておいてくれます。これを一度しておけば、以降PyMOLのプログラムを終了するまで上記の`Stored Settings`からその設定値を呼び出すことができます。
+
+
+これら`Reinitialize`についてPyMOLのコマンドラインから行う場合は以下の通りです。
+
+```
+reinitialize [ what [, object ]]
+```
+whatには`everything`または`settings`が入ります。settings部分には`settings`, `original_settings`, `stored_settings`が選べるようです。defaultはeverything。
+objectにはオブジェクト名を入れることができます。
+
