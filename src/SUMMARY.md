@@ -63,4 +63,4 @@
 - [Appendix](./append01/index.md)
   - [インストール方法](./append01/installation.md)
   - [用語](./append01/term.md)
-  - [選択範囲の文法と演算子](./append01/sele_algebra.md)
+  - [選択範囲の文法と演算子](./append01/selealgebra.md)
