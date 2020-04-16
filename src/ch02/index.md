@@ -8,9 +8,6 @@ GUIとはGraphical User Interfaceのことで、マウスを使ってタンパ�
 {{#include ./loadmol.md}}
 {{#include ./dispseq.md}}
 {{#include ./objpanel.md}}
-{{#include ./showandhide.md}}
-{{#include ./label.md}}
-{{#include ./color.md}}
 {{#include ./mouse.md}}
 {{#include ./session.md}}
 {{#include ./export.md}}
