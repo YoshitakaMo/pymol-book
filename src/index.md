@@ -13,6 +13,7 @@ PyMOLの機能をまとめた本です。
 - 上部メニューの詳細を知りたい方は[第3章 External GUIの使い方](./ch03/index.html)を参考にしてください。
 
 ## Change log
+2020年 5月 2日 [1.8 タンパク質の位置依存的なアミノ酸保存度の違いを理解する](./ch01/conservation.md)を追加。<br>
 2020年 4月12日 [Appendix 3 選択範囲の文法と演算子](./append01/selealgebra.md)を追加。<br>
 2020年 3月20日 [3.7 Scene](./ch03/scene.md)を追加。<br>
 2020年 2月18日 [3.8 Mouse](./ch03/mouse.md)を追加。<br>

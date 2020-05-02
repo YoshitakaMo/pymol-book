@@ -7,11 +7,11 @@
 
 <img src="./image/rcsbpdb2.png" width="100%">
 
-メニュー左側に現れている「Refinements」の「ORGANISM」に表示されている「Escherichia coli」をクリックします。これで大腸菌由来の「alkaline phosphatase」に検索を絞り込むことができます。
+メニュー左側に現れている「Refinements」の「ORGANISM」に表示されている「Escherichia coli」をクリックして検索ボタン（ルーペマーク）をクリックします。これで大腸菌由来の「alkaline phosphatase」に検索を絞り込むことができます。
 
 <img src="./image/rcsbpdb3.png" width="40%">
 
-右上の「Displaying 25 Results」の「25」を「All」に変更し，表示された結果の中から「1ALK」を探してクリックします（リストの一番下付近にあります）。
+右上の「Displaying 25 per page」の「25」を「100」に変更し，表示された結果の中から「1ALK」を探してクリックします（リストの一番下付近にあります）。
 
 <img src="./image/rcsbpdb4.png" width="100%">
 
