@@ -1,4 +1,4 @@
-# Gaussian 16のcubeファイルを開いて分子軌道を表示する
+## Gaussian 16のcubeファイルを開いて分子軌道を表示する
 
 <img src="./image/gaus1.png" width="700" title="Gaussian 16での分子軌道の表示例">
 
@@ -8,12 +8,12 @@ GaussView 6やVMD 1.9.4などの他のソフトを用いて可視化してもよ
 
 ここでは、簡単な計算の例を示しながら、それをGaussViewまたはPyMOLで分子軌道を表示する時の方法を紹介します。
 
-## 分子軌道を表示するのに必要な環境
+### 分子軌道を表示するのに必要な環境
  - GaussView 6, VMD, PyMOL 2.3.0以降のうち、いずれか1つをインストールしてあるパソコン
 
 この記事ではGaussView 6またはPyMOL 2.3.0での方法を示します
 
-## Example 1-1. シクロペンタジエンの場合
+### Example 1-1. シクロペンタジエンの場合
 例として、シクロペンタジエン分子の構造をGaussian 16（`g16`）で構造最適化させ、分子軌道を計算させてみます。インプットファイル`cyclopenta.gjf` を以下のように書いて`g16`で計算させます。
 
 ```
@@ -53,7 +53,7 @@ g16 < ${job}.gjf > ${job}.log
 
 計算が終わりますと、計算結果の`cyclopenta.log`ファイルだけでなく、.chk（チェックポイント）ファイル`cyclopenta.chk`も生成されているはずです。分子軌道の可視化や以降の処理にはこのファイルを用います。
 
-## Example 1-2. chkファイルの処理
+### Example 1-2. chkファイルの処理
 このchkファイルを用いて、まずターミナル上での以下のコマンドで、formatted checkpoint file形式に変換します。
 
     formchk cyclopenta.chk cyclopenta.fchk
@@ -68,8 +68,8 @@ g16 < ${job}.gjf > ${job}.log
 この`cubegen`についての操作方法はGaussian公式の[cubegenの解説ページ](http://gaussian.com/cubegen/)のページを参照してください。MO=のあとにhomoやlumo、または数字を指定すると、それに対応した分子軌道が出力されます。
 今回はシクロペンタジエンのHOMO（最高被占軌道）のデータを取り出したいので、MO=homoとし、.fchkファイルと出力ファイル名`cyclopenta_homo.cube`を指定します。
 
-## Example 1-3. cubeファイルの表示
-### Case 1. GaussView 6で表示する
+### Example 1-3. cubeファイルの表示
+#### Case 1. GaussView 6で表示する
 GaussView 6で表示する時、必要になるファイルは`cyclopenta.log`と`cyclopenta_homo.cube`です。まずはふつうに`cyclopenta.log`を開きます。
 
 <img src="./image/gaus2.png" width="500" title="Gaussian 16での分子軌道の表示例">
@@ -92,7 +92,7 @@ GaussView 6で表示する時、必要になるファイルは`cyclopenta.log`�
 
 以下では、この部分をPyMOLでやってみる方法を紹介します。
 
-### Case 2. PyMOL 2.3.0で表示する
+#### Case 2. PyMOL 2.3.0で表示する
 PyMOLで開く場合には、
 
  1. `cyclopenta.log`の最終構造に対応する構造ファイルをPDB形式などで用意し、PyMOLに表示させる

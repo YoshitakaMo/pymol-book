@@ -56,6 +56,7 @@
   - [動画の作成方法](./ch05/movieschool.md)
   - [表示形式のプリセット](./ch05/preset.md)
   - [Gaussian 16のcubeファイルを開いて分子軌道を表示する](./ch05/gaussian.md)
+  - [PyMOL上でのpythonスクリプトの実行](./ch05/python_on_pymol.md)
 - [第6章 プラグインを使う](./ch06/index.md)
   - [プラグインのインストール方法](./ch06/installation.md)
   - [DSSPプラグイン](./ch06/dssp.md)
