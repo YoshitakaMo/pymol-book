@@ -13,6 +13,7 @@ PyMOLの機能をまとめた本です。
 - 上部メニューの詳細を知りたい方は[第3章 External GUIの使い方](./ch03/index.html)を参考にしてください。
 
 ## Change log
+2020年 5月11日 [3.4 Movie](./ch03/movie.md)を追加。<br>
 2020年 5月 5日 [5.6 PyMOL上でのpythonスクリプトの実行](./ch05/python_on_pymol.md)を追加。<br>
 2020年 5月 3日 [1.7 タンパク質の疎水性・親水性残基の分布を確認する](./ch01/hydrophobicity.md)を追加。<br>
 2020年 5月 2日 [1.8 タンパク質の位置依存的なアミノ酸保存度の違いを理解する](./ch01/conservation.md)を追加。<br>
