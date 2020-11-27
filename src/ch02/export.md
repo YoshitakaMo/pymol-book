@@ -8,13 +8,13 @@
 **State**は1つのオブジェクトに複数の構造状態を持っている場合に、どの状態を保存するかを表しています。デフォルトは *-1 (current)* で、現在画面に表示されている状態のものを保存します。
 
 ## 対応している出力ファイル形式
-<img src="./image/export/pdbexport4.png"><br>
+<img src="./image/export/pdbexport4.png" width="300px"><br>
 デフォルトでは`PDBx/mmCIF (*.cif, *.cif.gz)`となっていますが、他にも画像のような様々なファイル形式に出力することができます。
 
 保存メニューには他にも様々なオプションがあります。
 
 ## Generic Options
-<img src="./image/export/pdbexport1.png">
+<img src="./image/export/pdbexport1.png" width="300px">
 
 <input type="checkbox" checked="checked"> Original atom order (according to "rank")
 
@@ -53,7 +53,7 @@ ATOM      6  O   ACE A   1      33.760  24.560  14.700  1.00  0.00           O
 > 参考： https://pymolwiki.org/index.php/Retain_order
 
 ## PDB Options
-<img src="./image/export/pdbexport2.png"><br>
+<img src="./image/export/pdbexport2.png" width="300px"><br>
 これらのオプションは従来使われていた`pdb`ファイル形式で出力するときのみ対応します。
 
 <input type="checkbox"> Write multiple bonds as duplicate CONECT records
@@ -95,7 +95,7 @@ segment identifierを書き出すかどうかを指定します。デフォル�
 > 参考： https://pymolwiki.org/index.php/Multisave
 
 ## Multi-File
-<img src="./image/export/pdbexport3.png">
+<img src="./image/export/pdbexport3.png" width="300px">
 
 現在PyMOL上で複数表示されているオブジェクトを、複数ファイルに分けてエクスポートしたいときに使うオプションです。さらに、各オブジェクトが2以上のStateを持っている場合（例として、PDB ID:1G03などのNMR構造ファイル、またはMDトラジェクトリをロードしたオブジェクトなど）は、さらにそれらを分割して保存することができます。
 

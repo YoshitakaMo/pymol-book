@@ -1,19 +1,19 @@
 # 画像の保存
 PyMOLで表示されている画像を保存することができます。上部メニューの[**File**]から[**Export Image As...**] → [**PNG**]を選ぶと、保存メニューが現れます。
 
-<img src="./image/saveimage/saveimage1.png">
+<img src="./image/saveimage/saveimage1.png" width="300px">
 
 デフォルトでは"capture current display"と表示されています。
 
-<img src="./image/saveimage/saveimage2.png">
+<img src="./image/saveimage/saveimage2.png" width="300px">
 
 この設定で下にある"Save PNG image as..."を押すと、保存先を指定するメニューが表示され、名前を入れて保存することができます（画像はいずれも`bg_color white`で白背景にした場合で表示しています）。
 
-<img src="./image/saveimage/saveimage_1alk.png">
+<img src="./image/saveimage/saveimage_1alk.png" width="400px">
 
 これでとりあえず上のような画像を保存することができましたが、他にも様々なメニューがあるので、状況によって使い分けると良いでしょう。まずは、"capture current display"のプルダウンメニューの部分を押すと、
 
-<img src="./image/saveimage/saveimage3.png">
+<img src="./image/saveimage/saveimage3.png" width="300px">
 
 計4つのメニューがあることがわかります。まず"draw antialiased OpenGL image"とすると、描画にアンチエイリアスがかかります（※なおmacOSの場合、現状OpenGL周りの処理にバグがあるためWARNINGSのメッセージが出ています。）
 
@@ -35,7 +35,7 @@ PyMOLで表示されている画像を保存することができます。上部
 
 これをクリックすると設定メニューが表示されます。
 
-<img src="./image/saveimage/saveimage5.png" width="60%">
+<img src="./image/saveimage/saveimage5.png" width="400px">
 
 先述のメニューでは出力される縦と横の画像サイズは指定できませんでしたが、先にここのメニューで縦(Height)と横(Width)の値を目的の値に変更しておけば指定することができます。
 
