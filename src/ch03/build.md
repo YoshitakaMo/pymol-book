@@ -3,7 +3,7 @@ Buildのメニューからは、PyMOLに内蔵されている化合物のフラ�
 
 Buildメニューは以下の通りです。
 
-<img src="./image/ch3_build1.png" width="40%" height="40%">
+<img src="./image/build/ch3_build1.png" width="40%" height="40%">
 
 ## Fragment
 ここでは主要な化学小分子の骨格を、フラグメントをつなぎ合わせるような感覚で構築することができます。使い方の例を動画で見てみましょう。
