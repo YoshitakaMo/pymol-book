@@ -139,42 +139,83 @@ Stereoを選択すると、現在設定されている**ステレオモード**�
 
 anaglyphモードは、一般的には左目に赤セロファン、右目に青セロファンを通したときに立体的に浮かび上がるような図への出力を行うモードです。いわゆる「赤青メガネ」を着用する状態で見ることを前提とする表示方法です。
 
-コマンドは`stereo, anaglyph`です。
+コマンドは`stereo anaglyph`です。
 #### Cross-Eye Stereo
 <img src="./image/display/stereo2.png">
 
-交差法による立体視用の図を出力するモードです。コマンドは`stereo, crosseye`です。
+交差法による立体視用の図を出力するモードです。コマンドは`stereo crosseye`です。
 #### Wall-Eye Stereo
+<img src="./image/display/stereo4.png">
 
-コマンドは`stereo, walleye`です。
+Wall-Eyeによる立体視用の図を出力するモードです。コマンドは`stereo walleye`です。
 #### Quad-Buffered Stereo
+Quad-Buffered stereo 3Dを利用した画面表示を行うモードです。しかし、この機能はお使いのパソコン（GPU）とモニター、OSが適切に対応している場合のみ利用できるようです。また、現行のMacおよびmacOSについてはこの機能を利用することができないようです。詳細は https://pymolwiki.org/index.php/Stereo_3D_Display_Options のページを御覧ください。
 
-コマンドは`stereo, quadbuffer`です。
+コマンドは`stereo quadbuffer`です。
 #### Zalman Stereo
+<img src="./image/display/stereo5.png">
 
-コマンドは`stereo, byrow`です。
+この機能は**ZALMAN社製の3Dモニター製品を利用している場合のみ**効果を発揮します。この3Dモニターを使っているときであれば、立体視の訓練をしなくても上記の画像が立体的に見えるように表示されます。しかし、それ以外のモニターを使っているときには立体的に見えないので効果を実感することができません。コマンドは`stereo byrow`です。
 #### OpenVR
+OpenVRは2019年6月頃から有志によって追加された機能であり、現在試験運用段階にあるようです。動作の様子は https://www.youtube.com/watch?v=kEKA1HnR9GM などで見ることができます。
 
-コマンドは`stereo, openvr`です。
-#### Swap Sides
+この機能はOpenVRに依存しているため、Homebrew, LinuxbrewでインストールしたOpensource版PyMOLで利用することはできず、anacondaか公式バイナリをインストールしたときでのみ利用可能です。また、OSもWindows, Linuxに対応しているがmacOSで動作させることができるかは現時点で不明です。また、VR自体が規格の統一やプラットフォーム競争の最中にあるため、本格的な利用はまだ先でしょうか。
 
-コマンドは`stereo, swap`です。
-#### Chromadepth
-chromadepthモードは、画面に対する奥行きに対して自動的に色付けが変わる表示形式です。このモードにした状態で分子を回転させると、常に画面手前側が赤く、画面奥側が青色になるようにカラーリングが変化します。
-
-
-
-コマンドは`stereo, chromadepth`です。
-#### off
-ステレオモードをオフにします。コマンドは`stereo, off`です。
-
-### Zoom
-
-### Clip
+コマンドは`stereo openvr`です。
 
 <hr>
 
+#### Swap Sides
+
+Cross-Eye StereoまたはWall-Eye StereoをONにしているときにこの機能を利用すると、Internal GUI上に表示されている立体視用の画像が入れ替わります。コマンドは`stereo swap`です。
+
+<hr>
+
+#### Chromadepth
+<img src="./image/display/stereo6.png">
+chromadepthモードは、画面に対する奥行きに対して自動的に色付けが変わる表示形式です。このモードにした状態で分子を回転させると、常に画面手前側が赤く、画面奥側が青色になるようにカラーリングが変化します。
+
+コマンドは`stereo chromadepth`です。
+
+<hr>
+
+#### off
+ステレオモードをオフにします。コマンドは`stereo, off`です。
+
+<hr>
+
+### Zoom
+ZoomによってInternal GUI上に表示する分子を拡大するよう視点を変更します。`x Angstrom sphere`をクリックすると、`x`の値に応じて表示される範囲が変化します。`All`では全オブジェクトが表示されるように自動的に視点を変更します。`complete`を利用すると、範囲全体がortoscopic viewに収まるようになります。
+
+コマンドでは`zoom [ selection [,buffer [, state=0 [, complete=0 ]]]]`です。`complete`を利用する場合は`1`を指定します。
+### Clip
+
+Clipの値を設定します。詳細は[第2章 2.4.3 操作の詳細 クリッピング](../ch02/index.html#クリッピングclip.md)を御覧ください。
+<hr>
+
 ### Background
+生体分子が表示されているViewer部分の背景について設定することができます。デフォルトでは黒背景になっています。
+#### <input type="checkbox"> Opaque
+PyMOL Viewerの背景の不透明について設定します。この不透明設定がONの場合、設定された背景色に従って描画されます。この設定がOFFの場合、背景は透明に描画されます。デフォルトではOFFになっています。コマンドは`set opaque_background, 0/1`です。
+
+……というのが本来の機能のようですが、**実際には機能しておらず、常にONになっているようです**。すなわち、背景は常に何かしらの色で塗られており、透明にすることはできないようです。もし背景を透過した画像を保存したい場合は、この代わりに`set ray_opaque_background, 0`とした上で`ray`コマンドを使い、その上で画像を保存することになります。
+
+#### <input type="checkbox" checked="checked"> Alpha Checker
+背景色が透過状態になっている場合に、透明な市松模様を表示させるか否かを設定します。デフォルトではONになっており、この状態で`set ray_opaque_background, 0`とした上で`ray`コマンドを入力すると、その表示を確認することができます。
+
+<img src="./image/display/alphachecker.png">
+
+この表示の状態で画像を保存すると、背景が透過された状態になっています。
+
+<hr>
+
+#### White / Light Grey / Grey / Black
+背景色を選択できます。デフォルトではBlackに設定されているため、通常は黒背景の中に生体分子が表示されます。この4つの選択肢は同時にいずれかの1つのみ適用されます。
+
+Whiteに設定すると背景が白となるので、画像出力時に利用できます。
+
+コマンドでは`set bg_rgb, [white|grey80|grey50|black|]`です。
+
 
 ### Color Space
 
@@ -185,6 +226,17 @@ chromadepthモードは、画面に対する奥行きに対して自動的に色
 <hr>
 
 ### <input type="checkbox"> Orthoscopic View
+Orthoscopic ViewをONにすると、遠近感(perspective)の効果をなしにすることができます。デフォルトのPyMOLの表示は遠近感を自動的に考慮した表示になっており、奥行きを自然に感じられるようになっていますが、その機能を停止させることができます。
+
+次のような一方向に長いPDB: 3AEHのchain Aを使って例を示します。<br>
+<img src="./image/display/3aeh.png" width="50%">
+
+このタンパク質を90°横から見て、Orthoscopic ViewをOFFにしている場合（左）とONにしている場合（右）の比較です<br>
+<img src="./image/display/ortho0.png" width="40%"><img src="./image/display/ortho1.png" width="40%">
+
+Orthoscopic ViewをOFFにしている場合、βバレル（βシートによる樽みたいな）構造やαヘリックスについて視差がうまれているため奥行きがわかりやすいですが、ONにしていると奥行きが少しわからなくなっている感じがします。
+
+球状タンパク質のほうな等方的な分子ではこの効果を実感することは少ないですが、上記のように、異方性の高いタンパク質でのみこのような違いを実感することができます。
 
 ### <input type="checkbox" checked="checked"> Show Valences
 
