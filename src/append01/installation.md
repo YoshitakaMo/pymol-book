@@ -9,8 +9,6 @@
 
 PyMOLライセンスは基本的に有料で、1年または3年契約なのですが、教育用のサブスクリプション(Educational Subscription)ライセンスは、ウェブ上で申請することで**無料**で発行されます。いずれのライセンスを取得する場合でも、まずhttps://pymol.org/2/buy.html にアクセスし、申請フォームを埋めることでライセンス発行の手続きを進めることができます。
 
-
-
 ### バイナリ版のインストール方法
 
 バイナリ版のインストール方法はとても簡単で、[公式ウェブサイト](https://pymol.org/2/)のDownloadのところからインストーラーを取得することができます。Windows, macOS, Linuxいずれの場合も、基本的にはインストーラーを展開して指示に従ってインストールを進めるだけでOKのはずです。
@@ -19,13 +17,96 @@ PyMOLライセンスは基本的に有料で、1年または3年契約なので�
 オープンソース版のインストール方法は、OSの種類によって大きく異なります。
 
 #### Windows 10の場合
-（書きかけ）
+
+tonets先生のQiita記事 https://qiita.com/tonets/items/1927058e4297fc1c060d をアップデートする形で書きます。
+
+WindowsではまずPython3が使える環境を構築する必要があります。これには様々な流儀がありますが、Anacondaを使う流儀で紹介します。
+
+まずAnacondaを使ってPythonをインストールします。このときのバージョンはPython3.8です。
+
+https://www.anaconda.com/products/individual
+
+インストーラーをダウンロードしてきたら基本的にはデフォルトのままNextを押していきます。個人（only me）にインストールするか、システム全体にインストールするかを聞かれるところがありますが、ここでは個人を選択しておきます。
+
+インストールされた場所を確認します。おそらく`C:\Users\ユーザー名\Anaconda3\`に `python.exe`があります。
+
+コマンドプロンプトを立ち上げて（ショートカットキーWin+Rを押したあと、`cmd`と入力すると早い、もしかすると管理者権限が必要かも）、`cd C:\Users\ユーザー名\Anaconda3`としてAnaconda3のディレクトリに移動した後
+
+```
+python.exe -m pip install --upgrade pip
+```
+
+として、`pip`をアップグレードする処理が働くかどうかを確認します。
+
+ここでもし
+
+```
+pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
+```
+というエラーが出る場合、OpenSSLの設定がうまくできていないみたいなので、以下のような回避策を行います。
+
+Windowsのスタートボタンにある検索メニューに**環境変数名の編集**と入力し、環境変数の変数を行います。ここではPathの部分をダブルクリックし、画像のように環境変数名を編集して追加します。
+
+<img src="./image/windows_inst1.png">
+
+一番下の設定は、私の環境では`Anaconda3\pkgs\openssl-1.1.1h-he774522_0\Library\bin`でしたが、Anacondaのバージョンによって微妙にopensslのディレクトリ名が変わるので、適宜確認してから入力してください。
+
+この環境変数を追記したら、改めてコマンドプロンプトをいったん閉じて開き直し、`pip`のアップグレードがうまく行われることを確認してください。
+
+うまくアップグレードされたようでしたら、次にPyMOLのビルドに必要なパッケージをダウンロードしインストールします。必要なファイルは https://www.lfd.uci.edu/~gohlke/pythonlibs/ の**Pymol-open-source**にある
+
+- pymol_launcher-2.1-cp38-cp38-win_amd64.whl
+- pymol-2.4.0-cp38-cp38-win_amd64.whl
+- Pmw-2.0.1-py3-none-any.whl
+
+と、**NumPy**のところにある
+
+- numpy-1.19.5+mkl-cp38-cp38-win_amd64.whl
+
+です。注意点として、`cpXX`の数字は必ずAnacondaのPythonバージョンと合わせてください。例えばAnacondaのPythonバージョンがPython 3.8.xならば、`cp38`を選びます。時間が経つに連れ、バージョンがともにアップデートされていきますので、それに合わせます。また、`win32`と`win_amd64`がありますが、これは今の時代でしたら基本的には`win_amd64`の方を使います。`win32`はたぶんそのうち絶滅します。また、現在`pymol-2.5.0a0`も存在していますが、基本的に`a0`は未完成の試作品なので、安定動作を取りたい人は手を出さないほうが良いでしょう。
+
+これらを揃えたら、先程の`Anaconda3`の`python.exe`があったディレクトリに入れておきます。そしてコマンドプロンプトを開き、以下の順でインストールを行います。
+
+```
+C:\Users\ユーザー名>cd C:\Users\ユーザー名\Anaconda3
+C:\Users\ユーザー名\Anaconda3> python.exe -m pip install Pmw-2.0.1-py3-none-any.whl
+C:\Users\ユーザー名\Anaconda3> python.exe -m pip install numpy-1.19.5+mkl-cp38-cp38-win_amd64.whl
+C:\Users\ユーザー名\Anaconda3> python.exe -m pip install pymol-2.4.0-cp38-cp38-win_amd64.whl
+C:\Users\ユーザー名\Anaconda3> python.exe -m pip install pymol_launcher-2.1-cp38-cp38-win_amd64.whl
+```
+
+pymolのインストールはPmw, numpyの後にやりましょう。
+
+以上でインストールが完了します。`C:\Users\ユーザー名\Anaconda3` の下に `PyMOL.exe` ができています。これをダブルクリックすればPyMOLが立ち上がります。
+
+<img src="./image/windowspymol1.png">
+
+ドックにこのアイコンを登録しておけば簡単に開くことができます。
+
+ところで、このインターフェイスはレガシーなTcl/Tkによる描画で、現在PyMOL側はこの表示を推奨していません。そこで、モダンなPyQt5を使った描画に変更します。これは簡単で
+
+```
+C:\Users\ユーザー名>cd C:\Users\ユーザー名\Anaconda3
+C:\Users\ユーザー名\Anaconda3> python.exe -m pip install pyqt5
+```
+
+を行うだけです。途中
+
+<img src="./image/windows_inst2.png">
+
+エラーメッセージが出ることもありますが、最後にSuccessfully installedと書かれていれば問題ありません。
+
+この設定をした後に改めてPyMOL.exeを開けば、インターフェイスが変化しています。
+
+<img src="./image/windowspymol2.png">
+
+こちらの方が文字やボタンがきれいに表示されるので個人的に好きです。
 
 #### macOSの場合
 以下の環境を想定しています。
 
 ##### マシン環境
--   macOS 10.14.4 (Mojave), 2.8GHz Intel Core i7, メモリ16GB
+-   macOS 11.1 (Big Sur), 2.8GHz Intel Core i7, メモリ16GB
 -   [ターミナルからHomebrewをインストール](http://brew.sh/index_ja.html)してある
 -   [Xquartzをインストール](http://xquartz.macosforge.org/landing/)してある
 
