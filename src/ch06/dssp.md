@@ -1,10 +1,9 @@
 ## DSSPプラグイン
 [プラグインのインストール方法](installation.md)の手順に従ってpsicoのインストールがうまく行っていれば、改めて起動した後にPyMOLのコマンドラインで`dssp`というコマンドが使えるようになっているはずです。このコマンドは開いているタンパク質に対して二次構造アサインメントプログラムの**DSSP**をかけてくれて、その計算結果をもとに表示を切り替えてくれます。ただし利用するためにはあらかじめ`mkdssp`コマンドがインストールされ、かつ動作することが条件です。現在、最新版のDSSPは以下のHomebrewコマンドからインストールすることができます。
 
-    # https://github.com/brewsci/homebrew-bioに登録されました(2018年10月28日)
-    brew install brewsci/bio/xssp
+    brew install brewsci/bio/dssp
 
-このxsspパッケージの中に`mkdssp`コマンドが入っています。ちなみにCentOS 7の方は、`yum -y install dssp`とすれば簡単に`mkdssp`コマンドがインストールできます。バージョンがちょっと古いですけど問題なく動作するはずです。
+このdsspパッケージの中に`mkdssp`コマンドが入っています。ちなみにCentOS 7の方は、`yum -y install dssp`とすれば簡単に`mkdssp`コマンドがインストールできます。バージョンがちょっと古いですけど問題なく動作するはずです。
 
 そしてPyMOLの画面に戻り、dsspコマンドを打てば、以下のような表示になります。
 <img src="./image/dssp1.png" width="100%" alt="DSSPの使用例" title="DSSPの使用例">
