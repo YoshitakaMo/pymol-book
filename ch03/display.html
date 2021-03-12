@@ -279,6 +279,11 @@ chromadepthモードは、画面に対する奥行きに対して自動的に色
 <p>Whiteに設定すると背景が白となるので、画像出力時に利用できます。</p>
 <p>コマンドでは<code>set bg_rgb, [white|grey80|grey50|black|]</code>です。</p>
 <h3><a class="header" href="#color-space" id="color-space">Color Space</a></h3>
+<p>色空間を設定します。選択肢として<strong>CMYK (for publications)</strong>, <strong>PyMOL (for video + web)</strong>, <strong>RGB (default)<strong>があります。デフォルトは</strong>RGB</strong>です。</p>
+<p><strong>一般に、コンピュータのモニター上ではRGB色空間で色を表現しているのに対し、印刷物上ではCMYK色空間で色が表現されています。</strong> 詳細は<a href="https://ja.wikipedia.org/wiki/%E8%89%B2%E7%A9%BA%E9%96%93">Wikipediaの色空間の記事</a>をご覧ください。このため、原理的にモニター上で見える色と論文やポスター上などに印刷された色は異なってしまいます。この2つの色空間は非等価であり、特定のRGB色をCMYK空間で表現することができず、逆にRGBで作成した画像をCMYKに変換すると、紫がかった青や黄緑がかった色になってしまいます。その結果、RGBで作成された分子グラフィックス画像をCMYKに変換すると、青みがかった紫や緑が黄色くなってしまうことがよくあります。そこで、あらかじめ<code>space cmyk</code>によって色空間をCMYKに強制させておくと、画像編集ソフト（例えばAdobe Photoshop）で確実にCMYKに変換できる色のサブセットに制限することができます。このため、画面上に表示されるものは、印刷で得られるものにかなり近いものになります。</p>
+<p>一方で、アナログビデオシステムや<a href="https://ja.wikipedia.org/wiki/YUV">YUV色空間</a>に基づくデジタルビデオ圧縮コーデックにもRGBとの非互換性があります。通常、過飽和色が最も問題となります。PyMOL には &quot;space yuv&quot; がありませんが、<code>space pymol</code>を使うことで、アニメーションをビデオにエクスポートする際に、過飽和色の問題を回避することができます。</p>
+<p>まとめると、<strong>紙面上への印刷を意識した図を作成する場合はCMYKを、モニター上でのみ表示する図や動画の作成では、PyMOLまたはRGBを利用すると良いでしょう</strong>。</p>
+<p>コマンドは<code>space, [cmyk|pymol|rgb]</code>です。</p>
 <h3><a class="header" href="#quality" id="quality">Quality</a></h3>
 <h3><a class="header" href="#grid" id="grid">Grid</a></h3>
 <hr>

@@ -145,10 +145,11 @@
                     <main>
                         <h1><a class="header" href="#pymol-tutorial" id="pymol-tutorial">PyMOL Tutorial</a></h1>
 <p>PyMOLの機能をまとめた本です。
-(c) 2020 YoshitakaMo All Rights Reserved.</p>
+(c) 2021 YoshitakaMo All Rights Reserved.</p>
 <h2><a class="header" href="#はじめてpymolを使う方へ" id="はじめてpymolを使う方へ">はじめてPyMOLを使う方へ</a></h2>
 <ul>
 <li>インストール方法については<a href="./append01/installation.html">7.1 インストール方法</a>を御覧ください。</li>
+<li>PyMOLを使った分子の表示方法のやり方をまとめて知りたい場合は<a href="./ch01/index.html">第1章-pymolチュートリアル-アルカリホスファターゼの構造を見る</a>から順次御覧ください。</li>
 <li>マウスの使い方を学びたい場合は以下のページからどうぞ。
 <ul>
 <li><a href="./ch02/loadmol.html">2.1 分子構造のロード</a></li>
@@ -157,17 +158,15 @@
 <li><a href="./ch02/mouse.html">2.4 マウス操作</a></li>
 </ul>
 </li>
-<li>上部メニューの詳細を知りたい方は<a href="./ch03/index.html">第3章 External GUIの使い方</a>を参考にしてください。</li>
+<li>PyMOL上部メニューの詳細を知りたい方は<a href="./ch03/index.html">第3章 External GUIの使い方</a>を参考にしてください。</li>
 </ul>
 <h2><a class="header" href="#change-log" id="change-log">Change log</a></h2>
-<p>2020年 5月11日 <a href="./ch03/movie.html">3.4 Movie</a>を追加。<br>
+<p>2021年 1月 5日 <a href="./ch03/display.html">3.5 Display</a>を順次追加。<br>
+2020年 5月11日 <a href="./ch03/movie.html">3.4 Movie</a>を追加。<br>
 2020年 5月 5日 <a href="./ch05/python_on_pymol.html">5.6 PyMOL上でのpythonスクリプトの実行</a>を追加。<br>
 2020年 5月 3日 <a href="./ch01/hydrophobicity.html">1.7 タンパク質の疎水性・親水性残基の分布を確認する</a>を追加。<br>
 2020年 5月 2日 <a href="./ch01/conservation.html">1.8 タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a>を追加。<br>
 2020年 4月12日 <a href="./append01/selealgebra.html">Appendix 3 選択範囲の文法と演算子</a>を追加。<br>
-2020年 3月20日 <a href="./ch03/scene.html">3.7 Scene</a>を追加。<br>
-2020年 2月18日 <a href="./ch03/mouse.html">3.8 Mouse</a>を追加。<br>
-2020年 2月10日 <a href="./ch03/file.html">3.1 File</a>, <a href="./ch03/edit.html">3.2 Edit</a>と<a href="./ch03/build.html">3.3 Build</a>を追加。<br>
 2019年12月7日 <a href="./ch02/color.html">2.3.3 色の設定</a>を追加。<br>
 ...<br>
 2019年 3月30日 作成開始。</p>
@@ -295,7 +294,51 @@ show sticks, sele
 <p>Zn，Mgは原子種ごとの色分け（→<a href="ch01/../ch02/color.html">色の設定</a>）にします。</p>
 <p>リン酸付近にどのようなアミノ酸種が分布しているかを確認するために、先程の選択範囲<code>(sele)</code>について、<a href="ch01/../ch02/label.html">ラベルの設定</a>で<code>label</code> -&gt; <code>residues</code>を選択します。</p>
 <img src="ch01/./image/focus5.png" width="100%" alt="" title="">
-<p>PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば<code>1alk_active_site.pse</code>などとしておくと分かりやすくて良いでしょう。</p>
+<p>PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。目視で行っても構いませんが、ここではPyMOLがPythonプログラミングで動いているということを利用して、以下のコマンドを入力して確認してみましょう。</p>
+<p>コマンド入力欄に以下のコマンドを順次入れていきます（コピー＆ペースト可能）。</p>
+<pre><code class="language-python"># チェインAのリン酸を選択する(残基名がPO4でかつchain Aのものをselectする)
+select resn PO4 and chain A
+# 現在の選択範囲から4.6Å以内にある分子を、残基単位(byres)ですべて選択する
+select byres resn * within 4.6 of sele
+
+# ここで空の配列であるreslistを作成しておく（初期化）
+reslist = []
+# pymolのiterateコマンドを用いて、選択範囲(sele)に存在するCα炭素(name CA)について
+# (residue_id, residue_name)のタプルをreslistに繰り返し加えていく
+iterate sele and name CA, reslist.append((resi, resn))
+# reslistを表示する
+print(reslist)
+</code></pre>
+<p>ここまでうまく入力されていれば、最後に以下のように結果が表示されるはずです。</p>
+<pre><code>PyMOL&gt; print(reslist)
+[('51', 'ASP'), ('101', 'ASP'), ('102', 'SER'), ('153', 'ASP'), ('166', 'ARG'), ('327', 'ASP'), ('331', 'HIS'), ('369', 'ASP'), ('370', 'HIS'), ('412', 'HIS')]
+</code></pre>
+<p>これはpythonで言うところの、リスト型変数<code>reslist</code>の中にタプル型で（残基番号, 3文字残基名）の組が入っている形になっています。</p>
+<p>これをよく生物学の表示で使われるようなMET-1, ASP-2のような表示に変換したい場合は、pythonのprint文を知識を使って例えば以下のようにpythonプログラムを書けばうまく出力することができます。ただし、PyMOLのコマンドラインでpythonプログラムを書く場合は<code>python</code>と<code>python end</code>というブロックの間に挟む必要があります。（参考： https://pymolwiki.org/index.php/Python ）</p>
+<pre><code class="language-python">python
+# リスト内のタプルをi, jに代入するfor loop
+for i, j in reslist:
+    # print&amp;format文法を使って&quot;{residue_name}-{residue_id}&quot;の順番で表示する
+	print(&quot;{0}-{1}&quot;.format(j, i))
+
+python end
+</code></pre>
+<p>すると、以下のように表示されます。</p>
+<pre><code>PyMOL&gt;python end
+
+ASP-51
+ASP-101
+SER-102
+ASP-153
+ARG-166
+ASP-327
+HIS-331
+ASP-369
+HIS-370
+HIS-412
+</code></pre>
+<p>こうすれば目視でやるより書き漏らしがなくて済みますね。</p>
+<p>終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば<code>1alk_active_site.pse</code>などとしておくと分かりやすくて良いでしょう。</p>
 <h2><a class="header" href="#ヒトアルカリホスファターゼとの構造比較" id="ヒトアルカリホスファターゼとの構造比較">ヒトアルカリホスファターゼとの構造比較</a></h2>
 <p>ヒトアルカリホスファターゼも立体構造が解かれ、PDBに登録されている（<a href="https://www.rcsb.org/structure/1EW2">PDB ID: 1EW2</a>）。大腸菌アルカリホスファターゼとの類似点・相違点を調べてみよう。</p>
 <p>ヒトアルカリホスファターゼと大腸菌アルカリホスファターゼのアミノ酸一致度は30%弱である。つまり平均すると10箇所のうち7箇所以上はアミノ酸が異なっていることになります。では、<strong>ヒトアルカリホスファターゼは大腸菌アルカリホスファターゼとまったく異なるやり方でリン酸エステル化合物の加水分解を行っているのだろうか？それとも似た反応機構をもっているのでしょうか</strong>。立体構造の観点から調べてみましょう。</p>
@@ -561,7 +604,51 @@ show sticks, sele
 <p>Zn，Mgは原子種ごとの色分け（→<a href="ch01/../ch02/color.html">色の設定</a>）にします。</p>
 <p>リン酸付近にどのようなアミノ酸種が分布しているかを確認するために、先程の選択範囲<code>(sele)</code>について、<a href="ch01/../ch02/label.html">ラベルの設定</a>で<code>label</code> -&gt; <code>residues</code>を選択します。</p>
 <img src="ch01/./image/focus5.png" width="100%" alt="" title="">
-<p>PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば<code>1alk_active_site.pse</code>などとしておくと分かりやすくて良いでしょう。</p>
+<p>PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。目視で行っても構いませんが、ここではPyMOLがPythonプログラミングで動いているということを利用して、以下のコマンドを入力して確認してみましょう。</p>
+<p>コマンド入力欄に以下のコマンドを順次入れていきます（コピー＆ペースト可能）。</p>
+<pre><code class="language-python"># チェインAのリン酸を選択する(残基名がPO4でかつchain Aのものをselectする)
+select resn PO4 and chain A
+# 現在の選択範囲から4.6Å以内にある分子を、残基単位(byres)ですべて選択する
+select byres resn * within 4.6 of sele
+
+# ここで空の配列であるreslistを作成しておく（初期化）
+reslist = []
+# pymolのiterateコマンドを用いて、選択範囲(sele)に存在するCα炭素(name CA)について
+# (residue_id, residue_name)のタプルをreslistに繰り返し加えていく
+iterate sele and name CA, reslist.append((resi, resn))
+# reslistを表示する
+print(reslist)
+</code></pre>
+<p>ここまでうまく入力されていれば、最後に以下のように結果が表示されるはずです。</p>
+<pre><code>PyMOL&gt; print(reslist)
+[('51', 'ASP'), ('101', 'ASP'), ('102', 'SER'), ('153', 'ASP'), ('166', 'ARG'), ('327', 'ASP'), ('331', 'HIS'), ('369', 'ASP'), ('370', 'HIS'), ('412', 'HIS')]
+</code></pre>
+<p>これはpythonで言うところの、リスト型変数<code>reslist</code>の中にタプル型で（残基番号, 3文字残基名）の組が入っている形になっています。</p>
+<p>これをよく生物学の表示で使われるようなMET-1, ASP-2のような表示に変換したい場合は、pythonのprint文を知識を使って例えば以下のようにpythonプログラムを書けばうまく出力することができます。ただし、PyMOLのコマンドラインでpythonプログラムを書く場合は<code>python</code>と<code>python end</code>というブロックの間に挟む必要があります。（参考： https://pymolwiki.org/index.php/Python ）</p>
+<pre><code class="language-python">python
+# リスト内のタプルをi, jに代入するfor loop
+for i, j in reslist:
+    # print&amp;format文法を使って&quot;{residue_name}-{residue_id}&quot;の順番で表示する
+	print(&quot;{0}-{1}&quot;.format(j, i))
+
+python end
+</code></pre>
+<p>すると、以下のように表示されます。</p>
+<pre><code>PyMOL&gt;python end
+
+ASP-51
+ASP-101
+SER-102
+ASP-153
+ARG-166
+ASP-327
+HIS-331
+ASP-369
+HIS-370
+HIS-412
+</code></pre>
+<p>こうすれば目視でやるより書き漏らしがなくて済みますね。</p>
+<p>終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば<code>1alk_active_site.pse</code>などとしておくと分かりやすくて良いでしょう。</p>
 <h3><a class="header" href="#チェインごとの色分け-2" id="チェインごとの色分け-2">チェインごとの色分け</a></h3>
 <p>このアルカリホスファターゼがホモ2量体であることをわかりやすく表示するために、Aチェインを緑色（デフォルト）、Bチェインを水色（cyan）で表示してみます。PyMOL右下の画面に<code>S</code>という小さなボタンがあるので、ここを押すと、タンパク質が表示されている画面の上にアミノ酸配列が現れます（参考： <a href="ch01/../ch02/dispseq.html">配列の表示について</a> ）。</p>
 <img src="ch01/./image/colorchain.png" alt="チェインごとの色分け">
@@ -619,7 +706,51 @@ show sticks, sele
 <p>Zn，Mgは原子種ごとの色分け（→<a href="ch01/../ch02/color.html">色の設定</a>）にします。</p>
 <p>リン酸付近にどのようなアミノ酸種が分布しているかを確認するために、先程の選択範囲<code>(sele)</code>について、<a href="ch01/../ch02/label.html">ラベルの設定</a>で<code>label</code> -&gt; <code>residues</code>を選択します。</p>
 <img src="ch01/./image/focus5.png" width="100%" alt="" title="">
-<p>PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば<code>1alk_active_site.pse</code>などとしておくと分かりやすくて良いでしょう。</p>
+<p>PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。目視で行っても構いませんが、ここではPyMOLがPythonプログラミングで動いているということを利用して、以下のコマンドを入力して確認してみましょう。</p>
+<p>コマンド入力欄に以下のコマンドを順次入れていきます（コピー＆ペースト可能）。</p>
+<pre><code class="language-python"># チェインAのリン酸を選択する(残基名がPO4でかつchain Aのものをselectする)
+select resn PO4 and chain A
+# 現在の選択範囲から4.6Å以内にある分子を、残基単位(byres)ですべて選択する
+select byres resn * within 4.6 of sele
+
+# ここで空の配列であるreslistを作成しておく（初期化）
+reslist = []
+# pymolのiterateコマンドを用いて、選択範囲(sele)に存在するCα炭素(name CA)について
+# (residue_id, residue_name)のタプルをreslistに繰り返し加えていく
+iterate sele and name CA, reslist.append((resi, resn))
+# reslistを表示する
+print(reslist)
+</code></pre>
+<p>ここまでうまく入力されていれば、最後に以下のように結果が表示されるはずです。</p>
+<pre><code>PyMOL&gt; print(reslist)
+[('51', 'ASP'), ('101', 'ASP'), ('102', 'SER'), ('153', 'ASP'), ('166', 'ARG'), ('327', 'ASP'), ('331', 'HIS'), ('369', 'ASP'), ('370', 'HIS'), ('412', 'HIS')]
+</code></pre>
+<p>これはpythonで言うところの、リスト型変数<code>reslist</code>の中にタプル型で（残基番号, 3文字残基名）の組が入っている形になっています。</p>
+<p>これをよく生物学の表示で使われるようなMET-1, ASP-2のような表示に変換したい場合は、pythonのprint文を知識を使って例えば以下のようにpythonプログラムを書けばうまく出力することができます。ただし、PyMOLのコマンドラインでpythonプログラムを書く場合は<code>python</code>と<code>python end</code>というブロックの間に挟む必要があります。（参考： https://pymolwiki.org/index.php/Python ）</p>
+<pre><code class="language-python">python
+# リスト内のタプルをi, jに代入するfor loop
+for i, j in reslist:
+    # print&amp;format文法を使って&quot;{residue_name}-{residue_id}&quot;の順番で表示する
+	print(&quot;{0}-{1}&quot;.format(j, i))
+
+python end
+</code></pre>
+<p>すると、以下のように表示されます。</p>
+<pre><code>PyMOL&gt;python end
+
+ASP-51
+ASP-101
+SER-102
+ASP-153
+ARG-166
+ASP-327
+HIS-331
+ASP-369
+HIS-370
+HIS-412
+</code></pre>
+<p>こうすれば目視でやるより書き漏らしがなくて済みますね。</p>
+<p>終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば<code>1alk_active_site.pse</code>などとしておくと分かりやすくて良いでしょう。</p>
 <h2><a class="header" href="#ヒトアルカリホスファターゼとの構造比較-1" id="ヒトアルカリホスファターゼとの構造比較-1">ヒトアルカリホスファターゼとの構造比較</a></h2>
 <p>ヒトアルカリホスファターゼも立体構造が解かれ、PDBに登録されている（<a href="https://www.rcsb.org/structure/1EW2">PDB ID: 1EW2</a>）。大腸菌アルカリホスファターゼとの類似点・相違点を調べてみよう。</p>
 <p>ヒトアルカリホスファターゼと大腸菌アルカリホスファターゼのアミノ酸一致度は30%弱である。つまり平均すると10箇所のうち7箇所以上はアミノ酸が異なっていることになります。では、<strong>ヒトアルカリホスファターゼは大腸菌アルカリホスファターゼとまったく異なるやり方でリン酸エステル化合物の加水分解を行っているのだろうか？それとも似た反応機構をもっているのでしょうか</strong>。立体構造の観点から調べてみましょう。</p>
@@ -3617,6 +3748,11 @@ chromadepthモードは、画面に対する奥行きに対して自動的に色
 <p>Whiteに設定すると背景が白となるので、画像出力時に利用できます。</p>
 <p>コマンドでは<code>set bg_rgb, [white|grey80|grey50|black|]</code>です。</p>
 <h3><a class="header" href="#color-space" id="color-space">Color Space</a></h3>
+<p>色空間を設定します。選択肢として<strong>CMYK (for publications)</strong>, <strong>PyMOL (for video + web)</strong>, <strong>RGB (default)<strong>があります。デフォルトは</strong>RGB</strong>です。</p>
+<p><strong>一般に、コンピュータのモニター上ではRGB色空間で色を表現しているのに対し、印刷物上ではCMYK色空間で色が表現されています。</strong> 詳細は<a href="https://ja.wikipedia.org/wiki/%E8%89%B2%E7%A9%BA%E9%96%93">Wikipediaの色空間の記事</a>をご覧ください。このため、原理的にモニター上で見える色と論文やポスター上などに印刷された色は異なってしまいます。この2つの色空間は非等価であり、特定のRGB色をCMYK空間で表現することができず、逆にRGBで作成した画像をCMYKに変換すると、紫がかった青や黄緑がかった色になってしまいます。その結果、RGBで作成された分子グラフィックス画像をCMYKに変換すると、青みがかった紫や緑が黄色くなってしまうことがよくあります。そこで、あらかじめ<code>space cmyk</code>によって色空間をCMYKに強制させておくと、画像編集ソフト（例えばAdobe Photoshop）で確実にCMYKに変換できる色のサブセットに制限することができます。このため、画面上に表示されるものは、印刷で得られるものにかなり近いものになります。</p>
+<p>一方で、アナログビデオシステムや<a href="https://ja.wikipedia.org/wiki/YUV">YUV色空間</a>に基づくデジタルビデオ圧縮コーデックにもRGBとの非互換性があります。通常、過飽和色が最も問題となります。PyMOL には &quot;space yuv&quot; がありませんが、<code>space pymol</code>を使うことで、アニメーションをビデオにエクスポートする際に、過飽和色の問題を回避することができます。</p>
+<p>まとめると、<strong>紙面上への印刷を意識した図を作成する場合はCMYKを、モニター上でのみ表示する図や動画の作成では、PyMOLまたはRGBを利用すると良いでしょう</strong>。</p>
+<p>コマンドは<code>space, [cmyk|pymol|rgb]</code>です。</p>
 <h3><a class="header" href="#quality" id="quality">Quality</a></h3>
 <h3><a class="header" href="#grid" id="grid">Grid</a></h3>
 <hr>
