@@ -42,5 +42,64 @@ Zn，Mgは原子種ごとの色分け（→[色の設定](../ch02/color.md)）�
 
 <img src="./image/focus5.png" width="100%" alt="" title="">
 
-PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば`1alk_active_site.pse`などとしておくと分かりやすくて良いでしょう。
+PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。目視で行っても構いませんが、ここではPyMOLがPythonプログラミングで動いているということを利用して、以下のコマンドを入力して確認してみましょう。
+
+コマンド入力欄に以下のコマンドを順次入れていきます（コピー＆ペースト可能）。
+
+```python
+# チェインAのリン酸を選択する(残基名がPO4でかつchain Aのものをselectする)
+select resn PO4 and chain A
+# 現在の選択範囲から4.6Å以内にある分子を、残基単位(byres)ですべて選択する
+select byres resn * within 4.6 of sele
+
+# ここで空の配列であるreslistを作成しておく（初期化）
+reslist = []
+# pymolのiterateコマンドを用いて、選択範囲(sele)に存在するCα炭素(name CA)について
+# (residue_id, residue_name)のタプルをreslistに繰り返し加えていく
+iterate sele and name CA, reslist.append((resi, resn))
+# reslistを表示する
+print(reslist)
+```
+
+ここまでうまく入力されていれば、最後に以下のように結果が表示されるはずです。
+
+```
+PyMOL> print(reslist)
+[('51', 'ASP'), ('101', 'ASP'), ('102', 'SER'), ('153', 'ASP'), ('166', 'ARG'), ('327', 'ASP'), ('331', 'HIS'), ('369', 'ASP'), ('370', 'HIS'), ('412', 'HIS')]
+```
+
+これはpythonで言うところの、リスト型変数`reslist`の中にタプル型で（残基番号, 3文字残基名）の組が入っている形になっています。
+
+これをよく生物学の表示で使われるようなMET-1, ASP-2のような表示に変換したい場合は、pythonのprint文を知識を使って例えば以下のようにpythonプログラムを書けばうまく出力することができます。ただし、PyMOLのコマンドラインでpythonプログラムを書く場合は`python`と`python end`というブロックの間に挟む必要があります。（参考： https://pymolwiki.org/index.php/Python ）
+
+```python
+python
+# リスト内のタプルをi, jに代入するfor loop
+for i, j in reslist:
+    # print&format文法を使って"{residue_name}-{residue_id}"の順番で表示する
+	print("{0}-{1}".format(j, i))
+
+python end
+```
+
+すると、以下のように表示されます。
+
+```
+PyMOL>python end
+
+ASP-51
+ASP-101
+SER-102
+ASP-153
+ARG-166
+ASP-327
+HIS-331
+ASP-369
+HIS-370
+HIS-412
+```
+
+こうすれば目視でやるより書き漏らしがなくて済みますね。
+
+終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば`1alk_active_site.pse`などとしておくと分かりやすくて良いでしょう。
 
