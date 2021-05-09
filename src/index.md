@@ -14,6 +14,7 @@ PyMOLの機能をまとめた本です。
 - PyMOL上部メニューの詳細を知りたい方は[第3章 External GUIの使い方](./ch03/index.html)を参考にしてください。
 
 ## Change log
+2021年 5月 9日 [Pythonからpymolモジュールをimportして使う](./ch05/importpymol.md)を追加。<br>
 2021年 1月 5日 [3.5 Display](./ch03/display.md)を順次追加。<br>
 2020年 5月11日 [3.4 Movie](./ch03/movie.md)を追加。<br>
 2020年 5月 5日 [5.6 PyMOL上でのpythonスクリプトの実行](./ch05/python_on_pymol.md)を追加。<br>

@@ -1,11 +1,11 @@
-## PyMOL上でのpythonスクリプトの実行
+## PyMOL上でのpythonスクリプトの実行：基本編
 
 PyMOLの大きな強みの1つとして、PyMOLのコマンドラインからpythonスクリプトを実行させることができることが挙げられます。ここではいくつかの例を挙げながら、PyMOL上でのpythonスクリプト実行機能を紹介してみます。ただし、python3についての基本的な知識があることを前提とします。
 
 ### Pythonの設定を確認する
 まずは現在PyMOLが動作しているPython環境を確認するために、バージョン情報とPATHをPyMOLのコマンド入力欄から確認してみましょう。コマンドは通常のpythonと同じように
 
-```python
+``` python
 # pythonのバージョンを表示
 import sys
 print(sys.version)
@@ -15,11 +15,12 @@ print(sys.path)
 となります。返り値は、私の環境（macOSのHomebrewでインストールした場合）では
 
 ``` shell
-# PyMOL> print(sys.version)
-3.7.7 (default, Mar 10 2020, 15:43:33)
-[Clang 11.0.0 (clang-1100.0.33.17)]
-# PyMOL> print(sys.path)
-['', '/usr/local/Cellar/pymol/2.3.0/libexec/lib/python3.7/site-packages', '/Users/YoshitakaM/apps/amber18/lib/python2.7/site-packages/pdb4amber-1.7.dev0-py2.7.egg', '/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/python37.zip', '/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7', '/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload', '/usr/local/lib/python3.7/site-packages', '/usr/local/Cellar/modeller/9.24_1/modlib']
+# PyMOL>print(sys.version)
+3.9.4 (default, Apr  5 2021, 01:50:46)
+[Clang 12.0.0 (clang-1200.0.32.29)]
+# PyMOL>print(sys.path)
+['', '/usr/local/Cellar/pymol/2.4.0_4/libexec/lib/python3.9/site-packages', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/ParmEd-at20RC5_54.g5702a232fe.dirty-py3.8-macosx-10.9-x86_64.egg', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/pytraj-2.0.5-py3.8-macosx-10.9-x86_64.egg', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/pdb4amber-1.7.dev0-py3.8.egg', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python39.zip', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python3.9', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload', '/Users/YoshitakaM/Library/Python/3.9/lib/python/site-packages', '/usr/local/lib/python3.9/site-packages', '/usr/local/Cellar/pybind11/2.6.2/libexec/lib/python3.9/site-packages', '/usr/local/Cellar/sip/6.0.3_1/libexec/lib/python3.9/site-packages', '/usr/local/Cel
+lar/modeller/10.1/modlib', '/Users/YoshitakaM/apps']
 ```
 
 のようになりました。`print(sys.path)`で表示されたPATHからはモジュールをimportすることができます。
