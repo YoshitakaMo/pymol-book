@@ -14,6 +14,7 @@ PyMOLの機能をまとめた本です。
 - PyMOL上部メニューの詳細を知りたい方は[第3章 External GUIの使い方](./ch03/index.html)を参考にしてください。
 
 ## Change log
+2021年12月13日 [6.4 pLDDTカラーリングプラグイン](./ch06/plddt.md)を追加。<br>
 2021年12月11日 [5.3 動画の作成方法](./ch05/movieschool.md)を追加。<br>
 2021年 5月 9日 [Pythonからpymolモジュールをimportして使う](./ch05/importpymol.md)を追加。<br>
 2021年 1月 5日 [3.5 Display](./ch03/display.md)を順次追加。<br>

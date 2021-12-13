@@ -9,3 +9,4 @@ PyMOLは追加のプラグインを使って機能を拡張させることがで
 {{#include ./installation.md}}
 {{#include ./dssp.md}}
 {{#include ./pyvol.md}}
+{{#include ./plddt.md}}

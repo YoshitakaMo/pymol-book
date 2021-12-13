@@ -62,6 +62,7 @@
   - [プラグインのインストール方法](./ch06/installation.md)
   - [DSSPプラグイン](./ch06/dssp.md)
   - [PyVOL GUIプラグイン](./ch06/pyvol.md)
+  - [pLDDTカラーリングプラグイン](./ch06/plddt.md)
 - [Appendix](./append01/index.md)
   - [インストール方法](./append01/installation.md)
   - [用語](./append01/term.md)

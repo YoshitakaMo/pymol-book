@@ -109,6 +109,7 @@ cd ~/Desktop
 PyMOLを起動したときに自動的に実行される設定である`pymolrc`ファイルを編集することができます。bash, zshで言うところの`.bashrc`, `.zshrc`と同様に、`pymolrc`に設定を書き込んでおけば、描画に関する設定やPATH設定などを上書きしておくことができます。macOS, Linuxの場合は`pymolrc`ファイルはホームディレクトリ上に生成されます。
 
 <img src="./image/file/editpymolrc.png" width="80%">
+
 ```
 set sphere_scale, .22
 set sphere_scale, .13, elem H
