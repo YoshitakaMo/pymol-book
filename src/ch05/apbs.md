@@ -3,7 +3,7 @@ PyMOLのプラグインでデフォルトでインストールされている**A
 
 <img src="./image/apbs1.png" title="APBSの表示例">
 
-このプラグインは、インストーラー版を使ってPyMOL 2をインストールした場合にはその中に同梱されているので別段の準備は必要ありませんが、オープンソース版をインストールした場合には様々な準備が必要となります。まずはAPBSプラグインの使い方を説明します。
+このプラグインは、インストーラー版を使ってPyMOL 2をインストールした場合にはその中に同梱されているので別段の準備は必要ありませんが、オープンソース版をインストールした場合には様々な準備が必要となりますので、下にある[HomebrewでAPBS, PDB2PQRをインストールしておきます](#apbsのインストール)。まずはAPBSプラグインの使い方を説明します。
 
 ### APBSを使ってみる
 今回は例としてPDB: 3x2oの構造のみを開いた状態にしておきます。その後、まず上部メニューの[Plugin]を選択し、次に[APBS Electrostatics]を選択します。
@@ -66,55 +66,78 @@ APBS Electrostaticsの計算のパラメータはデフォルトでも十分問�
 
 以下の項で説明するように、オープンソース版PyMOLではAPBS, PDB2PQRがプリインストールされていないため、自前で用意してからこのAdvanced Configurationで正しくプログラムの位置を指定してあげる必要があります。
 
-### APBS, PDB2PQRプログラムの用意
+### APBSのインストール
 
-オープンソース版PyMOLを使っている人向けの説明です。やり方は3通りあって、Homebrewを使う方法と、バイナリインストールとソースコードからのインストールがあります。macOSの方やLinuxbrewが使える方はHomebrewの方法、またはバイナリをダウンロードしてきてインストールするのが楽です。ソースコードからのインストールの方法は上級者向けです。
+(2022年5月3日更新)
 
-### HomebrewでAPBS, PDB2PQRをインストールする（おすすめ）
+オープンソース版PyMOLを使っている人向けの説明です。やり方は3通りあって、Homebrewを使う方法と、バイナリインストールとソースコードからのインストールがあります。macOSの方やLinuxbrewが使える方はHomebrewの方法が簡単です。ソースコードからのインストールの方法は上級者向けです。
 
-macOS（Linux OSの場合はLinuxbrewが必要）を使っている方は、私が作成したHomebrewのFormulaを使うことで簡単にインストールすることができます。
+macOS（Linux OSの場合はLinuxbrewが必要）を使っている方は、私が作成したHomebrewのFormulaを使うことで簡単にインストールすることができます。執筆時点ではバージョン3.4.0です。
 
 ```bash
-brew tap brewsci/bio
-brew install apbspdb2pqr
+brew install brewsci/bio/apbs
 ```
 
-これにより、`/usr/local/bin/apbs`, `/usr/local/bin/pdb2pqr`を利用することができます。インストールできたら下記**APBS GUIプラグインのコピー**の項へジャンプしてください。
+これにより、`apbs`コマンドが利用できるようになります。
 
-### バイナリをインストールする場合 ###
-https://github.com/Electrostatics/apbs-pdb2pqr/releases にアクセスし、まず`APBS-1.5.dmg`をダウンロードして展開し、APBSのバイナリを `/Applications` フォルダに入れておきます。これだけ。
-
-次に`pdb2pqr-osx-bin64-2.1.1.tar.gz`を同じページからダウンロードしてきて、ダブルクリックで解凍します。これだけ。
-
-### ソースコードからインストールする場合 ###
 ```bash
-brew install git # if not installed
-brew install cmake # if not installed
-git clone https://github.com/Electrostatics/apbs-pdb2pqr.git
-cd apbs-pdb2pqr/
-git submodule init
-git submodule update
-cd apbs
-mkdir build
-cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_DOC=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=/Users/Agsmith/apps/apbs-1.5
-make -j4 install
+$ apbs --version
+
+----------------------------------------------------------------------
+    APBS -- Adaptive Poisson-Boltzmann Solver
+    Version APBS 3.4.0
+...
+（以下省略）
 ```
+
+インストール先は`which apbs`で調べることができます。
+
+```bash
+$ which apbs
+/opt/homebrew/bin/apbs # M1 Macの場合
+/usr/local/bin/apbs    # Intel Macの場合
+```
+
+ここで表示されたインストール先のパス名をAdvanced ConfigurationのProgram Locationsのapbsの欄に入力すれば動作準備完了です。
+
+<img src="./image/apbs8.png" title="Homebrew APBS">
+
+### PDB2PQRのインストール
+
+(2022年5月3日更新)
+
+オープンソース版PyMOLを使っている人向けの説明です。pythonのpipを使ったインストールの方法が最も簡単でおすすめです。執筆時点ではバージョン3.5.2です。先に、
+
+```bash
+$ python3 -m pip install pdb2pqr
+...
+(中略)
+...
+Successfully installed pdb2pqr-3.5.2
+```
+
+インストール先は`which pdb2pqr30`で調べることができます。バージョン3以前と異なり、バイナリ名が`pdb2pqr`から`pdb2pqr30`に変わっていることに気をつけてください。
+
+```bash
+$ which pdb2pqr30
+/opt/homebrew/bin/pdb2pqr30 # M1 Macの場合
+/usr/local/bin/pdb2pqr30    # Intel Macの場合
+```
+
+ここで表示されたインストール先のパス名をAdvanced ConfigurationのProgram Locationsのpdb2pqrの欄に入力すれば動作準備完了です。
 
 ### APBS GUIプラグインのインストール
 
-オープンソース版PyMOLはバイナリ版と違い、GUIプラグインがあらかじめインストールされていません。
-しかしバイナリ版のプラグインのディレクトリをそのままオープンソース版の方のディレクトリにコピーしてくれば使用することができます。
+オープンソース版PyMOLはバイナリ版と違い、GUIプラグインがあらかじめインストールされていません。しかしバイナリ版のプラグインのディレクトリをそのままオープンソース版の方のディレクトリにコピーしてくれば使用することができます。
 
 このGUIプラグイン部分は[私のGithub](https://github.com/YoshitakaMo/pymolplugin)にコピーして置いてありますので、それをオープンソース版PyMOLのプラグインディレクトリに追加してやります。ターミナルを開いて
 
 ```bash
 # pymolpluginディレクトリをダウンロード
-cd ~ ; git clone https://github.com/YoshitakaMo/pymolplugin.git
-# ファイルをオープンソース版PyMOLのプラグインディレクトリに追加（macOSのHomebrewで入れた場合）。
-# macOS+Homebrew以外でPyMOLをインストールした場合は
-# /usr/local/Cellar/pymol/2.3.0/libexec/lib/python3.7/site-packages/pmg_tk/startup　の部分をPyMOLをインストールしたときのディレクトリのPATHに変えてください。
-cp -rp ~/pymolplugin/* /usr/local/Cellar/pymol/2.3.0/libexec/lib/python3.7/site-packages/pmg_tk/startup
+cd ~
+git clone https://github.com/YoshitakaMo/pymolplugin.git
+# ファイルをオープンソース版PyMOLのプラグインディレクトリに追加
+cp -rp ~/pymolplugin/* ${HOMEBREW_PREFIX}/opt/pymol/libexec/lib/python3.9/site-packages/pmg_tk/startup
 # ここでPyMOLを立ち上げてみて、プラグインがインストールされていればOK
 # インストールできたら~/pymolpluginディレクトリは削除してOK
 rm -rf ~/pymolplugin

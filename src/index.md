@@ -14,6 +14,7 @@ PyMOLの機能をまとめた本です。
 - PyMOL上部メニューの詳細を知りたい方は[第3章 External GUIの使い方](./ch03/index.html)を参考にしてください。
 
 ## Change log
+2022年 5月 3日 [5.2 APBSプラグインを使った表面電荷表示](./ch05/apbs.md)を更新。<br>
 2021年12月13日 [6.4 pLDDTカラーリングプラグイン](./ch06/plddt.md)を追加。<br>
 2021年12月11日 [5.3 動画の作成方法](./ch05/movieschool.md)を追加。<br>
 2021年 5月 9日 [Pythonからpymolモジュールをimportして使う](./ch05/importpymol.md)を追加。<br>
