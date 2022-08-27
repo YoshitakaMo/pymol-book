@@ -30,7 +30,7 @@
 $ brew install ffmpeg
 ```
 
-でインストールできますので、これをインストールしておきます。もしOpen-source版のPyMOLを`brew install brewsci/bio/pymol`でインストールしていた場合はffmpegも自動的にインストールされているはずです。
+でインストールできますので、これをインストールしておきます。もしOpen-source版のPyMOLを`brew install pymol`でインストールしていた場合はffmpegも自動的にインストールされているはずです。
 
 ### 手順1：画面サイズを決める
 
