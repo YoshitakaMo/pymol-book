@@ -137,7 +137,7 @@ $ which pdb2pqr30
 cd ~
 git clone https://github.com/YoshitakaMo/pymolplugin.git
 # ファイルをオープンソース版PyMOLのプラグインディレクトリに追加
-cp -rp ~/pymolplugin/* ${HOMEBREW_PREFIX}/opt/pymol/libexec/lib/python3.9/site-packages/pmg_tk/startup
+cp -rp ~/pymolplugin/* ${HOMEBREW_PREFIX}/opt/pymol/libexec/lib/python3.10/site-packages/pmg_tk/startup
 # ここでPyMOLを立ち上げてみて、プラグインがインストールされていればOK
 # インストールできたら~/pymolpluginディレクトリは削除してOK
 rm -rf ~/pymolplugin

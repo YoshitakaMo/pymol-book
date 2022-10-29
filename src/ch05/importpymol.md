@@ -2,12 +2,11 @@
 
 よくプログラミングしているユーザーからすると、PyMOLに使われている様々なコマンドをPython側から呼び出して利用したいということもあるかもしれません。しかし、その設定が環境によってはちょっと難しいので、ここではまずpymolをimportできるようにする設定の方法を確認します。
 
-まずターミナルを開いてPython3を対話型で開き、`import pymol`を入力してみましょう。`python3`の部分は`python3.9`, `python3.8`の場合もあります。
+まずターミナルを開いてPython3を対話型で開き、`import pymol`を入力してみましょう。`python3`の部分は`python3.10`, `python3.10`の場合もあります。
 
 ```shell
 $ python3
-Python 3.9.4 (default, Apr  5 2021, 01:50:46)
-[Clang 12.0.0 (clang-1200.0.32.29)] on darwin
+Python 3.10.8 (main, Oct 13 2022, 09:48:40) [Clang 14.0.0 (clang-1400.0.29.102)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import pymol
 Traceback (most recent call last):
@@ -26,26 +25,25 @@ Homebrewをお使いの場合、2021年5月1日以降のpymol 2.4.0_5からは`i
 
 ``` shell
 $ python3 --version
-Python 3.9.4
+Python 3.10.8
 $ ls -l `which python3`
-lrwxr-xr-x  1 YoshitakaM  admin  38  4  9 12:16 /usr/local/bin/python3 -> ../Cellar/python@3.9/3.9.4/bin/python3
+lrwxr-xr-x  1 YoshitakaM  admin  40 10 26 10:06 /usr/local/bin/python3 -> ../Cellar/python@3.10/3.10.8/bin/python3
 ```
 
-今の環境ではPython 3.9.4のバージョンを使用しており、python3は`/usr/local/Cellar/python@3.9/3.9.4/bin/python3`にあることがわかりました（これもシンボリックリンクで、真の実体はまた別の位置に存在しています）。macOSの場合Cellar以下にpython3がある場合は、それはHomebrewでインストールされたpython3、もっと言うと`brew install python@3.9`コマンドでインストールされたものとなっています。
+今の環境ではPython 3.10.8のバージョンを使用しており、python3は`/usr/local/Cellar/python@3.10/3.10.8/bin/python3`にあることがわかりました（これもシンボリックリンクで、真の実体はまた別の位置に存在しています）。macOSの場合Cellar以下にpython3がある場合は、それはHomebrewでインストールされたpython3、もっと言うと`brew install python@3.10`コマンドでインストールされたものとなっています。
 
 次にターミナルからpython3を起動して、以下のコマンド`import sys`, `sys.path`を入れてみます。
 
 ```shell
 $ python3
-Python 3.9.4 (default, Apr  5 2021, 01:50:46)
-[Clang 12.0.0 (clang-1200.0.32.29)] on darwin
+Python 3.10.8 (main, Oct 13 2022, 09:48:40) [Clang 14.0.0 (clang-1400.0.29.102)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import sys
 >>> sys.path
-['', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/pytraj-2.0.5-py3.8-macosx-10.9-x86_64.egg', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/pdb4amber-1.7.dev0-py3.8.egg', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python39.zip', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python3.9', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload', '/Users/YoshitakaM/Library/Python/3.9/lib/python/site-packages', '/usr/local/lib/python3.9/site-packages', '/usr/local/Cellar/pybind11/2.6.2/libexec/lib/python3.9/site-packages', '/usr/local/Cellar/sip/6.0.3_1/libexec/lib/python3.9/site-packages', '/usr/local/Cellar/modeller/10.1/modlib']
+['', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python39.zip', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/lib-dynload', '/Users/YoshitakaM/Library/Python/3.10/lib/python/site-packages', '/usr/local/lib/python3.10/site-packages']
 ```
 
-`sys.path`は起動したpython3に対して、Pythonの追加モジュールを読み込むPATHを表示してくれています。ここにpymolのモジュールへのパス、例えば`/usr/local/Cellar/pymol/2.4.0_5/libexec/lib/python3.9/site-packages/pymol`が含まれていない場合はimportに失敗し、`ModuleNotFoundError`というエラーが発生します。
+`sys.path`は起動したpython3に対して、Pythonの追加モジュールを読み込むPATHを表示してくれています。ここにpymolのモジュールへのパス、例えば`/usr/local/Cellar/pymol/2.5.0/libexec/lib/python3.10/site-packages/pymol`が含まれていない場合はimportに失敗し、`ModuleNotFoundError`というエラーが発生します。
 
 これを解決する方法は3つあります。
 

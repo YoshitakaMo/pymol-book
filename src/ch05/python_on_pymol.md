@@ -16,11 +16,9 @@ print(sys.path)
 
 ``` shell
 # PyMOL>print(sys.version)
-3.9.4 (default, Apr  5 2021, 01:50:46)
-[Clang 12.0.0 (clang-1200.0.32.29)]
+3.10.8 (main, Oct 13 2022, 09:48:40) [Clang 14.0.0 (clang-1400.0.29.102)]
 # PyMOL>print(sys.path)
-['', '/usr/local/Cellar/pymol/2.4.0_4/libexec/lib/python3.9/site-packages', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/ParmEd-at20RC5_54.g5702a232fe.dirty-py3.8-macosx-10.9-x86_64.egg', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/pytraj-2.0.5-py3.8-macosx-10.9-x86_64.egg', '/Users/YoshitakaM/apps/amber20/lib/python3.8/site-packages/pdb4amber-1.7.dev0-py3.8.egg', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python39.zip', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python3.9', '/usr/local/Cellar/python@3.9/3.9.4/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload', '/Users/YoshitakaM/Library/Python/3.9/lib/python/site-packages', '/usr/local/lib/python3.9/site-packages', '/usr/local/Cellar/pybind11/2.6.2/libexec/lib/python3.9/site-packages', '/usr/local/Cellar/sip/6.0.3_1/libexec/lib/python3.9/site-packages', '/usr/local/Cel
-lar/modeller/10.1/modlib', '/Users/YoshitakaM/apps']
+['', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python310.zip', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/lib-dynload', '/Users/YoshitakaM/Library/Python/3.10/lib/python/site-packages', '/usr/local/lib/python3.10/site-packages', '/usr/local/lib/python3.10/site-packages/coot', '/usr/local/lib/python3.10/site-packages/coot/rcrane', '/usr/local/Cellar/pybind11/2.10.0/libexec/lib/python3.10/site-packages', '/usr/local/Cellar/pymol/2.5.0/libexec/lib/python3.10/site-packages', '/usr/local/Cellar/sip/6.6.2_1/libexec/lib/python3.10/site-packages', '/usr/local/Cellar/modeller/10.3_1/modlib', '/usr/local/opt/python-tk@3.10/libexec', '/Users/YoshitakaM/apps/pymol-psico']
 ```
 
 のようになりました。`print(sys.path)`で表示されたPATHからはモジュールをimportすることができます。
