@@ -5,5 +5,5 @@ git pull
 cp -rp ../book/* .
 git add .
 git commit -m "add README.md"
-git push origin gh-pagse
+git push origin gh-pages
 git checkout master

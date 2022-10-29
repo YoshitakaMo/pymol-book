@@ -151,7 +151,7 @@ rm -rf ~/pymolplugin
 
 <img src="./image/apbs3.png" title="APBSの表示例">
 
-HomebrewでAPBSとPDB2PQRをインストールした場合は、上図のようにapbsの欄を`/usr/local/bin/apbs`にし、pdb2pqrの欄を`/usr/local/bin/pdb2pqr`に設定します。もしソースコードからインストールした場合にはこの限りではありませんので、適切なapbs, pdb2pqrバイナリ本体へのpathを指定しましょう。
+HomebrewでAPBSとPDB2PQRをインストールした場合は、上図のようにapbsの欄を`/usr/local/bin/apbs`にし、pdb2pqrの欄を`/usr/local/bin/pdb2pqr30`に設定します（※M1以降のMacの方はそれぞれ`/opt/homebrew/bin/apbs`と`/opt/homebrew/bin/pdb2pqr30`）。もしソースコードからインストールした場合にはこの限りではありませんので、適切なapbs, pdb2pqrバイナリ本体へのpathを指定しましょう。
 
 他の部分は特に変更する必要はありません。これで右下のrunを押せばめでたくAPBSが動くはずです。
 
