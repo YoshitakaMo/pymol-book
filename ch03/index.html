@@ -1,0 +1,506 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>第3章 External GUIの使い方 - pymol-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">TOP</a></li><li class="chapter-item expanded "><a href="../ch01/index.html"><strong aria-hidden="true">1.</strong> 第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/objective.html"><strong aria-hidden="true">1.1.</strong> 目的</a></li><li class="chapter-item expanded "><a href="../ch01/accesspdb.html"><strong aria-hidden="true">1.2.</strong> Protein Data Bank (PDB)にアクセスする</a></li><li class="chapter-item expanded "><a href="../ch01/download.html"><strong aria-hidden="true">1.3.</strong> PDB データのダウンロード</a></li><li class="chapter-item expanded "><a href="../ch01/launchpymol.html"><strong aria-hidden="true">1.4.</strong> PyMOL の起動</a></li><li class="chapter-item expanded "><a href="../ch01/displaypdb.html"><strong aria-hidden="true">1.5.</strong> 大腸菌由来アルカリホスファターゼのグラフィック表示</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/colorbychain.html"><strong aria-hidden="true">1.5.1.</strong> チェインごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/colorbyss.html"><strong aria-hidden="true">1.5.2.</strong> 二次構造ごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/saveimage.html"><strong aria-hidden="true">1.5.3.</strong> 画像の保存</a></li><li class="chapter-item expanded "><a href="../ch01/savesessionfile.html"><strong aria-hidden="true">1.5.4.</strong> セッションファイルへの保存</a></li><li class="chapter-item expanded "><a href="../ch01/focusbindingsite.html"><strong aria-hidden="true">1.5.5.</strong> リガンド結合部位への注目</a></li></ol></li><li class="chapter-item expanded "><a href="../ch01/humanalp.html"><strong aria-hidden="true">1.6.</strong> ヒトアルカリホスファターゼとの構造比較</a></li><li class="chapter-item expanded "><a href="../ch01/hydrophobicity.html"><strong aria-hidden="true">1.7.</strong> タンパク質の疎水性・親水性残基の分布を確認する</a></li><li class="chapter-item expanded "><a href="../ch01/conservation.html"><strong aria-hidden="true">1.8.</strong> タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a></li><li class="chapter-item expanded "><a href="../ch01/qmmm.html"><strong aria-hidden="true">1.9.</strong> アルカリホスファターゼの加水分解酵素としての働き</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/index.html"><strong aria-hidden="true">2.</strong> 第2章 Internal GUI の使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/loadmol.html"><strong aria-hidden="true">2.1.</strong> 分子構造のロード</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/load_file.html"><strong aria-hidden="true">2.1.1.</strong> 構造ファイルのロード</a></li><li class="chapter-item expanded "><a href="../ch02/load_supformat.html"><strong aria-hidden="true">2.1.2.</strong> サポートしている構造ファイル形式</a></li><li class="chapter-item expanded "><a href="../ch02/load_biol_unit.html"><strong aria-hidden="true">2.1.3.</strong> Biological Unitを考慮した分子構造のロード</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/dispseq.html"><strong aria-hidden="true">2.2.</strong> 配列の表示</a></li><li class="chapter-item expanded "><a href="../ch02/objpanel.html"><strong aria-hidden="true">2.3.</strong> オブジェクトパネル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/showandhide.html"><strong aria-hidden="true">2.3.1.</strong> 分子構造の表示形式のON/OFF (Show and Hide)</a></li><li class="chapter-item expanded "><a href="../ch02/label.html"><strong aria-hidden="true">2.3.2.</strong> ラベルの設定(Label)</a></li><li class="chapter-item expanded "><a href="../ch02/color.html"><strong aria-hidden="true">2.3.3.</strong> 色の設定(Color)</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/mouse.html"><strong aria-hidden="true">2.4.</strong> マウス操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/buttonmode.html"><strong aria-hidden="true">2.4.1.</strong> 操作モード</a></li><li class="chapter-item expanded "><a href="../ch02/buttontable.html"><strong aria-hidden="true">2.4.2.</strong> 各モードにおける操作一覧</a></li><li class="chapter-item expanded "><a href="../ch02/buttonaction.html"><strong aria-hidden="true">2.4.3.</strong> 操作の詳細</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/session.html"><strong aria-hidden="true">2.5.</strong> セッションの保存</a></li><li class="chapter-item expanded "><a href="../ch02/export.html"><strong aria-hidden="true">2.6.</strong> 構造ファイルのエクスポート</a></li><li class="chapter-item expanded "><a href="../ch02/saveimage.html"><strong aria-hidden="true">2.7.</strong> 画像の保存</a></li></ol></li><li class="chapter-item expanded "><a href="../ch03/index.html" class="active"><strong aria-hidden="true">3.</strong> 第3章 External GUIの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch03/file.html"><strong aria-hidden="true">3.1.</strong> File</a></li><li class="chapter-item expanded "><a href="../ch03/edit.html"><strong aria-hidden="true">3.2.</strong> Edit</a></li><li class="chapter-item expanded "><a href="../ch03/build.html"><strong aria-hidden="true">3.3.</strong> Build</a></li><li class="chapter-item expanded "><a href="../ch03/movie.html"><strong aria-hidden="true">3.4.</strong> Movie</a></li><li class="chapter-item expanded "><a href="../ch03/display.html"><strong aria-hidden="true">3.5.</strong> Display</a></li><li class="chapter-item expanded "><a href="../ch03/setting.html"><strong aria-hidden="true">3.6.</strong> Setting</a></li><li class="chapter-item expanded "><a href="../ch03/scene.html"><strong aria-hidden="true">3.7.</strong> Scene</a></li><li class="chapter-item expanded "><a href="../ch03/mouse.html"><strong aria-hidden="true">3.8.</strong> Mouse</a></li><li class="chapter-item expanded "><a href="../ch03/wizard.html"><strong aria-hidden="true">3.9.</strong> Wizard</a></li><li class="chapter-item expanded "><a href="../ch03/plugin.html"><strong aria-hidden="true">3.10.</strong> Plugin</a></li><li class="chapter-item expanded "><a href="../ch03/help.html"><strong aria-hidden="true">3.11.</strong> help</a></li></ol></li><li class="chapter-item expanded "><a href="../ch04/index.html"><strong aria-hidden="true">4.</strong> 第4章 コマンドラインの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch04/cmd_load.html"><strong aria-hidden="true">4.1.</strong> 分子構造のロード</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_save.html"><strong aria-hidden="true">4.2.</strong> 保存</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_showandhide.html"><strong aria-hidden="true">4.3.</strong> 分子構造の表示形式のON/OFF</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_super.html"><strong aria-hidden="true">4.4.</strong> オブジェクトの重ね合わせ</a></li></ol></li><li class="chapter-item expanded "><a href="../ch05/index.html"><strong aria-hidden="true">5.</strong> 第5章 PyMOL の様々な機能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch05/xtal_elecmap.html"><strong aria-hidden="true">5.1.</strong> 結晶構造の電子密度マップを表示する</a></li><li class="chapter-item expanded "><a href="../ch05/apbs.html"><strong aria-hidden="true">5.2.</strong> APBSプラグインを使った表面電荷表示</a></li><li class="chapter-item expanded "><a href="../ch05/movieschool.html"><strong aria-hidden="true">5.3.</strong> 動画の作成方法</a></li><li class="chapter-item expanded "><a href="../ch05/preset.html"><strong aria-hidden="true">5.4.</strong> 表示形式のプリセット</a></li><li class="chapter-item expanded "><a href="../ch05/gaussian.html"><strong aria-hidden="true">5.5.</strong> Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></li><li class="chapter-item expanded "><a href="../ch05/python_on_pymol.html"><strong aria-hidden="true">5.6.</strong> PyMOL上でのpythonスクリプトの実行</a></li><li class="chapter-item expanded "><a href="../ch05/importpymol.html"><strong aria-hidden="true">5.7.</strong> Pythonからpymolモジュールをimportして使う</a></li></ol></li><li class="chapter-item expanded "><a href="../ch06/index.html"><strong aria-hidden="true">6.</strong> 第6章 プラグインを使う</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch06/installation.html"><strong aria-hidden="true">6.1.</strong> プラグインのインストール方法</a></li><li class="chapter-item expanded "><a href="../ch06/dssp.html"><strong aria-hidden="true">6.2.</strong> DSSPプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/pyvol.html"><strong aria-hidden="true">6.3.</strong> PyVOL GUIプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/plddt.html"><strong aria-hidden="true">6.4.</strong> pLDDTカラーリングプラグイン</a></li></ol></li><li class="chapter-item expanded "><a href="../append01/index.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../append01/installation.html"><strong aria-hidden="true">7.1.</strong> インストール方法</a></li><li class="chapter-item expanded "><a href="../append01/term.html"><strong aria-hidden="true">7.2.</strong> 用語</a></li><li class="chapter-item expanded "><a href="../append01/selealgebra.html"><strong aria-hidden="true">7.3.</strong> 選択範囲の文法と演算子</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">pymol-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第3章-external-guiの使い方"><a class="header" href="#第3章-external-guiの使い方">第3章 External GUIの使い方</a></h1>
+<h1 id="file"><a class="header" href="#file">File</a></h1>
+<img src="./image/file/filemenu.png" width="30%">
+<h2 id="new-pymol-window"><a class="header" href="#new-pymol-window">New PyMOL Window</a></h2>
+<p><strong>新しくPyMOLのウィンドウを別に立ち上げることができます</strong>。ある構造ファイルを開いている時にまったく別の構造ファイルを開く必要があるときには、このNew PyMOL Windowを使って立ち上げると良いでしょう。一方で類似構造のファイルと比較したいという場合には、新しいPyMOL Windowを開かずに1つのPyMOLウィンドウの中で開くと、構造比較する上で便利です。</p>
+<p><code>Default</code>では新しいPyMOL Windowを開くと同時に、ユーザー独自の初期設定ファイルである<code>.pymolrc</code>（存在する場合）とインストールしたプラグインをともに読み込んでくれます。</p>
+<p><code>ignore .pymolrc and plugins (-k)</code>の方では、この機能を無効にし、PyMOLのインストール時の初期設定のまま利用できるようになります。ターミナルから<code>pymol -k</code>で起動した場合と同じ効果です。</p>
+<h2 id="open"><a class="header" href="#open">Open...</a></h2>
+<p>構造ファイルを読み込むことができます。これを選択すると読み込みたいファイルを選択する画面に移行します。ロード可能な構造ファイルを選択することでInternal GUIのViewer部分に構造が表示されます。</p>
+<h2 id="open-recent"><a class="header" href="#open-recent">Open Recent...</a></h2>
+<p>最近ロードしたことのある構造ファイルの履歴を表示しています。ここから構造ファイルをロードすることも可能です。</p>
+<h2 id="get-pdb"><a class="header" href="#get-pdb">Get PDB...</a></h2>
+<p>PDBに登録されている構造ファイルや電子密度ファイルのIDを指定することで、インターネットから直接ダウンロードして開くことができます。これはまずこのメニューを選択すると次のような別メニューが開きます。</p>
+<img src="../ch02/image/load/bunit3.png" width="30%">
+<p>PDB IDのところにデータベースのIDを入力します。また、下の方にはPDB Structure Optionsが存在し、chain nameの箇所で表示したいChainを指定できます。A chainのみを表示したい場合はAを入力します（指定しない場合はすべて表示されます）。</p>
+<p>その構造ファイルに固有のAssemblyを考慮した表示も可能となっています。Biological assemblyを考慮して表示させたい場合は<code>1</code>を、非対称ユニットをロードしたい場合は何も指定しないでおきます。これについては第2章の<a href="../ch02/loadmol.html">分子構造のロード</a>のページも参考にしてください。</p>
+<p>構造ファイルはworking directory上にダウンロードされます。デフォルトの構造ファイル形式は<code>mmCIF</code>となっています。working directoryについては<a href="#Working-Directory">こちら</a>も参照してください。</p>
+<h2 id="save-session--save-session-as"><a class="header" href="#save-session--save-session-as">Save Session &amp; Save Session as...</a></h2>
+<p><strong>現在開いている表示状態をセッションファイルに保存します</strong>。ショートカットキーは<code>Ctrl-SまたはCommand + S</code>です。スライド作成や論文のために生体分子の表示形式を保存しておくととても便利なので、ぜひこの機能は活用していきましょう。</p>
+<p><code>Save Session</code>はいわゆる「上書き保存」と同じで、<code>Save Session as...</code>は「ファイル名を指定して保存」と同じ機能です。一度もセッションファイルを作成していない状態で<code>Save Session</code>を押すと自動的に「ファイル名を指定して保存」に切り替わります。</p>
+<p>拡張子はPyMOL Session File（<code>.pse</code>）とPyMOL Show File（<code>.psw</code>）の2つを選ぶことができます。<code>pse</code>ファイル形式で保存すると、再びこのファイルを開いたときにPyMOLの作業状態をそのまま復元するのに対し、<code>psw</code>ファイル形式で保存した場合は、このファイルを開くと全画面表示＋Internal GUIとExternal GUIが表示されない状態で開かれます。つまり、pswファイルは編集用というよりは完全に表示用に向いています。</p>
+<img src="../ch03/image/file/psw.png" width="30%">
+<p>pswファイルを開いたときの例。Internal GUIとExternal GUIが表示されません。</p>
+<p>一応、この状態からでも上部メニューの[Display] -&gt; [Internal GUI]と[External GUI] -&gt; [Visible]をクリックすればいつものGUIが表示されるようになるので覚えておくと良いでしょう。</p>
+<h2 id="export-molecule"><a class="header" href="#export-molecule">Export molecule...</a></h2>
+<p>現在画面上に開いている生体分子オブジェクトをファイルとして出力します。詳細は<a href="../ch02/export.html">第2章 構造ファイルのエクスポート</a> を御覧ください。</p>
+<h2 id="export-map"><a class="header" href="#export-map">Export map...</a></h2>
+<p><code>.ccp4</code>などの電子密度マップなどを出力します。電子密度マップについては<a href="../ch05/xtal_elecmap.html">第5章 結晶構造の電子密度マップを表示する</a>などで参照してください。マップオブジェクトがロードされた状態で選択すると以下のようなダイアログが現れます。</p>
+<img src="../ch03/image/file/savemap.png" width="30%">
+<p>保存したいマップオブジェクトを選びSaveボタンを押してファイル名を入力することで保存されます。デフォルト拡張子は<code>.ccp4</code>です。</p>
+<h2 id="export-alignment"><a class="header" href="#export-alignment">Export alignment...</a></h2>
+<p>この機能を利用するためには類似のタンパク質間での<strong>アライメントオブジェクト</strong>を生成しておく必要があります。アライメントオブジェクトについては<a href="../ch04/cmd_super.html">第4章 オブジェクトの重ね合わせ</a>を参照してください。</p>
+<h2 id="export-image-as"><a class="header" href="#export-image-as">Export Image As...</a></h2>
+<p>画像を保存するだけでなく、3Dモデリングへの出力にも対応しています。</p>
+<h3 id="png"><a class="header" href="#png">PNG...</a></h3>
+<p>PNG形式の画像を保存することができます。これについての詳細は第2章の<a href="../ch02/saveimage.html">画像の保存</a>を参照してください。</p>
+<h3 id="vrml-2"><a class="header" href="#vrml-2">VRML 2...</a></h3>
+<p>表示しているモデルをwireframe/VRMLの形式で座標情報をエクスポートすることができます。mesh表示やSurface表示にも対応しています。
+タンパク質の3Dプリンタでの出力のときに利用できますが、PyMOLだけでなく他のソフトウェアとの様々な工程を経る必要があるため、詳細はここでは割愛します。</p>
+<p>クオリティを上げたい場合は、以下のオプションを利用すると良いそうです。</p>
+<pre><code>set surface_quality, 1
+set cartoon_sampling, 20
+</code></pre>
+<h3 id="collada"><a class="header" href="#collada">COLLADA...</a></h3>
+<p>COLLADAというXMLベースのオープン3Dグラフィック形式で出力することができます。PyMOLのcartoon, stick, line, sphere, surfaceなどのスタンダードな表示形式に対応して出力することができます。PyMOL 1.7.3.2から正式実装されました。拡張子は<code>.dae</code>です。</p>
+<p>上記VRML 2の後発ですが、こちらの形式で出力して3Dプリンタ出力やBlenderなどでの編集も行えるようになるかもしれません。PyMOL 2.4からはglTF (GL Transmission Format)という形式でも出力できるようになるそうです。VRML 2のときのクオリティオプションコマンドも利用できます。</p>
+<h3 id="pov-ray"><a class="header" href="#pov-ray">POV-Ray...</a></h3>
+<p><a href="http://www.povray.org/">POV-Ray</a>で読み込めるように拡張子<code>.pov</code>で出力します。</p>
+<h2 id="export-movie-as"><a class="header" href="#export-movie-as">Export Movie As...</a></h2>
+<p>動画を出力することができます。</p>
+<h3 id="mpeg"><a class="header" href="#mpeg">MPEG...</a></h3>
+<h3 id="quick-time"><a class="header" href="#quick-time">Quick time...</a></h3>
+<h3 id="png-images"><a class="header" href="#png-images">PNG Images...</a></h3>
+<h2 id="log-file"><a class="header" href="#log-file">Log File</a></h2>
+<p>PyMOLで操作記録を取ることができます。</p>
+<h3 id="open-1"><a class="header" href="#open-1">Open...</a></h3>
+<h3 id="resume"><a class="header" href="#resume">Resume...</a></h3>
+<h3 id="append"><a class="header" href="#append">Append...</a></h3>
+<h3 id="close"><a class="header" href="#close">Close</a></h3>
+<h2 id="run-script"><a class="header" href="#run-script">Run Script...</a></h2>
+<h2 id="working-directory"><a class="header" href="#working-directory">Working Directory</a></h2>
+<p>作業ディレクトリのパスを変更します。macOSでアプリケーションからPyMOLを起動させた場合、デフォルトの作業ディレクトリ(以降wd)はホームディレクトリ、ターミナルからコマンドでPyMOLを起動させた場合には、そのターミナル上での作業ディレクトリになっています。</p>
+<p><a href="#Get-PDB...">Get PDB...</a>を利用する場合など、ファイルの読み込み・書き出しは、この作業ディレクトリのパスを基準に考慮する必要があります。Linuxまたはターミナルの操作に慣れている方にとっては言うまでもない概念でしょう。</p>
+<p>PyMOLのコマンドラインからは<code>cd</code>コマンドを使うことで変更することができます。</p>
+<pre><code># Working Directoryをデスクトップに設定する
+# (Linux, macOSの場合)
+cd ~/Desktop
+</code></pre>
+<h2 id="edit-pymolrc"><a class="header" href="#edit-pymolrc">Edit pymolrc</a></h2>
+<p>PyMOLを起動したときに自動的に実行される設定である<code>pymolrc</code>ファイルを編集することができます。bash, zshで言うところの<code>.bashrc</code>, <code>.zshrc</code>と同様に、<code>pymolrc</code>に設定を書き込んでおけば、描画に関する設定やPATH設定などを上書きしておくことができます。macOS, Linuxの場合は<code>pymolrc</code>ファイルはホームディレクトリ上に生成されます。</p>
+<img src="./image/file/editpymolrc.png" width="80%">
+<pre><code>set sphere_scale, .22
+set sphere_scale, .13, elem H
+set dash_gap, 0
+set dash_gap, .15
+set dash_length, .05
+set dash_round_ends, 0
+set dash_radius, .05
+set label_size, 18
+set cartoon_loop_radius, 0.1
+set cartoon_putty_radius, 0.2
+set cartoon_oval_length, 0.8
+set label_digits, 3
+set ray_opaque_background, 0
+set dash_length, 0.2500
+set cartoon_gap_cutoff, 0
+</code></pre>
+<p>設定はPyMOLコマンド形式で記述する必要があります。</p>
+<h2 id="reinitialize"><a class="header" href="#reinitialize">Reinitialize</a></h2>
+<p>Reinitializeはその名の通りPyMOLを再初期化してくれます。表示されているオブジェクトを含め再起動したかのようにしてくれるEverythingと、設定値だけを再起動するもののsettings系のどちらかを選ぶことができます。</p>
+<h3 id="everything"><a class="header" href="#everything">Everything</a></h3>
+<p>Everythingを選ぶと、PyMOLで現在開いているすべての生体分子オブジェクトは消去され、完全にPyMOLを再起動したような状態になります。<strong>それまで保存していなかった作業内容も予告内容なしに消えてしまう</strong>ので、慎重にこのボタンを押してください。</p>
+<h3 id="original-settings"><a class="header" href="#original-settings">Original Settings</a></h3>
+<p>これらのOriginal Settings, Stored Settingsのメニューでは、現在表示されている生体分子オブジェクトは消去されません。こちらで再初期化してくれるのは<strong>PyMOLの描画の設定値</strong>です。例えばPyMOLのヘリックスの描画の太さ(<code>set cartoon_oval_length, 0.8</code>)やループの太さ(<code>set cartoon_loop_radius, 0.1</code>)、ミッシング領域の描画の有無(<code>set cartoon_gap_cutoff, 0</code>)……などといった、PyMOLの描画全体に影響を及ぼす値を初期値に修正した状態で再び描画し直してくれるのがこの<code>Original Settings</code>です。</p>
+<p>上の<code>Edit pymolrc</code>で描画設定を変更していた場合でも、この<code>Original Settings</code>を押すとPyMOL内部の設定値で上書きされてしまうので注意してください。</p>
+<h3 id="stored-settings"><a class="header" href="#stored-settings">Stored Settings</a></h3>
+<p>保存しておいた描画の設定値を呼び出してくれます。これは下記の<code>Store Current Settings</code>の機能と対応しています。</p>
+<h3 id="store-current-settings"><a class="header" href="#store-current-settings">Store Current Settings</a></h3>
+<p>現在の描画の設定値を保存しておいてくれます。これを一度しておけば、以降PyMOLのプログラムを終了するまで上記の<code>Stored Settings</code>からその設定値を呼び出すことができます。</p>
+<p>これら<code>Reinitialize</code>についてPyMOLのコマンドラインから行う場合は以下の通りです。</p>
+<pre><code>reinitialize [ what [, object ]]
+</code></pre>
+<p>whatには<code>everything</code>または<code>settings</code>が入ります。settings部分には<code>settings</code>, <code>original_settings</code>, <code>stored_settings</code>が選べるようです。defaultはeverything。
+objectにはオブジェクト名を入れることができます。</p>
+<h1 id="build"><a class="header" href="#build">Build</a></h1>
+<p>Buildのメニューからは、PyMOLに内蔵されている化合物のフラグメントやアミノ酸残基のデータを利用して任意の化合物またはポリペプチド鎖の構造モデルを生成することができるようになっています。主な利用方法としては、既存のタンパク質構造をロードしたあとに、その末端に長い人工ペプチドを取り付けたモデル構造を作成することや、0から任意のポリペプチド鎖を作成して計算科学の研究の初期構造に利用するという使い方があります。</p>
+<p>Buildメニューは以下の通りです。</p>
+<img src="./image/build/ch3_build1.png" width="40%" height="40%">
+<h2 id="fragment"><a class="header" href="#fragment">Fragment</a></h2>
+<p>ここでは主要な化学小分子の骨格を、フラグメントをつなぎ合わせるような感覚で構築することができます。使い方の例を動画で見てみましょう。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/build/fragment1.mp4" type="video/mp4">
+</video>
+<p>このように、何もない状態から様々な化学骨格を持った分子を作っていくことができます。……ただ、結構癖があって、任意に小分子を作るというのには慣れが必要で、構造最適化部分も含めて他のソフトウェアを使った方がいいような気もします。</p>
+<p>やり方としては、まずこのFragmentメニューからベースとなる化合物骨格を選んできます（しかしこの時点でベンゼン環がないので結構アレなんですけれど……。）
+その後、マウスのPkAt機能（参考：<a href="../ch02/buttonaction.html#%E5%8E%9F%E5%AD%90%E3%83%94%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0pkatpk1">マウス操作の詳細,原子ピッキング</a>）を使って原子を1つピッキングした状態にします。この状態でさらにFragmentメニューからフラグメントを選ぶと、そのピックされた原子部分に選択された化学骨格が生えていきます。これを繰り返していくことで、任意の化合物を作ることが理論上可能です。</p>
+<p>化合物の二面角や角度を手動で調整したい場合は、マウス操作で調節して作り出してください（参考：<a href="../ch02/buttonaction.html#%E4%BA%8C%E9%9D%A2%E8%A7%92%E3%82%92%E3%83%94%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0pktb">マウス操作の詳細,二面角をピッキング</a>）。また、一応お気持ち程度ですが、後で紹介する<strong>Sculpting</strong>という機能を使うと、簡単な化合物の構造最適化をかけてくれて、無理のない構造に落ち着かせることができます。</p>
+<h2 id="residue"><a class="header" href="#residue">Residue</a></h2>
+<p>このメニューは20種類の正準アミノ酸の残基のデータの他に、N末端キャッピング用のAcetylとC末端キャッピング用のN-Methylが存在しています。キャッピングとはMDシミュレーション上で使われる人工的な修飾で、末端部分の電荷をニュートラルにするために使われます。それ以外の方はあまり利用することがないでしょう。</p>
+<p>AltキーとA~Zの文字を組み合わせて入力することでマウスを使わずに簡単にポリペプチド鎖を作成していくことができます。例えば、PyMOLを開き、BuildメニューからResidue -&gt; Helixを選び、Internal GUI画面上でAltキーを押しながら<code>ACDVAARHK</code>と連続して押すと</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/build/residue1.mp4" type="video/mp4">
+</video>
+<p>このようにαヘリックス様のタンパク質フラグメントが簡単に生成されました。同様にして、antiparallel, parallelのβシート構造も作り出すことができます。ただしループ構造は自動で生成してくれませんので、手動で任意の二面角を調節して作り出してください。（参考：<a href="../ch02/buttonaction.html#%E4%BA%8C%E9%9D%A2%E8%A7%92%E3%82%92%E3%83%94%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0pktb">マウス操作の詳細,二面角をピッキング</a>）</p>
+<p>また、プログラミングしたいときに便利な点として、<code>cmd._alt(chr(XX))</code>を入力することでそのキーを入力した扱いにすることができます。XXにはASCII CODEが入ります（A: 65, B: 66, C: 67, ... 88: X, Y: 89, Z: 90）。</p>
+<table><thead><tr><th align="left">表示</th><th align="center">残基名</th><th align="center">cmd</th><th align="left">ショートカットキー</th></tr></thead><tbody>
+<tr><td align="left">Acetyl</td><td align="center">アセチル基</td><td align="center"><code>cmd._alt(chr(66))</code></td><td align="left">Alt-B</td></tr>
+<tr><td align="left">Alanine</td><td align="center">アラニン</td><td align="center"><code>cmd._alt(chr(65))</code></td><td align="left">Alt-A</td></tr>
+<tr><td align="left">Amine</td><td align="center">アミン</td><td align="center">-</td><td align="left"></td></tr>
+<tr><td align="left">Aspartate</td><td align="center">アスパラギン酸</td><td align="center"><code>cmd._alt(chr(68))</code></td><td align="left">Alt-D</td></tr>
+<tr><td align="left">Asparagine</td><td align="center">アスパラギン</td><td align="center"><code>cmd._alt(chr(78))</code></td><td align="left">Alt-N</td></tr>
+<tr><td align="left">Arginine</td><td align="center">アルギニン</td><td align="center"><code>cmd._alt(chr(82))</code></td><td align="left">Alt-R</td></tr>
+<tr><td align="left">Cysteine</td><td align="center">システイン</td><td align="center"><code>cmd._alt(chr(67))</code></td><td align="left">Alt-C</td></tr>
+<tr><td align="left">Glutamate</td><td align="center">グルタミン酸</td><td align="center"><code>cmd._alt(chr(69))</code></td><td align="left">Alt-E</td></tr>
+<tr><td align="left">Glutamine</td><td align="center">グルタミン</td><td align="center"><code>cmd._alt(chr(81))</code></td><td align="left">Alt-Q</td></tr>
+<tr><td align="left">Glycine</td><td align="center">グリシン</td><td align="center"><code>cmd._alt(chr(71))</code></td><td align="left">Alt-G</td></tr>
+<tr><td align="left">Histidine</td><td align="center">ヒスチジン</td><td align="center"><code>cmd._alt(chr(72))</code></td><td align="left">Alt-H</td></tr>
+<tr><td align="left">Isoleucine</td><td align="center">イソロイシン</td><td align="center"><code>cmd._alt(chr(73))</code></td><td align="left">Alt-I</td></tr>
+<tr><td align="left">Leucine</td><td align="center">ロイシン</td><td align="center"><code>cmd._alt(chr(76))</code></td><td align="left">Alt-L</td></tr>
+<tr><td align="left">Lysine</td><td align="center">リジン</td><td align="center"><code>cmd._alt(chr(75))</code></td><td align="left">Alt-K</td></tr>
+<tr><td align="left">Methionine</td><td align="center">メチオニン</td><td align="center"><code>cmd._alt(chr(77))</code></td><td align="left">Alt-M</td></tr>
+<tr><td align="left">N-Methyl</td><td align="center">N-メチル</td><td align="center"><code>cmd._alt(chr(90))</code></td><td align="left">Alt-Z</td></tr>
+<tr><td align="left">Phenylalanine</td><td align="center">フェニルアラニン</td><td align="center"><code>cmd._alt(chr(70))</code></td><td align="left">Alt-F</td></tr>
+<tr><td align="left">Proline</td><td align="center">プロリン</td><td align="center"><code>cmd._alt(chr(80))</code></td><td align="left">Alt-P</td></tr>
+<tr><td align="left">Serine</td><td align="center">セリン</td><td align="center"><code>cmd._alt(chr(83))</code></td><td align="left">Alt-S</td></tr>
+<tr><td align="left">Threonine</td><td align="center">スレオニン</td><td align="center"><code>cmd._alt(chr(84))</code></td><td align="left">Alt-T</td></tr>
+<tr><td align="left">Tryptophan</td><td align="center">トリプトファン</td><td align="center"><code>cmd._alt(chr(87))</code></td><td align="left">Alt-W</td></tr>
+<tr><td align="left">Tyrosine</td><td align="center">チロシン</td><td align="center"><code>cmd._alt(chr(89))</code></td><td align="left">Alt-Y</td></tr>
+<tr><td align="left">Valine</td><td align="center">バリン</td><td align="center"><code>cmd._alt(chr(86))</code></td><td align="left">Alt-V</td></tr>
+</tbody></table>
+<h2 id="sculpting"><a class="header" href="#sculpting">Sculpting</a></h2>
+<p>Sculptingは「彫刻する」というような意味ですが、PyMOLのこの機能では、上で生成したような小分子またはポリペプチド鎖について<strong>簡単な構造最適化</strong>をかけてくれるようです。</p>
+<p>ただし、この機能は現在PyMOLの開発者としてはサポートの対象外とされているようで、現時点ではこの機能が改善されることや発見されたバグの修正が行われることはないとされています（参考：<a href="https://pymol.org/dokuwiki/doku.php?id=unsupported">PyMOL: Unsupported Features</a>）。したがって、ここでは簡単な使い方の紹介を留める程度にしておきます。</p>
+<p>まずSculptingメニューの先にあるサブメニューの2段めにあるSculptingにチェックを入れます（この操作はコマンドで<code>set sculpting, on</code>とすることでもできます）。そしてその下にあるactivateをクリックすると、表示されている分子の構造最適化が自動的に始まります。ただし、この操作は画面に表示されている分子に対して行われてしまうことに注意してください。コマンドでは<code>sculpt_activate all</code> とします。途中で止めたい場合は<code>sculpt_deactivate all</code>と入力します。<code>all</code>の部分を生体分子のオブジェクト名にすればその分子のみを構造最適化させることができます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/build/sculpting1.mp4" type="video/mp4">
+</video>
+<h2 id="cycle-bond-valence-ctrl-shift-w"><a class="header" href="#cycle-bond-valence-ctrl-shift-w">Cycle Bond Valence [Ctrl-Shift-W]</a></h2>
+<p>現在選択中の「結合」に対して、その結合を芳香環のような結合として設定させます。ショートカットキーはCtrl（Macの場合はCommandでも可）とShift-Wの同時押しです。</p>
+<p>結合を選択する方法は<a href="../ch02/buttonaction.html#%E4%BA%8C%E9%9D%A2%E8%A7%92%E3%82%92%E3%83%94%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0pktb">マウス操作の詳細,二面角をピッキング</a>と同じです。この機能で結合を選択したあと、Ctrl-Shift-Wキーを同時押しすることで、その結合が芳香環様結合として設定させることができます。例えばFragmentメニューに存在するCyclohexyl[Alt-6]にこの機能を適用してベンゼン環に変更したいという場合、6つすべての炭素-炭素結合についてこの操作を行う必要があります。このとき水素原子は自動で増減します。こののち、上記のSculptingによる構造最適化を行えばすべての炭素原子が同一平面上に位置するようになったベンゼン環構造が得られます（が、水素原子の位置がきれいな構造じゃない気がします）。</p>
+<h2 id="fill-hydrogens-on-pk1-ctrl-shift-r"><a class="header" href="#fill-hydrogens-on-pk1-ctrl-shift-r">Fill Hydrogens on (Pk1) [Ctrl-Shift-R]</a></h2>
+<p>Pk1で選択されている「原子」に対して、その原子につながっている結合数に応じて水素原子を取り付けてくれます。ショートカットキーはCtrl（Macの場合はCommandでも可）とShift-Rの同時押しです。コマンドは<code>h_fill</code>です。</p>
+<h2 id="invert-pk2-pk1-pk3-ctrl-shift-e"><a class="header" href="#invert-pk2-pk1-pk3-ctrl-shift-e">invert (pk2)-(pk1)-(pk3) [Ctrl-Shift-E]</a></h2>
+<p>PkAt機能で原子を3つ選んだ状態、すなわちPk1, Pk2, Pk3が存在している状態でこのコマンドを選択すると、Pk1から先のフラグメントがPk1-Pk2軸回りに180度反転した位置に変化します。ショートカットキーはCtrl（Macの場合はCommandでも可）とShift-Eの同時押しです。コマンドは<code>invert</code>です。</p>
+<h2 id="create-bond-pk1-pk2-ctrl-shift-t"><a class="header" href="#create-bond-pk1-pk2-ctrl-shift-t">create bond (pk1)-(pk2) [Ctrl-Shift-T]</a></h2>
+<p>PkAt機能で原子を2つ選んだ状態、すなわちPk1, Pk2が存在する状態でこのコマンドを選択すると、2原子の間に結合が形成されます。ショートカットキーはCtrl（Macの場合はCommandでも可）とShift-Tの同時押しです。内部コマンドの処理としては<code>bond ; unpick</code>が働いています。</p>
+<p>これは環を閉じたいときに有用だったり、描画上の問題で離れている2原子を結合したような状態に見せたいときに有用です。</p>
+<p>ちなみにコマンド専用ですが、bondコマンドを使うときに<code>bond order=2</code>とすると二重結合として結合を表示させられます。三重結合のときは<code>bond order=3</code>、芳香環様結合のときは<code>bond order=4</code>とします。</p>
+<h2 id="remove-pk1-ctrl-shift-d"><a class="header" href="#remove-pk1-ctrl-shift-d">Remove (pk1) [Ctrl-Shift-D]</a></h2>
+<p>Pk1で選択されている原子を削除します。また、PkTbで選択されている結合についても削除することができます。ショートカットキーはCtrl（Macの場合はCommandでも可）とShift-Dの同時押しです。コマンドは<code>remove_picked</code>です。</p>
+<h2 id="make-pk1-positive-ctrl-shift-k--make-pk1-negative-ctrl-shift-j--make-pk1-neurtral-ctrl-shift-u"><a class="header" href="#make-pk1-positive-ctrl-shift-k--make-pk1-negative-ctrl-shift-j--make-pk1-neurtral-ctrl-shift-u">Make (Pk1) positive [Ctrl-Shift-K] / Make (Pk1) negative [Ctrl-Shift-J] / Make (Pk1) neurtral [Ctrl-Shift-U]</a></h2>
+<p>Pk1で選択されている原子の電荷を+1, -1, 0にそれぞれ設定させることができます。設定値はLabel機能のother properties, formal chargeを押すと確認することができます。</p>
+<h1 id="edit"><a class="header" href="#edit">Edit</a></h1>
+<p>主にUndo, Redo機能を取り扱います。注意していただきたいのは、この機能は主に<a href="./build.html">3.3 Build</a>で<strong>原子の座標に変更を加えたもの</strong>に対してのみ適用される仕様であり、<strong>分子のカラーリングや視点の変更、表示形式の変更</strong>には対応していません。</p>
+<h2 id="undo-ctrl-z"><a class="header" href="#undo-ctrl-z">Undo [Ctrl-Z]</a></h2>
+<p>Buildメニューから行った原子の座標変更や原子＆結合の生成・消去についての操作を取り消すことができます。ショートカットキーはCtrl（Macの方はCommandでも可）-Zの同時押しです。下記の&quot;Max Atom Count for Undo/Redo&quot;で設定した値までは何度も操作を取り消すことができます。</p>
+<h2 id="redo-ctrl-y"><a class="header" href="#redo-ctrl-y">Redo [Ctrl-Y]</a></h2>
+<p>Undoで取り消した操作を再び呼び戻すことができます。ショートカットキーはCtrl（Macの方はCommandでも可）-Yの同時押しです。</p>
+<h2 id="max-atom-count-for-undoredo"><a class="header" href="#max-atom-count-for-undoredo">Max Atom Count for Undo/Redo</a></h2>
+<p>Undo/Redoで戻せる操作の数を設定できます。デフォルトでは1000となっています。設定値は他に10000, 100000のほか、Unlimited（制限なし）やDisable Undo(実質0)を選ぶことができます。設定値を超えた分の操作は消去され、呼び出すことができなくなります。</p>
+<p>一見無制限が良いように思えますが、PyMOLを動かしているマシンのメモリをオーバーして保存しようとするとPyMOLがクラッシュしてしまいます。現実的には1000で問題ないと思います。</p>
+<p>コマンドは<code>set suspend_undo_atom_count, 1000</code>です。<code>1000</code>の部分は任意のint値を入れることができます。</p>
+<h2 id="auto-copy-images"><a class="header" href="#auto-copy-images">Auto-Copy Images</a></h2>
+<p>PyMOL 1.8には遅くとも実装されていたようですが、Incentive版のPyMOL 2.1から全プラットフォームで実装されたようです。マニュアルによれば</p>
+<blockquote>
+<p>auto_copy_images (boolean, default: on) controls whether or not PyMOL automatically copies images from the OpenGL viewport into the system’s clipboard.</p>
+</blockquote>
+<p>とあるのですが、使い方がよくわかりませんでした。</p>
+<h1 id="setting"><a class="header" href="#setting">Setting</a></h1>
+<h1 id="scene"><a class="header" href="#scene">Scene</a></h1>
+<img src="./image/scene/scenemenu.png" width="200px">
+<p><strong>Externalメニューに存在するScene機能は論文・ポスター発表や動画作成の時にとても重宝します</strong>。PyMOLに表示したタンパク質の構造を色んな角度から撮影したり、色んなカラーリングや設定値を試したり、それらをつなげて動画にまとめて出力したいという試行錯誤は、読み手に分かりやすい論文・ポスター用の図を作成する上で必要な作業だと思われます。そんなとき、1つの作業セッションファイル中に複数の表示状態を保存することができるこの<strong>Scene</strong>機能をぜひ活用しましょう。</p>
+<video controls autoplay loop>
+<source src="./image/scene/scene1.mp4" type="video/mp4">
+</video>
+<p>この動画で示しているように、左下に<code>001</code>, <code>002</code>, <code>003</code>という小さなボタンが現れています。ここをクリックすることで、<strong>前もって保存しておいたカメラ角度(view/camera)、色使い(color)、表示形式（rep/representations）に戻って表示させる</strong>ことができます。</p>
+<p>このボタンはSceneの<code>append</code>または<code>Store</code>機能によって生成することができます。内容を上書きするには<code>Update</code>を、削除するには<code>Delete</code>を用います。<code>Recall</code>, <code>Store</code>, <code>Clear</code>の3つは、<code>Append</code>, <code>Delete</code>の使い方に似ていますが、キーボードのF1〜F12を使ったショートカットキーと自動的に結びつけてくれるため使い勝手が良くなります。</p>
+<p><strong>Sceneボタンをマウスでクリックして白くなっているときを<code>active</code>状態と呼びます。</strong></p>
+<h2 id="next-pgdn--previous-pgup"><a class="header" href="#next-pgdn--previous-pgup">Next [PgDn] / Previous [PgUp]</a></h2>
+<p>すでに複数のSceneボタンが存在しているときに動作します。Nextで次の、Previousで前のSceneを表示させることができます。Next, Previousはそれぞれキーボードの[PgDn], [PgUp]ボタンにショートカットキーが割り当てられているので、マウスを使わずにSceneを切り替えることができます。</p>
+<hr>
+<h2 id="append-1"><a class="header" href="#append-1">Append</a></h2>
+<p><strong>現在の表示状態をSceneに追加します</strong>。デフォルトではSceneオブジェクト名は自動的に<code>001</code>からの連番になります。</p>
+<p>内部処理としては、コマンドで<code>scene new, store</code>が作動します。<code>new</code>は自動的に連番のIDを割り振ります。<code>new</code>以外の文字を入力すると、そのオブジェクト名でSceneが生成されます。</p>
+<h3 id="append-camera-color-reps-repscolor"><a class="header" href="#append-camera-color-reps-repscolor">Append (Camera, Color, Reps, Reps+Color)</a></h3>
+<p>Camera (view), Color, Repsはそれぞれ撮影角度、表示されている分子のカラーリング、表示された分子の表示形式を表しています。上述の<code>Append</code>ではこれらをすべて保存してSceneに登録するのに対して、こちらのサブメニューではその一部のみをSceneに登録します。</p>
+<p>内部処理としては、コマンドで<code>scene new, store, view=0/1, color=0/1, rep=0/1</code>としており、<code>0</code>
+のとき各情報を保存しない、<code>1</code>のときに情報を保存する、としています。</p>
+<h2 id="insert-before--after"><a class="header" href="#insert-before--after">Insert Before / After</a></h2>
+<p>現在表示している画面の状態のScene登録を、現在ActiveになっているSceneの上(before)または下(after)に登録させます。これによって、上述の Next [PgDn] / Previous [PgUp] との円滑な連携を図ることができます。</p>
+<p>内部処理としては、コマンドで<code>scene &lt;scene_name&gt;, insert_before/insert_after</code>としています。</p>
+<h2 id="update"><a class="header" href="#update">Update</a></h2>
+<p>現在表示している画面の状態を、ActiveになっているSceneボタンの上に上書きします。内部処理としては、コマンドで<code>scene &lt;scene_name&gt;, update</code>としています。</p>
+<hr>
+<h2 id="delete"><a class="header" href="#delete">Delete</a></h2>
+<p>現在ActiveになっているSceneボタンを削除します。内部処理としては、コマンドで<code>scene &lt;scene_name&gt;, clear</code>としています。</p>
+<hr>
+<h2 id="recall"><a class="header" href="#recall">Recall</a></h2>
+<p>下記の<code>Store</code>で保存されたSceneを呼び出すことができます。
+上で見たような連番のSceneボタンと異なり、F1〜F12ボタンと自動的に結びつけて操作することが可能です。例えば、<code>F1</code>でStoreされたSceneをF1キーを押すだけで呼び出すことができます。</p>
+<h2 id="store"><a class="header" href="#store">Store</a></h2>
+<p>F1〜F12ボタンと自動的に結びつけられたSceneボタンを生成することができます。使い方は<code>Append</code>と似ています。</p>
+<p><strong>Windows/Linuxの場合はCtrlキーと, macOSの場合はCommandキーとF1〜F12とすることで現在表示されている画面をSceneに登録することができます</strong>。</p>
+<h2 id="clear"><a class="header" href="#clear">Clear</a></h2>
+<p>F1〜F12ボタンと自動的に結びつけられたSceneボタンを削除します。</p>
+<hr>
+<h2 id="buttons"><a class="header" href="#buttons">Buttons</a></h2>
+<p>画面左下にSceneのボタンを表示するかしないかを設定できます。</p>
+<p>コマンドでは<code>set scene_buttons, 0/1</code>でそれぞれ表示しない（<code>0</code>）、表示する（<code>1</code>）を設定できます。</p>
+<h2 id="cache"><a class="header" href="#cache">Cache</a></h2>
+<p>現在ActiveになっているSceneに対し、<code>enable</code>または<code>optimize</code>を選択することでそのSceneのキャッシュを生成します。通常、Scene間の表示形式の切り替え時には再度新たに描画のON/OFFを内部で行っているため、わずかに切り替えに時間がかかりますが、キャッシュを生成しておくとあらかじめ最適化された描画を記憶しておくためにSceneの切り替え時間が短くなります。これは特に分子表面の表示のON/OFFが関係している時に有効です。しかしその反面多量のメモリを確保する必要があるので、初回の操作は重くなります。
+<code>disable</code>とするとキャッシュ機能を無効化します。（<code>read_only</code>はちょっとわかりませんでした……。）</p>
+<p>cacheを<code>optimize</code>にすると、今ActiveになっているSceneに対して現在登録されている他のSceneからの切り替えをすべて計算するため、かなり重い処理になります。</p>
+<p>コマンドでは<code>cache action [, scenes [, state ]]</code>となります。<code>scenes</code>はスペース区切りで複数指定できます。使用例は以下の通りです。</p>
+<pre><code>cache enable
+cache optimize
+cache optimize, F1 F2 F5
+</code></pre>
+<h1 id="mouse"><a class="header" href="#mouse">Mouse</a></h1>
+<img src="./image/mouse/mousemenu.png" width="30%">
+<p>ここではマウス操作についてのメニューを表示しています。マウス操作については<a href="../ch02/mouse.html">2.4 マウス操作</a>を適宜参照することをおすすめします。</p>
+<h2 id="selection-mode"><a class="header" href="#selection-mode">Selection Mode</a></h2>
+<p><a href="../ch02/buttonaction.html#%E9%81%B8%E6%8A%9E--">+/-機能</a>（デフォルト設定では3-Button Viewingモードで左のシングルクリック）で選択範囲を増減させるときの、選択範囲の単位を変更します。デフォルトは<code>Residues</code>で、他にも<code>Atoms</code>, <code>Chains</code>, <code>Segments</code>, <code>Objects</code>, <code>Molecules</code>, <code>C-alphas</code>から選択することができます。</p>
+<p>GUI上では、右下のメニューからSelectingの部分をクリックすることで、選択範囲を変更することができます。</p>
+<p>コマンドからは<code>set mouse_selection_mode, (value)</code>で変更できます。設定値0, 1, 2, 3 ,4, 5, 6がそれぞれ<code>atoms</code>, <code>residues</code>, <code>chains</code>, <code>segments</code>, <code>objects</code>, <code>molecules</code>, <code>C-alphas</code>に対応します。</p>
+<h2 id="mouse-mode"><a class="header" href="#mouse-mode">Mouse Mode</a></h2>
+<p><a href="../ch02/buttonmode.html">2.4.1 操作モード</a>も参照して下さい。マウスのボタン配置と操作方法を、3 Button Motions, 3 Button Editing, 3 Button Viewing, 3 Button Lights, 3 Button All Modes, 2 Button Editing, 2 Button Viewing, 1 Button Viewing Mode, Emulate Maestroの中から選択することができます。</p>
+<p>デスクトップ型パソコンを使っていて、左クリック、ホイールクリック（ミドルクリック）、右クリックが揃ったマウスを使える環境であれば、3 Button式を選ぶと機能を最大限活用することができます。一方、最近はホイールクリックのないタイプのタッチパッド（Macbookなど）もありますので、そういった方は2 Button式のメニューを選ぶことをおすすめします。</p>
+<p>Emulate Maestroは<a href="https://www.schrodinger.com/maestro">Schrödinger Maestro</a>のマウス操作感覚とほぼ同じような設定になっています。</p>
+<p>コマンドからも設定できるように思えるのですが、見かけだけ変わるようで実際の操作が変わっていないように見えます……。素直にGUIメニューから設定変更した方がよいと思われます。</p>
+<h2 id="virtual-trackball"><a class="header" href="#virtual-trackball">Virtual Trackball</a></h2>
+<p>この機能をONにすると（デフォルトはON）、分子が写っている画面の中央に見えないトラックボールが置かれてあるような状態になります。</p>
+<img src="./image/mouse/mouse_virtual.jpg" width="80%">
+<p>このトラックボールの外にマウスカーソルをあわせて視点を変更しようとしたときの挙動が、Virtual Trackballの設定値によって変動します（トラックボール内部はON/OFFともに同じです）。ONのときにトラックボールの外で視点を変更しようとすると、Z軸だけが回転するような動きになります。OFFのときは全体がトラックボールの上にあるような動きになります。</p>
+<p>コマンドからは<code>set virtual_trackball, (value)</code>で変更できます。<code>0</code>がOFF, <code>1</code>がONです。</p>
+<blockquote>
+<p>The virtual trackball works as if there is an invisible ball in the center of the scene. When you click and drag on the screen, it is as if you put your finger on the sphere and rotated it in approximately the same manner. If you click outside the sphere, then you get rotation about the Z-axis only.</p>
+</blockquote>
+<h2 id="show-mouse-grid"><a class="header" href="#show-mouse-grid">Show Mouse Grid</a></h2>
+<p>GUIメニュー右下のマウスの操作方法メニューの表示をON/OFFにします。</p>
+<p><img src="./image/mouse/mouse2.png" width="45%"> <img src="./image/mouse/mouse3.png" width="45%"></p>
+<h2 id="roving-origin"><a class="header" href="#roving-origin">Roving Origin</a></h2>
+<p>Originの位置を、視点の移動とともに追従するかそうでないかを設定します。デフォルトはONです。Originとは回転操作を行いたいときの回転中心のことです。Originの位置は任意の選択範囲に対してActionパネルから<code>Origin</code>を選ぶことで設定できます。これがONのとき、視点を平行移動（<a href="../ch02/mouse.html#%E4%B8%A6%E9%80%B2-move">マウス操作のMove</a>参照）させてもOriginの位置が画面に対して同じ位置に留まるよう更新されますが、OFFにすると視点を平行移動させてもOrigin位置を自動で更新しなくなります。
+この効果は、PyMOL上で分子を画面の端っこに置いた状態で設定値を変えて視点の変更しようとすると分かりやすいと思います。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/roving.mp4" type="video/mp4">
+</video>
+<p>コマンドからは<code>set roving_origin, (value)</code>で変更できます。<code>0</code>がOFF, <code>1</code>がONです。</p>
+<h1 id="wizard"><a class="header" href="#wizard">Wizard</a></h1>
+<p>Wizardは複雑な操作をユーザーとの対話形式で行えるようにしてくれるためのツール群です。Wizardには以下の種類が用意されており、選択することでInternal GUI画面にマウスで操作できるメニューが現れます。特に、<strong>Mutagenesis</strong>と<strong>Density</strong>のWizardは重宝することでしょう。</p>
+<h2 id="appearance"><a class="header" href="#appearance">Appearance</a></h2>
+<h2 id="measurement"><a class="header" href="#measurement">Measurement</a></h2>
+<h2 id="mutagenesis"><a class="header" href="#mutagenesis">Mutagenesis</a></h2>
+<p>タンパク質の任意のアミノ酸の場所にアミノ酸点変異を導入したモデルを作成してくれます。実験科学者が「もしここに変異を入れたら隣り合うアミノ酸と干渉するだろうか？」ということを簡単に試してみたり、計算科学者が点変異を加えたタンパク質の分子動力学シミュレーションの初期座標として用いたりすることができます。また各アミノ酸にはrotamerと呼ばれる、エネルギー的に安定ないくつかのコンフォメーションのライブラリが内蔵されている上、周囲のアミノ酸の座標を検知した上で最もエネルギー的に安定なrotamerを自動的に選択してくれます。</p>
+<p>詳細は第5章で。</p>
+<h2 id="pair-fitting"><a class="header" href="#pair-fitting">Pair Fitting</a></h2>
+<h2 id="density"><a class="header" href="#density">Density</a></h2>
+<p>タンパク質の構造決定法がX線結晶構造解析法, 中性子回折法, クライオ電子顕微鏡によるものだった場合、その電子密度を表示させることができます。</p>
+<h2 id="filter"><a class="header" href="#filter">Filter</a></h2>
+<h2 id="sculpting-1"><a class="header" href="#sculpting-1">Sculpting</a></h2>
+<h2 id="label"><a class="header" href="#label">Label</a></h2>
+<h2 id="charge"><a class="header" href="#charge">Charge</a></h2>
+<h2 id="demo"><a class="header" href="#demo">Demo</a></h2>
+<h1 id="plugin"><a class="header" href="#plugin">Plugin</a></h1>
+<h1 id="help"><a class="header" href="#help">help</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ch02/saveimage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../ch03/file.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../ch02/saveimage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../ch03/file.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

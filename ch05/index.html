@@ -1,0 +1,743 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>第5章 PyMOL の様々な機能 - pymol-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">TOP</a></li><li class="chapter-item expanded "><a href="../ch01/index.html"><strong aria-hidden="true">1.</strong> 第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/objective.html"><strong aria-hidden="true">1.1.</strong> 目的</a></li><li class="chapter-item expanded "><a href="../ch01/accesspdb.html"><strong aria-hidden="true">1.2.</strong> Protein Data Bank (PDB)にアクセスする</a></li><li class="chapter-item expanded "><a href="../ch01/download.html"><strong aria-hidden="true">1.3.</strong> PDB データのダウンロード</a></li><li class="chapter-item expanded "><a href="../ch01/launchpymol.html"><strong aria-hidden="true">1.4.</strong> PyMOL の起動</a></li><li class="chapter-item expanded "><a href="../ch01/displaypdb.html"><strong aria-hidden="true">1.5.</strong> 大腸菌由来アルカリホスファターゼのグラフィック表示</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/colorbychain.html"><strong aria-hidden="true">1.5.1.</strong> チェインごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/colorbyss.html"><strong aria-hidden="true">1.5.2.</strong> 二次構造ごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/saveimage.html"><strong aria-hidden="true">1.5.3.</strong> 画像の保存</a></li><li class="chapter-item expanded "><a href="../ch01/savesessionfile.html"><strong aria-hidden="true">1.5.4.</strong> セッションファイルへの保存</a></li><li class="chapter-item expanded "><a href="../ch01/focusbindingsite.html"><strong aria-hidden="true">1.5.5.</strong> リガンド結合部位への注目</a></li></ol></li><li class="chapter-item expanded "><a href="../ch01/humanalp.html"><strong aria-hidden="true">1.6.</strong> ヒトアルカリホスファターゼとの構造比較</a></li><li class="chapter-item expanded "><a href="../ch01/hydrophobicity.html"><strong aria-hidden="true">1.7.</strong> タンパク質の疎水性・親水性残基の分布を確認する</a></li><li class="chapter-item expanded "><a href="../ch01/conservation.html"><strong aria-hidden="true">1.8.</strong> タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a></li><li class="chapter-item expanded "><a href="../ch01/qmmm.html"><strong aria-hidden="true">1.9.</strong> アルカリホスファターゼの加水分解酵素としての働き</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/index.html"><strong aria-hidden="true">2.</strong> 第2章 Internal GUI の使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/loadmol.html"><strong aria-hidden="true">2.1.</strong> 分子構造のロード</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/load_file.html"><strong aria-hidden="true">2.1.1.</strong> 構造ファイルのロード</a></li><li class="chapter-item expanded "><a href="../ch02/load_supformat.html"><strong aria-hidden="true">2.1.2.</strong> サポートしている構造ファイル形式</a></li><li class="chapter-item expanded "><a href="../ch02/load_biol_unit.html"><strong aria-hidden="true">2.1.3.</strong> Biological Unitを考慮した分子構造のロード</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/dispseq.html"><strong aria-hidden="true">2.2.</strong> 配列の表示</a></li><li class="chapter-item expanded "><a href="../ch02/objpanel.html"><strong aria-hidden="true">2.3.</strong> オブジェクトパネル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/showandhide.html"><strong aria-hidden="true">2.3.1.</strong> 分子構造の表示形式のON/OFF (Show and Hide)</a></li><li class="chapter-item expanded "><a href="../ch02/label.html"><strong aria-hidden="true">2.3.2.</strong> ラベルの設定(Label)</a></li><li class="chapter-item expanded "><a href="../ch02/color.html"><strong aria-hidden="true">2.3.3.</strong> 色の設定(Color)</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/mouse.html"><strong aria-hidden="true">2.4.</strong> マウス操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/buttonmode.html"><strong aria-hidden="true">2.4.1.</strong> 操作モード</a></li><li class="chapter-item expanded "><a href="../ch02/buttontable.html"><strong aria-hidden="true">2.4.2.</strong> 各モードにおける操作一覧</a></li><li class="chapter-item expanded "><a href="../ch02/buttonaction.html"><strong aria-hidden="true">2.4.3.</strong> 操作の詳細</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/session.html"><strong aria-hidden="true">2.5.</strong> セッションの保存</a></li><li class="chapter-item expanded "><a href="../ch02/export.html"><strong aria-hidden="true">2.6.</strong> 構造ファイルのエクスポート</a></li><li class="chapter-item expanded "><a href="../ch02/saveimage.html"><strong aria-hidden="true">2.7.</strong> 画像の保存</a></li></ol></li><li class="chapter-item expanded "><a href="../ch03/index.html"><strong aria-hidden="true">3.</strong> 第3章 External GUIの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch03/file.html"><strong aria-hidden="true">3.1.</strong> File</a></li><li class="chapter-item expanded "><a href="../ch03/edit.html"><strong aria-hidden="true">3.2.</strong> Edit</a></li><li class="chapter-item expanded "><a href="../ch03/build.html"><strong aria-hidden="true">3.3.</strong> Build</a></li><li class="chapter-item expanded "><a href="../ch03/movie.html"><strong aria-hidden="true">3.4.</strong> Movie</a></li><li class="chapter-item expanded "><a href="../ch03/display.html"><strong aria-hidden="true">3.5.</strong> Display</a></li><li class="chapter-item expanded "><a href="../ch03/setting.html"><strong aria-hidden="true">3.6.</strong> Setting</a></li><li class="chapter-item expanded "><a href="../ch03/scene.html"><strong aria-hidden="true">3.7.</strong> Scene</a></li><li class="chapter-item expanded "><a href="../ch03/mouse.html"><strong aria-hidden="true">3.8.</strong> Mouse</a></li><li class="chapter-item expanded "><a href="../ch03/wizard.html"><strong aria-hidden="true">3.9.</strong> Wizard</a></li><li class="chapter-item expanded "><a href="../ch03/plugin.html"><strong aria-hidden="true">3.10.</strong> Plugin</a></li><li class="chapter-item expanded "><a href="../ch03/help.html"><strong aria-hidden="true">3.11.</strong> help</a></li></ol></li><li class="chapter-item expanded "><a href="../ch04/index.html"><strong aria-hidden="true">4.</strong> 第4章 コマンドラインの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch04/cmd_load.html"><strong aria-hidden="true">4.1.</strong> 分子構造のロード</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_save.html"><strong aria-hidden="true">4.2.</strong> 保存</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_showandhide.html"><strong aria-hidden="true">4.3.</strong> 分子構造の表示形式のON/OFF</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_super.html"><strong aria-hidden="true">4.4.</strong> オブジェクトの重ね合わせ</a></li></ol></li><li class="chapter-item expanded "><a href="../ch05/index.html" class="active"><strong aria-hidden="true">5.</strong> 第5章 PyMOL の様々な機能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch05/xtal_elecmap.html"><strong aria-hidden="true">5.1.</strong> 結晶構造の電子密度マップを表示する</a></li><li class="chapter-item expanded "><a href="../ch05/apbs.html"><strong aria-hidden="true">5.2.</strong> APBSプラグインを使った表面電荷表示</a></li><li class="chapter-item expanded "><a href="../ch05/movieschool.html"><strong aria-hidden="true">5.3.</strong> 動画の作成方法</a></li><li class="chapter-item expanded "><a href="../ch05/preset.html"><strong aria-hidden="true">5.4.</strong> 表示形式のプリセット</a></li><li class="chapter-item expanded "><a href="../ch05/gaussian.html"><strong aria-hidden="true">5.5.</strong> Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></li><li class="chapter-item expanded "><a href="../ch05/python_on_pymol.html"><strong aria-hidden="true">5.6.</strong> PyMOL上でのpythonスクリプトの実行</a></li><li class="chapter-item expanded "><a href="../ch05/importpymol.html"><strong aria-hidden="true">5.7.</strong> Pythonからpymolモジュールをimportして使う</a></li></ol></li><li class="chapter-item expanded "><a href="../ch06/index.html"><strong aria-hidden="true">6.</strong> 第6章 プラグインを使う</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch06/installation.html"><strong aria-hidden="true">6.1.</strong> プラグインのインストール方法</a></li><li class="chapter-item expanded "><a href="../ch06/dssp.html"><strong aria-hidden="true">6.2.</strong> DSSPプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/pyvol.html"><strong aria-hidden="true">6.3.</strong> PyVOL GUIプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/plddt.html"><strong aria-hidden="true">6.4.</strong> pLDDTカラーリングプラグイン</a></li></ol></li><li class="chapter-item expanded "><a href="../append01/index.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../append01/installation.html"><strong aria-hidden="true">7.1.</strong> インストール方法</a></li><li class="chapter-item expanded "><a href="../append01/term.html"><strong aria-hidden="true">7.2.</strong> 用語</a></li><li class="chapter-item expanded "><a href="../append01/selealgebra.html"><strong aria-hidden="true">7.3.</strong> 選択範囲の文法と演算子</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">pymol-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第5章-pymolの様々な機能"><a class="header" href="#第5章-pymolの様々な機能">第5章 PyMOLの様々な機能</a></h1>
+<h2 id="結晶構造の電子密度マップを表示する"><a class="header" href="#結晶構造の電子密度マップを表示する">結晶構造の電子密度マップを表示する</a></h2>
+<p>PyMOLは結晶構造の電子密度データを表示させることも可能です。</p>
+<p>例としてPDB: 3TG0の大腸菌由来アルカリホスファターゼの電子密度マップを取得して表示させてみます。PDB ID:1ALKのものは電子密度マップがデータベースに登録されていないため、代わりにほぼ同一な構造情報をこちらを例として用います。</p>
+<pre><code># インターネットから3tg0のPDBデータをダウンロード。
+fetch 3tg0
+# 3tg0の電子密度マップ（2fofc形式）を3tg0_mapというオブジェクトでダウンロードし、表示する
+fetch 3tg0, 3tg0_map, type=2fofc
+# A chainに結合している無機リン酸PO4に注目する
+center /3tg0/H/A/PO4`504
+</code></pre>
+<p>ここまでのロードが終了すると、オブジェクトパネルに<code>3tg0_map</code>というオブジェクトが追加されているはずです。ここで、続いて上部メニューバーからWizard -&gt; Densityを選択します。</p>
+<p><img src="./image/emap1.png" alt="3-1-1" title="Wizard-Density" /></p>
+<p>この操作によって、現在の視点周辺に青色の電子密度マップが重なって表示されるようになります。</p>
+<p><img src="./image/emap2.png" alt="3-1-2" title="Wizard-Density" /></p>
+<p>ここで、電子密度マップは<code>w1_3tg0_map</code>というオブジェクト名になっています。各種表示を変更するには以下の部分をクリックして操作します。</p>
+<ul>
+<li>色はオブジェクトパネルのCボタンから変更することができます。positiveとnegativeそれぞれについて別の色を指定することができます。デフォルトの青色メッシュは濃くて見えにくいので、もう少し薄い色を指定すると見やすくなるでしょう。</li>
+<li><code>Density Map Wizard</code>と書かれた部分の中の<code>Radius</code>の部分をクリックすることで、電子密度の表示範囲を変更することができます。</li>
+<li><code>@ 1.0 sigma</code>と書かれているところをクリックすると、電子密度メッシュの表示範囲を変更することができます。sigmaの数字が大きいほど、表示されるメッシュの範囲は小さくなります。</li>
+<li>デフォルトではMap 1のみが働いていますが、Map 2、Map 3部分をクリックしてオブジェクト名を指定すれば、さらに重ねて電子密度マップを表示することができます。異なるsigmaのメッシュを色違いで表示させることも可能です。</li>
+<li>表示設定をやり直したいときは<code>w1_3tg0_map</code>のAボタンをクリックし、<code>delete object</code>をした後、下のWizardの<code>Update Maps</code>を押せば電子密度が再び表示されるようになります。</li>
+</ul>
+<h2 id="apbsプラグインを使った表面電荷表示"><a class="header" href="#apbsプラグインを使った表面電荷表示">APBSプラグインを使った表面電荷表示</a></h2>
+<p>PyMOLのプラグインでデフォルトでインストールされている<strong>APBS</strong>を使って表面電荷を表示してくれる方法を説明します。</p>
+<img src="./image/apbs1.png" title="APBSの表示例">
+<p>このプラグインは、インストーラー版を使ってPyMOL 2をインストールした場合にはその中に同梱されているので別段の準備は必要ありませんが、オープンソース版をインストールした場合には様々な準備が必要となりますので、下にある<a href="#apbs%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">HomebrewでAPBS, PDB2PQRをインストールしておきます</a>。まずはAPBSプラグインの使い方を説明します。</p>
+<h3 id="apbsを使ってみる"><a class="header" href="#apbsを使ってみる">APBSを使ってみる</a></h3>
+<p>今回は例としてPDB: 3x2oの構造のみを開いた状態にしておきます。その後、まず上部メニューの[Plugin]を選択し、次に[APBS Electrostatics]を選択します。</p>
+<img src="./image/apbsmenu1.png" width="300px" title="APBSmenu1">
+<p>中のメニューはこうなっています。</p>
+<img src="./image/apbsmenu2.png" width="300px" title="APBSmenu2">
+<p>Mainのタブでまず<code>selection</code>部分を確認します。この例では<code>polymer &amp; 3x2o</code>という表示になっていますが、これはアミノ酸20種類かつオブジェクト3x2oが選択されていることを意味し、この選択範囲についてAPBSの電荷計算をこれから行うことを意味します。</p>
+<p>この選択範囲に問題がなければ、このメニューの下の方にあるRunボタンを押すだけでAPBSの計算が動き出します。途中Warnings: &quot;do you want to continue?&quot;が表示された場合はYesと答えておきましょう。</p>
+<img src="./image/apbsmenu6.png" title="APBSmenu6">
+<p>正常にAPBSの計算が終わると、Close the APBS dialog?と問われます。閉じてもOKです。</p>
+<img src="./image/apbsmenu7.png" title="APBSmenu7">
+<p>計算が終わると、このように3x2oの表面が赤・白・青に分けて表示されるようになりました。</p>
+<img src="./image/apbs4.png" title="APBS4">
+<p><strong>赤は負電荷の多い箇所、青は正電荷の多い箇所</strong>を表しています。白は中性です。</p>
+<p>右側のInternal GUIのメニューには<code>run01</code>というオブジェクトグループが新しく増えています。ここの＋マークを押すと子オブジェクトが現れます。このうち<code>apbs_ramp01</code>というオブジェクトの<code>A</code>メニューを開いてみましょう。</p>
+<img src="./image/apbs5.png" width="300px" title="APBS5">
+<p>上の方の<code>levels</code>を選ぶと<code>Range</code>を変えることができそうです。このRangeは先述の負電荷・正電荷の色付けの表示領域を表しており、値が小さいほど、描画上で最大となる赤・青のしきい値が小さくなります。つまり、デフォルトの5.0から2.0にしてみると</p>
+<img src="./image/apbs6.png" title="APBS6">
+<p>こんな感じで赤と青の箇所が濃く表示されるようになります。</p>
+<p>この表面電荷表示はSurface表示として扱われているので、<code>set transparency, 0.5</code>として透明度を変更してあげることができます(<code>0.5</code>は透明度)。</p>
+<img src="./image/apbs7.png" title="APBS7">
+<p>透明度を下げてCartoon表示とともに観察すれば、分子のどの部分構造の付近が負電荷、正電荷になっているかがわかりやすいと思います。</p>
+<p>さて、ここで先程のAPBS Electrostaticsメニューのプラグイン画面に戻ってみましょう。そこのMainタブの下の方には<code>Other Visualizations</code>というOptionsボタンがあります。ここを開いてみると、「mapオブジェクトが計算されたあと、オブジェクトメニューパネルの&quot;Action&quot;アイテムを使うことで追加の描画を生成することができる」（日本語訳）と書かれてあります。</p>
+<img src="./image/apbsmenu3.png" title="APBSmenu3">
+<p>これに従って追加操作をしてみましょう（書きかけ）。</p>
+<h3 id="advanced-configuration"><a class="header" href="#advanced-configuration">Advanced Configuration</a></h3>
+<p>APBS Electrostaticsの計算のパラメータはデフォルトでも十分問題なく動作すると思いますが、上級者のために、パラメータを変更することもできるようになっています。[APBS Templrate]のタブを開くと、表面電荷を計算するための設定ファイルが表示されます。</p>
+<p><img src="./image/apbsmenu4.png" title="APBSmenu4"><br></p>
+<p>ここのBrowse...のところからは完成された設定ファイルを読み込ませることができます。公式ドキュメントは<a href="https://apbs-pdb2pqr.readthedocs.io/en/latest/apbs/input/">https://apbs-pdb2pqr.readthedocs.io/en/latest/apbs/input/</a> にあるので、そちらを参考にするのも良いでしょう。</p>
+<p>最後の[Advanced Configuration]タブからは、APBSとPDB2PQRのプログラムのインストール場所を指定したり、コマンドオプションを追加して計算させることもできます。追加コマンドオプションの一覧は<a href="https://apbs-pdb2pqr.readthedocs.io/en/latest/pdb2pqr/invoking.html">https://apbs-pdb2pqr.readthedocs.io/en/latest/pdb2pqr/invoking.html</a>などが参考になります。</p>
+<img src="./image/apbsmenu5.png" title="APBSmenu5">
+<p>以下の項で説明するように、オープンソース版PyMOLではAPBS, PDB2PQRがプリインストールされていないため、自前で用意してからこのAdvanced Configurationで正しくプログラムの位置を指定してあげる必要があります。</p>
+<h3 id="apbsのインストール"><a class="header" href="#apbsのインストール">APBSのインストール</a></h3>
+<p>(2022年5月3日更新)</p>
+<p>オープンソース版PyMOLを使っている人向けの説明です。やり方は3通りあって、Homebrewを使う方法と、バイナリインストールとソースコードからのインストールがあります。macOSの方やLinuxbrewが使える方はHomebrewの方法が簡単です。ソースコードからのインストールの方法は上級者向けです。</p>
+<p>macOS（Linux OSの場合はLinuxbrewが必要）を使っている方は、私が作成したHomebrewのFormulaを使うことで簡単にインストールすることができます。執筆時点ではバージョン3.4.0です。</p>
+<pre><code class="language-bash">brew install brewsci/bio/apbs
+</code></pre>
+<p>これにより、<code>apbs</code>コマンドが利用できるようになります。</p>
+<pre><code class="language-bash">$ apbs --version
+
+----------------------------------------------------------------------
+    APBS -- Adaptive Poisson-Boltzmann Solver
+    Version APBS 3.4.0
+...
+（以下省略）
+</code></pre>
+<p>インストール先は<code>which apbs</code>で調べることができます。</p>
+<pre><code class="language-bash">$ which apbs
+/opt/homebrew/bin/apbs # M1 Macの場合
+/usr/local/bin/apbs    # Intel Macの場合
+</code></pre>
+<p>ここで表示されたインストール先のパス名をAdvanced ConfigurationのProgram Locationsのapbsの欄に入力すれば動作準備完了です。</p>
+<img src="./image/apbs8.png" title="Homebrew APBS">
+<h3 id="pdb2pqrのインストール"><a class="header" href="#pdb2pqrのインストール">PDB2PQRのインストール</a></h3>
+<p>(2022年5月3日更新)</p>
+<p>オープンソース版PyMOLを使っている人向けの説明です。pythonのpipを使ったインストールの方法が最も簡単でおすすめです。執筆時点ではバージョン3.5.2です。先に、</p>
+<pre><code class="language-bash">$ python3 -m pip install pdb2pqr
+...
+(中略)
+...
+Successfully installed pdb2pqr-3.5.2
+</code></pre>
+<p>インストール先は<code>which pdb2pqr30</code>で調べることができます。バージョン3以前と異なり、バイナリ名が<code>pdb2pqr</code>から<code>pdb2pqr30</code>に変わっていることに気をつけてください。</p>
+<pre><code class="language-bash">$ which pdb2pqr30
+/opt/homebrew/bin/pdb2pqr30 # M1 Macの場合
+/usr/local/bin/pdb2pqr30    # Intel Macの場合
+</code></pre>
+<p>ここで表示されたインストール先のパス名をAdvanced ConfigurationのProgram Locationsのpdb2pqrの欄に入力すれば動作準備完了です。</p>
+<h3 id="apbs-guiプラグインのインストール"><a class="header" href="#apbs-guiプラグインのインストール">APBS GUIプラグインのインストール</a></h3>
+<p>オープンソース版PyMOLはバイナリ版と違い、GUIプラグインがあらかじめインストールされていません。しかしバイナリ版のプラグインのディレクトリをそのままオープンソース版の方のディレクトリにコピーしてくれば使用することができます。</p>
+<p>このGUIプラグイン部分は<a href="https://github.com/YoshitakaMo/pymolplugin">私のGithub</a>にコピーして置いてありますので、それをオープンソース版PyMOLのプラグインディレクトリに追加してやります。ターミナルを開いて</p>
+<pre><code class="language-bash"># pymolpluginディレクトリをダウンロード
+cd ~
+git clone https://github.com/YoshitakaMo/pymolplugin.git
+# ファイルをオープンソース版PyMOLのプラグインディレクトリに追加
+cp -rp ~/pymolplugin/* ${HOMEBREW_PREFIX}/opt/pymol/libexec/lib/python3.10/site-packages/pmg_tk/startup
+# ここでPyMOLを立ち上げてみて、プラグインがインストールされていればOK
+# インストールできたら~/pymolpluginディレクトリは削除してOK
+rm -rf ~/pymolplugin
+</code></pre>
+<p>と入力します。このコピーを行った後にopen-source版PyMOLを立ち上げると、上部メニューのPluginのところにAPBS Electrostaticsの文字が現れているはずです。</p>
+<img src="./image/apbsmenu1.png" title="APBSmenu1">
+<p>この文字をクリックし、Advanced Configurationのタブをクリックします。このProgram Locationsを自身の環境にあわせて設定する必要があります。</p>
+<img src="./image/apbs3.png" title="APBSの表示例">
+<p>HomebrewでAPBSとPDB2PQRをインストールした場合は、上図のようにapbsの欄を<code>/usr/local/bin/apbs</code>にし、pdb2pqrの欄を<code>/usr/local/bin/pdb2pqr30</code>に設定します（※M1以降のMacの方はそれぞれ<code>/opt/homebrew/bin/apbs</code>と<code>/opt/homebrew/bin/pdb2pqr30</code>）。もしソースコードからインストールした場合にはこの限りではありませんので、適切なapbs, pdb2pqrバイナリ本体へのpathを指定しましょう。</p>
+<p>他の部分は特に変更する必要はありません。これで右下のrunを押せばめでたくAPBSが動くはずです。</p>
+<h2 id="動画の作成方法"><a class="header" href="#動画の作成方法">動画の作成方法</a></h2>
+<p>自身の研究しているタンパク質の構造を他の人にもしっかりと見てもらうための方法は、1つにはPyMOLセッションファイルに保存して、それをPyMOLで開いてもらうということが考えられます。しかし、PyMOLセッションファイルは相手のパソコンやmacにPyMOLがインストールされてなければ閲覧することはできません。そこで、より広い範囲で色んな人に見てもらうための方法として、<strong>分子が動いている様子を一般的な動画形式に変換する</strong>という方法があります。これならPowerpointなどのスライドに埋め込むこともできますし、ウェブ上でも公開できます。</p>
+<p>ここではその方法をいくつか紹介します。</p>
+<h3 id="目指す動画の例"><a class="header" href="#目指す動画の例">目指す動画の例</a></h3>
+<p>先に完成例としての動画を表示します。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/movie/alpmovie.mp4" type="video/mp4">
+</video>
+<p>ポイントは</p>
+<ul>
+<li>全体像を見せつつ、基質結合部位を見せる</li>
+<li>背景画像を使う</li>
+<li>無料のコマンドラインツールのみを使用し、有料アプリを使わない</li>
+</ul>
+<p>です。</p>
+<p>背景画像を使っているのは、使用しないと黒背景になることが多くなってしまうためです。</p>
+<h3 id="使うツール"><a class="header" href="#使うツール">使うツール</a></h3>
+<p>動画への出力は<strong>ffmpeg</strong>を使います。macOSならば</p>
+<pre><code class="language-bash">$ brew install ffmpeg
+</code></pre>
+<p>でインストールできますので、これをインストールしておきます。もしOpen-source版のPyMOLを<code>brew install pymol</code>でインストールしていた場合はffmpegも自動的にインストールされているはずです。</p>
+<h3 id="手順1画面サイズを決める"><a class="header" href="#手順1画面サイズを決める">手順1：画面サイズを決める</a></h3>
+<p>動画として出力する予定の画面サイズを先に決めておくと後が楽です。ここでは横1280ピクセル縦720ピクセルの動画を出力することにします。これはコマンドでかんたんに設定することができます。コマンド入力欄に</p>
+<pre><code>viewport 1280, 720
+</code></pre>
+<p>と入力すると、画面が指定したサイズに変化します。</p>
+<img src="./image/movie/viewport.png" width="100%" title="">
+<h3 id="手順2sceneを保存する"><a class="header" href="#手順2sceneを保存する">手順2：Sceneを保存する</a></h3>
+<p><a href="../ch03/scene.html">3.7 Scene</a>で述べているように、<strong>Scene機能</strong>を使うとPyMOLでのカメラアングルと表示状態を保存することができ、左下に現れたメニューからいつでもその状態を呼び出すことができます。動画を作成する上でもこの<strong>Scene機能</strong>を活用することが可能です。</p>
+<p>例としてまずアルカリホスファターゼの二量体構造全体が見える位置でSceneを1つ保存しておきます。いい感じの表示設定とカメラアングルが得られたら、上部メニューの<strong>Scene</strong>から<strong>Store</strong>を選びF1〜F12のいずれかに保存します（ここでは<strong>F1</strong>にしておきます）。</p>
+<img src="./image/movie/movie1.png" width="100%" title="">
+<p>左下に<strong>F1ボタン</strong>が現れました。以降はこのボタンを押すと表示設定とカメラアングルが呼び出されます。</p>
+<img src="./image/movie/movie2.png" width="100%" title="">
+<p>続いて基質結合部位に注目したカメラアングルをSceneの<strong>F2</strong>として保存しておきます。同様の操作でこんな感じで保存しておきます。</p>
+<img src="./image/movie/movie3.png" width="100%" title="">
+<img src="./image/movie/movie4.png" width="100%" title="">
+<p>Sceneをすべて設定し終えたら、上部<strong>Movie</strong>メニューから<strong>Program</strong>, <strong>Scene Loop</strong>, <strong>Nutate, 30 de. over 2sec.</strong> を選びます。これはSceneを順番に表示しつつ、各Sceneで2秒間30°ずつ揺らしながら次の状態に移行する設定です。設定には色々あるので、<a href="../ch03/movie.html">3.4 Movie</a>から好きなものを選んでください。</p>
+<p>右下のスタートボタンを押すとこんな感じで再生されます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/movie/movie_1.mp4" type="video/mp4">
+</video>
+<p>ここに表示されている画面が動画として出力されるので、よくチェックしておきます。</p>
+<p>もし手順1を飛ばしていた場合はここで<code>viewport</code>コマンドを入れて画像サイズを調節し、再度手順2のScene保存をやり直します。</p>
+<p>よければセッションファイル（pseファイル）として保存しておきます。</p>
+<h3 id="手順3png形式で各フレームを保存する"><a class="header" href="#手順3png形式で各フレームを保存する">手順3：PNG形式で各フレームを保存する</a></h3>
+<p>動画に表示されている動きの全フレームをPNG画像形式で出力させます。これは<strong>File</strong>, <strong>Export Movie As</strong>, <strong>PNG Images</strong>から選択することができます。</p>
+<img src="./image/movie/movie5.png" width="100%" title="">
+<p>Moview Exportのダイアログボックスでは出力画像サイズを設定することができます。もしここで当初予定していた画像サイズから変わっていれば（少し変わっていることがよくあります）、その数字を修正しておきます。また、RenderingオプションはRay(Slow)の方がきれいに出力されますが、その分時間がかかります。今回はRayでやります。</p>
+<p>最後に一番下のSave Movie as...から出力先のディレクトリを選択します。このとき、出力先ディレクトリは新規ディレクトリを作成してからその中に保存することを強く勧めます。こうしないと画像が散らばって面倒です。</p>
+<p>今回の例では保存先をmovietestというディレクトリ上に保存することにします。そしてSave Asの名前欄に<code>ALP</code>と入力します（この文字は画像のprefixなので任意の文字列でOKです）。</p>
+<img src="./image/movie/movie6.png" width="100%" title="">
+<p>すると、出力先のmovietestディレクトリにALP0001.png, ALP0002.png, ... といった具合にすべてのフレームの画像が出力されます。しばらくかかるのでこのまますべて終わるまでじっくり待ちます。</p>
+<h3 id="手順4背景画像を使ってffmpegで動画を生成する"><a class="header" href="#手順4背景画像を使ってffmpegで動画を生成する">手順4：背景画像を使ってffmpegで動画を生成する</a></h3>
+<p>好きな背景画像を適当に用意します。今回は以下のものを使いました。</p>
+<img src="./image/movie/bg.jpg" width="100%" title="">
+<p>画像サイズはあらかじめ出力したタンパク質の画像サイズ（1280 x 720）と合わせておくと良いでしょう。画像の切り抜きにはコマンドラインツールのImagemagickを使うこともできます。詳しくは<a href="https://qiita.com/yoya/items/62879e6e03d5a70eed09">ImageMagick の画像 Crop</a>の記事などを参考にしてください。</p>
+<p>この背景画像を<code>bg.jpg</code>として、先程のmovietestディレクトリに置きます。その後、以下のコマンドでffmpegを実行するだけで、動画ファイル<code>out.mp4</code>が生成されます。</p>
+<pre><code class="language-bash">$ ffmpeg -r 30 -i bg.jpg -vf 'movie=ALP%4d.png [over], [in][over] overlay' -vcodec libx264 -pix_fmt yuv420p out.mp4
+</code></pre>
+<ul>
+<li><code>-r</code>：フレームレート</li>
+<li><code>-i</code>：インプット画像</li>
+<li><code>-vcodec libx264</code>：スマートフォン向けの動画(H.264+aac)に変換</li>
+<li><code>-pix_fmt yuv420p</code>：エンコーダに渡すピクセルフォーマットを指定。yuv420pはH.264動画変換のときのデフォルトらしい</li>
+<li><code>-vf 'movie=ALP%4d.png [over], [in][over] overlay'</code>：ALPではじまる連番画像をインプット画像の上に重ねる</li>
+</ul>
+<p>これで動画が出力されました。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/movie/alpmovie.mp4" type="video/mp4">
+</video>
+<h3 id="その他"><a class="header" href="#その他">その他</a></h3>
+<p>MDシミュレーションでトラジェクトリを表示させたときのタンパク質が動いている様子もこれと同様の手順で出力することができます。</p>
+<h2 id="表示形式のプリセット"><a class="header" href="#表示形式のプリセット">表示形式のプリセット</a></h2>
+<p>PyMOLのオブジェクトパネルのAボタンの中には<code>preset</code>と言うメニューがあります。これを使うと、様々な表示形式に一発で変換できます。</p>
+<img src="./image/preset/menu.png" width="60%" title="">
+<ul>
+<li>classified</li>
+<li>simple</li>
+<li>simple (no solvent)</li>
+<li>ball and stick</li>
+<li>b factor putty</li>
+<li>technical</li>
+<li>ligands</li>
+<li>ligand sites
+<ul>
+<li>cartoon</li>
+<li>solid surface</li>
+<li>solid (better)</li>
+<li>transparent surface</li>
+<li>transparent (better)</li>
+<li>dot surface</li>
+<li>mesh surface</li>
+</ul>
+</li>
+<li>pretty</li>
+<li>pretty (with solvent)</li>
+<li>publication</li>
+<li>publication (with solvent)</li>
+<li>protein interface</li>
+<li>default</li>
+<li>hydropathy</li>
+</ul>
+<p>以上のプリセットが用意されています（ver. 2.5.0 時点）。</p>
+<p>このプリセットが選択された時、内部処理的には一度デフォルト形式である<code>classified</code>を設定してから選択されたプリセットの描画設定を上書きしていく形で適用しています。ただし<code>pymolrc</code>に書かれたいくつかの設定値（<code>transparency</code>, <code>surface_quality</code>, <code>surface_type</code>, <code>sphere_scale</code>, <code>stick_radius</code>, <code>stick_color</code>, <code>cartoon_highlight_color</code>, <code>cartoon_fancy_helices</code>, <code>cartoon_smooth_loops</code>, <code>cartoon_flat_sheets</code>, <code>cartoon_side_chain_helper</code>など）は<code>auto_show_classified</code>としてPyMOL起動時に記憶され、<code>classified</code>は描画形式以外この値を利用します。</p>
+<p>プリセットの定義は、<code>modules/pymol/preset.py</code> の中に書かれてあります。 https://github.com/schrodinger/pymol-open-source/blob/master/modules/pymol/preset.py も参考にすると良いでしょう。</p>
+<p>ここではギャラリー風に紹介していきます。</p>
+<h3 id="classified"><a class="header" href="#classified">classified</a></h3>
+<p>現在PyMOLのデフォルト設定に最も近い描画形式です。タンパク質構造はCartoon表示、リガンドはSphere表示です。デフォルト設定との細かな違いとして、水分子がwire-nonbonded表示されないなどが挙げられますが、<strong>デフォルトの描画設定に戻したいときはこの設定を呼び出すと良いでしょう</strong>。</p>
+<p>ただし、色設定は変化しないため、手動で戻す必要があります。</p>
+<p><img src="./image/preset/classified.png" width="50%" alt="classified" title="classified"><img src="./image/preset/classified2.png" width="50%" alt="classified" title="classified"></p>
+<p>コマンドで行いたい場合は、以下の<code>objectname</code>部分をオブジェクト名に変えて実行します（例: 1ALK）。以下同様。</p>
+<blockquote>
+<p>preset.classified(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="simple"><a class="header" href="#simple">simple</a></h3>
+<p>タンパク質構造は主鎖だけをシンプルに表示するribbon表示、リガンドはStick表示になります。また、チェインごとに自動で色分けがなされます。</p>
+<p><img src="./image/preset/simple.png" width="50%" alt="simple" title="simple"><img src="./image/preset/simple2.png" width="50%" alt="simple" title="simple"></p>
+<blockquote>
+<p>preset.simple(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="simple-no-solvent"><a class="header" href="#simple-no-solvent">simple (no solvent)</a></h3>
+<p>上記simple表示について、溶媒の表示がなくなったものです。</p>
+<p><img src="./image/preset/simplenos.png" width="50%" alt="simple" title="simple"><img src="./image/preset/simplenos2.png" width="50%" alt="simple" title="simple"></p>
+<blockquote>
+<p>preset.simple_no_solv(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="ball-and-stick"><a class="header" href="#ball-and-stick">ball and stick</a></h3>
+<p>各原子を小さめのボールで表し、結合を白色のスティックで表示します。色分けは変化しません。</p>
+<p><img src="./image/preset/bs.png" width="50%" alt="ball and stick" title="ball and stick"><img src="./image/preset/bs2.png" width="50%" alt="ball and stick" title="ball and stick"></p>
+<blockquote>
+<p>preset.ball_and_stick(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="b-factor-putty"><a class="header" href="#b-factor-putty">b factor putty</a></h3>
+<p>温度因子であるB factorをもとに色付けし、さらに温度因子が大きいほど太くチューブ状に表示します。温度因子は青色ほど低く、赤色ほど高くなっています。この表示では主鎖構造のみが表示されます。</p>
+<p><img src="./image/preset/bfactor.png" width="50%" alt="B factor putty" title="B factor putty"><img src="./image/preset/bfactor2.png" width="50%" alt="B factor putty" title="B factor putty"></p>
+<blockquote>
+<p>preset.b_factor_putty(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="technical"><a class="header" href="#technical">technical</a></h3>
+<p>各チェインのN末端からC末端にかけて青色→赤色となるようなRainbowカラーリングが適用されます。また、水素結合が自動的に検出され、<code>&lt;objectname&gt;_pol_conts</code>というオブジェクトが生成されます。水素結合を表示させたくない場合はオブジェクトパネル上でこの<code>&lt;objectname&gt;_pol_conts</code>の表示をOFFにすればOKです。</p>
+<p><img src="./image/preset/technical.png" width="50%" alt="technical" title="technical"><img src="./image/preset/technical2.png" width="50%" alt="technical" title="technical"></p>
+<blockquote>
+<p>preset.technical(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="ligands"><a class="header" href="#ligands">ligands</a></h3>
+<p>上述のRainbowカラーリングが施され、基本的には主鎖構造のみのribbon表示になりますが、リガンドから一定範囲のみ側鎖を含んだline表示が行われ、リガンドへの水素結合自動検出処理が行われます。</p>
+<p>カメラもそのリガンド周辺にズームしてくれますが、リガンドが複数ある場合はそれらの中間にカメラを合わせてしまうようです。</p>
+<p><img src="./image/preset/ligands.png" width="50%" alt="ligands" title="ligands"><img src="./image/preset/ligands2.png" width="50%" alt="ligands" title="ligands"></p>
+<blockquote>
+<p>preset.ligands(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="ligand-sites"><a class="header" href="#ligand-sites">ligand sites</a></h3>
+<p>上記ligands設定の拡張版と言えます。様々な表示形式が用意されています。いずれのプリセットでも水素結合を検出し、<code>&lt;objectname&gt;_pol_conts</code>というオブジェクトを生成します。</p>
+<h4 id="cartoon"><a class="header" href="#cartoon">Cartoon</a></h4>
+<p>タンパク質をCartoon表示のままRainbowカラーリング、リガンドをStick表示で、周辺の一定範囲のみline表示にします。</p>
+<p><img src="./image/preset/ligcartoon.png" width="50%" alt="ligcartoon" title="ligcartoon"><img src="./image/preset/ligcartoon2.png" width="50%" alt="ligcartoon" title="ligcartoon"></p>
+<blockquote>
+<p>preset.ligand_cartoon(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="solid-surface"><a class="header" href="#solid-surface">solid surface</a></h4>
+<p>タンパク質をribbon表示, Rainbowカラーリング, リガンドをStick表示, 周辺の一定範囲のみsurface表示にします。</p>
+<p><img src="./image/preset/solsurf.png" width="50%" alt="solid surface" title="solid surface"><img src="./image/preset/solsurf2.png" width="50%" alt="solid surface2" title="solid surface2"></p>
+<blockquote>
+<p>preset.ligand_sites(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="solid-better"><a class="header" href="#solid-better">solid (better)</a></h4>
+<p>上記solid surfaceプリセット表示のsurfaceクオリティが上がったものです。設定としては<code>set surface_quality, 1</code>を追加しています。</p>
+<p><img src="./image/preset/solbetter.png" width="50%" alt="solid (better)" title="solid (better)"><img src="./image/preset/solbetter2.png" width="50%" alt="solid (better)" title="solid (better)"></p>
+<blockquote>
+<p>preset.ligand_sites_hq(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="transparent-surface"><a class="header" href="#transparent-surface">transparent surface</a></h4>
+<p>上記solid surfaceの透明度を上げ(<code>set transparency, 0.33</code>)、周辺の残基をstick表示にしたものです。</p>
+<p><img src="./image/preset/transsurf.png" width="50%" alt="transparent surface" title="transparent surface"><img src="./image/preset/transsurf2.png" width="50%" alt="transparent surface" title="transparent surface"></p>
+<blockquote>
+<p>preset.ligand_sites_trans(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="transparent-better"><a class="header" href="#transparent-better">transparent (better)</a></h4>
+<p>上記transparent surfaceプリセット表示のsurfaceクオリティが上がったものです。設定としては<code>set surface_quality, 1</code>を追加しています。</p>
+<p><img src="./image/preset/transbetter.png" width="50%" alt="transparent (better)" title="transparent (better)"><img src="./image/preset/transbetter2.png" width="50%" alt="transparent (better)" title="transparent (better)"></p>
+<blockquote>
+<p>preset.ligand_sites_trans_hq(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="dot-surface"><a class="header" href="#dot-surface">dot surface</a></h4>
+<p>上記solid surfaceの表面表示をdotにしたものです。</p>
+<p><img src="./image/preset/dotsurface.png" width="50%" alt="dot surface" title="dot surface"><img src="./image/preset/dotsurface2.png" width="50%" alt="dot surface" title="dot surface"></p>
+<blockquote>
+<p>preset.ligand_sites_dots(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="mesh-surface"><a class="header" href="#mesh-surface">mesh surface</a></h4>
+<p>上記solid surfaceの表面表示をdotにしたものです。</p>
+<p><img src="./image/preset/meshsurface.png" width="50%" alt="mesh surface" title="mesh surface"><img src="./image/preset/meshsurface2.png" width="50%" alt="mesh surface" title="mesh surface"></p>
+<blockquote>
+<p>preset.ligand_sites_mesh(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="pretty"><a class="header" href="#pretty">pretty</a></h3>
+<p>生体分子のレインボー表示、リガンドをstick形式で表示します。</p>
+<p><img src="./image/preset/pretty.png" width="50%" alt="pretty" title="pretty"><img src="./image/preset/pretty2.png" width="50%" alt="pretty" title="pretty"></p>
+<blockquote>
+<p>preset.pretty(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="pretty-with-solvent"><a class="header" href="#pretty-with-solvent">pretty (with solvent)</a></h3>
+<p>上記prettyに加えて溶媒やリガンドをnb_spheres表示にします。</p>
+<p><img src="./image/preset/prettywiths.png" width="50%" alt="pretty (with solvent)" title="pretty (with solvent)"><img src="./image/preset/prettywiths2.png" width="50%" alt="pretty (with solvent)" title="pretty (with solvent)"></p>
+<blockquote>
+<p>preset.pretty_solv(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="publication"><a class="header" href="#publication">publication</a></h3>
+<p>cartoon表示において、</p>
+<ul>
+<li>ループ構造のスムージング<code>set cartoon_smooth_loops, 1</code></li>
+<li>ヘリックスやシートの内部を灰色に設定<code>set cartoon_highlight_color, grey50</code></li>
+<li>ヘリックスのファンシー化<code>set cartoon_fancy_helices, 1</code></li>
+<li>シート構造の平坦化（初期設定でON）<code>set cartoon_flat_sheets, 1</code></li>
+<li>側鎖構造のみの表示（初期設定でON）<code>set cartoon_side_chain_helper, 0</code></li>
+</ul>
+<p>を行います。</p>
+<p><img src="./image/preset/pub.png" width="50%" alt="publication" title="publication"><img src="./image/preset/pub2.png" width="50%" alt="publication" title="publication"></p>
+<blockquote>
+<p>preset.publication(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="publication-with-solvent"><a class="header" href="#publication-with-solvent">publication (with solvent)</a></h3>
+<p>上記の溶媒表示版です。</p>
+<p><img src="./image/preset/pubwiths.png" width="50%" alt="publication (with solvent)" title="publication (with solvent)"><img src="./image/preset/pubwiths2.png" width="50%" alt="publication (with solvent)" title="publication (with solvent)"></p>
+<blockquote>
+<p>preset.pub_solv(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="protein-interface"><a class="header" href="#protein-interface">protein interface</a></h3>
+<p>異なるチェインの境目から4.5 Å以内に一部でも含まれる残基をStick表示にします。</p>
+<p><img src="./image/preset/proint.png" width="50%" alt="protein interface" title="protein interface"><img src="./image/preset/proint2.png" width="50%" alt="protein interface" title="protein interface"></p>
+<blockquote>
+<p>preset.interface(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="default"><a class="header" href="#default">default</a></h3>
+<p>PyMOL 1時代はこのシンプルなライン表示だけの形式がデフォルト表示でした。Defaultとついていますが、現在はデフォルト設定ではなくなり、classified presetに取って替わられています。</p>
+<p><img src="./image/preset/default.png" width="50%" alt="default" title="default"><img src="./image/preset/default2.png" width="50%" alt="default" title="default"></p>
+<blockquote>
+<p>preset.default(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h2 id="gaussian-16のcubeファイルを開いて分子軌道を表示する"><a class="header" href="#gaussian-16のcubeファイルを開いて分子軌道を表示する">Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></h2>
+<img src="./image/gaus1.png" width="700" title="Gaussian 16での分子軌道の表示例">
+<p>PyMOLは、<a href="https://www.ks.uiuc.edu/Research/vmd/">VMD</a>とまでは行きませんが、様々なファイルの可視化にも対応しています。今回紹介するのは、Gaussian 16などで計算された分子の分子軌道（molecular orbital）をPyMOL上で表示させるテクニックです。</p>
+<p>GaussView 6やVMD 1.9.4などの他のソフトを用いて可視化してもよいのですが、タンパク質の構造生物学をやっている人ならだいたい使ったことがあり、扱いに慣れているPyMOLで見られれば、共同研究のときとかに喜ばれると考えられます。</p>
+<p>ここでは、簡単な計算の例を示しながら、それをGaussViewまたはPyMOLで分子軌道を表示する時の方法を紹介します。</p>
+<h3 id="分子軌道を表示するのに必要な環境"><a class="header" href="#分子軌道を表示するのに必要な環境">分子軌道を表示するのに必要な環境</a></h3>
+<ul>
+<li>GaussView 6, VMD, PyMOL 2.3.0以降のうち、いずれか1つをインストールしてあるパソコン</li>
+</ul>
+<p>この記事ではGaussView 6またはPyMOL 2.3.0での方法を示します</p>
+<h3 id="example-1-1-シクロペンタジエンの場合"><a class="header" href="#example-1-1-シクロペンタジエンの場合">Example 1-1. シクロペンタジエンの場合</a></h3>
+<p>例として、シクロペンタジエン分子の構造をGaussian 16（<code>g16</code>）で構造最適化させ、分子軌道を計算させてみます。インプットファイル<code>cyclopenta.gjf</code> を以下のように書いて<code>g16</code>で計算させます。</p>
+<pre><code>%chk=cyclopenta.chk
+%mem=20GB
+%nprocshared=12
+#p opt b3lyp/6-311g(d,p) pop=full
+
+Title
+
+0 1
+ C                 -1.78668958   -0.09572728    0.64728372
+ C                 -1.36269158    1.27506872    0.64728372
+ H                 -1.14231658   -0.96843328    0.64730872
+ H                 -0.33812858    1.63156072    0.64725872
+ C                 -3.62816658    1.22478072    0.64727472
+ H                 -4.64865477    1.54029066    0.71018208
+ C                 -3.18843958   -0.09572728    0.64728372
+ H                 -3.80595672   -0.96740593    0.58605536
+ C                 -2.51974858    2.06652172    0.64717972
+ H                 -2.52502738    2.68450968    1.52065726
+ H                 -2.55124904    2.68351582   -0.22644835
+
+</code></pre>
+<p><code>%mem=20GB</code>部分は計算にメモリを20GB使用するということ、<code>%nprocshared=12</code>は計算で使うCPU数を指定します。この値は各計算環境に応じて適宜変更する必要があります。ここで、重要なのは計算条件を指定する<code>#p opt pop=full</code>の部分です。<code>opt pop=full</code>で構造最適化計算と、電子密度解析計算を行うよう指示します。計算レベルや基底関数については<code>b3lyp/6-311g(d,p)</code>でなくても好みのものを使ってください。
+（ちなみにGaussian 16だと<code>%nprocshared</code>の指定は非推奨になっています。最近実装された、環境変数での指定方法のほうが使い勝手が良いと思います。さらに、GPUを使った計算をしたい場合にはもっと別の指定方法になります。 参考： http://www.hpc.co.jp/gaussian_Link-0-Equivs.html ）</p>
+<p>実行コマンド例は</p>
+<pre><code class="language-bash">#!/bin/bash
+job=&quot;cyclopenta&quot;
+export GAUSS_CDEF=&quot;0-11&quot; # cyclopenta.gjfファイルの%nprocshared=12に対応
+
+g16 &lt; ${job}.gjf &gt; ${job}.log
+</code></pre>
+<p>計算が終わりますと、計算結果の<code>cyclopenta.log</code>ファイルだけでなく、.chk（チェックポイント）ファイル<code>cyclopenta.chk</code>も生成されているはずです。分子軌道の可視化や以降の処理にはこのファイルを用います。</p>
+<h3 id="example-1-2-chkファイルの処理"><a class="header" href="#example-1-2-chkファイルの処理">Example 1-2. chkファイルの処理</a></h3>
+<p>このchkファイルを用いて、まずターミナル上での以下のコマンドで、formatted checkpoint file形式に変換します。</p>
+<pre><code>formchk cyclopenta.chk cyclopenta.fchk
+</code></pre>
+<p>として、formatted checkpoint fileに変換します。この<code>formchk</code>コマンドはGaussian 16と同時にインストールされているはずのコマンドです。Gaussian 16がインストールされてあるマシンやスパコンでは、Gaussian 16の本体である<code>g16</code>コマンドが使えるならば、ほぼ間違いなく使えるはずです。
+（ちなみにGaussian 16で計算したchkファイルをGaussian 09時代の<code>formchk</code>コマンドで変換することはできない……かもしれません）</p>
+<p>続いて、上のコマンドで作成された<code>cyclopenta.fchk</code>ファイルから、必要な分子軌道のデータを<code>.cube</code>形式のファイルに抽出します。</p>
+<pre><code>cubegen 0 MO=homo cyclopenta.fchk cyclopenta_homo.cube
+</code></pre>
+<p>この<code>cubegen</code>についての操作方法はGaussian公式の<a href="http://gaussian.com/cubegen/">cubegenの解説ページ</a>のページを参照してください。MO=のあとにhomoやlumo、または数字を指定すると、それに対応した分子軌道が出力されます。
+今回はシクロペンタジエンのHOMO（最高被占軌道）のデータを取り出したいので、MO=homoとし、.fchkファイルと出力ファイル名<code>cyclopenta_homo.cube</code>を指定します。</p>
+<h3 id="example-1-3-cubeファイルの表示"><a class="header" href="#example-1-3-cubeファイルの表示">Example 1-3. cubeファイルの表示</a></h3>
+<h4 id="case-1-gaussview-6で表示する"><a class="header" href="#case-1-gaussview-6で表示する">Case 1. GaussView 6で表示する</a></h4>
+<p>GaussView 6で表示する時、必要になるファイルは<code>cyclopenta.log</code>と<code>cyclopenta_homo.cube</code>です。まずはふつうに<code>cyclopenta.log</code>を開きます。</p>
+<img src="./image/gaus2.png" width="500" title="Gaussian 16での分子軌道の表示例">
+<p>続いて、Results &gt; Surfaces/Contoursを選択し、Cube ActionsからLoad Cubeを選び、<code>cyclopenta_homo.cube</code>を選択します。</p>
+<img src="./image/gaus3.png" width="500" title="Gaussian 16での分子軌道の表示例">
+<p>続いて、Surface Actions &gt; New Surfaceをクリックすると、分子軌道の図が表示されるようになります。</p>
+<img src="./image/gaus4.png" width="500" title="Gaussian 16での分子軌道の表示例">
+<p>このSurfaceの描画モードを変えたい場合は、この紫の画面内で右クリックし、View -&gt; Display Formatを選択します（macOSはCommand+DでもOK）。</p>
+<img src="./image/gaus5.png" width="500" title="Gaussian 16での分子軌道の表示例">
+<p>このDisplay Formatウィンドウの中で、右端のSurfaceタブを選び、Format: transparentとすれば、半透明な表面を描画することができます。透明度はそこのスライダで調節できます。またmesh表示も可能です。</p>
+<img src="./image/gaus6.png" width="500" title="Gaussian 16での分子軌道の表示例">
+<p>以下では、この部分をPyMOLでやってみる方法を紹介します。</p>
+<h4 id="case-2-pymol-230で表示する"><a class="header" href="#case-2-pymol-230で表示する">Case 2. PyMOL 2.3.0で表示する</a></h4>
+<p>PyMOLで開く場合には、</p>
+<ol>
+<li><code>cyclopenta.log</code>の最終構造に対応する構造ファイルをPDB形式などで用意し、PyMOLに表示させる</li>
+<li>この上に<code>cyclopenta_homo.cube</code>をロードし、適切な処理を施す。</li>
+</ol>
+<p>という流れになります。このうち、1.で述べた構造ファイルを用意する部分はやや面倒かもしれません。お使いのマシンに<a href="https://qiita.com/Ag_smith/items/d2e86dda17f190a3dd0f">AmberTools 18がインストールされている</a>状態であれば、</p>
+<pre><code>antechamber -i cyclopenta.log -fi gout -o cyclopenta.pdb -fo pdb
+</code></pre>
+<p>とすることで最終構造のPDBファイルを一発変換できます。AmberToolsがない場合は、オープンソースのファイルコンバータである<a href="https://future-chem.com/open-babel-usage/">Open Babelを使った変換法</a>で代用できます。Homebrewのインストール方法は適当にググってください。</p>
+<pre><code># Open BabelをHomebrewでインストール
+brew install open-babel
+# Usage:
+# obabel [-i&lt;input-type&gt;] &lt;infilename&gt; [-o&lt;output-type&gt;] -O&lt;outfilename&gt; [Options]
+# input-typeにはまだg16フォーマットがサポートされていないのですが、g09で代用可能だと思います。
+# see also 'http://openbabel.org/docs/current/FileFormats/Overview.html#file-formats'
+obabel -i g09 cyclopenta.log -o pdb -O cyclopenta.pdb
+</code></pre>
+<p>こうしてファイル形式を変換して作成した<code>cyclopenta.pdb</code>をPyMOLで開いてみます。</p>
+<img src="./image/gaus7.png" width="600" title="Gaussian 16での分子軌道の表示例">
+<p>んー、本来は二重結合になっている炭素の結合情報が、全部同じような線で繋がれてしまっていますね。これが嫌だな〜って方は、以下のようにして二重結合っぽい表示に変えてみます。</p>
+<p>二重結合にしたい原子の上でそれぞれ右のダブルクリック（マウスにホイールがある場合はホイールクリックでも可能）をすると、Pk1, Pk2という選択印が付きます。この状態で、PyMOLのコマンド <code>unbond ; bond order=2</code> を実行します（コマンド入力できるフォームは2箇所ありますが、どちらに入れても同じです）。この<code>order=2</code>で結合次数を指定しています。</p>
+<img src="./image/gaus8.png" width="600" title="Gaussian 16での分子軌道の表示例">
+<p>これで二重結合っぽい表示に変わりました。ついでに、好みで以下の設定を入れてGaussViewっぽい描画設定にしてみます。</p>
+<pre><code>show sticks
+show spheres
+set stick_radius, 0.1
+set sphere_scale, .22
+set sphere_scale, .18, elem H
+</code></pre>
+<img src="./image/gaus9.png" width="600" title="Gaussian 16での分子軌道の表示例">
+<p>では、PyMOLに<code>cyclopenta_homo.cube</code>ファイルをロードします。コマンドは以下の通り</p>
+<pre><code>load /path/to/cyclopenta_homo.cube
+isosurface Asurf1, cyclopenta_homo, 0.02
+isosurface Bsurf1, cyclopenta_homo, -0.02
+color red, Asurf1
+color blue, Bsurf1
+set transparency, 0.5
+</code></pre>
+<p><code>load</code>部分は、<code>cyclopenta_homo.cube</code>のファイルのあるファイルパスを指定します。デスクトップ上に置いてあるならば<code>load ~/Desktop/cyclopenta_homo.cube</code>みたいに。以下の<code>isosurface</code>コマンドで分子軌道をしきい値0.02, -0.02で作成します。正と負の波動関数に対応する各電子雲をAsurf1, Bsurf1というオブジェクト名で作成し、色付けを red, blueにしています。</p>
+<img src="./image/gaus10.png" width="600" title="Gaussian 16での分子軌道の表示例">
+<p>Asurf1, Bsurf1の色変更は、PyMOLのオブジェクト色変更と同じ感覚でマウスを使って簡単に変更できます。</p>
+<h2 id="pymol上でのpythonスクリプトの実行基本編"><a class="header" href="#pymol上でのpythonスクリプトの実行基本編">PyMOL上でのpythonスクリプトの実行：基本編</a></h2>
+<p>PyMOLの大きな強みの1つとして、PyMOLのコマンドラインからpythonスクリプトを実行させることができることが挙げられます。ここではいくつかの例を挙げながら、PyMOL上でのpythonスクリプト実行機能を紹介してみます。ただし、python3についての基本的な知識があることを前提とします。</p>
+<h3 id="pythonの設定を確認する"><a class="header" href="#pythonの設定を確認する">Pythonの設定を確認する</a></h3>
+<p>まずは現在PyMOLが動作しているPython環境を確認するために、バージョン情報とPATHをPyMOLのコマンド入力欄から確認してみましょう。コマンドは通常のpythonと同じように</p>
+<pre><code class="language-python"># pythonのバージョンを表示
+import sys
+print(sys.version)
+# pythonのモジュール検索PATHを確認
+print(sys.path)
+</code></pre>
+<p>となります。返り値は、私の環境（macOSのHomebrewでインストールした場合）では</p>
+<pre><code class="language-shell"># PyMOL&gt;print(sys.version)
+3.10.8 (main, Oct 13 2022, 09:48:40) [Clang 14.0.0 (clang-1400.0.29.102)]
+# PyMOL&gt;print(sys.path)
+['', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python310.zip', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/lib-dynload', '/Users/YoshitakaM/Library/Python/3.10/lib/python/site-packages', '/usr/local/lib/python3.10/site-packages', '/usr/local/lib/python3.10/site-packages/coot', '/usr/local/lib/python3.10/site-packages/coot/rcrane', '/usr/local/Cellar/pybind11/2.10.0/libexec/lib/python3.10/site-packages', '/usr/local/Cellar/pymol/2.5.0/libexec/lib/python3.10/site-packages', '/usr/local/Cellar/sip/6.6.2_1/libexec/lib/python3.10/site-packages', '/usr/local/Cellar/modeller/10.3_1/modlib', '/usr/local/opt/python-tk@3.10/libexec', '/Users/YoshitakaM/apps/pymol-psico']
+</code></pre>
+<p>のようになりました。<code>print(sys.path)</code>で表示されたPATHからはモジュールをimportすることができます。</p>
+<h3 id="pythonスクリプトをpymol上で実行する"><a class="header" href="#pythonスクリプトをpymol上で実行する">PythonスクリプトをPyMOL上で実行する</a></h3>
+<p>PyMOLコマンドラインからは<code>python</code>と<code>python end</code>という入力の間に任意のpythonスクリプトを挟むことで、PyMOL上で擬似インタラクティブにコマンドを実行することができます。ただし、一度<code>python</code>を入力した後は<code>python end</code>を入力するまではフィードバックが得られないことに注意しましょう。</p>
+<p>例えば、以下のように変数<code>x</code>に<code>10</code>という値を入れてそれをprintさせるだけの簡単なスクリプトをコマンドラインに入力してみます。</p>
+<pre><code class="language-python">python
+x = 10
+print(x)
+python end
+</code></pre>
+<p>PyMOLのアウトプットとしては</p>
+<pre><code class="language-shell">PyMOL&gt;python
+PyMOL&gt;x = 10
+    1:x = 10
+PyMOL&gt;print(x)
+    2:print(x)
+PyMOL&gt;python end
+PyMOL&gt;python end
+10
+</code></pre>
+<p>というように表示され、最後に<code>10</code>という結果がprintされたことがわかります。</p>
+<p>この機能を使えば、Pythonを使い慣れた方であれば様々な応用可能性があることに気づくと思います。例えば、あるディレクトリの中で目的の構造ファイル群だけPyMOL上にロードしたいという例では、以下のようにPythonスクリプトを書くことができます。</p>
+<pre><code class="language-python"># globモジュールをインポートし、ワイルドカード*によって
+# 拡張子がcifであるファイルを一括でPyMOL上にロードする
+python
+from glob import glob
+
+for file in glob(&quot;*.cif&quot;):
+    cmd.load(file)
+python end
+</code></pre>
+<h3 id="コマンドを外部ファイルに保存しpymolからスクリプトを呼び出す"><a class="header" href="#コマンドを外部ファイルに保存しpymolからスクリプトを呼び出す">コマンドを外部ファイルに保存し、PyMOLからスクリプトを呼び出す</a></h3>
+<p>上で挙げた一括ロードのPythonスクリプトを繰り返し使いたいときは、別ファイルにスクリプトを保存しておいてそれを呼び出すような形にすれば、毎回入力しなくて済むようになります。この場合は、<code>python</code>と<code>python end</code>の間の部分だけを別のファイル（名前は<code>cifload.py</code>とします）に書いておきます。</p>
+<pre><code class="language-python:cifload.py">from glob import glob
+
+for file in glob(&quot;*.cif&quot;):
+    cmd.load(file)
+</code></pre>
+<p>これをPyMOL上から呼び出すときには、コマンドラインから<code>run /path/to/cifload.py</code>として呼び出します（<code>/path/to/</code>の部分は<code>cifload.py</code>が存在するディレクトリパスに適宜置き換えてください）。</p>
+<h3 id="拡張コマンドを使えるように読み込む"><a class="header" href="#拡張コマンドを使えるように読み込む">拡張コマンドを使えるように読み込む</a></h3>
+<p>発展的な内容ですが、上記の方法を使えばPyMOLWikiのScript Libraryなどで公開されている拡張コマンドを即座に使えるようにすることもできます。例として, タンパク質の色分けをアミノ酸の疎水性〜親水性に応じて行う<code>color_h</code>, <code>color_h2</code>コマンド（<a href="https://pymolwiki.org/index.php/Color_h">https://pymolwiki.org/index.php/Color_h</a>）を使えるようにします。</p>
+<p>上記ページのコードの<code>from pymol import cmd</code>から<code>cmd.extend('color_h2',color_h2)</code>の前に<code>python</code>を、最後に<code>python end</code>を入力することで、<code>color_h</code>, <code>color_h2</code>コマンドが使えるようになります。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/scripting1.mp4" type="video/mp4">
+</video>
+<p>これによって<code>color_h</code>, <code>color_h2</code>の拡張コマンドが使えるようになりました。もちろん、外部ファイルに保存しておいて<code>run ~~</code>で呼び出すことも可能です。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ch04/cmd_super.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../ch05/xtal_elecmap.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../ch04/cmd_super.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../ch05/xtal_elecmap.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

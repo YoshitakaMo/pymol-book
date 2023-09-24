@@ -1,0 +1,562 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>オブジェクトパネル - pymol-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">TOP</a></li><li class="chapter-item expanded "><a href="../ch01/index.html"><strong aria-hidden="true">1.</strong> 第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/objective.html"><strong aria-hidden="true">1.1.</strong> 目的</a></li><li class="chapter-item expanded "><a href="../ch01/accesspdb.html"><strong aria-hidden="true">1.2.</strong> Protein Data Bank (PDB)にアクセスする</a></li><li class="chapter-item expanded "><a href="../ch01/download.html"><strong aria-hidden="true">1.3.</strong> PDB データのダウンロード</a></li><li class="chapter-item expanded "><a href="../ch01/launchpymol.html"><strong aria-hidden="true">1.4.</strong> PyMOL の起動</a></li><li class="chapter-item expanded "><a href="../ch01/displaypdb.html"><strong aria-hidden="true">1.5.</strong> 大腸菌由来アルカリホスファターゼのグラフィック表示</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/colorbychain.html"><strong aria-hidden="true">1.5.1.</strong> チェインごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/colorbyss.html"><strong aria-hidden="true">1.5.2.</strong> 二次構造ごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/saveimage.html"><strong aria-hidden="true">1.5.3.</strong> 画像の保存</a></li><li class="chapter-item expanded "><a href="../ch01/savesessionfile.html"><strong aria-hidden="true">1.5.4.</strong> セッションファイルへの保存</a></li><li class="chapter-item expanded "><a href="../ch01/focusbindingsite.html"><strong aria-hidden="true">1.5.5.</strong> リガンド結合部位への注目</a></li></ol></li><li class="chapter-item expanded "><a href="../ch01/humanalp.html"><strong aria-hidden="true">1.6.</strong> ヒトアルカリホスファターゼとの構造比較</a></li><li class="chapter-item expanded "><a href="../ch01/hydrophobicity.html"><strong aria-hidden="true">1.7.</strong> タンパク質の疎水性・親水性残基の分布を確認する</a></li><li class="chapter-item expanded "><a href="../ch01/conservation.html"><strong aria-hidden="true">1.8.</strong> タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a></li><li class="chapter-item expanded "><a href="../ch01/qmmm.html"><strong aria-hidden="true">1.9.</strong> アルカリホスファターゼの加水分解酵素としての働き</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/index.html"><strong aria-hidden="true">2.</strong> 第2章 Internal GUI の使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/loadmol.html"><strong aria-hidden="true">2.1.</strong> 分子構造のロード</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/load_file.html"><strong aria-hidden="true">2.1.1.</strong> 構造ファイルのロード</a></li><li class="chapter-item expanded "><a href="../ch02/load_supformat.html"><strong aria-hidden="true">2.1.2.</strong> サポートしている構造ファイル形式</a></li><li class="chapter-item expanded "><a href="../ch02/load_biol_unit.html"><strong aria-hidden="true">2.1.3.</strong> Biological Unitを考慮した分子構造のロード</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/dispseq.html"><strong aria-hidden="true">2.2.</strong> 配列の表示</a></li><li class="chapter-item expanded "><a href="../ch02/objpanel.html" class="active"><strong aria-hidden="true">2.3.</strong> オブジェクトパネル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/showandhide.html"><strong aria-hidden="true">2.3.1.</strong> 分子構造の表示形式のON/OFF (Show and Hide)</a></li><li class="chapter-item expanded "><a href="../ch02/label.html"><strong aria-hidden="true">2.3.2.</strong> ラベルの設定(Label)</a></li><li class="chapter-item expanded "><a href="../ch02/color.html"><strong aria-hidden="true">2.3.3.</strong> 色の設定(Color)</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/mouse.html"><strong aria-hidden="true">2.4.</strong> マウス操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/buttonmode.html"><strong aria-hidden="true">2.4.1.</strong> 操作モード</a></li><li class="chapter-item expanded "><a href="../ch02/buttontable.html"><strong aria-hidden="true">2.4.2.</strong> 各モードにおける操作一覧</a></li><li class="chapter-item expanded "><a href="../ch02/buttonaction.html"><strong aria-hidden="true">2.4.3.</strong> 操作の詳細</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/session.html"><strong aria-hidden="true">2.5.</strong> セッションの保存</a></li><li class="chapter-item expanded "><a href="../ch02/export.html"><strong aria-hidden="true">2.6.</strong> 構造ファイルのエクスポート</a></li><li class="chapter-item expanded "><a href="../ch02/saveimage.html"><strong aria-hidden="true">2.7.</strong> 画像の保存</a></li></ol></li><li class="chapter-item expanded "><a href="../ch03/index.html"><strong aria-hidden="true">3.</strong> 第3章 External GUIの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch03/file.html"><strong aria-hidden="true">3.1.</strong> File</a></li><li class="chapter-item expanded "><a href="../ch03/edit.html"><strong aria-hidden="true">3.2.</strong> Edit</a></li><li class="chapter-item expanded "><a href="../ch03/build.html"><strong aria-hidden="true">3.3.</strong> Build</a></li><li class="chapter-item expanded "><a href="../ch03/movie.html"><strong aria-hidden="true">3.4.</strong> Movie</a></li><li class="chapter-item expanded "><a href="../ch03/display.html"><strong aria-hidden="true">3.5.</strong> Display</a></li><li class="chapter-item expanded "><a href="../ch03/setting.html"><strong aria-hidden="true">3.6.</strong> Setting</a></li><li class="chapter-item expanded "><a href="../ch03/scene.html"><strong aria-hidden="true">3.7.</strong> Scene</a></li><li class="chapter-item expanded "><a href="../ch03/mouse.html"><strong aria-hidden="true">3.8.</strong> Mouse</a></li><li class="chapter-item expanded "><a href="../ch03/wizard.html"><strong aria-hidden="true">3.9.</strong> Wizard</a></li><li class="chapter-item expanded "><a href="../ch03/plugin.html"><strong aria-hidden="true">3.10.</strong> Plugin</a></li><li class="chapter-item expanded "><a href="../ch03/help.html"><strong aria-hidden="true">3.11.</strong> help</a></li></ol></li><li class="chapter-item expanded "><a href="../ch04/index.html"><strong aria-hidden="true">4.</strong> 第4章 コマンドラインの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch04/cmd_load.html"><strong aria-hidden="true">4.1.</strong> 分子構造のロード</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_save.html"><strong aria-hidden="true">4.2.</strong> 保存</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_showandhide.html"><strong aria-hidden="true">4.3.</strong> 分子構造の表示形式のON/OFF</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_super.html"><strong aria-hidden="true">4.4.</strong> オブジェクトの重ね合わせ</a></li></ol></li><li class="chapter-item expanded "><a href="../ch05/index.html"><strong aria-hidden="true">5.</strong> 第5章 PyMOL の様々な機能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch05/xtal_elecmap.html"><strong aria-hidden="true">5.1.</strong> 結晶構造の電子密度マップを表示する</a></li><li class="chapter-item expanded "><a href="../ch05/apbs.html"><strong aria-hidden="true">5.2.</strong> APBSプラグインを使った表面電荷表示</a></li><li class="chapter-item expanded "><a href="../ch05/movieschool.html"><strong aria-hidden="true">5.3.</strong> 動画の作成方法</a></li><li class="chapter-item expanded "><a href="../ch05/preset.html"><strong aria-hidden="true">5.4.</strong> 表示形式のプリセット</a></li><li class="chapter-item expanded "><a href="../ch05/gaussian.html"><strong aria-hidden="true">5.5.</strong> Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></li><li class="chapter-item expanded "><a href="../ch05/python_on_pymol.html"><strong aria-hidden="true">5.6.</strong> PyMOL上でのpythonスクリプトの実行</a></li><li class="chapter-item expanded "><a href="../ch05/importpymol.html"><strong aria-hidden="true">5.7.</strong> Pythonからpymolモジュールをimportして使う</a></li></ol></li><li class="chapter-item expanded "><a href="../ch06/index.html"><strong aria-hidden="true">6.</strong> 第6章 プラグインを使う</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch06/installation.html"><strong aria-hidden="true">6.1.</strong> プラグインのインストール方法</a></li><li class="chapter-item expanded "><a href="../ch06/dssp.html"><strong aria-hidden="true">6.2.</strong> DSSPプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/pyvol.html"><strong aria-hidden="true">6.3.</strong> PyVOL GUIプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/plddt.html"><strong aria-hidden="true">6.4.</strong> pLDDTカラーリングプラグイン</a></li></ol></li><li class="chapter-item expanded "><a href="../append01/index.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../append01/installation.html"><strong aria-hidden="true">7.1.</strong> インストール方法</a></li><li class="chapter-item expanded "><a href="../append01/term.html"><strong aria-hidden="true">7.2.</strong> 用語</a></li><li class="chapter-item expanded "><a href="../append01/selealgebra.html"><strong aria-hidden="true">7.3.</strong> 選択範囲の文法と演算子</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">pymol-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="オブジェクトパネル"><a class="header" href="#オブジェクトパネル">オブジェクトパネル</a></h2>
+<p>PyMOL画面の右側には、ロードしている分子構造について様々な操作を行えるパネルが表示されています。</p>
+<img src="./image/viewer/objectpanel1.png" width="40%">
+<p>画像の例では<code>all</code>と<code>1alk</code>が表示されています。また、画面上の分子構造をクリックし選択すると、<code>(sele)</code>という表示も追加されます。このパネルに表示されている文字のことを<strong>オブジェクト</strong>と呼びます。その右についているA, S, H, L, Cという文字のボタンには、対応するオブジェクトについての表示設定変更・編集を行うためのメニューがたくさん格納されています。それぞれの文字が表す大まかな意味は以下の通り。</p>
+<ul>
+<li><strong>Action(A)</strong>
+<ul>
+<li>視点の移動や分子についての編集、一括設定変更、構造のアラインや名前変更など、オブジェクト全体に関わる様々な設定を行うためのメニューが格納されています。</li>
+</ul>
+</li>
+<li><strong>Show (S)</strong>
+<ul>
+<li>分子構造の表示形式をONにするためのメニューが格納されています。</li>
+</ul>
+</li>
+<li><strong>Hide (H)</strong>
+<ul>
+<li>分子構造の表示形式をOFFにするためのメニューが格納されています。</li>
+</ul>
+</li>
+<li><strong>Label (L)</strong>
+<ul>
+<li>分子構造のすぐそばに表示する文字ラベルを追加するためのメニューが格納されています。</li>
+</ul>
+</li>
+<li><strong>Color (C)</strong>
+<ul>
+<li>分子構造の色変更を行うためのメニューが格納されています。</li>
+</ul>
+</li>
+</ul>
+<h2 id="分子構造の表示形式のonoff-show-and-hide"><a class="header" href="#分子構造の表示形式のonoff-show-and-hide">分子構造の表示形式のON/OFF (Show and Hide)</a></h2>
+<p>タンパク質の構造情報をロードしたとき、デフォルト設定では、20種類のアミノ酸についてはCartoon表示形式と呼ばれる漫画風な表現形式になっています。このCartoon表示形式では、αヘリックスを形成している部分については大きな螺旋で描かれ、βストランド（βシート）を形成している部分については、進行方向に向かって矢印が伸びる表現で描かれています。</p>
+<p>タンパク質を構成するアミノ酸を1つ1つ強調して見てみたい場合には、<strong>Cartoon</strong>, <strong>Line</strong>, <strong>Stick</strong>, <strong>Ribbon</strong>, <strong>Sphere</strong>, <strong>Dot</strong>, <strong>Surface</strong>, <strong>Mesh</strong> 表示などの、他の表示形式をONにするという操作を行います。この表示形式の設定は、各オブジェクト構造について個別に行います。例えば、先程ロードした1alkのタンパク質オブジェクトについて他の表示形式をONにしたい場合は、図のように、1alkの<strong>Sマーク部分（図の赤四角部分のボタン）</strong> をクリックします。反対に、OFFにしたい場合は<strong>Hマーク部分（図の青四角部分のボタン）</strong> を押し、各表示形式を選択することでOFFになります。</p>
+<img src="./image/display/disp1.png" width="40%">
+<p><img src="./image/display/disp3.png" width="40%"><br></p>
+<!--
+set_view (\
+     0.990649223,   -0.127824500,    0.047657397,\
+     0.136341795,    0.915909708,   -0.377514422,\
+     0.004605473,    0.380482703,    0.924775600,\
+    -0.000116501,   -0.000019159,  -50.788997650,\
+    29.517896652,    2.209085464,   19.883510590,\
+     0.894756913,  100.680503845,  -20.000000000 )
+-->
+<p>各表示形式のサンプルを以下に示します。</p>
+<ul>
+<li>
+<p><strong>Cartoon表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_cartoon.png" width="40%">
+</li>
+<li>タンパク質やDNA・RNAを表示するときにおすすめです。タンパク質の場合はαヘリックスやβシートが先述のように螺旋や矢印で示されます。DNA/RNAが存在する場合には、各塩基の概形や5'末端→3'末端のつながりが強調して表示されます。</li>
+</ul>
+</li>
+<li>
+<p><strong>Line表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_line.png" width="40%"><img src="./image/display/disp_linecartoon.png" width="40%"><br></li>
+<li>各原子間の結合が細い線で表示されます。上の図では、左にLine表示だけをONにしたものを、右にCartoon表示形式をLine表示とともにONにした場合を右図に示しています（以降、見やすくするためにCartoon表示をONにした上で、他の表示形式を載せます）。</li>
+<li>各原子は構造情報ファイルの座標のATOMまたはHETATMレコードに書かれている座標情報（\( x, y, z \)の3次元ベクトル）をもとにプロットされ、各原子座標の距離が一定以内にあれば、自動的にその近い2点が直線で結ばれて表示される仕様となっていることに気をつけてください。</li>
+</ul>
+</li>
+<li>
+<p><strong>Stick表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_stick.png" width="40%"><br></li>
+<li>各原子間の結合がLine表示よりも太いStickで表示されます。Stickは円筒状に表現されます。</li>
+</ul>
+</li>
+<li>
+<p><strong>Ribbon表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_ribbon.png" width="40%"><br></li>
+<li>タンパク質または核酸の鎖部分のみを単純な線で表現する形式です。</li>
+</ul>
+</li>
+<li>
+<p><strong>Sphere表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_sphere.png" width="40%"><br></li>
+<li>各原子を大きな球体で表現します。Line, Stick表示と異なり、各原子間は直線で結ばれません。</li>
+</ul>
+</li>
+<li>
+<p><strong>Dot表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_dot.png" width="40%"><br></li>
+<li>Sphere表示の表面を点で表現したような形式です。</li>
+</ul>
+</li>
+<li>
+<p><strong>Surface表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_surface.png" width="40%"><br></li>
+<li>各原子の表面を滑らかに描画する形式です。分子の大きさによっては、レンダリングに少し時間がかかります。</li>
+</ul>
+</li>
+<li>
+<p><strong>Mesh表示</strong></p>
+<ul>
+<li><img src="./image/display/disp_mesh.png" width="40%"><br></li>
+<li>Surface表示と似ていますが、表面の描画を網掛けで表現します。</li>
+</ul>
+</li>
+</ul>
+<h2 id="ラベルの設定label"><a class="header" href="#ラベルの設定label">ラベルの設定(Label)</a></h2>
+<p><strong>ラベル</strong>を利用することで、分子の周辺に文字を表示させることができます。活性部位周辺に存在する残基の名前と番号を表示させるだけでなく、任意の文字列を表示させることができます。</p>
+<p><img src="./image/label/label1.png" width="40%"><br></p>
+<p><a href="./showandhide.html">分子構造の表示形式のON/OFF (Show and Hide)</a>のときと同様に、オブジェクトパネルから各オブジェクトに対して個別にラベルの設定を行うことができます。特に、選択範囲<code>(sele)</code>に対して表示させることが多いでしょう。</p>
+<img src="./image/label/labelmenu.png" width="40%">
+<p><strong>ラベルの設定変更</strong>はGUIの上部メニューから、Setting -&gt; Labelのところにあり、ラベルの表示サイズやフォント指定、色の指定などが可能です。下記のサンプルではフォントサイズを28にしてあります。</p>
+<p><strong>ラベルの位置変更</strong>は3-Button Editing Modeにしてから、ラベルの上でCtrl(macOSの場合はCommand)を押しながら左クリックでドラッグさせることで任意の位置に移動させることができます。下の例ではASP-101を右に移動させています。</p>
+<img src="./image/label/label_res.png" width="49%">
+<img src="./image/label/label_res2.png" width="49%">
+<h3 id="clear"><a class="header" href="#clear">clear</a></h3>
+<p>すでに表示されているそのオブジェクトについてのラベル表示を消去します。消去するのではなく表示を一時的に場合は、Hideメニューからlabelを選択しましょう。</p>
+<hr>
+<h3 id="residues"><a class="header" href="#residues">residues</a></h3>
+<p>選択されたオブジェクトについて、アミノ酸と残基番号の情報を<code>（アミノ酸3文字表記）-（残基番号）</code>の形で表示します(例：MET-1)。Cα原子の上に表示される設定になっています。</p>
+<img src="./image/label/label_res.png" width="50%">
+<h3 id="residues-one-letter"><a class="header" href="#residues-one-letter">residues (one letter)</a></h3>
+<p>選択されたオブジェクトについて、アミノ酸と残基番号の情報を<code>（アミノ酸1文字表記）（残基番号）</code>の形で表示します(例：M1)。Cα原子の上に表示される設定になっています。</p>
+<img src="./image/label/label_resone.png" width="50%">
+<h3 id="chains"><a class="header" href="#chains">chains</a></h3>
+<p>選択されたオブジェクトのN末端とC末端の番号を持つ残基（リガンドが存在する場合、それも含む）のそばに<code>chain &lt;chain ID&gt;</code>の形で表示します（例： chain A）。</p>
+<img src="./image/label/label_chain.png" width="50%">
+<h3 id="segments"><a class="header" href="#segments">segments</a></h3>
+<p>すでに使用が廃止されたsegment identifierの情報を、chainsと同様に表示します。詳しくは<a href="../append01/term.html#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88segment-identifier">Appendix: 用語#セグメント</a>を参照してください。今となってはあまり使うことはないと思います。</p>
+<hr>
+<h3 id="atom-name"><a class="header" href="#atom-name">atom name</a></h3>
+<p>原子名の名前でラベルを作成します。<code>.pdb</code>形式ファイルの場合、<code>ATOM</code>, <code>HETATM</code>レコードの13-16列目に含まれる文字列がatom nameとして定義されており、この文字列を返します。</p>
+<img src="./image/label/label_atomname.png" width="50%">
+<p>タンパク質アミノ酸やDNA, RNAの場合は命名規則があるため、慣れてしまえばatom nameの意味を理解しやすいと思います。13-14列目には右詰めで原子名を表します。例えば鉄原子は13-14列目を使ってFEの文字が入っていますが、炭素原子は14列目にCの文字を入れ、13列目は空白となっています。しかし、水素原子の場合は13-16列目の4文字分を最大限使って記述する場合があり、この場合は13列目から記入することになっています。</p>
+<p>以下ではよく登場するatom nameの一例です。</p>
+<table><thead><tr><th align="right">atom name</th><th align="right">意味</th></tr></thead><tbody>
+<tr><td align="right">CA</td><td align="right">主鎖のα位の炭素</td></tr>
+<tr><td align="right">N</td><td align="right">主鎖のN末端側窒素原子</td></tr>
+<tr><td align="right">C</td><td align="right">主鎖のC末端側炭素原子</td></tr>
+<tr><td align="right">O</td><td align="right">主鎖のC末端側酸素原子</td></tr>
+<tr><td align="right">CB</td><td align="right">側鎖のβ位の炭素</td></tr>
+<tr><td align="right">CG</td><td align="right">側鎖のγ位の炭素</td></tr>
+<tr><td align="right">CD</td><td align="right">側鎖のδ位の炭素</td></tr>
+<tr><td align="right">CE</td><td align="right">側鎖のε位の炭素</td></tr>
+<tr><td align="right">CZ</td><td align="right">側鎖のζ位の炭素（チロシンなど）</td></tr>
+<tr><td align="right">OH</td><td align="right">側鎖のη位の炭素（チロシンなど）</td></tr>
+</tbody></table>
+<p>主鎖に近い原子の個数順にβ→γ→δ→ε→ζ→ηと付ける命名規則があります。複数原子が存在するようなアミノ酸（ヒスチジン）などはND1, CD1, CE2, NE2というふうに番号をつけて区別します。</p>
+<h3 id="element-symbol"><a class="header" href="#element-symbol">element symbol</a></h3>
+<p>原子名を表記します。</p>
+<img src="./image/label/label_esymbol.png" width="50%">
+<h3 id="residue-name"><a class="header" href="#residue-name">residue name</a></h3>
+<p>3文字表記の残基名を表記します。<code>.pdb</code>ファイル形式における<code>ATOM</code>, <code>HETATM</code>レコードの18-20列目の文字列を返します。存在しない場合は空白になります（以下同様）。</p>
+<img src="./image/label/label_resn.png" width="50%">
+<h3 id="one-letter-code"><a class="header" href="#one-letter-code">one letter code</a></h3>
+<p>1文字表記の残基名を表記します。</p>
+<img src="./image/label/label_resnone.png" width="50%">
+<h3 id="residue-identifier"><a class="header" href="#residue-identifier">residue identifier</a></h3>
+<p>残基のresidue IDを表記します。<code>.pdb</code>ファイル形式における<code>ATOM</code>, <code>HETATM</code>レコードの23-26列目の文字列を返します。</p>
+<img src="./image/label/label_resi.png" width="50%">
+<h3 id="chain-identifier"><a class="header" href="#chain-identifier">chain identifier</a></h3>
+<p>残基のChain IDを表記します。<code>.pdb</code>ファイル形式における<code>ATOM</code>, <code>HETATM</code>レコードの22列目の文字列を返します。</p>
+<img src="./image/label/label_chainid.png" width="50%">
+<h3 id="segment-identifier"><a class="header" href="#segment-identifier">segment identifier</a></h3>
+<p>残基のSegment IDを表記します。詳しくは<a href="../append01/term.html#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88segment-identifier">Appendix: 用語#セグメント</a>を参照してください。</p>
+<hr>
+<h3 id="b-factor"><a class="header" href="#b-factor">b-factor</a></h3>
+<p>各原子の温度因子（b-factor; temperature facotr）を表記します。<code>.pdb</code>ファイル形式における61-66列目の文字列を返します。</p>
+<img src="./image/label/label_bfactor.png" width="50%">
+<h3 id="occupancy"><a class="header" href="#occupancy">occupancy</a></h3>
+<p>各原子の重み因子を表記します。<code>.pdb</code>ファイル形式における55-60列目の文字列を返します。結晶中では基本的に構造は繰り返しになるため、どの場所を見ても同じ座標がループしている事が多く、この値は<code>1.00</code>であることが多いのですが、時々その繰り返し構造単位の中に、1より大きなn通りの配座を持っていることがあります。このとき、ここには0~1の小数値が入ります。例としては PDB: 1A6MのGLN-8が<code>0.57</code>, <code>0.43</code>の値を持つ2通りの配座を持ち、同様にTYR-151も<code>0.50</code>, <code>0.50</code>で2通りの配座を持っています。この場合、PyMOLの表示上でも2通りの残基配座が見えます。画像はPDB: 1A6MのGLN-8の例を示しています。</p>
+<img src="./image/label/label_occupancy.png" width="50%">
+<h3 id="vdw-radius"><a class="header" href="#vdw-radius">vdw radius</a></h3>
+<p>各原子のファンデルワールス半径の値（Å）を表記します。基本的には原子の種類によって固定の値です。</p>
+<img src="./image/label/label_vdw.png" width="50%">
+<hr>
+<h3 id="other-properties"><a class="header" href="#other-properties">Other properties</a></h3>
+<h4 id="formal-charge"><a class="header" href="#formal-charge">formal charge</a></h4>
+<p>各残基についてシステムで定義されている電荷を表記します。例としてLys, Arg残基の場合は<code>+1</code>を、Glu, Asp残基の場合には<code>-1</code>を表示します。</p>
+<img src="./image/label/label_fchrg.png" width="50%">
+<h4 id="partial-charge"><a class="header" href="#partial-charge">partial charge</a></h4>
+<p>各原子について計算された部分電荷(partial charge)を表記します。これは通常の<code>pdb</code>, <code>mmCIF</code>といった構造ファイルには含まれていないため、<code>0.00</code>と表示されてしまいますが、<code>pqr</code>や<code>mol2</code>ファイル形式をロードしたときに真価を発揮します。</p>
+<p>タンパク質構造の場合は構造ファイルをいったんロードした後、<a href="../ch04/apbs.html">APBSプラグインを使った表面電荷表示</a>の手順に従って処理を進めます。このときにオブジェクトパネルに<code>run01</code>-&gt;<code>prepared01</code>というオブジェクトが生成されるので、<code>prepared01</code>オブジェクトのラベル設定でpartial chargeを選択すると図のように部分電荷が表示されるようになります。</p>
+<img src="./image/label/label_partchg.png" width="90%">
+<p>より正確に言えば、これはPDB2PQRというソフトウェアによって分子動力学シミュレーションソフトウェアAMBERが配布している力場AmberFFに基づいて指定されており、各アミノ酸の原子ごとに固有の値を指定してくれます。</p>
+<p>実態としてはPQRファイルの記述様式にのっとり、x, y, z座標の次にくるchargeの値を表記しています。</p>
+<blockquote>
+<p>参考：<a href="https://www.mdanalysis.org/docs/documentation_pages/coordinates/PQR.html">6.15. PQR file format</a></p>
+</blockquote>
+<p>mol2形式の場合でも対応しています。</p>
+<img src="./image/label/label_partchgmol2.png" width="50%">
+<p>GaussianやGAMESSなどの量子化学計算ソフトウェアで計算した部分電荷を図にして見てみたいときに特に有効です。</p>
+<h4 id="elec-radius"><a class="header" href="#elec-radius">elec. radius</a></h4>
+<p>partial chargeのときと同様に、PQRファイルのオブジェクトの場合に効果を発揮します。PQRファイル内のx, y, z座標, chargeの次にくるradiusの値を表記しています。vdw radiusとは異なります。</p>
+<img src="./image/label/label_eradius.png" width="50%">
+<h4 id="text-type-numeric-type"><a class="header" href="#text-type-numeric-type">text type, numeric type</a></h4>
+<p>PyMOL 2.0以降は廃止されているらしく、使われていないようです（詳細不明）</p>
+<h4 id="stereochemistry"><a class="header" href="#stereochemistry">stereochemistry</a></h4>
+<p>PyMOL 2.2から実装されました。schrodingerのソフトまたはrdkitモジュールのインストールが求められるようです。不斉炭素原子の部分にラベルを置いてくれる機能？</p>
+<hr>
+<h3 id="atom-identifiers"><a class="header" href="#atom-identifiers">atom identifiers</a></h3>
+<h4 id="rank"><a class="header" href="#rank">rank</a></h4>
+<p>rankを表記します。rankとは構造ファイルの上から順に<code>ATOM</code>, <code>HETATM</code>レコードを取得したときの通し番号のことであり、これのみ<strong>0始まり</strong>となっています。</p>
+<img src="./image/label/label_rank.png" width="50%">
+<blockquote>
+<p>“rank” selects atoms based on their position in the source file, starting with zero as the first number.</p>
+</blockquote>
+<h4 id="id"><a class="header" href="#id">ID</a></h4>
+<p>IDを表記します。IDとは構造ファイルから忠実に取得したATOM IDのことであり、<code>pdb</code>ファイルフォーマットで言えば7-11列目に存在する番号のことを指します。この値は整数値でなければなりません。</p>
+<img src="./image/label/label_id.png" width="50%">
+<blockquote>
+<p>“id” selects atoms based on the atom identifier number from the source file, which must be a integer.</p>
+</blockquote>
+<h4 id="index"><a class="header" href="#index">index</a></h4>
+<p>Indexを表記します。indexはrankと似ていますが、順に表示するのとは異なり、PyMOL内部で番号を順に振り直したのがindexです。例えばある1つのアミノ酸残基があったとき、その残基の中で登場する原子の順番をどのように入れ替えても、index表記ではN→CA→C→O→CB→……の順に若い数字を付けていきます。</p>
+<img src="./image/label/label_index.png" width="50%">
+<blockquote>
+<p>“index” selects atoms based on their internal PyMOL object atom indices starting with one as the first number.</p>
+</blockquote>
+<h2 id="色の設定color"><a class="header" href="#色の設定color">色の設定(Color)</a></h2>
+<img src="./image/color/colormenu.png" width="25%">
+<p>色の設定の仕方は自由です、センスの見せ所です……とは言うものの、<strong>実はタンパク質の構造を毎日見るであろう構造生物学専門の研究者さんにとっては、ある暗黙の了解があります</strong>。それらを踏まえた上で、PyMOLのカラーリング機能を紹介していきましょう。</p>
+<h3 id="色設定の暗黙の了解"><a class="header" href="#色設定の暗黙の了解">色設定の暗黙の了解</a></h3>
+<p>以下のルールだけは遵守しましょう。</p>
+<ul>
+<li>常に<strong>酸素原子は<span style="color:red;">赤</span>色, 窒素原子は<span style="color:blue;">青</span>色, 硫黄原子は<span style="color:#E7C640;">オリーブ（olive）</span>色</strong>で表示する。</li>
+<li>存在する場合、水素原子は白色で表示。</li>
+<li>よって炭素原子は、<strong>上記以外の色</strong>を使う。</li>
+</ul>
+<p>メチオニン残基の表示の例（炭素原子はgreen）</p>
+<img src="./image/color/color1.png" width="50%">
+<p>PyMOLには、酸素・窒素・窒素・水素原子を上記の色ルールで描画してくれるメニュー（&quot;<strong>by element</strong>&quot;）が存在しますので、これを使うことを強く推奨します。</p>
+<p>正確には、PyMOLでは酸素原子はカラーコードで#FF7C7C (255, 76, 76) [1.0, 0.3, 0.3], 窒素原子は#3333FF (51,51,255) [0.2, 0.2, 1.0], 硫黄原子は#E7C640 (231, 198, 64) [0.9, 0.775, 0.25]がデフォルトで割り当てられているため、用意されているカラーパレットを使う限りにはこれらの色と完全にかぶることはないのですが、それでもこれらに近い色を使うと紛らわしいので、使用は控えましょう。また、以下で見るように、用意されているカラーパレットの中にはすべての原子を同一で塗るものもあるので、どうしてもそれらの色を使いたい場合は、そのカラーパレットを選択した後に&quot;<strong>by element</strong>&quot;メニューの一番上のカラーリング（通称&quot;color by hetetoatom&quot;）を選択してあげましょう。</p>
+<h3 id="by-element"><a class="header" href="#by-element">by element</a></h3>
+<p>メニューを開いていただけると一目瞭然、C（炭素）の色だけが変わっており、H, N, O, S, 他にも様々な原子について、「暗黙の了解」の色で固定されています。反対に炭素原子の色を自由に選べることで、多量体タンパク質や大きな複合体に対しても自由に色を塗り分けられることができます。<strong>基本的には、このカラーパレットから選びましょう</strong>。</p>
+<p>見落としがちですが、下の方にある<strong>set 2</strong>〜<strong>set 6</strong>にも、様々な色が用意されています。set 6のみ水素原子の色が白色でないものが用意されていますが、あまり使うことはないでしょう。</p>
+<p>一番上のメニューではCが表示されておらず、HNOSと書かれていますが、これは<strong>炭素以外の原子の色を既定色に変更する</strong>というとても便利なカラーパレットです（&quot;color by heteroatom&quot;）。</p>
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について行う場合)</p>
+<pre><code>util.cnc 1alk # color by heteroatom
+</code></pre>
+<h3 id="by-chain"><a class="header" href="#by-chain">by chain</a></h3>
+<h4 id="by-chain-elem-c--ca--無印"><a class="header" href="#by-chain-elem-c--ca--無印">by chain (elem C | */CA, | 無印)</a></h4>
+<p>`1つの生体分子オブジェクト内に複数のchainが存在している場合、各chainごとに異なる色で塗り分けてくれます。</p>
+<img src="./image/color/color2.png" width="50%">
+<p><code>elem C</code>の場合、チェイン内の全炭素原子に対して色の変更を行い、他の種類の原子には色の変更を行いません。<code>*/CA</code> の場合、主鎖のCα原子のみ色の変更を行い、残りの原子には色の変更を行いません。<code>無印</code>は全原子に対して色の変更を行います。</p>
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について行う場合)</p>
+<pre><code>util.color_chains(&quot;(1alk and elem C)&quot;) # elem C
+util.color_chains(&quot;(1alk and name CA)&quot;) # */CA
+util.color_chains(&quot;(1alk)&quot;) # 無印
+</code></pre>
+<h4 id="chainbows"><a class="header" href="#chainbows">chainbows</a></h4>
+<p><strong>各chainについて</strong>、N末端（5'末端）からC末端（3'末端）にかけて青色から赤色のきれいなグラデーションができるように色を塗り分けてくれます。タンパク質の場合、この配色ならば、<strong>表示された色からアミノ酸配列の位置と構造上での位置の対応関係を把握しやすい</strong>ため、この配色になっている論文を見たことがある方も多いでしょう。</p>
+<img src="./image/color/color3.png" width="50%">
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について行う場合)</p>
+<pre><code># どちらでもOK
+util.chainbow 1alk
+util.chainbow(&quot;(1alk)&quot;)
+</code></pre>
+<h4 id="by-segi-elem-c--無印"><a class="header" href="#by-segi-elem-c--無印">by segi (elem C | 無印)</a></h4>
+<p>segment identifierによる色分けを行います。</p>
+<img src="./image/color/color4.png" width="50%">
+<p>あまり詳しく調べていないのですが、segment identifierは現在仕様が廃止されつつあるのと、カラーリングが赤・青なので、あまり使うことはないでしょう。</p>
+<h3 id="by-ss-by-secondary-structure"><a class="header" href="#by-ss-by-secondary-structure">by ss (By Secondary Structure)</a></h3>
+<p>タンパク質の二次構造（ヘリックス・シート・ループ）構造を基準に色分けしてくれます。自由に選びましょう。</p>
+<img src="./image/color/colorss.png" width="50%">
+<p>コマンドで行う場合で、ヘリックスを赤、シートを黄、それ以外を緑に塗りたいときは、以下のように打てばOKです。</p>
+<pre><code>color red, ss h
+color yellow, ss s
+color green, ss l+''
+</code></pre>
+<p>または、</p>
+<pre><code>util.cbss(&quot;1alk&quot;,&quot;red&quot;,&quot;yellow&quot;,&quot;green&quot;) # オブジェクト1alkについて行いたい場合
+</code></pre>
+<h3 id="by-rep-by-representation"><a class="header" href="#by-rep-by-representation">by rep (By Representation)</a></h3>
+<p>表示形式(representation)ごとに色分けを表示させることができます。これ以外の他のメニューからの色変更は、全表示形式が一括で色変更されてしまうので、うまく使い分けましょう。例えば、by chainで緑・青に色分けをした後に[show]→[surface]としてsurface表示をした状態ですと、</p>
+<img src="./image/color/color5.png" width="50%">
+<p>という表示になりますが（コマンドで<code>set transparency, 0.5</code>とし、Surface表示の透明度を変更しています。）、続いて[by rep]→[surface]→[grays]→[white]とすると</p>
+<img src="./image/color/color6.png" width="50%">
+<p>このようにSurface表示だけ白くすることができます。</p>
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について行う場合)</p>
+<pre><code># どちらでもOK
+set surface_color, white, 1alk
+cmd.set(&quot;surface_color&quot;, &quot;white&quot;, '1alk', quiet=0)
+</code></pre>
+<p><code>quiet=1</code> とすると処理終了時にメッセージがログ欄に表示されなくなります（プログラミング用）。<code>surface_color</code> の部分を<code>line</code>や<code>cartoon</code>などに変更すればその表示形式に関わる色のみ変更できます。</p>
+<h3 id="spectrum"><a class="header" href="#spectrum">spectrum</a></h3>
+<h4 id="rainbow-elem-c--ca--無印"><a class="header" href="#rainbow-elem-c--ca--無印">rainbow (elem C | */CA, | 無印)</a></h4>
+<p>オブジェクト全体を虹色表示してくれます。[by chain]の[chainbow]と違い、chainごとに虹色グラデーションをつけてくれるわけではないことに注意してください。<code>elem C</code>, <code>*/CA</code>, <code>無印</code>の意味は上と同様です。</p>
+<img src="./image/color/color7.png" width="50%">
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について行う場合)</p>
+<pre><code># elemCの場合。どちらでもOK。
+spectrum count, selection=1alk and elem C
+cmd.spectrum(&quot;count&quot;,selection=&quot;(1alk)&amp;elem C&quot;)
+# */CAの場合
+spectrum count, selection=1alk&amp;*/CA
+cmd.spectrum(&quot;count&quot;,selection=&quot;(1alk)&amp;*/CA&quot;)
+# 無印
+spectrum count, selection=1alk, byres=1
+cmd.spectrum(&quot;count&quot;,selection=&quot;1alk&quot;,byres=1)
+</code></pre>
+<h4 id="b-factors-無印--ca"><a class="header" href="#b-factors-無印--ca">b-factors （無印 | */CA）</a></h4>
+<p>結晶構造解析法で構造決定された構造ファイルの場合、<strong>b-factor（温度因子）</strong> という値が各原子に対して割り当てられています。簡単に言えば、この値は <strong>その原子のゆらぎやすさ</strong> を表しており、概して分子内部に存在している原子ほど値が小さく、外側に存在する原子ほど大きくなっています。この色表示ではb-factorの値が小さいほど青色に、大きいほど赤色になるよう表示されます。</p>
+<img src="./image/color/color8.png" width="50%">
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について行う場合)</p>
+<pre><code># 無印の場合。どちらでもOK。
+spectrum b, selection=1alk, quiet=0
+cmd.spectrum(&quot;b&quot;, selection=(&quot;1alk&quot;), quiet=0)
+# */CAの場合。どちらでもOK。
+spectrum b, selection=1alk&amp;*/CA, quiet=0
+cmd.spectrum(&quot;b&quot;, selection=&quot;((1alk)&amp;*/CA)&quot;, quiet=0)
+</code></pre>
+<p><a href="../ch05/preset.html#b-factor-putty">表示形式のプリセットの中には、b-factorごとに色と太さを変えてくれる</a>オプションもあります。</p>
+<h4 id="area-molecular--solvent"><a class="header" href="#area-molecular--solvent">area (molecular | solvent)</a></h4>
+<p>残基あたりのsurface area（表面積）を計算し、それに応じた値でグラデーション色付けをしてくれます。</p>
+<img src="./image/color/color9.png" width="50%">
+<p>プログラムの仕様上は<code>get_area</code>コマンドを走らせて、その値に応じた色付けを行っているようです。しかし、solventの方も含めて、かなり雑な計算なのでまったく厳密ではないようです（参考：<a href="https://pymolwiki.org/index.php/Get_Area">https://pymolwiki.org/index.php/Get_Area</a>）。Solvent accessbile surface areaを計算したい場合は、別の厳密なソフトウェアで計算した値を使うことを推奨します。</p>
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について行う場合)</p>
+<pre><code># molecularの場合（デフォルト）。
+util.color_by_area(&quot;1alk&quot;,&quot;molecular&quot;)
+# solventの場合
+util.color_by_area(&quot;1alk&quot;,&quot;solvent&quot;)
+</code></pre>
+<h3 id="auto-elem-c--all--by-obj-elem-c--by-obj"><a class="header" href="#auto-elem-c--all--by-obj-elem-c--by-obj">auto (elem C | all | by obj (elem C) | by obj)</a></h3>
+<p>自動で色付けをしてくれます。<strong>複数の生体分子オブジェクトがPyMOL上で開かれている場合に有効です</strong>。上2つは、押すたびに色が入れ替わっていきます。緑→シアン→黄→紫……の順に入れ替わります。</p>
+<img src="./image/color/color10.png" width="80%">
+<p>下2つの<code>by obj</code> がついているものはロードされている生体分子オブジェクトの上から順に色を緑→シアン→黄→紫……の順で塗り分けてくれます。特に、<strong><code>all</code> を選択して<code>by obj</code> を押せば一発で見慣れた色分けになってくれる</strong>ので便利です。</p>
+<img src="./image/color/color11.png" width="80%">
+<p>コマンド入力はこちら(全オブジェクトについて行う場合)</p>
+<pre><code>cmd.color(&quot;auto&quot;,&quot;(all) and elem C&quot;)
+cmd.color(&quot;auto&quot;,&quot;all&quot;)
+util.color_objs(&quot;(all and elem C)&quot;,_self=cmd)
+util.color_objs(&quot;(all)&quot;,_self=cmd)
+</code></pre>
+<h3 id="auto以下に存在する色分けメニューについて"><a class="header" href="#auto以下に存在する色分けメニューについて">auto以下に存在する色分けメニューについて</a></h3>
+<p>autoメニューの下には様々なカラーパレットがあります。自由に選択して好きな色を選びましょう。<strong>全表示形式(line, stick, surface...)について同一の色を適用します</strong>。</p>
+<p>コマンド入力はこちら(オブジェクト<code>1alk</code>について赤色で塗る場合)</p>
+<pre><code># PyMOL 2.3時代まで
+util.color_deep(&quot;red&quot;, '1alk', 0)
+# PyMOL 2.4以降（予定）
+color_deep red, 1alk
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ch02/dispseq.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../ch02/showandhide.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../ch02/dispseq.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../ch02/showandhide.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

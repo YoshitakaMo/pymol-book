@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>大腸菌由来アルカリホスファターゼのグラフィック表示 - pymol-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">TOP</a></li><li class="chapter-item expanded "><a href="../ch01/index.html"><strong aria-hidden="true">1.</strong> 第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/objective.html"><strong aria-hidden="true">1.1.</strong> 目的</a></li><li class="chapter-item expanded "><a href="../ch01/accesspdb.html"><strong aria-hidden="true">1.2.</strong> Protein Data Bank (PDB)にアクセスする</a></li><li class="chapter-item expanded "><a href="../ch01/download.html"><strong aria-hidden="true">1.3.</strong> PDB データのダウンロード</a></li><li class="chapter-item expanded "><a href="../ch01/launchpymol.html"><strong aria-hidden="true">1.4.</strong> PyMOL の起動</a></li><li class="chapter-item expanded "><a href="../ch01/displaypdb.html" class="active"><strong aria-hidden="true">1.5.</strong> 大腸菌由来アルカリホスファターゼのグラフィック表示</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/colorbychain.html"><strong aria-hidden="true">1.5.1.</strong> チェインごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/colorbyss.html"><strong aria-hidden="true">1.5.2.</strong> 二次構造ごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/saveimage.html"><strong aria-hidden="true">1.5.3.</strong> 画像の保存</a></li><li class="chapter-item expanded "><a href="../ch01/savesessionfile.html"><strong aria-hidden="true">1.5.4.</strong> セッションファイルへの保存</a></li><li class="chapter-item expanded "><a href="../ch01/focusbindingsite.html"><strong aria-hidden="true">1.5.5.</strong> リガンド結合部位への注目</a></li></ol></li><li class="chapter-item expanded "><a href="../ch01/humanalp.html"><strong aria-hidden="true">1.6.</strong> ヒトアルカリホスファターゼとの構造比較</a></li><li class="chapter-item expanded "><a href="../ch01/hydrophobicity.html"><strong aria-hidden="true">1.7.</strong> タンパク質の疎水性・親水性残基の分布を確認する</a></li><li class="chapter-item expanded "><a href="../ch01/conservation.html"><strong aria-hidden="true">1.8.</strong> タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a></li><li class="chapter-item expanded "><a href="../ch01/qmmm.html"><strong aria-hidden="true">1.9.</strong> アルカリホスファターゼの加水分解酵素としての働き</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/index.html"><strong aria-hidden="true">2.</strong> 第2章 Internal GUI の使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/loadmol.html"><strong aria-hidden="true">2.1.</strong> 分子構造のロード</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/load_file.html"><strong aria-hidden="true">2.1.1.</strong> 構造ファイルのロード</a></li><li class="chapter-item expanded "><a href="../ch02/load_supformat.html"><strong aria-hidden="true">2.1.2.</strong> サポートしている構造ファイル形式</a></li><li class="chapter-item expanded "><a href="../ch02/load_biol_unit.html"><strong aria-hidden="true">2.1.3.</strong> Biological Unitを考慮した分子構造のロード</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/dispseq.html"><strong aria-hidden="true">2.2.</strong> 配列の表示</a></li><li class="chapter-item expanded "><a href="../ch02/objpanel.html"><strong aria-hidden="true">2.3.</strong> オブジェクトパネル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/showandhide.html"><strong aria-hidden="true">2.3.1.</strong> 分子構造の表示形式のON/OFF (Show and Hide)</a></li><li class="chapter-item expanded "><a href="../ch02/label.html"><strong aria-hidden="true">2.3.2.</strong> ラベルの設定(Label)</a></li><li class="chapter-item expanded "><a href="../ch02/color.html"><strong aria-hidden="true">2.3.3.</strong> 色の設定(Color)</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/mouse.html"><strong aria-hidden="true">2.4.</strong> マウス操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/buttonmode.html"><strong aria-hidden="true">2.4.1.</strong> 操作モード</a></li><li class="chapter-item expanded "><a href="../ch02/buttontable.html"><strong aria-hidden="true">2.4.2.</strong> 各モードにおける操作一覧</a></li><li class="chapter-item expanded "><a href="../ch02/buttonaction.html"><strong aria-hidden="true">2.4.3.</strong> 操作の詳細</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/session.html"><strong aria-hidden="true">2.5.</strong> セッションの保存</a></li><li class="chapter-item expanded "><a href="../ch02/export.html"><strong aria-hidden="true">2.6.</strong> 構造ファイルのエクスポート</a></li><li class="chapter-item expanded "><a href="../ch02/saveimage.html"><strong aria-hidden="true">2.7.</strong> 画像の保存</a></li></ol></li><li class="chapter-item expanded "><a href="../ch03/index.html"><strong aria-hidden="true">3.</strong> 第3章 External GUIの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch03/file.html"><strong aria-hidden="true">3.1.</strong> File</a></li><li class="chapter-item expanded "><a href="../ch03/edit.html"><strong aria-hidden="true">3.2.</strong> Edit</a></li><li class="chapter-item expanded "><a href="../ch03/build.html"><strong aria-hidden="true">3.3.</strong> Build</a></li><li class="chapter-item expanded "><a href="../ch03/movie.html"><strong aria-hidden="true">3.4.</strong> Movie</a></li><li class="chapter-item expanded "><a href="../ch03/display.html"><strong aria-hidden="true">3.5.</strong> Display</a></li><li class="chapter-item expanded "><a href="../ch03/setting.html"><strong aria-hidden="true">3.6.</strong> Setting</a></li><li class="chapter-item expanded "><a href="../ch03/scene.html"><strong aria-hidden="true">3.7.</strong> Scene</a></li><li class="chapter-item expanded "><a href="../ch03/mouse.html"><strong aria-hidden="true">3.8.</strong> Mouse</a></li><li class="chapter-item expanded "><a href="../ch03/wizard.html"><strong aria-hidden="true">3.9.</strong> Wizard</a></li><li class="chapter-item expanded "><a href="../ch03/plugin.html"><strong aria-hidden="true">3.10.</strong> Plugin</a></li><li class="chapter-item expanded "><a href="../ch03/help.html"><strong aria-hidden="true">3.11.</strong> help</a></li></ol></li><li class="chapter-item expanded "><a href="../ch04/index.html"><strong aria-hidden="true">4.</strong> 第4章 コマンドラインの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch04/cmd_load.html"><strong aria-hidden="true">4.1.</strong> 分子構造のロード</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_save.html"><strong aria-hidden="true">4.2.</strong> 保存</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_showandhide.html"><strong aria-hidden="true">4.3.</strong> 分子構造の表示形式のON/OFF</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_super.html"><strong aria-hidden="true">4.4.</strong> オブジェクトの重ね合わせ</a></li></ol></li><li class="chapter-item expanded "><a href="../ch05/index.html"><strong aria-hidden="true">5.</strong> 第5章 PyMOL の様々な機能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch05/xtal_elecmap.html"><strong aria-hidden="true">5.1.</strong> 結晶構造の電子密度マップを表示する</a></li><li class="chapter-item expanded "><a href="../ch05/apbs.html"><strong aria-hidden="true">5.2.</strong> APBSプラグインを使った表面電荷表示</a></li><li class="chapter-item expanded "><a href="../ch05/movieschool.html"><strong aria-hidden="true">5.3.</strong> 動画の作成方法</a></li><li class="chapter-item expanded "><a href="../ch05/preset.html"><strong aria-hidden="true">5.4.</strong> 表示形式のプリセット</a></li><li class="chapter-item expanded "><a href="../ch05/gaussian.html"><strong aria-hidden="true">5.5.</strong> Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></li><li class="chapter-item expanded "><a href="../ch05/python_on_pymol.html"><strong aria-hidden="true">5.6.</strong> PyMOL上でのpythonスクリプトの実行</a></li><li class="chapter-item expanded "><a href="../ch05/importpymol.html"><strong aria-hidden="true">5.7.</strong> Pythonからpymolモジュールをimportして使う</a></li></ol></li><li class="chapter-item expanded "><a href="../ch06/index.html"><strong aria-hidden="true">6.</strong> 第6章 プラグインを使う</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch06/installation.html"><strong aria-hidden="true">6.1.</strong> プラグインのインストール方法</a></li><li class="chapter-item expanded "><a href="../ch06/dssp.html"><strong aria-hidden="true">6.2.</strong> DSSPプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/pyvol.html"><strong aria-hidden="true">6.3.</strong> PyVOL GUIプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/plddt.html"><strong aria-hidden="true">6.4.</strong> pLDDTカラーリングプラグイン</a></li></ol></li><li class="chapter-item expanded "><a href="../append01/index.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../append01/installation.html"><strong aria-hidden="true">7.1.</strong> インストール方法</a></li><li class="chapter-item expanded "><a href="../append01/term.html"><strong aria-hidden="true">7.2.</strong> 用語</a></li><li class="chapter-item expanded "><a href="../append01/selealgebra.html"><strong aria-hidden="true">7.3.</strong> 選択範囲の文法と演算子</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">pymol-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="大腸菌由来アルカリホスファターゼのグラフィック表示"><a class="header" href="#大腸菌由来アルカリホスファターゼのグラフィック表示">大腸菌由来アルカリホスファターゼのグラフィック表示</a></h2>
+<p>PyMOLを起動した後、画面左上にある<code>File</code>メニューから<code>Open...</code>を選び、先程デスクトップに移動させた<code>1alk.pdb</code>ファイルを選択します。すると、PyMOL画面の中にPDB ID: 1ALKの<strong>大腸菌由来アルカリホスファターゼ</strong>が表示されます。</p>
+<img src="./image/graphic1.png" width="100%" alt="PDB ID: 1ALKの大腸菌由来アルカリホスファターゼの図" title="PDB ID: 1ALKの大腸菌由来アルカリホスファターゼの図">
+<p>このチュートリアルではPyMOLのGUI機能を駆使して、アルカリホスファターゼの2次構造の配置（フォールド）や、リン酸付近の原子・残基の配置などを調べてみます。必要に応じて<a href="../ch02/index.html">第2章 PyMOLのGUIの使い方</a>の<a href="../ch02/mouse.html">マウス操作</a> とMouse Mode: <a href="../ch02/buttontable.html">3-Button Viewing</a> を読みます。マウスで分子をドラッグすることで、分子の回転、平行移動、拡大縮小などが行うことができます。</p>
+<p>PyMOLでは、まずマウス(または<code>select</code>コマンド)で原子やアミノ酸を<strong>選択(select)</strong> し、続いて選択した範囲に対する <strong>操作(Action)</strong> を指定します。選択された部分はピンクのマーカーで強調されるので、今何が「選択」されているかに常に注意します。また、<strong>操作のやり直しはできない</strong>ので、操作を間違えた場合にはその都度それを上書きする形で表示をやり直します。</p>
+<img src="./image/graphic2.png" width="100%" alt="1ALKのAチェインを選択したときの図。ピンクのマーカーで覆われているのがAチェイン。配列の上でもハイライトされていることに留意しよう。" title="1ALKのAチェインを選択したときの図。ピンクのマーカーで覆われているのがAチェイン。配列の上でもハイライトされていることに留意しよう。">
+<h3 id="チェインごとの色分け"><a class="header" href="#チェインごとの色分け">チェインごとの色分け</a></h3>
+<p>このアルカリホスファターゼがホモ2量体であることをわかりやすく表示するために、Aチェインを緑色（デフォルト）、Bチェインを水色（cyan）で表示してみます。PyMOL右下の画面に<code>S</code>という小さなボタンがあるので、ここを押すと、タンパク質が表示されている画面の上にアミノ酸配列が現れます（参考： <a href="../ch02/dispseq.html">配列の表示について</a> ）。</p>
+<img src="./image/colorchain.png" alt="チェインごとの色分け">
+<p>今表示されたアミノ酸配列の上で、マウスを使ってチェインBをすべて選択します。次に、色の設定を参考にしてチェインBを水色に変更します（参考：<a href="../ch02/color.html">色の設定</a> ）。</p>
+<p>※ PyMOLの画面上に存在する入力欄<code>PyMOL&gt; </code>の所（中段上と一番下の2ヶ所に存在しますが、どちらに入力してもOK）で上や下の矢印キーを押すと、それまでに入力したコマンドを再び呼び出すことができます。また左右の矢印キーを使って、以前使ったコマンドを自由に編集できます。同じコマンドを何度も入力するのは面倒なので、上下左右の矢印キーを上手に使いましょう。</p>
+<h3 id="二次構造ごとの色分け"><a class="header" href="#二次構造ごとの色分け">二次構造ごとの色分け</a></h3>
+<p>この大腸菌アルカリホスファターゼを、今度は二次構造による色分けを使って表示してみます（参考： <a href="../ch02/color.html">色の設定について</a> ）。</p>
+<p>オブジェクトパネルにおける<code>1ALK</code>のCのところをクリックし、Colorのメニューのところで、[by ss]にマウスを重ねます。色分けの種類はデフォルトで3種類用意されており、どれを使っても問題ありませんが、ここでは一番上の例（ヘリックス:赤; シート:黄; ループ:緑）のカラーリングで表示してみます。</p>
+<img src="./image/colorbyss1.png" alt="" title="">
+<p>このように表示されるはずです。</p>
+<img src="./image/colorbyss2.png" alt="" title="">
+<p>ここで、大腸菌アルカリホスファターゼの立体構造のCATHによる分類は、&quot;Alpha Beta 3-Layer(aba) Sandwich&quot;とされています。Cartoon表示で見る角度を調節して、このタンパク質の立体構造がCATHの分類通りにAlpha Betaの3層構造を形成していることを確認してみましょう。</p>
+<h3 id="画像の保存"><a class="header" href="#画像の保存">画像の保存</a></h3>
+<p>画面に映されているタンパク質を画像ファイルとして保存します。ただし、そのまま保存しようとすると背景が黒のままとなってしまいます。</p>
+<img src="./image/saveimage1.png" alt="黒背景のままの保存">
+<p>これを白背景で出力します。上部のDisplay &gt; Backgroundメニューから、Whiteを選択します。</p>
+<img src="./image/saveimage2.png" alt="白背景">
+<p>この設定の後、PyMOL画面の右上に存在するDraw/Rayボタンを押し、<code>Draw (fast)</code>または<code>Ray (slow)</code>ボタンを押すと、きれいな画像となって表示されます。</p>
+<img src="../ch02/image/saveimage/saveimage5.png" alt="白背景" width="60%">
+<p>問題がなければ、<code>Save Image to File</code>ボタンを押し、ファイル名を設定して保存しましょう。ちなみに、<code>transparent background</code>にチェックを入れると背景透過画像を生成することができます（ただし<code>Ray (slow)</code>を適用した場合のみ）。背景透過処理を行うとレポートやスライドの上で扱いやすくなるので、ぜひ利用しましょう。</p>
+<p>その他の詳しい項目については<a href="../ch02/saveimage.html">2.7 画像の保存</a>を参照してください。</p>
+<h3 id="セッションファイルへの保存"><a class="header" href="#セッションファイルへの保存">セッションファイルへの保存</a></h3>
+<p>ここまでの作業内容をセッションファイルに保存します。セッションファイルとは、現在のPyMOLの画面の状態をそのまま保存しておくファイルのことです。画面上部にあるFileメニューから<code>Save session as…</code>を選んで名前を指定して保存します(<code>kadai1.pse</code>など、わかりやすい名前をつけましょう)。（参考：<a href="../ch02/session.html">セッションの保存</a> ）。</p>
+<img src="./image/savesession.png" width="300px" alt="セッションファイルへの保存">
+<p>保存したセッションファイルはFile &gt; Openメニューから読み込むことができます。</p>
+<img src="./image/fileopen.png" width="300px" alt="ファイルを開く">
+<p>すでにタンパク質を他に表示させている状態でセッションファイルを読み込もうとすると下図のようなメッセージが現れますが、今開いている画面と別のPyMOL画面でタンパク質を表示させたい場合は、一番下の<code>Open in new PyMOL Window</code>を選択することをおすすめします。</p>
+<img src="./image/loadsession.png" width="300px" alt="セッションを開く時のプロンプト画面">
+<p>※ （上級者向け）上述の<code>PyMOL&gt; </code>の入力欄にコマンドを入力することでも可能です。デスクトップ上に保存したい場合は、<code>cd ~/Desktop</code>としてWorking Directoryをデスクトップに設定した後、<code>save kadai1.pse</code>とすることでセッションファイルを保存できます。</p>
+<h3 id="リガンド結合部位への注目"><a class="header" href="#リガンド結合部位への注目">リガンド結合部位への注目</a></h3>
+<p>ここから、タンパク質内の<strong>リン酸や金属が結合している部分</strong>に注目してみます。まず、全体構造の中のどこに結合しているかを確認してみます。</p>
+<ul>
+<li>PyMOL内で<a href="../ch02/dispseq.html">配列を表示</a>させます。</li>
+<li>表示された配列のところで、Chain Aの<code>ZN</code>2つと<code>MG</code>,<code>PO4</code>をすべて<strong>選択</strong>します。</li>
+<li>次に、<a href="../ch02/objpanel.html">オブジェクトパネル</a>においてその選択範囲<code>(sele)</code>についてStickとSpheresで表示させてみます（→<a href="../ch02/showandhide.html">分子構造の表示形式のON/OFF</a>）。</li>
+</ul>
+<img src="./image/focus1.png" width="100%" alt="" title="">
+<p>デフォルト設定では、sphere表示で表されるボールがかなり大きくなっているので、ここではいったん小さくしてみます。これは<code>PyMOL &gt;</code>のところにコマンドを打つことで設定できます。</p>
+<pre><code>set sphere_scale, 0.4
+</code></pre>
+<p>これで球が小さく表示されました。</p>
+<img src="./image/focus2.png" width="100%" alt="" title="">
+<p>ここで、表示をチェインA（A鎖）だけにし、Bチェインはhideで隠します（→<a href="../ch02/showandhide.html">分子構造の表示形式のON/OFF</a>）。リン酸や金属は各チェインに1組ずつ結合していることがわかります。</p>
+<img src="./image/focus3.png" width="100%" alt="" title="">
+<p>チェインAのリン酸(<code>PO4</code>)が画面の中心にくるよう設定してみます。これはこの<code>PO4</code>を選択した上で右クリックを押してメニューを表示させ、<code>center</code>を選択することでできます。
+参考：<a href="../ch02/mouse.html">マウス操作</a>と<a href="(../ch02/buttontable.html">各モードにおける操作一覧</a></p>
+<img src="./image/focus4.png" width="100%" alt="" title="">
+<p>マウス操作で、画面を拡大して見やすくしておきます。</p>
+<p>タンパク質のCartoon表示をオフにします（→<a href="../ch02/showandhide.html">分子構造の表示形式のON/OFF</a>）。</p>
+<p>チェインAのリン酸から4.6 Å以内にある水分子以外のアミノ酸残基を表示させます。チェインAのリン酸<code>PO4</code>だけが選択された状態で以下のコマンドを打ちます。</p>
+<pre><code>select byres resn * within 4.6 of sele
+show sticks, sele
+</code></pre>
+<p>ここで、<code>byres</code>は「残基単位での選択」を意味する設定であり、とある残基が1原子でもリン酸から4.6 Åの距離以内に存在するのであれば、その残基をすべて選択するようにしています。その後、2行目のコマンドで選択した範囲を<code>sticks</code>で表示させます（オブジェクトパネルでも可能）</p>
+<p>Zn，Mgは原子種ごとの色分け（→<a href="../ch02/color.html">色の設定</a>）にします。</p>
+<p>リン酸付近にどのようなアミノ酸種が分布しているかを確認するために、先程の選択範囲<code>(sele)</code>について、<a href="../ch02/label.html">ラベルの設定</a>で<code>label</code> -&gt; <code>residues</code>を選択します。</p>
+<img src="./image/focus5.png" width="100%" alt="" title="">
+<p>PyMOL画面を回転させて、どのアミノ酸がこのリガンド結合部位に存在しているかをすべてメモします。目視で行っても構いませんが、ここではPyMOLがPythonプログラミングで動いているということを利用して、以下のコマンドを入力して確認してみましょう。</p>
+<p>コマンド入力欄に以下のコマンドを順次入れていきます（コピー＆ペースト可能）。</p>
+<pre><code class="language-python"># チェインAのリン酸を選択する(残基名がPO4でかつchain Aのものをselectする)
+select resn PO4 and chain A
+# 現在の選択範囲から4.6Å以内にある分子を、残基単位(byres)ですべて選択する
+select byres resn * within 4.6 of sele
+
+# ここで空の配列であるreslistを作成しておく（初期化）
+reslist = []
+# pymolのiterateコマンドを用いて、選択範囲(sele)に存在するCα炭素(name CA)について
+# (residue_id, residue_name)のタプルをreslistに繰り返し加えていく
+iterate sele and name CA, reslist.append((resi, resn))
+# reslistを表示する
+print(reslist)
+</code></pre>
+<p>ここまでうまく入力されていれば、最後に以下のように結果が表示されるはずです。</p>
+<pre><code>PyMOL&gt; print(reslist)
+[('51', 'ASP'), ('101', 'ASP'), ('102', 'SER'), ('153', 'ASP'), ('166', 'ARG'), ('327', 'ASP'), ('331', 'HIS'), ('369', 'ASP'), ('370', 'HIS'), ('412', 'HIS')]
+</code></pre>
+<p>これはpythonで言うところの、リスト型変数<code>reslist</code>の中にタプル型で（残基番号, 3文字残基名）の組が入っている形になっています。</p>
+<p>これをよく生物学の表示で使われるようなMET-1, ASP-2のような表示に変換したい場合は、pythonのprint文を知識を使って例えば以下のようにpythonプログラムを書けばうまく出力することができます。ただし、PyMOLのコマンドラインでpythonプログラムを書く場合は<code>python</code>と<code>python end</code>というブロックの間に挟む必要があります。（参考： https://pymolwiki.org/index.php/Python ）</p>
+<pre><code class="language-python">python
+# リスト内のタプルをi, jに代入するfor loop
+for i, j in reslist:
+    # print&amp;format文法を使って&quot;{residue_name}-{residue_id}&quot;の順番で表示する
+	print(&quot;{0}-{1}&quot;.format(j, i))
+
+python end
+</code></pre>
+<p>すると、以下のように表示されます。</p>
+<pre><code>PyMOL&gt;python end
+
+ASP-51
+ASP-101
+SER-102
+ASP-153
+ARG-166
+ASP-327
+HIS-331
+ASP-369
+HIS-370
+HIS-412
+</code></pre>
+<p>こうすれば目視でやるより書き漏らしがなくて済みますね。</p>
+<p>終わったら、再び現在までの作業内容をセッションファイルに保存しておきます。ファイル名はたとえば<code>1alk_active_site.pse</code>などとしておくと分かりやすくて良いでしょう。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ch01/launchpymol.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../ch01/colorbychain.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../ch01/launchpymol.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../ch01/colorbychain.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

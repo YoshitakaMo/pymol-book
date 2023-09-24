@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>表示形式のプリセット - pymol-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">TOP</a></li><li class="chapter-item expanded "><a href="../ch01/index.html"><strong aria-hidden="true">1.</strong> 第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/objective.html"><strong aria-hidden="true">1.1.</strong> 目的</a></li><li class="chapter-item expanded "><a href="../ch01/accesspdb.html"><strong aria-hidden="true">1.2.</strong> Protein Data Bank (PDB)にアクセスする</a></li><li class="chapter-item expanded "><a href="../ch01/download.html"><strong aria-hidden="true">1.3.</strong> PDB データのダウンロード</a></li><li class="chapter-item expanded "><a href="../ch01/launchpymol.html"><strong aria-hidden="true">1.4.</strong> PyMOL の起動</a></li><li class="chapter-item expanded "><a href="../ch01/displaypdb.html"><strong aria-hidden="true">1.5.</strong> 大腸菌由来アルカリホスファターゼのグラフィック表示</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/colorbychain.html"><strong aria-hidden="true">1.5.1.</strong> チェインごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/colorbyss.html"><strong aria-hidden="true">1.5.2.</strong> 二次構造ごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/saveimage.html"><strong aria-hidden="true">1.5.3.</strong> 画像の保存</a></li><li class="chapter-item expanded "><a href="../ch01/savesessionfile.html"><strong aria-hidden="true">1.5.4.</strong> セッションファイルへの保存</a></li><li class="chapter-item expanded "><a href="../ch01/focusbindingsite.html"><strong aria-hidden="true">1.5.5.</strong> リガンド結合部位への注目</a></li></ol></li><li class="chapter-item expanded "><a href="../ch01/humanalp.html"><strong aria-hidden="true">1.6.</strong> ヒトアルカリホスファターゼとの構造比較</a></li><li class="chapter-item expanded "><a href="../ch01/hydrophobicity.html"><strong aria-hidden="true">1.7.</strong> タンパク質の疎水性・親水性残基の分布を確認する</a></li><li class="chapter-item expanded "><a href="../ch01/conservation.html"><strong aria-hidden="true">1.8.</strong> タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a></li><li class="chapter-item expanded "><a href="../ch01/qmmm.html"><strong aria-hidden="true">1.9.</strong> アルカリホスファターゼの加水分解酵素としての働き</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/index.html"><strong aria-hidden="true">2.</strong> 第2章 Internal GUI の使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/loadmol.html"><strong aria-hidden="true">2.1.</strong> 分子構造のロード</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/load_file.html"><strong aria-hidden="true">2.1.1.</strong> 構造ファイルのロード</a></li><li class="chapter-item expanded "><a href="../ch02/load_supformat.html"><strong aria-hidden="true">2.1.2.</strong> サポートしている構造ファイル形式</a></li><li class="chapter-item expanded "><a href="../ch02/load_biol_unit.html"><strong aria-hidden="true">2.1.3.</strong> Biological Unitを考慮した分子構造のロード</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/dispseq.html"><strong aria-hidden="true">2.2.</strong> 配列の表示</a></li><li class="chapter-item expanded "><a href="../ch02/objpanel.html"><strong aria-hidden="true">2.3.</strong> オブジェクトパネル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/showandhide.html"><strong aria-hidden="true">2.3.1.</strong> 分子構造の表示形式のON/OFF (Show and Hide)</a></li><li class="chapter-item expanded "><a href="../ch02/label.html"><strong aria-hidden="true">2.3.2.</strong> ラベルの設定(Label)</a></li><li class="chapter-item expanded "><a href="../ch02/color.html"><strong aria-hidden="true">2.3.3.</strong> 色の設定(Color)</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/mouse.html"><strong aria-hidden="true">2.4.</strong> マウス操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/buttonmode.html"><strong aria-hidden="true">2.4.1.</strong> 操作モード</a></li><li class="chapter-item expanded "><a href="../ch02/buttontable.html"><strong aria-hidden="true">2.4.2.</strong> 各モードにおける操作一覧</a></li><li class="chapter-item expanded "><a href="../ch02/buttonaction.html"><strong aria-hidden="true">2.4.3.</strong> 操作の詳細</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/session.html"><strong aria-hidden="true">2.5.</strong> セッションの保存</a></li><li class="chapter-item expanded "><a href="../ch02/export.html"><strong aria-hidden="true">2.6.</strong> 構造ファイルのエクスポート</a></li><li class="chapter-item expanded "><a href="../ch02/saveimage.html"><strong aria-hidden="true">2.7.</strong> 画像の保存</a></li></ol></li><li class="chapter-item expanded "><a href="../ch03/index.html"><strong aria-hidden="true">3.</strong> 第3章 External GUIの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch03/file.html"><strong aria-hidden="true">3.1.</strong> File</a></li><li class="chapter-item expanded "><a href="../ch03/edit.html"><strong aria-hidden="true">3.2.</strong> Edit</a></li><li class="chapter-item expanded "><a href="../ch03/build.html"><strong aria-hidden="true">3.3.</strong> Build</a></li><li class="chapter-item expanded "><a href="../ch03/movie.html"><strong aria-hidden="true">3.4.</strong> Movie</a></li><li class="chapter-item expanded "><a href="../ch03/display.html"><strong aria-hidden="true">3.5.</strong> Display</a></li><li class="chapter-item expanded "><a href="../ch03/setting.html"><strong aria-hidden="true">3.6.</strong> Setting</a></li><li class="chapter-item expanded "><a href="../ch03/scene.html"><strong aria-hidden="true">3.7.</strong> Scene</a></li><li class="chapter-item expanded "><a href="../ch03/mouse.html"><strong aria-hidden="true">3.8.</strong> Mouse</a></li><li class="chapter-item expanded "><a href="../ch03/wizard.html"><strong aria-hidden="true">3.9.</strong> Wizard</a></li><li class="chapter-item expanded "><a href="../ch03/plugin.html"><strong aria-hidden="true">3.10.</strong> Plugin</a></li><li class="chapter-item expanded "><a href="../ch03/help.html"><strong aria-hidden="true">3.11.</strong> help</a></li></ol></li><li class="chapter-item expanded "><a href="../ch04/index.html"><strong aria-hidden="true">4.</strong> 第4章 コマンドラインの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch04/cmd_load.html"><strong aria-hidden="true">4.1.</strong> 分子構造のロード</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_save.html"><strong aria-hidden="true">4.2.</strong> 保存</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_showandhide.html"><strong aria-hidden="true">4.3.</strong> 分子構造の表示形式のON/OFF</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_super.html"><strong aria-hidden="true">4.4.</strong> オブジェクトの重ね合わせ</a></li></ol></li><li class="chapter-item expanded "><a href="../ch05/index.html"><strong aria-hidden="true">5.</strong> 第5章 PyMOL の様々な機能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch05/xtal_elecmap.html"><strong aria-hidden="true">5.1.</strong> 結晶構造の電子密度マップを表示する</a></li><li class="chapter-item expanded "><a href="../ch05/apbs.html"><strong aria-hidden="true">5.2.</strong> APBSプラグインを使った表面電荷表示</a></li><li class="chapter-item expanded "><a href="../ch05/movieschool.html"><strong aria-hidden="true">5.3.</strong> 動画の作成方法</a></li><li class="chapter-item expanded "><a href="../ch05/preset.html" class="active"><strong aria-hidden="true">5.4.</strong> 表示形式のプリセット</a></li><li class="chapter-item expanded "><a href="../ch05/gaussian.html"><strong aria-hidden="true">5.5.</strong> Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></li><li class="chapter-item expanded "><a href="../ch05/python_on_pymol.html"><strong aria-hidden="true">5.6.</strong> PyMOL上でのpythonスクリプトの実行</a></li><li class="chapter-item expanded "><a href="../ch05/importpymol.html"><strong aria-hidden="true">5.7.</strong> Pythonからpymolモジュールをimportして使う</a></li></ol></li><li class="chapter-item expanded "><a href="../ch06/index.html"><strong aria-hidden="true">6.</strong> 第6章 プラグインを使う</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch06/installation.html"><strong aria-hidden="true">6.1.</strong> プラグインのインストール方法</a></li><li class="chapter-item expanded "><a href="../ch06/dssp.html"><strong aria-hidden="true">6.2.</strong> DSSPプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/pyvol.html"><strong aria-hidden="true">6.3.</strong> PyVOL GUIプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/plddt.html"><strong aria-hidden="true">6.4.</strong> pLDDTカラーリングプラグイン</a></li></ol></li><li class="chapter-item expanded "><a href="../append01/index.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../append01/installation.html"><strong aria-hidden="true">7.1.</strong> インストール方法</a></li><li class="chapter-item expanded "><a href="../append01/term.html"><strong aria-hidden="true">7.2.</strong> 用語</a></li><li class="chapter-item expanded "><a href="../append01/selealgebra.html"><strong aria-hidden="true">7.3.</strong> 選択範囲の文法と演算子</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">pymol-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="表示形式のプリセット"><a class="header" href="#表示形式のプリセット">表示形式のプリセット</a></h2>
+<p>PyMOLのオブジェクトパネルのAボタンの中には<code>preset</code>と言うメニューがあります。これを使うと、様々な表示形式に一発で変換できます。</p>
+<img src="./image/preset/menu.png" width="60%" title="">
+<ul>
+<li>classified</li>
+<li>simple</li>
+<li>simple (no solvent)</li>
+<li>ball and stick</li>
+<li>b factor putty</li>
+<li>technical</li>
+<li>ligands</li>
+<li>ligand sites
+<ul>
+<li>cartoon</li>
+<li>solid surface</li>
+<li>solid (better)</li>
+<li>transparent surface</li>
+<li>transparent (better)</li>
+<li>dot surface</li>
+<li>mesh surface</li>
+</ul>
+</li>
+<li>pretty</li>
+<li>pretty (with solvent)</li>
+<li>publication</li>
+<li>publication (with solvent)</li>
+<li>protein interface</li>
+<li>default</li>
+<li>hydropathy</li>
+</ul>
+<p>以上のプリセットが用意されています（ver. 2.5.0 時点）。</p>
+<p>このプリセットが選択された時、内部処理的には一度デフォルト形式である<code>classified</code>を設定してから選択されたプリセットの描画設定を上書きしていく形で適用しています。ただし<code>pymolrc</code>に書かれたいくつかの設定値（<code>transparency</code>, <code>surface_quality</code>, <code>surface_type</code>, <code>sphere_scale</code>, <code>stick_radius</code>, <code>stick_color</code>, <code>cartoon_highlight_color</code>, <code>cartoon_fancy_helices</code>, <code>cartoon_smooth_loops</code>, <code>cartoon_flat_sheets</code>, <code>cartoon_side_chain_helper</code>など）は<code>auto_show_classified</code>としてPyMOL起動時に記憶され、<code>classified</code>は描画形式以外この値を利用します。</p>
+<p>プリセットの定義は、<code>modules/pymol/preset.py</code> の中に書かれてあります。 https://github.com/schrodinger/pymol-open-source/blob/master/modules/pymol/preset.py も参考にすると良いでしょう。</p>
+<p>ここではギャラリー風に紹介していきます。</p>
+<h3 id="classified"><a class="header" href="#classified">classified</a></h3>
+<p>現在PyMOLのデフォルト設定に最も近い描画形式です。タンパク質構造はCartoon表示、リガンドはSphere表示です。デフォルト設定との細かな違いとして、水分子がwire-nonbonded表示されないなどが挙げられますが、<strong>デフォルトの描画設定に戻したいときはこの設定を呼び出すと良いでしょう</strong>。</p>
+<p>ただし、色設定は変化しないため、手動で戻す必要があります。</p>
+<p><img src="./image/preset/classified.png" width="50%" alt="classified" title="classified"><img src="./image/preset/classified2.png" width="50%" alt="classified" title="classified"></p>
+<p>コマンドで行いたい場合は、以下の<code>objectname</code>部分をオブジェクト名に変えて実行します（例: 1ALK）。以下同様。</p>
+<blockquote>
+<p>preset.classified(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="simple"><a class="header" href="#simple">simple</a></h3>
+<p>タンパク質構造は主鎖だけをシンプルに表示するribbon表示、リガンドはStick表示になります。また、チェインごとに自動で色分けがなされます。</p>
+<p><img src="./image/preset/simple.png" width="50%" alt="simple" title="simple"><img src="./image/preset/simple2.png" width="50%" alt="simple" title="simple"></p>
+<blockquote>
+<p>preset.simple(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="simple-no-solvent"><a class="header" href="#simple-no-solvent">simple (no solvent)</a></h3>
+<p>上記simple表示について、溶媒の表示がなくなったものです。</p>
+<p><img src="./image/preset/simplenos.png" width="50%" alt="simple" title="simple"><img src="./image/preset/simplenos2.png" width="50%" alt="simple" title="simple"></p>
+<blockquote>
+<p>preset.simple_no_solv(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="ball-and-stick"><a class="header" href="#ball-and-stick">ball and stick</a></h3>
+<p>各原子を小さめのボールで表し、結合を白色のスティックで表示します。色分けは変化しません。</p>
+<p><img src="./image/preset/bs.png" width="50%" alt="ball and stick" title="ball and stick"><img src="./image/preset/bs2.png" width="50%" alt="ball and stick" title="ball and stick"></p>
+<blockquote>
+<p>preset.ball_and_stick(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="b-factor-putty"><a class="header" href="#b-factor-putty">b factor putty</a></h3>
+<p>温度因子であるB factorをもとに色付けし、さらに温度因子が大きいほど太くチューブ状に表示します。温度因子は青色ほど低く、赤色ほど高くなっています。この表示では主鎖構造のみが表示されます。</p>
+<p><img src="./image/preset/bfactor.png" width="50%" alt="B factor putty" title="B factor putty"><img src="./image/preset/bfactor2.png" width="50%" alt="B factor putty" title="B factor putty"></p>
+<blockquote>
+<p>preset.b_factor_putty(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="technical"><a class="header" href="#technical">technical</a></h3>
+<p>各チェインのN末端からC末端にかけて青色→赤色となるようなRainbowカラーリングが適用されます。また、水素結合が自動的に検出され、<code>&lt;objectname&gt;_pol_conts</code>というオブジェクトが生成されます。水素結合を表示させたくない場合はオブジェクトパネル上でこの<code>&lt;objectname&gt;_pol_conts</code>の表示をOFFにすればOKです。</p>
+<p><img src="./image/preset/technical.png" width="50%" alt="technical" title="technical"><img src="./image/preset/technical2.png" width="50%" alt="technical" title="technical"></p>
+<blockquote>
+<p>preset.technical(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="ligands"><a class="header" href="#ligands">ligands</a></h3>
+<p>上述のRainbowカラーリングが施され、基本的には主鎖構造のみのribbon表示になりますが、リガンドから一定範囲のみ側鎖を含んだline表示が行われ、リガンドへの水素結合自動検出処理が行われます。</p>
+<p>カメラもそのリガンド周辺にズームしてくれますが、リガンドが複数ある場合はそれらの中間にカメラを合わせてしまうようです。</p>
+<p><img src="./image/preset/ligands.png" width="50%" alt="ligands" title="ligands"><img src="./image/preset/ligands2.png" width="50%" alt="ligands" title="ligands"></p>
+<blockquote>
+<p>preset.ligands(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="ligand-sites"><a class="header" href="#ligand-sites">ligand sites</a></h3>
+<p>上記ligands設定の拡張版と言えます。様々な表示形式が用意されています。いずれのプリセットでも水素結合を検出し、<code>&lt;objectname&gt;_pol_conts</code>というオブジェクトを生成します。</p>
+<h4 id="cartoon"><a class="header" href="#cartoon">Cartoon</a></h4>
+<p>タンパク質をCartoon表示のままRainbowカラーリング、リガンドをStick表示で、周辺の一定範囲のみline表示にします。</p>
+<p><img src="./image/preset/ligcartoon.png" width="50%" alt="ligcartoon" title="ligcartoon"><img src="./image/preset/ligcartoon2.png" width="50%" alt="ligcartoon" title="ligcartoon"></p>
+<blockquote>
+<p>preset.ligand_cartoon(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="solid-surface"><a class="header" href="#solid-surface">solid surface</a></h4>
+<p>タンパク質をribbon表示, Rainbowカラーリング, リガンドをStick表示, 周辺の一定範囲のみsurface表示にします。</p>
+<p><img src="./image/preset/solsurf.png" width="50%" alt="solid surface" title="solid surface"><img src="./image/preset/solsurf2.png" width="50%" alt="solid surface2" title="solid surface2"></p>
+<blockquote>
+<p>preset.ligand_sites(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="solid-better"><a class="header" href="#solid-better">solid (better)</a></h4>
+<p>上記solid surfaceプリセット表示のsurfaceクオリティが上がったものです。設定としては<code>set surface_quality, 1</code>を追加しています。</p>
+<p><img src="./image/preset/solbetter.png" width="50%" alt="solid (better)" title="solid (better)"><img src="./image/preset/solbetter2.png" width="50%" alt="solid (better)" title="solid (better)"></p>
+<blockquote>
+<p>preset.ligand_sites_hq(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="transparent-surface"><a class="header" href="#transparent-surface">transparent surface</a></h4>
+<p>上記solid surfaceの透明度を上げ(<code>set transparency, 0.33</code>)、周辺の残基をstick表示にしたものです。</p>
+<p><img src="./image/preset/transsurf.png" width="50%" alt="transparent surface" title="transparent surface"><img src="./image/preset/transsurf2.png" width="50%" alt="transparent surface" title="transparent surface"></p>
+<blockquote>
+<p>preset.ligand_sites_trans(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="transparent-better"><a class="header" href="#transparent-better">transparent (better)</a></h4>
+<p>上記transparent surfaceプリセット表示のsurfaceクオリティが上がったものです。設定としては<code>set surface_quality, 1</code>を追加しています。</p>
+<p><img src="./image/preset/transbetter.png" width="50%" alt="transparent (better)" title="transparent (better)"><img src="./image/preset/transbetter2.png" width="50%" alt="transparent (better)" title="transparent (better)"></p>
+<blockquote>
+<p>preset.ligand_sites_trans_hq(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="dot-surface"><a class="header" href="#dot-surface">dot surface</a></h4>
+<p>上記solid surfaceの表面表示をdotにしたものです。</p>
+<p><img src="./image/preset/dotsurface.png" width="50%" alt="dot surface" title="dot surface"><img src="./image/preset/dotsurface2.png" width="50%" alt="dot surface" title="dot surface"></p>
+<blockquote>
+<p>preset.ligand_sites_dots(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h4 id="mesh-surface"><a class="header" href="#mesh-surface">mesh surface</a></h4>
+<p>上記solid surfaceの表面表示をdotにしたものです。</p>
+<p><img src="./image/preset/meshsurface.png" width="50%" alt="mesh surface" title="mesh surface"><img src="./image/preset/meshsurface2.png" width="50%" alt="mesh surface" title="mesh surface"></p>
+<blockquote>
+<p>preset.ligand_sites_mesh(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="pretty"><a class="header" href="#pretty">pretty</a></h3>
+<p>生体分子のレインボー表示、リガンドをstick形式で表示します。</p>
+<p><img src="./image/preset/pretty.png" width="50%" alt="pretty" title="pretty"><img src="./image/preset/pretty2.png" width="50%" alt="pretty" title="pretty"></p>
+<blockquote>
+<p>preset.pretty(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="pretty-with-solvent"><a class="header" href="#pretty-with-solvent">pretty (with solvent)</a></h3>
+<p>上記prettyに加えて溶媒やリガンドをnb_spheres表示にします。</p>
+<p><img src="./image/preset/prettywiths.png" width="50%" alt="pretty (with solvent)" title="pretty (with solvent)"><img src="./image/preset/prettywiths2.png" width="50%" alt="pretty (with solvent)" title="pretty (with solvent)"></p>
+<blockquote>
+<p>preset.pretty_solv(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="publication"><a class="header" href="#publication">publication</a></h3>
+<p>cartoon表示において、</p>
+<ul>
+<li>ループ構造のスムージング<code>set cartoon_smooth_loops, 1</code></li>
+<li>ヘリックスやシートの内部を灰色に設定<code>set cartoon_highlight_color, grey50</code></li>
+<li>ヘリックスのファンシー化<code>set cartoon_fancy_helices, 1</code></li>
+<li>シート構造の平坦化（初期設定でON）<code>set cartoon_flat_sheets, 1</code></li>
+<li>側鎖構造のみの表示（初期設定でON）<code>set cartoon_side_chain_helper, 0</code></li>
+</ul>
+<p>を行います。</p>
+<p><img src="./image/preset/pub.png" width="50%" alt="publication" title="publication"><img src="./image/preset/pub2.png" width="50%" alt="publication" title="publication"></p>
+<blockquote>
+<p>preset.publication(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="publication-with-solvent"><a class="header" href="#publication-with-solvent">publication (with solvent)</a></h3>
+<p>上記の溶媒表示版です。</p>
+<p><img src="./image/preset/pubwiths.png" width="50%" alt="publication (with solvent)" title="publication (with solvent)"><img src="./image/preset/pubwiths2.png" width="50%" alt="publication (with solvent)" title="publication (with solvent)"></p>
+<blockquote>
+<p>preset.pub_solv(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="protein-interface"><a class="header" href="#protein-interface">protein interface</a></h3>
+<p>異なるチェインの境目から4.5 Å以内に一部でも含まれる残基をStick表示にします。</p>
+<p><img src="./image/preset/proint.png" width="50%" alt="protein interface" title="protein interface"><img src="./image/preset/proint2.png" width="50%" alt="protein interface" title="protein interface"></p>
+<blockquote>
+<p>preset.interface(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+<h3 id="default"><a class="header" href="#default">default</a></h3>
+<p>PyMOL 1時代はこのシンプルなライン表示だけの形式がデフォルト表示でした。Defaultとついていますが、現在はデフォルト設定ではなくなり、classified presetに取って替わられています。</p>
+<p><img src="./image/preset/default.png" width="50%" alt="default" title="default"><img src="./image/preset/default2.png" width="50%" alt="default" title="default"></p>
+<blockquote>
+<p>preset.default(&quot;objectname&quot;,_self=cmd)</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ch05/movieschool.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../ch05/gaussian.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../ch05/movieschool.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../ch05/gaussian.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

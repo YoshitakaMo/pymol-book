@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>選択範囲の文法と演算子 - pymol-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">TOP</a></li><li class="chapter-item expanded "><a href="../ch01/index.html"><strong aria-hidden="true">1.</strong> 第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/objective.html"><strong aria-hidden="true">1.1.</strong> 目的</a></li><li class="chapter-item expanded "><a href="../ch01/accesspdb.html"><strong aria-hidden="true">1.2.</strong> Protein Data Bank (PDB)にアクセスする</a></li><li class="chapter-item expanded "><a href="../ch01/download.html"><strong aria-hidden="true">1.3.</strong> PDB データのダウンロード</a></li><li class="chapter-item expanded "><a href="../ch01/launchpymol.html"><strong aria-hidden="true">1.4.</strong> PyMOL の起動</a></li><li class="chapter-item expanded "><a href="../ch01/displaypdb.html"><strong aria-hidden="true">1.5.</strong> 大腸菌由来アルカリホスファターゼのグラフィック表示</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/colorbychain.html"><strong aria-hidden="true">1.5.1.</strong> チェインごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/colorbyss.html"><strong aria-hidden="true">1.5.2.</strong> 二次構造ごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/saveimage.html"><strong aria-hidden="true">1.5.3.</strong> 画像の保存</a></li><li class="chapter-item expanded "><a href="../ch01/savesessionfile.html"><strong aria-hidden="true">1.5.4.</strong> セッションファイルへの保存</a></li><li class="chapter-item expanded "><a href="../ch01/focusbindingsite.html"><strong aria-hidden="true">1.5.5.</strong> リガンド結合部位への注目</a></li></ol></li><li class="chapter-item expanded "><a href="../ch01/humanalp.html"><strong aria-hidden="true">1.6.</strong> ヒトアルカリホスファターゼとの構造比較</a></li><li class="chapter-item expanded "><a href="../ch01/hydrophobicity.html"><strong aria-hidden="true">1.7.</strong> タンパク質の疎水性・親水性残基の分布を確認する</a></li><li class="chapter-item expanded "><a href="../ch01/conservation.html"><strong aria-hidden="true">1.8.</strong> タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a></li><li class="chapter-item expanded "><a href="../ch01/qmmm.html"><strong aria-hidden="true">1.9.</strong> アルカリホスファターゼの加水分解酵素としての働き</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/index.html"><strong aria-hidden="true">2.</strong> 第2章 Internal GUI の使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/loadmol.html"><strong aria-hidden="true">2.1.</strong> 分子構造のロード</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/load_file.html"><strong aria-hidden="true">2.1.1.</strong> 構造ファイルのロード</a></li><li class="chapter-item expanded "><a href="../ch02/load_supformat.html"><strong aria-hidden="true">2.1.2.</strong> サポートしている構造ファイル形式</a></li><li class="chapter-item expanded "><a href="../ch02/load_biol_unit.html"><strong aria-hidden="true">2.1.3.</strong> Biological Unitを考慮した分子構造のロード</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/dispseq.html"><strong aria-hidden="true">2.2.</strong> 配列の表示</a></li><li class="chapter-item expanded "><a href="../ch02/objpanel.html"><strong aria-hidden="true">2.3.</strong> オブジェクトパネル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/showandhide.html"><strong aria-hidden="true">2.3.1.</strong> 分子構造の表示形式のON/OFF (Show and Hide)</a></li><li class="chapter-item expanded "><a href="../ch02/label.html"><strong aria-hidden="true">2.3.2.</strong> ラベルの設定(Label)</a></li><li class="chapter-item expanded "><a href="../ch02/color.html"><strong aria-hidden="true">2.3.3.</strong> 色の設定(Color)</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/mouse.html"><strong aria-hidden="true">2.4.</strong> マウス操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/buttonmode.html"><strong aria-hidden="true">2.4.1.</strong> 操作モード</a></li><li class="chapter-item expanded "><a href="../ch02/buttontable.html"><strong aria-hidden="true">2.4.2.</strong> 各モードにおける操作一覧</a></li><li class="chapter-item expanded "><a href="../ch02/buttonaction.html"><strong aria-hidden="true">2.4.3.</strong> 操作の詳細</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/session.html"><strong aria-hidden="true">2.5.</strong> セッションの保存</a></li><li class="chapter-item expanded "><a href="../ch02/export.html"><strong aria-hidden="true">2.6.</strong> 構造ファイルのエクスポート</a></li><li class="chapter-item expanded "><a href="../ch02/saveimage.html"><strong aria-hidden="true">2.7.</strong> 画像の保存</a></li></ol></li><li class="chapter-item expanded "><a href="../ch03/index.html"><strong aria-hidden="true">3.</strong> 第3章 External GUIの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch03/file.html"><strong aria-hidden="true">3.1.</strong> File</a></li><li class="chapter-item expanded "><a href="../ch03/edit.html"><strong aria-hidden="true">3.2.</strong> Edit</a></li><li class="chapter-item expanded "><a href="../ch03/build.html"><strong aria-hidden="true">3.3.</strong> Build</a></li><li class="chapter-item expanded "><a href="../ch03/movie.html"><strong aria-hidden="true">3.4.</strong> Movie</a></li><li class="chapter-item expanded "><a href="../ch03/display.html"><strong aria-hidden="true">3.5.</strong> Display</a></li><li class="chapter-item expanded "><a href="../ch03/setting.html"><strong aria-hidden="true">3.6.</strong> Setting</a></li><li class="chapter-item expanded "><a href="../ch03/scene.html"><strong aria-hidden="true">3.7.</strong> Scene</a></li><li class="chapter-item expanded "><a href="../ch03/mouse.html"><strong aria-hidden="true">3.8.</strong> Mouse</a></li><li class="chapter-item expanded "><a href="../ch03/wizard.html"><strong aria-hidden="true">3.9.</strong> Wizard</a></li><li class="chapter-item expanded "><a href="../ch03/plugin.html"><strong aria-hidden="true">3.10.</strong> Plugin</a></li><li class="chapter-item expanded "><a href="../ch03/help.html"><strong aria-hidden="true">3.11.</strong> help</a></li></ol></li><li class="chapter-item expanded "><a href="../ch04/index.html"><strong aria-hidden="true">4.</strong> 第4章 コマンドラインの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch04/cmd_load.html"><strong aria-hidden="true">4.1.</strong> 分子構造のロード</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_save.html"><strong aria-hidden="true">4.2.</strong> 保存</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_showandhide.html"><strong aria-hidden="true">4.3.</strong> 分子構造の表示形式のON/OFF</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_super.html"><strong aria-hidden="true">4.4.</strong> オブジェクトの重ね合わせ</a></li></ol></li><li class="chapter-item expanded "><a href="../ch05/index.html"><strong aria-hidden="true">5.</strong> 第5章 PyMOL の様々な機能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch05/xtal_elecmap.html"><strong aria-hidden="true">5.1.</strong> 結晶構造の電子密度マップを表示する</a></li><li class="chapter-item expanded "><a href="../ch05/apbs.html"><strong aria-hidden="true">5.2.</strong> APBSプラグインを使った表面電荷表示</a></li><li class="chapter-item expanded "><a href="../ch05/movieschool.html"><strong aria-hidden="true">5.3.</strong> 動画の作成方法</a></li><li class="chapter-item expanded "><a href="../ch05/preset.html"><strong aria-hidden="true">5.4.</strong> 表示形式のプリセット</a></li><li class="chapter-item expanded "><a href="../ch05/gaussian.html"><strong aria-hidden="true">5.5.</strong> Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></li><li class="chapter-item expanded "><a href="../ch05/python_on_pymol.html"><strong aria-hidden="true">5.6.</strong> PyMOL上でのpythonスクリプトの実行</a></li><li class="chapter-item expanded "><a href="../ch05/importpymol.html"><strong aria-hidden="true">5.7.</strong> Pythonからpymolモジュールをimportして使う</a></li></ol></li><li class="chapter-item expanded "><a href="../ch06/index.html"><strong aria-hidden="true">6.</strong> 第6章 プラグインを使う</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch06/installation.html"><strong aria-hidden="true">6.1.</strong> プラグインのインストール方法</a></li><li class="chapter-item expanded "><a href="../ch06/dssp.html"><strong aria-hidden="true">6.2.</strong> DSSPプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/pyvol.html"><strong aria-hidden="true">6.3.</strong> PyVOL GUIプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/plddt.html"><strong aria-hidden="true">6.4.</strong> pLDDTカラーリングプラグイン</a></li></ol></li><li class="chapter-item expanded "><a href="../append01/index.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../append01/installation.html"><strong aria-hidden="true">7.1.</strong> インストール方法</a></li><li class="chapter-item expanded "><a href="../append01/term.html"><strong aria-hidden="true">7.2.</strong> 用語</a></li><li class="chapter-item expanded "><a href="../append01/selealgebra.html" class="active"><strong aria-hidden="true">7.3.</strong> 選択範囲の文法と演算子</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">pymol-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="選択範囲の文法と演算子"><a class="header" href="#選択範囲の文法と演算子">選択範囲の文法と演算子</a></h2>
+<p><a href="https://pymolwiki.org/index.php/Selection_Algebra">https://pymolwiki.org/index.php/Selection_Algebra</a> からの和訳です。</p>
+<p>PyMOLのSelection文法を使うことで識別子（identifier）やプロパティに基づいてPyMOL内に表示されている原子を選択することができます。多くのPyMOLコマンド (<code>color</code>, <code>show</code> など) では、存在する原子の一部に対してのみ操作を適用するために、原子選択の引数を与えることが可能です。例えば</p>
+<p><code>PyMOL&gt;show spheres, solvent and chain A</code></p>
+<p>これによって、「chain Aかつ溶媒のみ」（<code>solvent and chain A</code>）を「sphere表示にする(<code>show spheres</code>)」という操作を与えることができます。</p>
+<p>Selectionは、論理演算子（<code>true/false</code>のブール型変数、<code>and</code>, <code>or</code>, <code>and not</code>など)と組み合わせることで、より精密に包括的に行うことができます。ブール型の<code>and</code>は指定されたプロパティの両方（またはすべて）を持つ項目のみを選択し、<code>or</code>はそれらのどちらか（またはいずれか）を持つ項目を選択します。</p>
+<h3 id="選択演算子修飾子テーブル"><a class="header" href="#選択演算子修飾子テーブル">選択演算子/修飾子テーブル</a></h3>
+<p>選択演算子と修飾子を以下に示します。ダミー変数<code>s1</code>と<code>s2</code>は, <code>chain a</code>や<code>hydro.</code>といった選択式を表します。</p>
+<table><thead><tr><th> 選択演算子 </th><th> エイリアス </th><th> 説明 </th></tr></thead><tbody>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" >全般</td></tr>
+<tr><td> <code>all</code> </td><td> <code>*</code> </td><td> PyMOLに現在ロードされているすべての原子 </td></tr>
+<tr><td> <code>none</code> </td><td> </td><td> 空のselectionを生成 </td></tr>
+<tr><td> <code>enabled</code> </td><td> </td><td> 有効化されたオブジェクトの原子 </td></tr>
+<tr><td> Named selections </td><td> </td><td> </td></tr>
+<tr><td> <span style="color: #999">sele</span> </td><td> </td><td> 名前付きの選択範囲またはオブジェクト &quot;sele&quot;、ただし他の演算子の名前と競合しない場合に限る </td></tr>
+<tr><td> %<span style="color: #999">sele</span> </td><td> </td><td> 名前付き選択範囲またはオブジェクト&quot;sele&quot; <br><span style="padding: 1px 4px; background-color: #fc3; border: 1px solid #ccc">曖昧さを避けるために推奨</span> </td></tr>
+<tr><td> ?<span style="color: #999">sele</span> </td><td> </td><td> 名前付き選択範囲またはオブジェクト &quot;sele&quot;, ただし、名前付き選択範囲またはオブジェクト &quot;sele&quot; が存在しない場合は空の選択範囲になります </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" >論理式</td></tr>
+<tr><td> not <span style="color: #999">S1</span> </td><td> <code>!</code> </td><td> 選択範囲を反転させます。 </td></tr>
+<tr><td> <span style="color: #999">S1</span> and <span style="color: #999">S2</span> </td><td> <code>&amp;</code> </td><td> プロパティS1とS2の両方に含まれる原子 </td></tr>
+<tr><td> <span style="color: #999">S1</span> or <span style="color: #999">S2</span> </td><td> |</td><td> プロパティS1またはS2のいずれかに含まれる原子 </td></tr>
+<tr><td> <span style="color: #999">S1 S2</span> </td><td> </td><td> 暗黙的に上記の<strong>or</strong>を指定します </td></tr>
+<tr><td> <span style="color: #999">S1</span> and (<span style="color: #999">S2</span> or <span style="color: #999">S3</span>) </td><td> </td><td> （）を使うことで評価順を制御できます </td></tr>
+<tr><td> first <span style="color: #999">S1</span> </td><td> </td><td> プロパティS1を持つ最初の原子（1原子のみ選択） </td></tr>
+<tr><td> last <span style="color: #999">S1</span> </td><td> </td><td> プロパティS1を持つ最後の原子（1原子のみ選択） </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" >識別子（Identifier）</td></tr>
+<tr><td> model <span style="color: #999">1ubq</span> </td><td> <code>m.</code> </td><td> オブジェクト&quot;1ubq&quot;由来の原子 </td></tr>
+<tr><td> chain <span style="color: #999">C</span> </td><td> <code>c.</code> </td><td> チェイン識別子&quot;C&quot;由来の原子 </td></tr>
+<tr><td> segi <span style="color: #999">S</span> </td><td> <code>s.</code> </td><td> セグメント識別子&quot;S&quot;由来の原子 (mmCIF形式の場合は<strong>label_asym_id</strong>を基準に判定します) </td></tr>
+<tr><td> resn <span style="color: #999">ALA</span> </td><td> <code>r.</code> </td><td> 残基名が &quot;ALA&quot;である原子 </td></tr>
+<tr><td> resi <span style="color: #999">100-200</span> </td><td> <code>i.</code> </td><td> 残基番号が100から200の間になっている残基の原子 </td></tr>
+<tr><td> name <span style="color: #999">CA</span> </td><td> <code>n.</code> </td><td> 原子名が &quot;CA&quot; となっている原子 </td></tr>
+<tr><td> alt <span style="color: #999">A</span> </td><td> </td><td> Alternate locationが &quot;A&quot;である原子 </td></tr>
+<tr><td> index <span style="color: #999">123</span> </td><td> idx. </td><td> PyMOL内部のオブジェクト内原子インデックスが123に該当する原子 (<code>sort</code>で変更可能) </td></tr>
+<tr><td> id <span style="color: #999">123</span> </td><td> </td><td> PDBファイル内のIDカラムの数字が123の原子 </td></tr>
+<tr><td> rank <span style="color: #999">123</span> </td><td> </td><td> ロード時のオブジェクトごとの原子インデックスが123に該当する原子 (retain_orderを参照) </td></tr>
+<tr><td> pepseq <span style="color: #999">ACDEF</span> </td><td> ps. </td><td> アミノ酸の一文字表記で&quot;ACDEF&quot;となっている部分の配列を選択 (FindSeqも参照) </td></tr>
+<tr><td> label <span style="color: #999">&quot;Hello World&quot;</span> </td><td> </td><td> &quot;Hello World&quot;とラベルされている原子 <em>(PyMOL 1.9から実装)</em> </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" >識別子のマッチング</td></tr>
+<tr><td> <span style="color: #999">S1</span> in <span style="color: #999">S2</span> </td><td> </td><td> S1 の原子のうち，name, resi, resn, chain, segi がすべて S2 の原子と一致する原子 </td></tr>
+<tr><td> <span style="color: #999">S1</span> like <span style="color: #999">S2</span> </td><td> </td><td> S1の原子で、名前とresiの識別子がS2の原子と一致するもの</td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" >エンティティ（Entity）の拡張</td></tr>
+<tr><td colspan="3"><b>重要：&quot;by-&quot;演算子の優先順位は弱いため、<code>(byres S1 or S2)</code>は実際には<code>(byres (S1 or S2)</code>と同じであり、<code>((byres S1) or S2)</code>と同じではありません。) </b></td></tr>
+<tr><td> byobject <span style="color: #999">S1</span> </td><td> </td><td> S1の範囲を拡張してオブジェクト単位で選択します </td></tr>
+<tr><td> bysegi <span style="color: #999">S1</span> </td><td> <code>bs.</code> </td><td> S1の範囲を拡張してセグメント単位で選択します </td></tr>
+<tr><td> bychain <span style="color: #999">S1</span> </td><td> <code>bc.</code> </td><td> S1の範囲を拡張してチェイン単位で選択します </td></tr>
+<tr><td> byres <span style="color: #999">S1</span> </td><td> <code>br.</code> </td><td> S1の範囲を拡張して残基単位で選択します </td></tr>
+<tr><td> bycalpha <span style="color: #999">S1</span> </td><td> <code>bca.</code> </td><td> S1に少なくとも1個の原子を有する残基のCα原子 </td></tr>
+<tr><td> bymolecule <span style="color: #999">S1</span> </td><td> <code>bm.</code> </td><td> S1の範囲を拡張して分子単位で選択します。bondで結合されている範囲を「分子」とみなします </td></tr>
+<tr><td> byfragment <span style="color: #999">S1</span> </td><td> <code>bf.</code> </td><td> </td></tr>
+<tr><td> byring <span style="color: #999">S1</span> </td><td> </td><td> S1に少なくとも1つの原子を有するサイズ7以下のすべての環 <em>(PyMOL 1.8.2で実装)</em> </td></tr>
+<tr><td> bycell <span style="color: #999">S1</span> </td><td> </td><td> 選択範囲をunit cellに拡張する </td></tr>
+<tr><td> Bond expansion </td><td> </td><td> </td></tr>
+<tr><td> bound_to <span style="color: #999">S1</span> </td><td> bto. </td><td> S1に直接結合している原子(S1を含む) </td></tr>
+<tr><td> neighbor <span style="color: #999">S1</span> </td><td> nbr. </td><td> S1に直接結合している原子(S1は含まない) </td></tr>
+<tr><td> <span style="color: #999">S1</span> extend <span style="color: #999">3</span> </td><td> xt. </td><td> S1の範囲をS1に結合している原子から3結合分だけ広げる </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > 距離基準 (Proximity) </td></tr>
+<tr><td> <span style="color: #999">S1</span> within <span style="color: #999">12.3</span> of <span style="color: #999">S2</span> </td><td> w. </td><td> S2中の任意の原子から12.3 Å以内に存在するS1の原子 </td></tr>
+<tr><td> <span style="color: #999">S1</span> around <span style="color: #999">12.3</span> </td><td> a. </td><td> S1の全原子の中心から12.3 Å以内の中心を持つ原子 </td></tr>
+<tr><td> <span style="color: #999">S1</span> expand <span style="color: #999">12.3</span> </td><td> x. </td><td> S1の全原子の中心から12.3 Å以内の原子にまでS1範囲を拡張 </td></tr>
+<tr><td> <span style="color: #999">S1</span> gap <span style="color: #999">1.2</span> </td><td> </td><td> VDW半径がS1のVDW半径から1.2 Å以上離れている原子</td></tr>
+<tr><td> <span style="color: #999">S1</span> near_to <span style="color: #999">12.3</span> of <span style="color: #999">S2</span> </td><td> nto. </td><td> <em>within</em>と同じだが、S2は選択範囲から外れる (なので<code>S1 and S2 around 12.3</code>に同じ) </td></tr>
+<tr><td> <span style="color: #999">S1</span> beyond <span style="color: #999">12.3</span> of <span style="color: #999">S2</span> </td><td> be. </td><td> S2から12.3 Å以上離れているS1の原子 </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > 属性基準 (Properties) </td></tr>
+<tr><td> partial_charge <span style="color: #999">&lt; 1.2</span> </td><td> pc. </td><td>（部分電荷のパラメータがロードした構造データに含まれている場合のみ）partial_chargeの値が1.2以下の原子</td></tr>
+<tr><td> formal_charge <span style="color: #999">= 1</span> </td><td> fc. </td><td> </td></tr>
+<tr><td> b <span style="color: #999">&lt; 100.0</span> </td><td> </td><td> B-factoが100.0より小さい原子 </td></tr>
+<tr><td> q <span style="color: #999">&lt; 1.0</span> </td><td> </td><td> Occupancyが1.0より小さい原子 </td></tr>
+<tr><td> ss <span style="color: #999">H+S</span> </td><td> </td><td> 二次構造がH (helix)またはS (sheet)となっている原子 </td></tr>
+<tr><td> elem <span style="color: #999">C</span> </td><td> e. </td><td> 原子種がC (炭素)の原子 </td></tr>
+<tr><td> p<span style="color: #999">.foo</span> = <span style="color: #999">12</span> </td><td> </td><td> </td></tr>
+<tr><td> p<span style="color: #999">.foo</span> &lt; <span style="color: #999">12.3</span> </td><td> </td><td> </td></tr>
+<tr><td> p<span style="color: #999">.foo</span> in <span style="color: #999">12+34</span> </td><td> </td><td> </td></tr>
+<tr><td> stereo <span style="color: #999">R</span> </td><td> </td><td> キラル化合物でR/S不斉中心のうちRという情報が入っている原子<em>(<a href="https://pymol.org/d/media:stereochemistry">Incentive PyMOL 1.4-1.8</a>のみ)</em> </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > Flags </td></tr>
+<tr><td> bonded </td><td> </td><td> 1つ以上の結合を持つ原子 </td></tr>
+<tr><td> protected </td><td> </td><td>  </td></tr>
+<tr><td> fixed </td><td> fxd. </td><td>  </td></tr>
+<tr><td> restrained </td><td> rst. </td><td>  </td></tr>
+<tr><td> masked </td><td> msk. </td><td>  </td></tr>
+<tr><td> flag <span style="color: #999">25</span> </td><td> f. </td><td>  </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > 化学的な分類基準（chemical class） </td></tr>
+<tr><td> organic </td><td> org. </td><td> ポリマー（タンパク質または核酸）でない有機化合物(例： リガンドや緩衝液) </td></tr>
+<tr><td> inorganic </td><td> ino. </td><td> ポリマーでない無機化合物・イオン </td></tr>
+<tr><td> solvent </td><td> sol. </td><td> 水分子 </td></tr>
+<tr><td> polymer </td><td> pol. </td><td> ポリマー、タンパク質または核酸 </td></tr>
+<tr><td> polymer.protein </td><td> </td><td> タンパク質 <em>(New in PyMOL 2.1)</em> </td></tr>
+<tr><td> polymer.nucleic </td><td> </td><td> 核酸 <em>(New in PyMOL 2.1)</em> </td></tr>
+<tr><td> guide </td><td> </td><td> タンパク質のCAと核酸のC4*/C4' </td></tr>
+<tr><td> hetatm </td><td> </td><td> PDBのHETATMレコードに入っている原子 </td></tr>
+<tr><td> hydrogens </td><td> h. </td><td> 水素原子 </td></tr>
+<tr><td> backbone </td><td> bb. </td><td> ポリマーの主鎖・バックボーン原子 <em>(new in PyMOL 1.6.1)</em> </td></tr>
+<tr><td> sidechain </td><td> sc. </td><td> ポリマーの側鎖原子 <em>(new in PyMOL 1.6.1)</em> </td></tr>
+<tr><td> metals </td><td> </td><td> 金属原子 <em>(new in PyMOL 1.6.1)</em> </td></tr>
+<tr><td> donors </td><td> don. </td><td> 水素結合でドナーとなる原子 </td></tr>
+<tr><td> acceptors </td><td> acc. </td><td> 水素結合でアクセプターとなる原子 </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > 表示形式基準（Style） </td></tr>
+<tr><td> visible </td><td> v. </td><td> 何らかの表示形式で表示されているenabled状態のオブジェクトに含まれる原子</td></tr>
+<tr><td> rep <span style="color: #999">cartoon</span> </td><td> </td><td> Cartoon表示となっている原子 </td></tr>
+<tr><td> color <span style="color: #999">blue</span> </td><td> </td><td> 原子のカラーリングが (color indexで)blueになっている原子 </td></tr>
+<tr><td> cartoon_color <span style="color: #999">blue</span> </td><td> </td><td> Atoms with atom-level cartoon_color setting (by color index) </td></tr>
+<tr><td> ribbon_color <span style="color: #999">blue</span> </td><td> </td><td> Atoms with atom-level ribbon_color setting (by color index) </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > 非分子（Non molecular） </td></tr>
+<tr><td> center </td><td> </td><td> sceneの中央においてある仮想の原子 </td></tr>
+<tr><td> origin </td><td> </td><td> 回転中心においてある仮想の原子 </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > 座標基準 (Coordinates) </td></tr>
+<tr><td> state <span style="color: #999">123</span> </td><td> </td><td> Atoms with coordinates in state 123 </td></tr>
+<tr><td> present </td><td> pr. </td><td> Atoms with coordinates in the current state </td></tr>
+<tr><td> x <span style="color: #999">&lt; 12.3</span> </td><td> </td><td> Atoms with model-space x coordinate less than 12.3 </td></tr>
+<tr><td> y <span style="color: #999">&lt; 12.3</span> </td><td> </td><td> Atoms with model-space y coordinate less than 12.3 </td></tr>
+<tr><td> z <span style="color: #999">&gt; 12.3</span> </td><td> </td><td> Atoms with model-space z coordinate greater than 12.3 </td></tr>
+<tr><td colspan="3" style="font-weight:bold; background-color:#CCCCCC;" > Atom Typing </td></tr>
+<tr><td> text_type <span style="color: #999">TT</span> </td><td> tt. </td><td> <em>Auto-assigned in <a href="https://pymol.org/d/media:atomtyping">Incentive PyMOL 1.4-1.8</a>)</em> </td></tr>
+<tr><td> numeric_type <span style="color: #999">123</span> </td><td> nt. </td><td>                                                                                                                                            </td></tr>
+</tbody></table>
+<a class="header" href="#距離演算子の比較" id="距離演算子の比較"><h3 id="距離演算子の比較"><a class="header" href="#距離演算子の比較">距離演算子の比較</a></h3></a>
+<p>2原子の距離を基準に選択する上で類似した演算子がいくつかあります。以下の表ではどのように異なるかを詳しく示します。</p>
+<p><strong>文法 1</strong>: <em>s1</em> operator X of <em>s2</em>
+<strong>文法 2</strong>: <em>s1</em> and (<em>s2</em> operator X)</p>
+<table><thead><tr><th> 距離演算子 </th><th> 距離がX以上か以下か </th><th> どこから測定するか </th><th> s2を含むか   </th><th> 文法 </th><th> 備考                    </th></tr></thead><tbody>
+<tr><td> <code>near_to</code> </td><td> ≤ X             </td><td> center        </td><td> 含まない       </td><td> 1      </td><td> <code>around</code>と等価   </td></tr>
+<tr><td> <code>within</code>   </td><td> ≤ X             </td><td> center        </td><td> s1に該当する場合 </td><td> 1      </td><td>                          </td></tr>
+<tr><td> <code>beyond</code>   </td><td> &gt; X            </td><td> center        </td><td> 含まない       </td><td> 1      </td><td>                          </td></tr>
+<tr><td> <code>gap</code>      </td><td> &gt; X            </td><td> center+vdw    </td><td> 含まない       </td><td> 2      </td><td>                          </td></tr>
+<tr><td> <code>around</code>   </td><td> ≤ X             </td><td> center        </td><td> 含まない      </td><td> 2      </td><td> <code>near_to</code>と等価 </td></tr>
+<tr><td> <code>expand</code>   </td><td> ≤ X             </td><td> center        </td><td> 常に含む      </td><td> 2      </td><td>                          </td></tr>
+</tbody></table>
+<h3 id="入力について"><a class="header" href="#入力について">入力について</a></h3>
+<ul>
+<li>名前とキーワードは <code>ignore_case</code> が設定されていない限り大文字小文字を区別しない。</li>
+<li>名前とキーワードは、曖昧でない接頭辞に省略することが可能。</li>
+</ul>
+<p><strong>おすすめ設定</strong>： <strong>大文字小文字を区別</strong>して、<strong>省略されていない選択式</strong>で書きます。そうすることで、実行時の設定や将来の言語の変更 (新しいキーワードの追加など) に対して記述が堅牢になります。</p>
+<h3 id="実用例"><a class="header" href="#実用例">実用例</a></h3>
+<p>Logicalな選択範囲は組み合わせることができます。例えば以下のようにしてチェインAの一部であり、残基番号125ではない原子を選択することができます。</p>
+<pre><code class="language-python"># チェインAの一部であり、残基番号125ではない原子を選択。
+select chain A and (not resi 125)
+</code></pre>
+<p>以下に様々な選択範囲の結合例を示します。</p>
+<pre><code class="language-python"># 以下の2つの選択は等価です。
+# チェインAにあるCβ、Cγ1、Cγ2原子を選択
+select (name CB or name CG1 or name CG2) and chain A
+select name CB+CG1+CG2 and chain A
+
+# 5 Å以内の全ての残基、または有機低分子を選択。
+select br. all within 5 of organic
+
+# ヘリックス構造部分を選択
+select ss 'H'
+
+# lineで表示されているものを選択
+select rep lines
+
+# 水の3Å以内で、B因子が20以下の残基をすべて選択。
+select br. b&lt;20 &amp; (all within 3 of resn HOH)
+
+# すべての青色になっているものを選択
+select color blue
+
+# 最初のArg残基を選択
+select first resn ARG
+
+# 1fooのセグメントGのチェインXの残基444のCα炭素を選択
+select 1foo/G/X/444/CA
+# 上に同じ
+select 1foo and segi G and c. X and i. 444 and n. CA
+
+# 残基番号23にCα炭素が存在するオブジェクトをまるごと選択
+select bo. i. 23 and n. CA
+
+# チェインCが存在している分子を選択
+select bm. c. C
+</code></pre>
+<p>算術演算の群の結果と同様に、論理演算の群はどの演算が最初に実行されるかによって異なります。ユーザーの想定している順序で操作が実行されるようにするには、括弧を使用します。</p>
+<pre><code class="language-python">byres ((chain A or (chain B and (not resi 125))) around 5)
+</code></pre>
+<p>PyMOL は、論理的な選択範囲を一番内側の括弧から外に展開します。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../append01/term.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../append01/term.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

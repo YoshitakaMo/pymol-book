@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>マウス操作 - pymol-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">TOP</a></li><li class="chapter-item expanded "><a href="../ch01/index.html"><strong aria-hidden="true">1.</strong> 第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/objective.html"><strong aria-hidden="true">1.1.</strong> 目的</a></li><li class="chapter-item expanded "><a href="../ch01/accesspdb.html"><strong aria-hidden="true">1.2.</strong> Protein Data Bank (PDB)にアクセスする</a></li><li class="chapter-item expanded "><a href="../ch01/download.html"><strong aria-hidden="true">1.3.</strong> PDB データのダウンロード</a></li><li class="chapter-item expanded "><a href="../ch01/launchpymol.html"><strong aria-hidden="true">1.4.</strong> PyMOL の起動</a></li><li class="chapter-item expanded "><a href="../ch01/displaypdb.html"><strong aria-hidden="true">1.5.</strong> 大腸菌由来アルカリホスファターゼのグラフィック表示</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch01/colorbychain.html"><strong aria-hidden="true">1.5.1.</strong> チェインごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/colorbyss.html"><strong aria-hidden="true">1.5.2.</strong> 二次構造ごとの色分け</a></li><li class="chapter-item expanded "><a href="../ch01/saveimage.html"><strong aria-hidden="true">1.5.3.</strong> 画像の保存</a></li><li class="chapter-item expanded "><a href="../ch01/savesessionfile.html"><strong aria-hidden="true">1.5.4.</strong> セッションファイルへの保存</a></li><li class="chapter-item expanded "><a href="../ch01/focusbindingsite.html"><strong aria-hidden="true">1.5.5.</strong> リガンド結合部位への注目</a></li></ol></li><li class="chapter-item expanded "><a href="../ch01/humanalp.html"><strong aria-hidden="true">1.6.</strong> ヒトアルカリホスファターゼとの構造比較</a></li><li class="chapter-item expanded "><a href="../ch01/hydrophobicity.html"><strong aria-hidden="true">1.7.</strong> タンパク質の疎水性・親水性残基の分布を確認する</a></li><li class="chapter-item expanded "><a href="../ch01/conservation.html"><strong aria-hidden="true">1.8.</strong> タンパク質の位置依存的なアミノ酸保存度の違いを理解する</a></li><li class="chapter-item expanded "><a href="../ch01/qmmm.html"><strong aria-hidden="true">1.9.</strong> アルカリホスファターゼの加水分解酵素としての働き</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/index.html"><strong aria-hidden="true">2.</strong> 第2章 Internal GUI の使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/loadmol.html"><strong aria-hidden="true">2.1.</strong> 分子構造のロード</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/load_file.html"><strong aria-hidden="true">2.1.1.</strong> 構造ファイルのロード</a></li><li class="chapter-item expanded "><a href="../ch02/load_supformat.html"><strong aria-hidden="true">2.1.2.</strong> サポートしている構造ファイル形式</a></li><li class="chapter-item expanded "><a href="../ch02/load_biol_unit.html"><strong aria-hidden="true">2.1.3.</strong> Biological Unitを考慮した分子構造のロード</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/dispseq.html"><strong aria-hidden="true">2.2.</strong> 配列の表示</a></li><li class="chapter-item expanded "><a href="../ch02/objpanel.html"><strong aria-hidden="true">2.3.</strong> オブジェクトパネル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/showandhide.html"><strong aria-hidden="true">2.3.1.</strong> 分子構造の表示形式のON/OFF (Show and Hide)</a></li><li class="chapter-item expanded "><a href="../ch02/label.html"><strong aria-hidden="true">2.3.2.</strong> ラベルの設定(Label)</a></li><li class="chapter-item expanded "><a href="../ch02/color.html"><strong aria-hidden="true">2.3.3.</strong> 色の設定(Color)</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/mouse.html" class="active"><strong aria-hidden="true">2.4.</strong> マウス操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch02/buttonmode.html"><strong aria-hidden="true">2.4.1.</strong> 操作モード</a></li><li class="chapter-item expanded "><a href="../ch02/buttontable.html"><strong aria-hidden="true">2.4.2.</strong> 各モードにおける操作一覧</a></li><li class="chapter-item expanded "><a href="../ch02/buttonaction.html"><strong aria-hidden="true">2.4.3.</strong> 操作の詳細</a></li></ol></li><li class="chapter-item expanded "><a href="../ch02/session.html"><strong aria-hidden="true">2.5.</strong> セッションの保存</a></li><li class="chapter-item expanded "><a href="../ch02/export.html"><strong aria-hidden="true">2.6.</strong> 構造ファイルのエクスポート</a></li><li class="chapter-item expanded "><a href="../ch02/saveimage.html"><strong aria-hidden="true">2.7.</strong> 画像の保存</a></li></ol></li><li class="chapter-item expanded "><a href="../ch03/index.html"><strong aria-hidden="true">3.</strong> 第3章 External GUIの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch03/file.html"><strong aria-hidden="true">3.1.</strong> File</a></li><li class="chapter-item expanded "><a href="../ch03/edit.html"><strong aria-hidden="true">3.2.</strong> Edit</a></li><li class="chapter-item expanded "><a href="../ch03/build.html"><strong aria-hidden="true">3.3.</strong> Build</a></li><li class="chapter-item expanded "><a href="../ch03/movie.html"><strong aria-hidden="true">3.4.</strong> Movie</a></li><li class="chapter-item expanded "><a href="../ch03/display.html"><strong aria-hidden="true">3.5.</strong> Display</a></li><li class="chapter-item expanded "><a href="../ch03/setting.html"><strong aria-hidden="true">3.6.</strong> Setting</a></li><li class="chapter-item expanded "><a href="../ch03/scene.html"><strong aria-hidden="true">3.7.</strong> Scene</a></li><li class="chapter-item expanded "><a href="../ch03/mouse.html"><strong aria-hidden="true">3.8.</strong> Mouse</a></li><li class="chapter-item expanded "><a href="../ch03/wizard.html"><strong aria-hidden="true">3.9.</strong> Wizard</a></li><li class="chapter-item expanded "><a href="../ch03/plugin.html"><strong aria-hidden="true">3.10.</strong> Plugin</a></li><li class="chapter-item expanded "><a href="../ch03/help.html"><strong aria-hidden="true">3.11.</strong> help</a></li></ol></li><li class="chapter-item expanded "><a href="../ch04/index.html"><strong aria-hidden="true">4.</strong> 第4章 コマンドラインの使い方</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch04/cmd_load.html"><strong aria-hidden="true">4.1.</strong> 分子構造のロード</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_save.html"><strong aria-hidden="true">4.2.</strong> 保存</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_showandhide.html"><strong aria-hidden="true">4.3.</strong> 分子構造の表示形式のON/OFF</a></li><li class="chapter-item expanded "><a href="../ch04/cmd_super.html"><strong aria-hidden="true">4.4.</strong> オブジェクトの重ね合わせ</a></li></ol></li><li class="chapter-item expanded "><a href="../ch05/index.html"><strong aria-hidden="true">5.</strong> 第5章 PyMOL の様々な機能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch05/xtal_elecmap.html"><strong aria-hidden="true">5.1.</strong> 結晶構造の電子密度マップを表示する</a></li><li class="chapter-item expanded "><a href="../ch05/apbs.html"><strong aria-hidden="true">5.2.</strong> APBSプラグインを使った表面電荷表示</a></li><li class="chapter-item expanded "><a href="../ch05/movieschool.html"><strong aria-hidden="true">5.3.</strong> 動画の作成方法</a></li><li class="chapter-item expanded "><a href="../ch05/preset.html"><strong aria-hidden="true">5.4.</strong> 表示形式のプリセット</a></li><li class="chapter-item expanded "><a href="../ch05/gaussian.html"><strong aria-hidden="true">5.5.</strong> Gaussian 16のcubeファイルを開いて分子軌道を表示する</a></li><li class="chapter-item expanded "><a href="../ch05/python_on_pymol.html"><strong aria-hidden="true">5.6.</strong> PyMOL上でのpythonスクリプトの実行</a></li><li class="chapter-item expanded "><a href="../ch05/importpymol.html"><strong aria-hidden="true">5.7.</strong> Pythonからpymolモジュールをimportして使う</a></li></ol></li><li class="chapter-item expanded "><a href="../ch06/index.html"><strong aria-hidden="true">6.</strong> 第6章 プラグインを使う</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch06/installation.html"><strong aria-hidden="true">6.1.</strong> プラグインのインストール方法</a></li><li class="chapter-item expanded "><a href="../ch06/dssp.html"><strong aria-hidden="true">6.2.</strong> DSSPプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/pyvol.html"><strong aria-hidden="true">6.3.</strong> PyVOL GUIプラグイン</a></li><li class="chapter-item expanded "><a href="../ch06/plddt.html"><strong aria-hidden="true">6.4.</strong> pLDDTカラーリングプラグイン</a></li></ol></li><li class="chapter-item expanded "><a href="../append01/index.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../append01/installation.html"><strong aria-hidden="true">7.1.</strong> インストール方法</a></li><li class="chapter-item expanded "><a href="../append01/term.html"><strong aria-hidden="true">7.2.</strong> 用語</a></li><li class="chapter-item expanded "><a href="../append01/selealgebra.html"><strong aria-hidden="true">7.3.</strong> 選択範囲の文法と演算子</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">pymol-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="マウス操作"><a class="header" href="#マウス操作">マウス操作</a></h2>
+<p>PyMOLを含む分子描画ソフトウェアの最も重要なユーザーインターフェースが<strong>マウス操作</strong>です。何はともあれ、PyMOLを使うのであればこれを先に読んでマスターしておきましょう。</p>
+<p>PyMOLのマウス操作は、外部デバイスとしてのホイール付きマウスを前提に設計されており、左クリックボタン、右クリックボタンとホイールクリックボタンの<strong>3ボタン</strong>をすべて使うことがデフォルト設定となっています。しかし、1人1台のノートパソコンを持つことも珍しくなった現在では外部のマウスを接続して使わずに、備え付けのタッチパッドを使って操作することが多くなりました。タッチパッドはPyMOLの求める3ボタン式になっていないことが多く、ホイールボタンが存在していないためPyMOLのユーザーは不便に感じることがあると思います。こうした状況に対応するべく、PyMOLには実は<strong>2ボタンモード</strong>と<strong>1ボタンモード</strong>が用意されています。これらのモードの説明を交えつつ、PyMOLのマウス操作について詳しく述べていきます。</p>
+<h3 id="操作モード"><a class="header" href="#操作モード">操作モード</a></h3>
+<p>PyMOLには3ボタンモード、2ボタンモード、1ボタンモードが用意されています。これらのモードは下記のようにさらに細かいモードに分かれます。</p>
+<ul>
+<li>3ボタンモード
+<ul>
+<li><strong>3 Button Viewing Mode</strong>（初期設定）</li>
+<li>3 Button Editing Mode</li>
+<li>3 Button Motions Mode</li>
+<li>3 Button Lights Mode</li>
+<li>3 Button All Mode</li>
+</ul>
+</li>
+<li>2ボタンモード
+<ul>
+<li>2 Button Viewing Mode</li>
+<li>2 Button Editing Mode</li>
+</ul>
+</li>
+<li>1ボタンモード
+<ul>
+<li>1 Button Viewing Mode</li>
+</ul>
+</li>
+</ul>
+<p>3ボタンモードはホイールボタン付きマウスを利用している場合に最も効果を発揮します。2ボタンモードはタッチパッドのみの環境で、Macbookなどを含むノートパソコンではこの設定にしておくことを推奨します。ここで、それぞれのボタンモードの中にViewing, Editingモードなどが存在していることも覚えておきましょう。これらのモード間ではクリック時の操作が異なります。基本的に、表示した分子を観察する場合はViewingモードを、分子の座標に変更を加える場合にはEditingモードを利用します。</p>
+<p>各モードがどのようなマウス操作に対応しているかを理解する前に、まずはPyMOL画面の右下のこの部分に着目します。</p>
+<img src="./image/mouse/1.png">
+<p>この赤い四角の部分の一番上には<strong>Mouse Mode 3-Button Viewing</strong>と書かれています。これは<strong>3 Button Viewing Mode</strong>と同じ意味です。ここで、赤い四角の範囲のどこかをクリックすると</p>
+<img src="./image/mouse/2.png">
+<p>Mouse Modeが<strong>3-Button Editing</strong>という表示になりました。これは<strong>3 Button Editing Mode</strong>に切り替わったことを表しています。また、青い四角の部分も、<strong>Picking Atoms (and Joints)</strong> に変化しました。最初のうちは、この<strong>Viewing Mode</strong>と<strong>Editing Mode</strong>の2つについて理解しておけば十分だと思います。Lights ModeとAll Modeについては慣れてきたら試してみましょう。2つのモードは上記の赤い四角の部分を押すことで入れ替えることができます。</p>
+<p>この画面についてもう少し詳しく見ていきます。ここにはクリックするマウスボタン(L, M, R, Wheel)と補助キーとの組み合わせ(Shift, Ctrl, Ctrl+Shift...)を組み合わせることで、様々なマウス操作が行えることが英語で書かれています(macOSの場合、CtrlはCommand ⌘ キーです)。最上段は対応するキーを押しながらマウスを動かす操作を表しています。例えば、3-Button Viewing Modeにおいては左クリックを押しながらマウスを動かすことで回転操作(Rota)、ミドルクリック（ホイール）を押しながらマウスを動かすことで並進操作(Move)が行えます。ここの表記は簡単なものですが、もし忘れてしまってもここに着目すれば、操作を思い出すことができるでしょう。</p>
+<h3 id="各モードにおける操作一覧"><a class="header" href="#各モードにおける操作一覧">各モードにおける操作一覧</a></h3>
+<p>各操作の詳細は次項で示します。macOSではCtrlキーはCommandキー(⌘キー)になります。</p>
+<p><strong>3 Button Viewing Mode</strong></p>
+<table><thead><tr><th align="right"> </th><th align="right">左ボタン</th><th align="right">ホイールボタン</th><th align="right">右ボタン</th><th align="right">ホイールスクロール</th></tr></thead><tbody>
+<tr><td align="right">ボタンを押しながらドラッグ</td><td align="right">回転(Rota)</td><td align="right">並進(Move)</td><td align="right">ズームイン・アウト(MovZ)</td><td align="right">スラビング(Slab)</td></tr>
+<tr><td align="right">shiftキー</td><td align="right">選択範囲に追加(+Box)</td><td align="right">選択範囲から除去(-Box)</td><td align="right">クリッピング(Clip)</td><td align="right">スラブの移動(MovS)</td></tr>
+<tr><td align="right">Ctrlキー</td><td align="right">並進(Move)</td><td align="right">原子ピッキング(PkAt)</td><td align="right">1原子ピッキング(Pk1)</td><td align="right">スラブに対する視点の移動(MvSZ)</td></tr>
+<tr><td align="right">Ctrl+Shiftキー</td><td align="right">選択(sele)</td><td align="right">Origin指定(Orig)</td><td align="right">クリッピング(Clip)</td><td align="right">ズームイン・アウト(MovZ)</td></tr>
+<tr><td align="right">シングルクリック</td><td align="right">選択範囲追加・除去(+/-)</td><td align="right">センタリング(Cent)</td><td align="right">メニュー表示(Menu)</td><td align="right"> </td></tr>
+<tr><td align="right">ダブルクリック</td><td align="right">メニュー表示(Menu)</td><td align="right">-</td><td align="right">原子ピッキング(PkAt)</td><td align="right"> </td></tr>
+</tbody></table>
+<p><strong>3 Button Editing Mode</strong></p>
+<table><thead><tr><th align="right"> </th><th align="right">左ボタン</th><th align="right">ホイールボタン</th><th align="right">右ボタン</th><th align="right">ホイールスクロール</th></tr></thead><tbody>
+<tr><td align="right">ボタンを押しながらドラッグ</td><td align="right">回転(Rota)</td><td align="right">並進(Move)</td><td align="right">ズームイン・アウト(MovZ)</td><td align="right">スラビング(Slab)</td></tr>
+<tr><td align="right">shiftキー</td><td align="right">オブジェクトの回転(RotO)</td><td align="right">XY軸方向への移動(MovO)</td><td align="right">Z軸方向への移動(MvOZ)</td><td align="right">スラブの移動(MovS)</td></tr>
+<tr><td align="right">Ctrlキー</td><td align="right">原子の移動(MovA)</td><td align="right">選択範囲追加・除去(+/-)</td><td align="right">二面角をピッキング(PkTB)</td><td align="right">スラブに対する視点の移動(MvSZ)</td></tr>
+<tr><td align="right">Ctrl+Shiftキー</td><td align="right">Z軸方向への移動(MvAZ)</td><td align="right">Origin指定(Orig)</td><td align="right">クリッピング(Clip)</td><td align="right">ズームイン・アウト(MovZ)</td></tr>
+<tr><td align="right">シングルクリック</td><td align="right">原子ピッキング(PkAt)</td><td align="right">センタリング(Cent)</td><td align="right">メニュー表示(Menu)</td><td align="right"> </td></tr>
+<tr><td align="right">ダブルクリック</td><td align="right">原子の移動(MovA)</td><td align="right">ドラッグモード(DrgM)</td><td align="right">二面角をピッキング(PkTB)</td><td align="right"> </td></tr>
+</tbody></table>
+<p><strong>2 Button Viewing Mode</strong></p>
+<table><thead><tr><th align="right"> </th><th align="right">左ボタン</th><th align="right">ホイールボタン</th><th align="right">右ボタン</th><th align="right">ホイールスクロール</th></tr></thead><tbody>
+<tr><td align="right">ボタンを押しながらドラッグ</td><td align="right">回転(Rota)</td><td align="right">--</td><td align="right">ズームイン・アウト(MovZ)</td><td align="right">--</td></tr>
+<tr><td align="right">shiftキー</td><td align="right">1原子ピッキング(Pk1)</td><td align="right">--</td><td align="right">クリッピング(Clip)</td><td align="right">--</td></tr>
+<tr><td align="right">Ctrlキー</td><td align="right">並進(Move)</td><td align="right">--</td><td align="right">原子ピッキング(PkAt)</td><td align="right">--</td></tr>
+<tr><td align="right">Ctrl+Shiftキー</td><td align="right">選択(sele)</td><td align="right">--</td><td align="right">センタリング(Cent)</td><td align="right">--</td></tr>
+<tr><td align="right">シングルクリック</td><td align="right">原子ピッキング(PkAt)</td><td align="right">--</td><td align="right">メニュー表示(Menu)</td><td align="right"> </td></tr>
+<tr><td align="right">ダブルクリック</td><td align="right">メニュー表示(Menu)</td><td align="right">--</td><td align="right">センタリング(Cent)</td><td align="right"> </td></tr>
+</tbody></table>
+<h3 id="操作の詳細"><a class="header" href="#操作の詳細">操作の詳細</a></h3>
+<h4 id="回転-rota"><a class="header" href="#回転-rota">回転 (Rota)</a></h4>
+<p><strong>マウスの左ボタンを押しながらマウスを動かす（ドラッグ）</strong> すると、表示されている分子を回転させることができます。</p>
+<video width="100%" height="100%" controls autoplay>
+<source src="./image/mouse/rotate.mp4" type="video/mp4">
+</video>
+<h4 id="並進-move"><a class="header" href="#並進-move">並進 (Move)</a></h4>
+<p><strong>マウスのホイールボタンを押しながらドラッグ</strong> すると、表示されている分子を視点に対して平行に移動させることができます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/move.mp4" type="video/mp4">
+</video>
+<h4 id="ズームインアウト-movz"><a class="header" href="#ズームインアウト-movz">ズームイン・アウト (MovZ)</a></h4>
+<p><strong>マウスの右ボタンを押しながらマウスを前後にドラッグ、またはCtrlとShiftキーを押しながらマウスのホイールを上下</strong> させると、分子構造を拡大・縮小することができます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/movz.mp4" type="video/mp4">
+</video>
+<h4 id="選択--"><a class="header" href="#選択--">選択 (+/-)</a></h4>
+<p><strong>表示されているオブジェクトの原子の上でマウスの左ボタンを押す</strong> と、四角のマークが付きます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/select.mp4" type="video/mp4">
+</video>
+<p>この四角マークは、現在選択されている原子の範囲を示しています。この左クリックによる選択はクリックするたびに選択範囲に追加され、もう一度押すと選択範囲から外されます。</p>
+<h4 id="選択範囲に追加除去-box-box"><a class="header" href="#選択範囲に追加除去-box-box">選択範囲に追加/除去 (+Box/-Box)</a></h4>
+<p>選択範囲の追加または除去を行います。<strong>+Box(Shiftを押しながらマウスの左クリック＆ドラッグ)</strong> では画面上に黒い四角が現れ、ボタンを離すと、その四角で囲まれた部分が選択範囲に追加されます。反対に、<strong>-Box(Shiftを押しながらマウスのホイールクリック＆ドラッグ)</strong> では四角で囲んだ範囲を選択範囲から除去することができます。同様の操作を繰り返すことも可能です。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/plusbox.mp4" type="video/mp4">
+</video>
+<h4 id="センタリング-cent"><a class="header" href="#センタリング-cent">センタリング (Cent)</a></h4>
+<p><strong>表示されているオブジェクトの原子の上でマウスのホイールボタンを押す</strong> と、その原子が画面中央に来るように視点が移動します。また、回転操作の中心もその点に移動します。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/center.mp4" type="video/mp4">
+</video>
+<h4 id="origin指定-orig"><a class="header" href="#origin指定-orig">Origin指定 (Orig)</a></h4>
+<p><strong>表示されているオブジェクトの原子の上でCtrlとShiftを押しながらマウスのホイールボタンを押す</strong> と、その原子を回転中心の原点(origin)に指定することができます。上記センタリングのときと異なり、視点は移動しません。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/origin.mp4" type="video/mp4">
+</video>
+<h4 id="メニュー表示-menu"><a class="header" href="#メニュー表示-menu">メニュー表示 (Menu)</a></h4>
+<p><strong>マウスの左ボタンをダブルクリック</strong> または <strong>右ボタンをクリック</strong> で、メニューを開きます。メニュー内容はクリックした位置によって内容が変化します。</p>
+<p>何もない箇所でクリックすると[Main Pop-Up]メニューが表示されます。<br><img src="./image/mouse/select_menumain.png" width="20%"></p>
+<p>オブジェクトの上でクリックすると、クリックした場所に存在する原子についての設定変更を行うメニューが表示されます。<br><img src="./image/mouse/select_menuatom.png" width="20%"></p>
+<h4 id="原子ピッキングpkatpk1"><a class="header" href="#原子ピッキングpkatpk1">原子ピッキング（PkAt/Pk1）</a></h4>
+<p>オブジェクト上の原子の上で<strong>Ctrlボタンを押しながらホイールクリック</strong>、または<strong>マウス右ボタンのダブルクリック</strong>を行うと、その原子をピッキングした状態になります(<strong>PkAt</strong>)。</p>
+<p>このピッキング状態は先述の選択範囲とは異なる選択形式で、図のような球体のマーカーが付きます。このピッキングは画面上に同時に4原子まで選択することができ、各ピッキングマーカーは図のように二重、三重、四重の球体マーカーで示されます。<br><img src="./image/mouse/select_pk1.png" width="40%"><img src="./image/mouse/select_pk2.png" width="40%"></p>
+<p><strong>Ctrlボタンを押しながら右クリック (Pk1)</strong> の場合では、上の操作と異なり、1つめの原子ピッキングのみを行います。ピッキングされた原子が2つ、3つ、4つになると、自動でそのピッキングされた原子についての<strong>距離(distance)</strong>、<strong>角度(angle)</strong>、<strong>二面角(dihedral)</strong> を表示してくれます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/pkatom.mp4" type="video/mp4">
+</video>
+<h4 id="クリッピングclip"><a class="header" href="#クリッピングclip">クリッピング（Clip）</a></h4>
+<p>Viewing Modeで<strong>Shiftとマウスの右ボタン（またはCtrl+Shift+マウス右ボタン）を押しながらマウスを上下左右に動かす</strong> と、分子の内部を覗けたり霧をかけたりすることができます。分子内部の一部の領域を強調した画像を取りたいときに作ります。</p>
+<p>この機能は2枚の<strong>クリッピング平面（Clipping plane）</strong> によって調節しています。マウスの上下の動きは前面のクリッピング平面(front clipping plane)の位置を、左右の動きは背面のクリッピング平面(rear clipping plane)の位置を調節できます<br>図解<br><img src="./image/mouse/select_clip1.png" width="80%"><br><strong>画面上にはこの2枚のClipping Planeの間に存在する領域だけが表示されます</strong>。</p>
+<p>マウスを画面下に移動させるとfront clipping planeは視点から見て奥へ移動し、分子の内部が見えるようになります。反対に、マウスを上へ移動させると、front clipping planeは手前に移動します。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/frontclip.mp4" type="video/mp4">
+</video>
+<p>マウスを左に移動させるとrear clipping planeが視点から見て奥へ移動します。反対に手前に移動させると、rear clipping planeが手前に移動し、分子の奥側が霧がかかって徐々に見えなくなります。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/rearclip.mp4" type="video/mp4">
+</video>
+<p>霧は画面上部のメニューの[Display]→[Depth Cue(Fogging)]のチェックでON/OFFを選択できます（デフォルトはONです）。<br><img src="./image/mouse/select_clip5.png" width="100%"></p>
+<h4 id="スラビングslab"><a class="header" href="#スラビングslab">スラビング（Slab）</a></h4>
+<p>スラブとは英語で厚板、平板という名詞、または「平板にする」という動詞です。PyMOLにおいて<strong>スラブ（Slab、Visible Slabとも）とは、上述の2枚のクリッピング平面の間に挟まれた可視化領域のこと</strong>を指します。</p>
+<p>Viewing Modeで<strong>マウスホイールを回転させる</strong> ことで、スラブの厚さを調節することができます。クリッピングとともに、分子構造の内部領域をみたい時に有用です。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/slab.mp4" type="video/mp4">
+</video>
+<p>画面上部メニューの[Display]→[Clip]には[8 Angstroam Slab]を始めとして30 Åまでの厚さのスラブを選ぶことができます。[Nothing]を選択した場合には、全原子が含まれるように自動的にスラブの厚みを調節します。</p>
+<h4 id="スラブの移動movs"><a class="header" href="#スラブの移動movs">スラブの移動（MovS）</a></h4>
+<p>Viewing Modeで<strong>Shiftを押しながらマウスホイールを回転させる</strong> と、スラブ領域を、その厚みを保ったまま手前・奥に移動させることができます。効果を実感したい場合は、例として[8 Angstroam Slab]設定をした直後に使ってみるとわかりやすいでしょう。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/movs.mp4" type="video/mp4">
+</video>
+<h4 id="スラブに対する視点の移動mvsz"><a class="header" href="#スラブに対する視点の移動mvsz">スラブに対する視点の移動（MvSZ）</a></h4>
+<p>Viewing Modeで<strong>Ctrlを押しながらマウスホイールを回転させる</strong> と、スラブ平面に対して視点を移動させることができます。視点がスラブ内部に入ることもできます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/mvsz.mp4" type="video/mp4">
+</video>
+<h3 id="editing-mode専用コマンド"><a class="header" href="#editing-mode専用コマンド">Editing Mode専用コマンド</a></h3>
+<p>以下ではEditing Modeで扱う操作方法について記述します。Editing Modeは<strong>オブジェクト・原子の座標自体に変更を加える</strong>ことが多いため、このモードで操作するときは注意が必要です。<strong>もし誤って座標を動かしてしまった場合、数回であればCtrl-zでUndo（もとに戻す）ことが可能です</strong>。</p>
+<h4 id="オブジェクトの回転rotoxy軸方向への移動movoz軸方向への移動mvoz"><a class="header" href="#オブジェクトの回転rotoxy軸方向への移動movoz軸方向への移動mvoz">オブジェクトの回転(RotO)・XY軸方向への移動(MovO)・Z軸方向への移動(MvOZ)</a></h4>
+<p>EditingモードでShiftキーとマウスの左ボタン・ホイールボタン・右ボタンを押しながらマウスを移動させることで、オブジェクトの座標に対しそれぞれ回転・XY軸への並進・Z軸へ移動操作を行うことができます。特に、複数のオブジェクトが存在する場合に効果がわかりやすいです。以下の例では緑色と青色で別々のオブジェクトとした上で、青色オブジェクトに対して操作を適用しています。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/roto.mp4" type="video/mp4">
+</video>
+<h4 id="原子の移動movaz軸方向への移動mvaz"><a class="header" href="#原子の移動movaz軸方向への移動mvaz">原子の移動(MovA)・Z軸方向への移動(MvAZ)</a></h4>
+<p>EditingモードでCtrlキーとマウスの左ボタンを押しながらマウスを移動させることで、マウスカーソル上に存在する原子の座標を移動させることができます。Ctrl+Shiftキーとマウスの左ボタンを押しながらだとZ軸方向への移動が行えます。下の例では、オレンジ色の原子（リン酸イオンPO4のリン原子）について操作を適用しています。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/mova.mp4" type="video/mp4">
+</video>
+<h4 id="フラグメントの回転rotf移動movfz軸方向への移動mvfz"><a class="header" href="#フラグメントの回転rotf移動movfz軸方向への移動mvfz">フラグメントの回転(RotF)・移動(MovF)・Z軸方向への移動(MvFZ)</a></h4>
+<p>Editingモードで特定の原子を左クリックすると原子がピックされた状態になります。このとき操作メニューが変化して、MovF, MvFZが現れるようになります。RotF（Shift+左クリック）とMovF（Shift+ホイールクリック）はピックされた原子と結合している原子のまとまり（<strong>フラグメント</strong>）を回転させたり、平行移動させたりすることができます。この操作は必ず選択されたフラグメントの上でShiftキーとクリック入力を行う必要があります。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/movf.mp4" type="video/mp4">
+</video>
+<p>MvFZ（Shift＋右クリックしながら上下にドラッグ）はピックされたフラグメントを手前または奥に移動させることができます。</p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/mvfz.mp4" type="video/mp4">
+</video>
+<h4 id="二面角をピッキングpktb"><a class="header" href="#二面角をピッキングpktb">二面角をピッキング(PkTB)</a></h4>
+<p>Editingモードで描画されている結合に対してCtrlキーとマウスの右ボタンを押しながら移動させることで、結合の二面角を変更することができます。</p>
+<p><img src="./image/mouse/pktb1.png" width="40%">　　<img src="./image/mouse/pktb2.png" width="40%"></p>
+<p>2原子を結ぶ結合線上のうち、それぞれの原子に近い位置で操作を実行することで、それぞれ回転される対象が異なることに注意します。
+図において、結合線の左半分にマウスカーソルを置いた状態で操作を適用した場合はこの残基の先端のみが回転します。</p>
+<p><img src="./image/mouse/pktb3.png" width="40%">　　<img src="./image/mouse/pktb4.png" width="40%"></p>
+<p>しかし、結合線の右半分にカーソルを置いた状態で操作を適用すると、タンパク質の方が回転します。</p>
+<p><img src="./image/mouse/pktb3.png" width="40%">　　<img src="./image/mouse/pktb5.png" width="40%"></p>
+<video width="100%" height="100%" controls autoplay loop>
+<source src="./image/mouse/pktb.mp4" type="video/mp4">
+</video>
+<h4 id="分子構造をドラッグモードにするdrgm"><a class="header" href="#分子構造をドラッグモードにするdrgm">分子構造をドラッグモードにする(DrgM)</a></h4>
+<p>Editingモードでホイールボタンをダブルクリックすると、オブジェクト内のひとつながりの分子構造(Molecule)について&quot;drag&quot;状態にします。このドラッグモードではこれまでのカメラ操作のような感覚で分子の座標を変更することが可能になります。</p>
+<p>このドラッグモードにするとオブジェクトパネルの下側に専用のメニューが現れます。PDB: 1alkの場合で図の右側の構造についてこの操作を実行すると、Mgイオンを除いた右半分のChainだけが選択された状態になります。これは上述のひとつながりの分子構造に対してのみ適用されるからです。</p>
+<img src="./image/mouse/drag1.png" width="100%">
+<p>さらに、このドラッグモードではShiftキーを押しながらのマウス操作方法が<strong>RotD</strong>, <strong>MovD</strong>, <strong>MvDZ</strong>に変化します。このDはDraggedを表しており、ドラッグモードとなっている選択範囲のみに対してそれぞれ<strong>回転操作</strong>・<strong>XY軸方向への移動</strong>・<strong>Z軸方向への移動</strong>を行うことができます。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ch02/color.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../ch02/buttonmode.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../ch02/color.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../ch02/buttonmode.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
