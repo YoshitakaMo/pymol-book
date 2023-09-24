@@ -1,4 +1,6 @@
 ## PyVOL GUIプラグイン
+(2023年9月6日更新)
+
 2019年10月24日、[BioRxivにPyMOLプラグインの**PyVOL**というのを開発したよという論文](https://www.biorxiv.org/content/10.1101/816702v1)が投稿されました。
 
 <img src="./image/pyvol1.jpg" width="100%" alt="PyVOL" title="PyVOL">
@@ -6,65 +8,41 @@
 これはタンパク質の中の空隙、つまり基質や薬剤などが入りそうな空間を検出し、体積の値の表示もしてくれるプラグインのようです。ちょっと興味があったのでインストールすることにしてみました。
 
 ### 使用可能な環境
--   Linux OSまたはmacOS 10.14.6 (Mojave)以前。**10.15 (Catalina)では今のところ動作しません。**（現在対応中だそうです）
 
-### PyVOLのインストール
+- Linux OSまたはmacOS。2021年以降はcatalina以降のmacOSでも使用できるようになりました。
+
+### PyVOLのインストール方法
+
 以下のGitHubにてこのプラグインをメンテナンスしてくれているようです。
 [https://github.com/schlessingerlab/pyvol/](https://github.com/schlessingerlab/pyvol/)
 
-ここの [https://github.com/schlessingerlab/pyvol/blob/master/pyvolgui.zip](https://github.com/schlessingerlab/pyvol/blob/master/pyvolgui.zip) にプラグインのZIPファイルが置いてあるのでDownloadボタンを押すと、`pyvolgui.zip`というファイルがダウンロードされます。これを展開すると、中には`pyvolgui`と`pyvol_plugin`というディレクトリの2つがあるのですが、たぶん`pyvolgui`だけで動作してくれるように思えます。よって、このディレクトリをPyMOLのプラグインディレクトリにコピーしてあげます。
-お使いのmacOSにて、インストーラー版でPyMOLをインストールした場合（Licenseを求められる方）は`/Applications/PyMOL.app/Contents/share/pymol/data/startup/`に、Homebrewを使ってOpen-source版をインストールした場合（Licenseがいらない方）には`/usr/local/Cellar/pymol/2.3.0/libexec/lib/python3.7/site-packages/pmg_tk/startup`に、それぞれコピーしてあげます。Linuxの場合はpymolがインストールされているディレクトリを見つけて`python3.x/site-packages/pmg_tk/startup`あたりを探ればたどり着けるんじゃないですかね（適当）。
+1. https://github.com/schlessinger-lab/pyvol/blob/master/installers/pyvol-installer.zip のページにアクセスし、画面右端の↓マークからファイルをダウンロードします（14.6 MB）。
+2. PyMOLを開き、画面上部のメニュー`Plugin`から`Plugin Manager`を選択して次の画面を出します。<br><img src="./image/installation1.png" width="50%">
+3. `Choose file...`から先程ダウンロードした`pyvol-installer.zip`を選択します。
+4. Select plugin directoryのダイアログが表示されますが、そのまま特に変更せずOKを押します。`Plugin "pyvol_gui" has been installed.`と表示されればOKです。
+5. PyMOLの画面上部のメニュー`Plugin`に`PyVOL`が表示されていることを確認します。<br><img src="./image/installation2.png" width="20%">
+6. PyVOL 1.7.8のダイアログが開きます。画面左側の`Install PyVOL from PyPI`をクリックしてしばらく待つと、動作に必要なPythonパッケージが自動的にダウンロードされて次のような画面表示になります（バージョンはその時々で異なるのであまり気にしないでください）。<br><img src="./image/installation3.png" width="50%">
+7. 動作には**MSMS**という実行ファイルを追加でインストールする必要があります。これは https://ccsb.scripps.edu/msms/downloads/ からダウンロードするもので、Linux, macOS, さらにmacOSのうちApple Silicon（いわゆるM1, M2 Macのこと）を使っている方はArm64の方からMSMSをダウンロードします。
+8. ここがやや厄介なのですが、PyVOLからMSMSの実行ファイルを呼び出すためにはコマンド名を`msms`としなければ認識してくれません。先程ダウンロードしたMSMSは実行ファイル名が`msms_Arm64_2.6.1`(Apple Silicon製)だったり、`msms.x86_64Darwin.2.6.1`(Intel CPUのMacの場合)だったりします。これを実行できるようにするためには以下のコマンドを打つのが手っ取り早いかもしれません。
 
-コピーしたら、PyMOLを起動している場合はいったん閉じて改めて起動します。すると、PluginメニューのところにPyVOLが増えているはずです。
-
-<img width="176" alt="pyvol_pluginメニュー" src="./image/pyvol2.png">
-
-このPyVOLを選択してみて、メニューが開けたら成功です。
-
-<img width="100%" alt="pyvol_menu" src="./image/pyvol3.png">
-
-### 追加のプログラムのインストール
-#### インストーラー版
-PyVOLを動かすためにはいくつかのライブラリやプログラムを追加でインストールさせてあげる必要があります。上のPyVOLメニューで**Install/Update**のタブを開き、ここの左に表示されている`Install PyVOL`ボタンを押します。
-
-<img width="100%" alt="pyvolインストール直後" src="./image/pyvol4.png">
-
-1分くらい待っていると追加プログラムがすべてインストールされ、使用可能な状態になります。
-
-<img width="100%" alt="pyvolの追加プログラムインストール後" src="./image/pyvol5.png">
-
-ちなみに**macOS catalinaでは動作しませんでした**（Mojaveまでは動作します）。
-
-```
-subprocess.py", line 1522, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-OSError: [Errno 86] Bad CPU type in executable: 'msms'
+```bash
+# Apple Silicon Macの場合
+ln -sf ~/Downloads/msms_Arm64_2.6.1/msms_Arm64_2.6.1 /opt/homebrew/bin/msms
+# Intel Macの場合
+ln -sf ~/Downloads/msms_x86_64Darwin_2.6.1/msms.x86_64Darwin.2.6.1 /usr/local/bin/msms
 ```
 
-これはcatalinaになってから32bitのプログラムを切り捨てたことに起因しています。現在公式で対応中だそうです。
+ここでやっていることは、先程ダウンロードしたMSMSの実行ファイルのシンボリックリンクファイルを`/opt/homebrew/bin`または`/usr/local/bin`以下に`msms`というコマンド名で配置するということです。そしてこれをやった後にターミナルから`which msms`としてみてnot found と言われなければ使えるようになっているはずです。
 
-#### Open-Source版
-Open-source版の場合は、もしかしたら追加のプログラムを手動でインストールする必要があるかもしれません。もしかしたら上と同じやり方で動作させることができるかもしれないので、先にそっちを試してください（雑）。Homebrewでインストールしていた場合、`msms exe`を除く他のPythonライブラリは以下の1コマンドでインストールできます。
+PyMOLを**ターミナルから起動して**、PluginメニューからPyVOLを選択した時に、以下のように表示されればOKです。
 
-```
-pip3.7 install bio-pyvol
-```
+<img src="./image/pyvol5.png" width="50%">
 
-<img width="100%" alt="pyvolの追加プログラムインストール後" src="./image/pyvol6.png">
+もしインストールがうまく行っていない場合は、下の"System MSMS path"がnot foundになります。このPyVOLを選択してみて、メニューが開けたら成功です。
 
-`msms exe`についてですが、これは http://mgltools.scripps.edu/downloads のところからMSMS 2.6.1をダウンロードして解凍すると、中に`msms.MacOSX.2.6.1`が存在しますので、それを利用します(macOS Mojave以前の場合)。これを、`/usr/local/bin/msms`として利用できるようにコピーしてあげます。
-
-```
-cp ~/Downloads/msms_MacOSX_2.6.1/msms_MacOSX_2.6.1 /usr/local/bin/msms
-```
-
-この後、Open-source PyMOLを一度再起動してこのInstall/Updateタブを見てみたときに、msms exeのところが`/usr/local/bin/msms`と表示されていればOKです（本当は`/usr/local/bin`以下はHomebrewでインストールしたもののみにしておきたいところですが……）。
-
-Linux OSの場合は64 bit版`msms`が公開されているので、それをダウンロードして同様に`/usr/local/bin`以下にコピーすれば動作します。
-
-以上でPyVOLが利用可能になります。
 
 ### 簡単な使い方
-タンパク質を選択しておいてからPyVOLプラグインのParametersタブのRunボタンを押すだけです。Load Pocketのタブでは描画方法を色々変えることもできます。（詳細はいつか書きます）
+
+タンパク質を選択しておいてからPyVOLプラグインのParametersタブのRunボタンを押すだけです。Load Pocketのタブでは描画方法を色々変えることもできます。
 
 <img width="100%" alt="pyvol load pocketメニュー" src="./image/pyvol7.png">
