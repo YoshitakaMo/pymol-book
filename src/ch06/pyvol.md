@@ -17,11 +17,11 @@
 [https://github.com/schlessingerlab/pyvol/](https://github.com/schlessingerlab/pyvol/)
 
 1. https://github.com/schlessinger-lab/pyvol/blob/master/installers/pyvol-installer.zip のページにアクセスし、画面右端の↓マークからファイルをダウンロードします（14.6 MB）。
-2. PyMOLを開き、画面上部のメニュー`Plugin`から`Plugin Manager`を選択して次の画面を出します。<br><img src="./image/installation1.png" width="50%">
+2. PyMOLを開き、画面上部のメニュー`Plugin`から`Plugin Manager`を選択して次の画面を出します。<br><img src="./image/installation1.png" width="80%">
 3. `Choose file...`から先程ダウンロードした`pyvol-installer.zip`を選択します。
 4. Select plugin directoryのダイアログが表示されますが、そのまま特に変更せずOKを押します。`Plugin "pyvol_gui" has been installed.`と表示されればOKです。
 5. PyMOLの画面上部のメニュー`Plugin`に`PyVOL`が表示されていることを確認します。<br><img src="./image/installation2.png" width="20%">
-6. PyVOL 1.7.8のダイアログが開きます。画面左側の`Install PyVOL from PyPI`をクリックしてしばらく待つと、動作に必要なPythonパッケージが自動的にダウンロードされて次のような画面表示になります（バージョンはその時々で異なるのであまり気にしないでください）。<br><img src="./image/installation3.png" width="50%">
+6. PyVOL 1.7.8のダイアログが開きます。画面左側の`Install PyVOL from PyPI`をクリックしてしばらく待つと、動作に必要なPythonパッケージが自動的にダウンロードされて次のような画面表示になります（バージョンはその時々で異なるのであまり気にしないでください）。<br><img src="./image/installation3.png" width="80%">
 7. 動作には**MSMS**という実行ファイルを追加でインストールする必要があります。これは https://ccsb.scripps.edu/msms/downloads/ からダウンロードするもので、Linux, macOS, さらにmacOSのうちApple Silicon（いわゆるM1, M2 Macのこと）を使っている方はArm64の方からMSMSをダウンロードします。
 8. ここがやや厄介なのですが、PyVOLからMSMSの実行ファイルを呼び出すためにはコマンド名を`msms`としなければ認識してくれません。先程ダウンロードしたMSMSは実行ファイル名が`msms_Arm64_2.6.1`(Apple Silicon製)だったり、`msms.x86_64Darwin.2.6.1`(Intel CPUのMacの場合)だったりします。これを実行できるようにするためには以下のコマンドを打つのが手っ取り早いかもしれません。
 
@@ -36,7 +36,7 @@ ln -sf ~/Downloads/msms_x86_64Darwin_2.6.1/msms.x86_64Darwin.2.6.1 /usr/local/bi
 
 PyMOLを**ターミナルから起動して**、PluginメニューからPyVOLを選択した時に、以下のように表示されればOKです。
 
-<img src="./image/pyvol5.png" width="50%">
+<img src="./image/pyvol5.png" width="80%">
 
 もしインストールがうまく行っていない場合は、下の"System MSMS path"がnot foundになります。このPyVOLを選択してみて、メニューが開けたら成功です。
 
