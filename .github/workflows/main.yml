@@ -19,5 +19,5 @@ jobs:
       with:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         external_repository: YoshitakaMo/pymol-book
-        PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./book
+        publish_branch: master
+        publish_dir: ./book
