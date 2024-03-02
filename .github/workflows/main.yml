@@ -1,0 +1,23 @@
+name: CI/CD
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - "src/**"
+    - "book.toml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      uses: ./.github/actions/build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        external_repository: YoshitakaMo/pymol-book
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: ./book
