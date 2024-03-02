@@ -1,19 +1,21 @@
 # PyMOL Tutorial
 
 PyMOLの機能をまとめた本です。
-(c) 2021 YoshitakaMo All Rights Reserved.
+(c) 2024 YoshitakaMo All Rights Reserved.
 
 ## はじめてPyMOLを使う方へ
+
 - インストール方法については[7.1 インストール方法](./append01/installation.md)を御覧ください。
 - PyMOLを使った分子の表示方法のやり方をまとめて知りたい場合は[第1章-pymolチュートリアル-アルカリホスファターゼの構造を見る](./ch01/index.md)から順次御覧ください。
 - マウスの使い方を学びたい場合は以下のページからどうぞ。
-    - [2.1 分子構造のロード](./ch02/loadmol.md)
-    - [2.2 配列の表示](./ch02/dispseq.md)
-    - [2.3 オブジェクトパネル](./ch02/objpanel.md)
-    - [2.4 マウス操作](./ch02/mouse.md)
+  - [2.1 分子構造のロード](./ch02/loadmol.md)
+  - [2.2 配列の表示](./ch02/dispseq.md)
+  - [2.3 オブジェクトパネル](./ch02/objpanel.md)
+  - [2.4 マウス操作](./ch02/mouse.md)
 - PyMOL上部メニューの詳細を知りたい方は[第3章 External GUIの使い方](./ch03/index.html)を参考にしてください。
 
 ## Change log
+
 2022年 5月 3日 [5.2 APBSプラグインを使った表面電荷表示](./ch05/apbs.md)を更新。<br>
 2021年12月13日 [6.4 pLDDTカラーリングプラグイン](./ch06/plddt.md)を追加。<br>
 2021年12月11日 [5.3 動画の作成方法](./ch05/movieschool.md)を追加。<br>
@@ -29,4 +31,5 @@ PyMOLの機能をまとめた本です。
 2019年 3月30日 作成開始。
 
 ## Contribution
+
 このtutorialは[mdbook](https://github.com/rust-lang-nursery/mdBook)で運用しています.
