@@ -6,21 +6,21 @@
 
 以上のことを、アルカリホスファターゼについて確認してみましょう。まずは、**PDBsum** ([https://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/pdbsum/GetPage.pl?pdbcode=index.html](https://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/pdbsum/GetPage.pl?pdbcode=index.html)) というデータベースに登録されているデータを用います。PDBsumはPDBに登録された生体分子の構造データを加工したデータベースの1つで、配列・構造情報・リガンド結合・文献情報などをわかりやすくまとめてあります。ここのトップページのフォームに、調べたいPDBデータのIDを入れてFindボタンを押します。
 
-<img src="./image/pdbsum1.png">
+![PDBsum top page](./image/pdbsum1.png)
 
 すると、PDB ID: 1ALKについてのページに移ります。このトップページには構造の図とともに、タンパク質の分類・リガンド情報・化学反応・一次文献情報・この構造を引用している論文一覧……などが表示されています。
 
-<img src="./image/pdbsum2.png">
+![PDBsum ID 1ALK page](./image/pdbsum2.png)
 
 さらに、上部にあるタブをクリックすることで、さらに他の詳細な情報を表示させることができます。ここではProteinタブをクリックしてみましょう。
 
-<img src="./image/pdbsum3.png">
+![PDBsum Protein tab](./image/pdbsum3.png)
 
 Proteins タブ、ページ左側にあるMotifsメニューのSecondary structure, Residue conservationをクリックすると（上図の赤丸部分）、アミノ酸の生物種間での保存度が1つずつカラーリングされているページが現れます。
 
-<img src="./image/pdbsum4.png">
+![PDBsum Motifs menu](./image/pdbsum4.png)
 
-<img src="./image/pdbsum5.png">
+![PDBsum Residue conservation](./image/pdbsum5.png)
 
 この1文字表記のアミノ酸配列を見てみると、青〜緑〜黄〜赤までのカラーリングがなされていることに気づくと思います。**このカラーリングはこの大腸菌アルカリホスファターゼの類縁配列上で、そのアミノ酸の位置がどれほど保存されているかを表しています**（ページ下部に説明が書かれてあります）。言い換えれば、大腸菌アルカリホスファターゼについて他の類縁配列とのマルチプルシーケンスアライメントを作成してみたとき、ある位置のアミノ酸の種類が他の類縁配列上でも同じであればその位置のアミノ酸の保存度は高く、逆に他の類縁配列上でバラバラな様子が観測されていればその位置のアミノ酸の保存度は低くなります。例えば、この大腸菌アルカリホスファターゼのcatalytic residueである**Ser102**, **Arg166**のアミノ酸の保存度は最も高い9で示されています。この他にも、**PDB SITE records**（※なにかのリガンドが結合しているアミノ酸につくレコード）のマークが付いているアミノ酸はいずれも高い保存度を示していることが見て取れます。しかし、大腸菌アルカリホスファターゼのアミノ酸配列全体を見渡してみると、他にも保存度が高いところがあるのが伺えますし、逆に保存度が低いアミノ酸はなぜ低くなっているのか、という疑問も残ります。
 
@@ -28,15 +28,15 @@ Proteins タブ、ページ左側にあるMotifsメニューのSecondary structu
 
 先程のResidue Conservationのページの下の方を見ると、この保存度は**Consurf-DB**というデータベースに保存されてあります（[https://consurfdb.tau.ac.il/](https://consurfdb.tau.ac.il/) ）。このページにアクセスして、大腸菌アルカリホスファターゼのPDB IDとChain IDを以下の画像のように入力してみましょう。
 
-<img src="./image/consurfdb1.png" width="80%">
+![Consurf-DB input](./image/consurfdb1.png)
 
 すると、まもなくPDB: 1ALKについての保存度情報についてのページに遷移します。ここで、下の方にある**High Resolution Figures**のところから、PyMOLの方のマークをクリックして、PyMOLのセッションファイル（`consurf_pymol_session.pse`）をダウンロードします。
 
-<img src="./image/consurfdb2.png">
+![Consurf-DB High Resolution Figures](./image/consurfdb2.png)
 
 このダウンロードしてきたファイルをPyMOLで開いてみましょう。
 
-<img src="./image/consurfdb3.png">
+![Consurf-DB PyMOL session](./image/consurfdb3.png)
 
 ここで、保存度のカラーリングはChain Aのみに行われており、Chain Bについては情報が存在していないためグレー表示となっていることに注意してください。
 
