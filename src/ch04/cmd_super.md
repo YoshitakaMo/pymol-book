@@ -4,13 +4,15 @@
 
 重ね合わせのためのコマンドは`align`または`super`が用意されています。この2つのコマンドはともに構造の重ね合わせをすることができますが、**配列相同性が高い場合は`align`コマンドを、低い場合は`super`を利用することがそれぞれ推奨されています**。アルゴリズム的に見ると、`align`は構成アミノ酸配列を考慮するのに対し、`super`は配列を考慮せずに構造ベースで重ね合わせようとします。
 
-> https://pymolwiki.org/index.php/Align
+> <https://pymolwiki.org/index.php/Align>
 
-> https://pymolwiki.org/index.php/Super
+> <https://pymolwiki.org/index.php/Super>
 
 ## alignコマンド
+
 ### 使い方
-```
+
+```python
 align mobile, target [, cutoff [, cycles
     [, gap [, extend [, max_gap [, object
     [, matrix [, mobile_state [, target_state
@@ -32,11 +34,15 @@ align mobile, target [, cutoff [, cycles
 * `reset` = ?
 
 ## superコマンド
+
 ### 使い方
+
 ほぼ`align`コマンドと同じですが、さらにオプションが追加されています。
+
 ```
 super mobile, target [, cutoff [, cycles [, gap [, extend [, max_gap [, object [, matrix [, mobile_state [, target_state [, quiet [, max_skip [, transform [, reset [, seq [, radius [, scale [, base [, coord [, expect [, window [, ante ]]]]]]]]]]]]]]]]]]]]]
 ```
+
 * `reset` = ?
 * `seq` = ?
 * `radius` = ?
@@ -51,38 +57,41 @@ super mobile, target [, cutoff [, cycles [, gap [, extend [, max_gap [, object [
 
 ここではPDB IDの1alkと3q3qの2つのアルカリホスファターゼを例にとって構造の重ね合わせをしてみましょう。この2つはアルカリホスファターゼでありながら、全体の構造は大きく異なっています。また1alkの方は2量体であるのに対して3q3qの方は単量体で表示されていることに注意してください。
 
-```
+```python
 fetch 1alk
 fetch 3q3q
 ```
 
-<img src="./image/super/1.png" width="80%">
+<img src="./image/super/1.png" width="80%" alt="">
 
 `align`を使って構造を重ね合わせてみるとこのような形になります。
 
-```
+```python
 align 1alk, 3q3q, object=objalign
 ```
 
-<img src="./image/super/2.png" width="80%">
+<img src="./image/super/2.png" width="80%" alt="">
 
 External GUIの出力結果を見ると、
-```
+
+```python
 Executive: RMSD =   25.391 (2096 to 2096 atoms)
 ```
+
 となっており、構造のずれを表すRMSD値は25.3とかなり大きな値になっています。
 
 一方で、`super`コマンドを使ってみると
 
-
-```
+```python
 super 1alk, 3q3q, object=objsuper
 ```
 
-<img src="./image/super/3.png" width="80%">
+<img src="./image/super/3.png" width="80%" alt="">
+
 ```
 Executive: RMSD =    3.366 (352 to 352 atoms)
 ```
+
 となっており、重ね合わせに利用した原子が352 atomsであり、その範囲でのRMSD値が3.366となりました。
 
 また、`objalign`と`objsuper`という**アライメントオブジェクト**が生成されています。このオブジェクトは2つの構造の重ね合わせのときに使った対応部分を黄色い線で表してくれています。`super`を行った場合は、1alk, 3q3qに共通しているαβα-sandwich構造の部分だけを自動的にサーチして、その部分だけを利用した重ね合わせを実行してくれています。
