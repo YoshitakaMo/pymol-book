@@ -33,7 +33,7 @@ Windowsの場合はEXE InstallerとZIP archiveの2つがあります。Installer
 
 #### macOSの場合
 
-アプリケーション > ユーティリティ > ターミナルを開き、[Homebrewをインストール](http://brew.sh/index_ja.html)してあることが条件です。この状態で、ターミナルから、
+アプリケーション > ユーティリティ > ターミナルを開き、[Homebrewをインストール](https://brew.sh/ja/)してあることが条件です。この状態で、ターミナルから、
 
 ```bash
 brew install pymol
