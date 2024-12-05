@@ -10,7 +10,7 @@
 
 初心者向けです。バイナリ版をインストールした場合、Finderから[アプリケーション]を選択して中にあるPyMOLをダブルクリックすることで起動できます。
 
-<img src="./image/launch1.png" width="80%">
+<img src="./image/launch1.png" width="80%" alt="launch1">
 
 ### macOS（オープンソース版の場合）
 

@@ -16,19 +16,20 @@ PyMOLの機能をまとめた本です。
 
 ## Change log
 
-2022年 5月 3日 [5.2 APBSプラグインを使った表面電荷表示](./ch05/apbs.md)を更新。<br>
-2021年12月13日 [6.4 pLDDTカラーリングプラグイン](./ch06/plddt.md)を追加。<br>
-2021年12月11日 [5.3 動画の作成方法](./ch05/movieschool.md)を追加。<br>
-2021年 5月 9日 [Pythonからpymolモジュールをimportして使う](./ch05/importpymol.md)を追加。<br>
-2021年 1月 5日 [3.5 Display](./ch03/display.md)を順次追加。<br>
-2020年 5月11日 [3.4 Movie](./ch03/movie.md)を追加。<br>
-2020年 5月 5日 [5.6 PyMOL上でのpythonスクリプトの実行](./ch05/python_on_pymol.md)を追加。<br>
-2020年 5月 3日 [1.7 タンパク質の疎水性・親水性残基の分布を確認する](./ch01/hydrophobicity.md)を追加。<br>
-2020年 5月 2日 [1.8 タンパク質の位置依存的なアミノ酸保存度の違いを理解する](./ch01/conservation.md)を追加。<br>
-2020年 4月12日 [Appendix 3 選択範囲の文法と演算子](./append01/selealgebra.md)を追加。<br>
-2019年12月7日 [2.3.3 色の設定](./ch02/color.md)を追加。<br>
-...<br>
-2019年 3月30日 作成開始。
+- 2024年12月 5日 細かいところ更新中
+- 2022年 5月 3日 [5.2 APBSプラグインを使った表面電荷表示](./ch05/apbs.md)を更新。
+- 2021年12月13日 [6.4 pLDDTカラーリングプラグイン](./ch06/plddt.md)を追加。
+- 2021年12月11日 [5.3 動画の作成方法](./ch05/movieschool.md)を追加。
+- 2021年 5月 9日 [Pythonからpymolモジュールをimportして使う](./ch05/importpymol.md)を追加。
+- 2021年 1月 5日 [3.5 Display](./ch03/display.md)を順次追加。
+- 2020年 5月11日 [3.4 Movie](./ch03/movie.md)を追加。
+- 2020年 5月 5日 [5.6 PyMOL上でのpythonスクリプトの実行](./ch05/python_on_pymol.md)を追加。
+- 2020年 5月 3日 [1.7 タンパク質の疎水性・親水性残基の分布を確認する](./ch01/hydrophobicity.md)を追加。
+- 2020年 5月 2日 [1.8 タンパク質の位置依存的なアミノ酸保存度の違いを理解する](./ch01/conservation.md)を追加。
+- 2020年 4月12日 [Appendix 3 選択範囲の文法と演算子](./append01/selealgebra.md)を追加。
+- 2019年12月7日 [2.3.3 色の設定](./ch02/color.md)を追加。
+- ...
+- 2019年 3月30日 作成開始。
 
 ## Contribution
 
