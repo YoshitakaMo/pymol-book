@@ -64,6 +64,8 @@
   - [DSSPプラグイン](./ch06/dssp.md)
   - [PyVOL GUIプラグイン](./ch06/pyvol.md)
   - [pLDDTカラーリングプラグイン](./ch06/plddt.md)
+- [第7章 設定値](./ch07/index.md)
+  - [描画関連](./ch07/rendering.md)
 - [Appendix](./append01/index.md)
   - [インストール方法](./append01/installation.md)
   - [用語](./append01/term.md)
