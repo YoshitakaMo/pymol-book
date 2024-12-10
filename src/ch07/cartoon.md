@@ -165,3 +165,29 @@ set cartoon_helix_radius, 1.0 # defaultは2.25
 |cartoon_helix_radius=1.0|cartoon_helix_radius=2.25|
 |---|---|
 |![helix_radius_1.0](./image/cartoon_helix_radius_1.0.png)|![helix_radius_2.25](./image/cartoon_helix_radius_2.25.png)|
+
+#### cartoon_highlight_color
+
+default: default
+
+#### cartoon_ladder_color
+
+default: default
+
+#### cartoon_ladder_mode
+
+default: 1
+
+#### cartoon_ladder_radius
+
+default: 0.25
+
+#### cartoon_loop_cap
+
+default: 1
+
+#### cartoon_loop_quality
+
+default: -1.0
+
+#### cartoon_nucleic_acid_as_cylinders
