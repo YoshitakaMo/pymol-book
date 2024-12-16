@@ -3,15 +3,16 @@
 
 #### cartoon_cylindrical_helices
 
-`cartoon_cylindrical_helices`は、ヘリックスの描画を円筒状にするかどうかを設定する設定値です。デフォルト値は`0`ですが、これを`1`にすることで、ヘリックスの描画を円筒状にすることができます。
+`cartoon_cylindrical_helices`は、ヘリックスの描画を円筒状にするかどうかを設定する設定値です。デフォルト値は`0`ですが、これを`1`にすることで、ヘリックスの描画を円筒状にすることができます。また、PyMOL 2.5以降は`2`を指定することで、直線的なヘリックスに描画されます。
 
 ```bash
 set cartoon_cylindrical_helices, 1
+set cartoon_cylindrical_helices, 2
 ```
 
-|cartoon_cylindrical_helices=0|cartoon_cylindrical_helices=1|
-|---|---|
-|![cylindrical_0](./image/cylindrical_0.png)|![cylindrical_1](./image/cylindrical_1.png)|
+|cartoon_cylindrical_helices=0|cartoon_cylindrical_helices=1|cartoon_cylindrical_helices=2|
+|---|---|---|
+|![cylindrical_0](./image/cylindrical_0.png)|![cylindrical_1](./image/cylindrical_1.png)|![cylindrical_2](./image/cylindrical_2.png)
 
 #### cartoon_debug
 
@@ -216,12 +217,14 @@ set cartoon_ladder_radius, 0.5 # defaultは0.25
 |---|---|
 |![ladder_radius_0.25](./image/cartoon_ladder_mode_1.png)|![ladder_radius_0.5](./image/cartoon_ladder_radius_0.5.png)|
 
-#### cartoon_loop_cap
-
-default: 1
-
 #### cartoon_loop_quality
 
-default: -1.0
+cartoonのloop qualityの値を設定します。デフォルトは`-1`ですが、`1`以上の値にすると質感が増します。
 
-#### cartoon_nucleic_acid_as_cylinders
+```bash
+set cartoon_loop_quality, 1 # default: -1.0
+```
+
+|cartoon_loop_quality=-1|cartoon_loop_quality=1|
+|---|---|
+|![loop_quality_-1](./image/cartoon_loop_quality_-1.png)|![loop_quality_1](./image/cartoon_loop_quality_1.png)|
