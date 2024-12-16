@@ -168,19 +168,53 @@ set cartoon_helix_radius, 1.0 # defaultは2.25
 
 #### cartoon_highlight_color
 
-default: default
+ヘリックスの内側の面とストランドの側面に対して指定した色を指定することができます。
 
-#### cartoon_ladder_color
+```bash
+set cartoon_highlight_color, default
+set cartoon_highlight_color, red
+```
 
-default: default
+|cartoon_highlight_color=default|cartoon_highlight_color=red|
+|---|---|
+|![highlight_color_default](./image/cartoon_highlight_color_default.png)|![highlight_color_red](./image/cartoon_highlight_color_red.png)|
 
 #### cartoon_ladder_mode
 
-default: 1
+PyMOLはデフォルトで核酸を描画するときに細いはしごのようなオブジェクトが現れてますが、これをOFFにすることができます。
+
+```bash
+set cartoon_ladder_mode, 1 # default: 1
+set cartoon_ladder_mode, 0
+```
+
+|cartoon_ladder_mode=1|cartoon_ladder_mode=0|
+|---|---|
+|![ladder_mode_1](./image/cartoon_ladder_mode_1.png)|![ladder_mode_0](./image/cartoon_ladder_mode_0.png)|
+
+#### cartoon_ladder_color
+
+`cartoon_ladder_color`は、核酸のはしごオブジェクトの色を設定します。
+
+```bash
+set cartoon_ladder_color, default
+```
+
+|cartoon_ladder_color=default|cartoon_ladder_color=red|
+|---|---|
+|![ladder_color_default](./image/cartoon_ladder_mode_1.png)|![ladder_color_red](./image/cartoon_ladder_color_red.png)|
 
 #### cartoon_ladder_radius
 
-default: 0.25
+核酸のはしごオブジェクトの半径を設定します。
+
+```bash
+set cartoon_ladder_radius, 0.5 # defaultは0.25
+```
+
+|cartoon_ladder_radius=0.25|cartoon_ladder_radius=0.5|
+|---|---|
+|![ladder_radius_0.25](./image/cartoon_ladder_mode_1.png)|![ladder_radius_0.5](./image/cartoon_ladder_radius_0.5.png)|
 
 #### cartoon_loop_cap
 
