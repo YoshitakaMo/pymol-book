@@ -68,6 +68,7 @@
   - [概論](ch07/general.md)
   - [sphere描画関連](ch07/sphere.md)
   - [cartoon描画関連](ch07/cartoon.md)
+  - [surface描画関連](ch07/surface.md)
 - [Appendix](append01/index.md)
   - [インストール方法](append01/installation.md)
   - [用語](append01/term.md)
