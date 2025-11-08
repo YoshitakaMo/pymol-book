@@ -3,7 +3,9 @@
     "MD033": {
         "allowed_elements": [
           "img",
-          "span"
+          "span",
+          "video",
+          "source"
         ]
       },
     "MD041": false
