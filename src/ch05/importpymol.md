@@ -2,11 +2,11 @@
 
 よくプログラミングしているユーザーからすると、PyMOLに使われている様々なコマンドをPython側から呼び出して利用したいということもあるかもしれません。しかし、その設定が環境によってはちょっと難しいので、ここではまずpymolをimportできるようにする設定の方法を確認します。
 
-まずターミナルを開いてPython3を対話型で開き、`import pymol`を入力してみましょう。`python3`の部分は`python3.10`, `python3.10`の場合もあります。
+まずターミナルを開いてPython3を対話型で開き、`import pymol`を入力してみましょう。`python3`の部分は`python3.14`, `python3.14`の場合もあります。
 
 ```shell
 $ python3
-Python 3.10.8 (main, Oct 13 2022, 09:48:40) [Clang 14.0.0 (clang-1400.0.29.102)] on darwin
+Python 3.14.0 (main, Oct  7 2025, 09:34:52) [Clang 17.0.0 (clang-1700.3.19.1)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import pymol
 Traceback (most recent call last):
@@ -25,25 +25,25 @@ Homebrewをお使いの場合、2021年5月1日以降のpymol 2.4.0_5からは`i
 
 ``` shell
 $ python3 --version
-Python 3.10.8
+Python 3.14.0
 $ ls -l `which python3`
-lrwxr-xr-x  1 YoshitakaM  admin  40 10 26 10:06 /usr/local/bin/python3 -> ../Cellar/python@3.10/3.10.8/bin/python3
+lrwxr-xr-x@ 1 YoshitakaM  admin  42 10月 27 12:22 /opt/homebrew/bin/python3 -> ../Cellar/python@3.14/3.14.0_1/bin/python3
 ```
 
-今の環境ではPython 3.10.8のバージョンを使用しており、python3は`/usr/local/Cellar/python@3.10/3.10.8/bin/python3`にあることがわかりました（これもシンボリックリンクで、真の実体はまた別の位置に存在しています）。macOSの場合Cellar以下にpython3がある場合は、それはHomebrewでインストールされたpython3、もっと言うと`brew install python@3.10`コマンドでインストールされたものとなっています。
+今の環境ではPython 3.14.0のバージョンを使用しており、python3は`/opt/homebrew/Cellar/python@3.14/3.14.0_1/bin/python3`にあることがわかりました（これもシンボリックリンクで、真の実体はまた別の位置に存在しています）。macOSの場合Cellar以下にpython3がある場合は、それはHomebrewでインストールされたpython3、もっと言うと`brew install python@3.14`コマンドでインストールされたものとなっています。
 
 次にターミナルからpython3を起動して、以下のコマンド`import sys`, `sys.path`を入れてみます。
 
 ```shell
 $ python3
-Python 3.10.8 (main, Oct 13 2022, 09:48:40) [Clang 14.0.0 (clang-1400.0.29.102)] on darwin
+Python 3.14.0 (main, Oct  7 2025, 09:34:52) [Clang 17.0.0 (clang-1700.3.19.1)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import sys
 >>> sys.path
-['', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python39.zip', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10', '/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Versions/3.10/lib/python3.10/lib-dynload', '/Users/YoshitakaM/Library/Python/3.10/lib/python/site-packages', '/usr/local/lib/python3.10/site-packages']
+['', '/opt/homebrew/Cellar/python@3.14/3.14.0_1/Frameworks/Python.framework/Versions/3.14/lib/python314.zip', '/opt/homebrew/Cellar/python@3.14/3.14.0_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14', '/opt/homebrew/Cellar/python@3.14/3.14.0_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload', '/opt/homebrew/lib/python3.14/site-packages', '/opt/homebrew/lib/python3.14/site-packages/coot', '/opt/homebrew/Cellar/pymol/3.1.0_2/libexec/lib/python3.14/site-packages', '/opt/homebrew/Cellar/modeller/10.8/modlib']
 ```
 
-`sys.path`は起動したpython3に対して、Pythonの追加モジュールを読み込むPATHを表示してくれています。ここにpymolのモジュールへのパス、例えば`/usr/local/Cellar/pymol/2.5.0/libexec/lib/python3.10/site-packages/pymol`が含まれていない場合はimportに失敗し、`ModuleNotFoundError`というエラーが発生します。
+`sys.path`は起動したpython3に対して、Pythonの追加モジュールを読み込むPATHを表示してくれています。ここにpymolのモジュールへのパス、例えば`/opt/homebrew/Cellar/pymol/3.1.0_2/libexec/lib/python3.14/site-packages`が含まれていない場合はimportに失敗し、`ModuleNotFoundError`というエラーが発生します。
 
 これを解決する方法は3つあります。
 
@@ -51,7 +51,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 2. `import sys`, `sys.path.append()`を使ってpython3の中からモジュール検索パスを追加する
 3. パス設定ファイル(`.pth`)をpython3のデフォルト`site-packages`の中に追加する
 
-詳しくは https://note.nkmk.me/python-import-module-search-path/ を参照してください。簡単なのは1.の環境変数`PYTHONPATH`を設定する方法です。Homebrewでは実は3.の方法で実現しています。
+詳しくは <https://note.nkmk.me/python-import-module-search-path/> を参照してください。簡単なのは1.の環境変数`PYTHONPATH`を設定する方法です。Homebrewでは実は3.の方法で実現しています。
 
 ### pymolモジュールの使い方
 
@@ -61,7 +61,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 PyMOLのGUIを開き、以下のコマンドを入力していきます。
 
-```
+```python
 fetch 1alk, type=mmtf
 hide everything
 select sel1, byres resn * within 5 of (resn PO4 and chain A)
@@ -73,7 +73,7 @@ png ~/Desktop/foosel1.png
 
 すると、以下のような画像が出力されます。
 
-<img src="./image/foosel1.png" title="foosel1">
+<img src="./image/foosel1.png" title="foosel1" alt="foosel1">
 
 これと同様のことを、Pythonの`import pymol`から実行することができます。そのためのコマンドがこちら
 
@@ -88,7 +88,7 @@ pymol.cmd.ray("640", "480")
 pymol.cmd.png("~/Desktop/foosel2.png")
 ```
 
-<img src="./image/foosel2.png" title="foosel2">
+<img src="./image/foosel2.png" title="foosel2" alt="foosel2">
 
 このように、同様の結果が得られました。
 
@@ -106,4 +106,3 @@ cmd.png("~/Desktop/foosel2.png")
 ```
 
 module`cmd`以下に存在する様々な関数（`fetch`, `hide`, `select`など）はPyMOLのコマンドとほぼ同様ですが、一部は`as`→`show_as`のように名前が変更されているものもありますので注意してください。各コマンドの使い方は[PyMOLWiki](https://pymolwiki.org/)、またはpymol.orgのサイト上で検索することでも情報が取得できますが、VSCodeなどのエディタ上でのプログラミングに慣れている方であれば、メソッドのヘルプ表示機能などで仕様を直接確認する方が確実かもしれません。
-
