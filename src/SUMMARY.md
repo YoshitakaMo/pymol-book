@@ -53,6 +53,7 @@
   - [オブジェクトの重ね合わせ](ch04/cmd_super.md)
 - [第5章 PyMOL の様々な機能](ch05/index.md)
   - [結晶構造の電子密度マップを表示する](ch05/xtal_elecmap.md)
+  - [pair fittingでリガンドの位置を重ねる](ch05/pairfitting.md)
   - [APBSプラグインを使った表面電荷表示](ch05/apbs.md)
   - [動画の作成方法](ch05/movieschool.md)
   - [表示形式のプリセット](ch05/preset.md)
