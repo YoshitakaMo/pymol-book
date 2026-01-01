@@ -1,6 +1,6 @@
 ## Gaussian 16のcubeファイルを開いて分子軌道を表示する
 
-<img src="./image/gaus1.png" width="700" title="Gaussian 16での分子軌道の表示例">
+<img src="./image/gaus1.png" width="700" title="Gaussian 16での分子軌道の表示例" alt="Gaussian 16での軌道表示例">
 
 PyMOLは、[VMD](https://www.ks.uiuc.edu/Research/vmd/)とまでは行きませんが、様々なファイルの可視化にも対応しています。今回紹介するのは、Gaussian 16などで計算された分子の分子軌道（molecular orbital）をPyMOL上で表示させるテクニックです。
 
@@ -9,14 +9,16 @@ GaussView 6やVMD 1.9.4などの他のソフトを用いて可視化してもよ
 ここでは、簡単な計算の例を示しながら、それをGaussViewまたはPyMOLで分子軌道を表示する時の方法を紹介します。
 
 ### 分子軌道を表示するのに必要な環境
- - GaussView 6, VMD, PyMOL 2.3.0以降のうち、いずれか1つをインストールしてあるパソコン
+
+- GaussView 6, VMD, PyMOL 2.3.0以降のうち、いずれか1つをインストールしてあるパソコン
 
 この記事ではGaussView 6またはPyMOL 2.3.0での方法を示します
 
 ### Example 1-1. シクロペンタジエンの場合
+
 例として、シクロペンタジエン分子の構造をGaussian 16（`g16`）で構造最適化させ、分子軌道を計算させてみます。インプットファイル`cyclopenta.gjf` を以下のように書いて`g16`で計算させます。
 
-```
+```shell
 %chk=cyclopenta.chk
 %mem=20GB
 %nprocshared=12
@@ -38,8 +40,9 @@ Title
  H                 -2.55124904    2.68351582   -0.22644835
 
 ```
-`%mem=20GB`部分は計算にメモリを20GB使用するということ、`%nprocshared=12`は計算で使うCPU数を指定します。この値は各計算環境に応じて適宜変更する必要があります。ここで、重要なのは計算条件を指定する`#p opt pop=full`の部分です。`opt pop=full`で構造最適化計算と、電子密度解析計算を行うよう指示します。計算レベルや基底関数については`b3lyp/6-311g(d,p)`でなくても好みのものを使ってください。
-（ちなみにGaussian 16だと`%nprocshared`の指定は非推奨になっています。最近実装された、環境変数での指定方法のほうが使い勝手が良いと思います。さらに、GPUを使った計算をしたい場合にはもっと別の指定方法になります。 参考： http://www.hpc.co.jp/gaussian_Link-0-Equivs.html ）
+
+ここで、重要なのは計算条件を指定する`#p opt pop=full`の部分です。`opt pop=full`で構造最適化計算と、電子密度解析計算を行うよう指示します。計算レベルや基底関数については`b3lyp/6-311g(d,p)`でなくても好みのものを使ってください。
+（ちなみにGaussian 16だと`%nprocshared`の指定は非推奨になっています。最近実装された、環境変数での指定方法のほうが使い勝手が良いと思います。さらに、GPUを使った計算をしたい場合にはもっと別の指定方法になります。 参考： <http://www.hpc.co.jp/gaussian_Link-0-Equivs.html> ）
 
 実行コマンド例は
 
@@ -54,22 +57,29 @@ g16 < ${job}.gjf > ${job}.log
 計算が終わりますと、計算結果の`cyclopenta.log`ファイルだけでなく、.chk（チェックポイント）ファイル`cyclopenta.chk`も生成されているはずです。分子軌道の可視化や以降の処理にはこのファイルを用います。
 
 ### Example 1-2. chkファイルの処理
+
 このchkファイルを用いて、まずターミナル上での以下のコマンドで、formatted checkpoint file形式に変換します。
 
-    formchk cyclopenta.chk cyclopenta.fchk
+```bash
+formchk cyclopenta.chk cyclopenta.fchk
+```
 
 として、formatted checkpoint fileに変換します。この`formchk`コマンドはGaussian 16と同時にインストールされているはずのコマンドです。Gaussian 16がインストールされてあるマシンやスパコンでは、Gaussian 16の本体である`g16`コマンドが使えるならば、ほぼ間違いなく使えるはずです。
 （ちなみにGaussian 16で計算したchkファイルをGaussian 09時代の`formchk`コマンドで変換することはできない……かもしれません）
 
 続いて、上のコマンドで作成された`cyclopenta.fchk`ファイルから、必要な分子軌道のデータを`.cube`形式のファイルに抽出します。
 
-    cubegen 0 MO=homo cyclopenta.fchk cyclopenta_homo.cube
+```bash
+cubegen 0 MO=homo cyclopenta.fchk cyclopenta_homo.cube
+```
 
 この`cubegen`についての操作方法はGaussian公式の[cubegenの解説ページ](http://gaussian.com/cubegen/)のページを参照してください。MO=のあとにhomoやlumo、または数字を指定すると、それに対応した分子軌道が出力されます。
 今回はシクロペンタジエンのHOMO（最高被占軌道）のデータを取り出したいので、MO=homoとし、.fchkファイルと出力ファイル名`cyclopenta_homo.cube`を指定します。
 
 ### Example 1-3. cubeファイルの表示
+
 #### Case 1. GaussView 6で表示する
+
 GaussView 6で表示する時、必要になるファイルは`cyclopenta.log`と`cyclopenta_homo.cube`です。まずはふつうに`cyclopenta.log`を開きます。
 
 <img src="./image/gaus2.png" width="500" title="Gaussian 16での分子軌道の表示例">
@@ -93,6 +103,7 @@ GaussView 6で表示する時、必要になるファイルは`cyclopenta.log`�
 以下では、この部分をPyMOLでやってみる方法を紹介します。
 
 #### Case 2. PyMOL 2.3.0で表示する
+
 PyMOLで開く場合には、
 
  1. `cyclopenta.log`の最終構造に対応する構造ファイルをPDB形式などで用意し、PyMOLに表示させる
@@ -100,11 +111,13 @@ PyMOLで開く場合には、
 
 という流れになります。このうち、1.で述べた構造ファイルを用意する部分はやや面倒かもしれません。お使いのマシンに[AmberTools 18がインストールされている](https://qiita.com/Ag_smith/items/d2e86dda17f190a3dd0f)状態であれば、
 
-    antechamber -i cyclopenta.log -fi gout -o cyclopenta.pdb -fo pdb
+```bash
+antechamber -i cyclopenta.log -fi gout -o cyclopenta.pdb -fo pdb
+```
 
 とすることで最終構造のPDBファイルを一発変換できます。AmberToolsがない場合は、オープンソースのファイルコンバータである[Open Babelを使った変換法](https://future-chem.com/open-babel-usage/)で代用できます。Homebrewのインストール方法は適当にググってください。
 
-```
+```bash
 # Open BabelをHomebrewでインストール
 brew install open-babel
 # Usage:
@@ -126,7 +139,7 @@ obabel -i g09 cyclopenta.log -o pdb -O cyclopenta.pdb
 
 これで二重結合っぽい表示に変わりました。ついでに、好みで以下の設定を入れてGaussViewっぽい描画設定にしてみます。
 
-```
+```shell
 show sticks
 show spheres
 set stick_radius, 0.1
@@ -138,7 +151,7 @@ set sphere_scale, .18, elem H
 
 では、PyMOLに`cyclopenta_homo.cube`ファイルをロードします。コマンドは以下の通り
 
-```
+```shell
 load /path/to/cyclopenta_homo.cube
 isosurface Asurf1, cyclopenta_homo, 0.02
 isosurface Bsurf1, cyclopenta_homo, -0.02

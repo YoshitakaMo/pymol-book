@@ -1,7 +1,7 @@
 # PyMOL Tutorial
 
 PyMOLの機能をまとめた本です。
-(c) 2025 YoshitakaMo All Rights Reserved.
+(c) 2026 YoshitakaMo All Rights Reserved.
 
 ## はじめてPyMOLを使う方へ
 
