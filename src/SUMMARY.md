@@ -3,7 +3,6 @@
 [TOP](index.md)
 
 - [第1章 PyMOL チュートリアル: アルカリホスファターゼの構造を見る](ch01/index.md)
-  - [目的](ch01/objective.md)
   - [Protein Data Bank (PDB)にアクセスする](ch01/accesspdb.md)
   - [PDB データのダウンロード](ch01/download.md)
   - [PyMOL の起動](ch01/launchpymol.md)
