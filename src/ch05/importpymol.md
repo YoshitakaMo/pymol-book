@@ -1,4 +1,4 @@
-## Pythonからpymolモジュールをimportして使う
+# Pythonからpymolモジュールをimportして使う
 
 よくプログラミングしているユーザーからすると、PyMOLに使われている様々なコマンドをPython側から呼び出して利用したいということもあるかもしれません。しかし、その設定が環境によってはちょっと難しいので、ここではまずpymolをimportできるようにする設定の方法を確認します。
 
@@ -19,7 +19,7 @@ ModuleNotFoundError: No module named 'pymol'
 
 Homebrewをお使いの場合、2021年5月1日以降のpymol 2.4.0_5からは`import pymol`が使えるようになっているはずです。
 
-### 事前準備: PythonのPATHとpython内のsys.pathの値を確認する（macOS/Linuxの人向け）
+## 事前準備: PythonのPATHとpython内のsys.pathの値を確認する（macOS/Linuxの人向け）
 
 ターミナルから以下のコマンドを入力することで`python3`のバージョン情報およびインストールされているディレクトリの場所を確認することができます。
 
@@ -53,11 +53,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 詳しくは <https://note.nkmk.me/python-import-module-search-path/> を参照してください。簡単なのは1.の環境変数`PYTHONPATH`を設定する方法です。Homebrewでは実は3.の方法で実現しています。
 
-### pymolモジュールの使い方
+## pymolモジュールの使い方
 
 普段使いの`python3`から無事`import pymol`が成功したら、次にpymolモジュールの使い方を見ていきましょう。
 
-#### 例1. PyMOLの画像を出力する
+## 例1. PyMOLの画像を出力する
 
 PyMOLのGUIを開き、以下のコマンドを入力していきます。
 

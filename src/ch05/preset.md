@@ -1,4 +1,4 @@
-## 表示形式のプリセット
+# 表示形式のプリセット
 
 PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメニューがあります。これを使うと、様々な表示形式に一発で変換できます。
 
@@ -35,7 +35,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 ここではギャラリー風に紹介していきます。
 
-### classified
+## classified
 
 現在PyMOLのデフォルト設定に最も近い描画形式です。タンパク質構造はCartoon表示、リガンドはSphere表示です。デフォルト設定との細かな違いとして、水分子がwire-nonbonded表示されないなどが挙げられますが、**デフォルトの描画設定に戻したいときはこの設定を呼び出すと良いでしょう**。
 
@@ -46,7 +46,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 コマンドで行いたい場合は、以下の`objectname`部分をオブジェクト名に変えて実行します（例: 1ALK）。以下同様。
 > preset.classified("objectname",_self=cmd)
 
-### simple
+## simple
 
 タンパク質構造は主鎖だけをシンプルに表示するribbon表示、リガンドはStick表示になります。また、チェインごとに自動で色分けがなされます。
 
@@ -54,7 +54,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.simple("objectname",_self=cmd)
 
-### simple (no solvent)
+## simple (no solvent)
 
 上記simple表示について、溶媒の表示がなくなったものです。
 
@@ -62,7 +62,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.simple_no_solv("objectname",_self=cmd)
 
-### ball and stick
+## ball and stick
 
 各原子を小さめのボールで表し、結合を白色のスティックで表示します。色分けは変化しません。
 
@@ -70,7 +70,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ball_and_stick("objectname",_self=cmd)
 
-### b factor putty
+## b factor putty
 
 温度因子であるB factorをもとに色付けし、さらに温度因子が大きいほど太くチューブ状に表示します。温度因子は青色ほど低く、赤色ほど高くなっています。この表示では主鎖構造のみが表示されます。
 
@@ -78,7 +78,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.b_factor_putty("objectname",_self=cmd)
 
-### technical
+## technical
 
 各チェインのN末端からC末端にかけて青色→赤色となるようなRainbowカラーリングが適用されます。また、水素結合が自動的に検出され、`<objectname>_pol_conts`というオブジェクトが生成されます。水素結合を表示させたくない場合はオブジェクトパネル上でこの`<objectname>_pol_conts`の表示をOFFにすればOKです。
 
@@ -86,7 +86,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.technical("objectname",_self=cmd)
 
-### ligands
+## ligands
 
 上述のRainbowカラーリングが施され、基本的には主鎖構造のみのribbon表示になりますが、リガンドから一定範囲のみ側鎖を含んだline表示が行われ、リガンドへの水素結合自動検出処理が行われます。
 
@@ -96,11 +96,11 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligands("objectname",_self=cmd)
 
-### ligand sites
+## ligand sites
 
 上記ligands設定の拡張版と言えます。様々な表示形式が用意されています。いずれのプリセットでも水素結合を検出し、`<objectname>_pol_conts`というオブジェクトを生成します。
 
-#### Cartoon
+### Cartoon
 
 タンパク質をCartoon表示のままRainbowカラーリング、リガンドをStick表示で、周辺の一定範囲のみline表示にします。
 
@@ -108,7 +108,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligand_cartoon("objectname",_self=cmd)
 
-#### solid surface
+### solid surface
 
 タンパク質をribbon表示, Rainbowカラーリング, リガンドをStick表示, 周辺の一定範囲のみsurface表示にします。
 
@@ -116,7 +116,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligand_sites("objectname",_self=cmd)
 
-#### solid (better)
+### solid (better)
 
 上記solid surfaceプリセット表示のsurfaceクオリティが上がったものです。設定としては`set surface_quality, 1`を追加しています。
 
@@ -124,7 +124,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligand_sites_hq("objectname",_self=cmd)
 
-#### transparent surface
+### transparent surface
 
 上記solid surfaceの透明度を上げ(`set transparency, 0.33`)、周辺の残基をstick表示にしたものです。
 
@@ -132,7 +132,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligand_sites_trans("objectname",_self=cmd)
 
-#### transparent (better)
+### transparent (better)
 
 上記transparent surfaceプリセット表示のsurfaceクオリティが上がったものです。設定としては`set surface_quality, 1`を追加しています。
 
@@ -140,7 +140,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligand_sites_trans_hq("objectname",_self=cmd)
 
-#### dot surface
+### dot surface
 
 上記solid surfaceの表面表示をdotにしたものです。
 
@@ -148,7 +148,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligand_sites_dots("objectname",_self=cmd)
 
-#### mesh surface
+### mesh surface
 
 上記solid surfaceの表面表示をdotにしたものです。
 
@@ -156,7 +156,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.ligand_sites_mesh("objectname",_self=cmd)
 
-### pretty
+## pretty
 
 生体分子のレインボー表示、リガンドをstick形式で表示します。
 
@@ -164,7 +164,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.pretty("objectname",_self=cmd)
 
-### pretty (with solvent)
+## pretty (with solvent)
 
 上記prettyに加えて溶媒やリガンドをnb_spheres表示にします。
 
@@ -172,7 +172,7 @@ PyMOLのオブジェクトパネルのAボタンの中には`preset`と言うメ
 
 > preset.pretty_solv("objectname",_self=cmd)
 
-### publication
+## publication
 
 cartoon表示において、
 
@@ -188,7 +188,7 @@ cartoon表示において、
 
 > preset.publication("objectname",_self=cmd)
 
-### publication (with solvent)
+## publication (with solvent)
 
 上記の溶媒表示版です。
 
@@ -196,7 +196,7 @@ cartoon表示において、
 
 > preset.pub_solv("objectname",_self=cmd)
 
-### protein interface
+## protein interface
 
 異なるチェインの境目から4.5 Å以内に一部でも含まれる残基をStick表示にします。
 
@@ -204,7 +204,7 @@ cartoon表示において、
 
 > preset.interface("objectname",_self=cmd)
 
-### default
+## default
 
 PyMOL 1時代はこのシンプルなライン表示だけの形式がデフォルト表示でした。Defaultとついていますが、現在はデフォルト設定ではなくなり、classified presetに取って替わられています。
 

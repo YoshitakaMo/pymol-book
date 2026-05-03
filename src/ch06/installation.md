@@ -1,5 +1,7 @@
-## PyMOLプラグインのインストール方法
-### プラグインのダウンロード
+# PyMOLプラグインのインストール方法
+
+## プラグインのダウンロード
+
 例えば私が管理しているもので、 <a href="https://github.com/YoshitakaMo/pymol-psico">https://github.com/YoshitakaMo/pymol-psico</a> があります。これは大元のpsicoからクローンしてきたものです。これを、例としてホームディレクトリ以下の`Documents`ディレクトリにインストールします。
 
 ```bash
@@ -9,7 +11,7 @@ git clone https://github.com/YoshitakaMo/pymol-psico.git
 
 以上でこのpymol-psicoディレクトリをコピーしてくることができます。中身のプラグインはすべてpython言語で書かれています。オープンソース版でPyMOLをインストールした場合には、この文法はインストールに使用したpythonのバージョンに依存します。
 
-### 使用のための初期設定
+## 使用のための初期設定
 
 このプラグインを使える状態にするには、先程のpymol-psicoディレクトリにPyMOL側からPATHを通し、さらに初期化コマンドを入れて上げる必要があります。これは、pymolを開いて以下のコマンドを入力してあげると可能です。
 

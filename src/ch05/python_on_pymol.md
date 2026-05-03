@@ -1,8 +1,8 @@
-## PyMOL上でのpythonスクリプトの実行：基本編
+# PyMOL上でのpythonスクリプトの実行：基本編
 
 PyMOLの大きな強みの1つとして、PyMOLのコマンドラインからpythonスクリプトを実行させることができることが挙げられます。ここではいくつかの例を挙げながら、PyMOL上でのpythonスクリプト実行機能を紹介してみます。ただし、python3についての基本的な知識があることを前提とします。
 
-### Pythonの設定を確認する
+## Pythonの設定を確認する
 
 まずは現在PyMOLが動作しているPython環境を確認するために、バージョン情報とPATHをPyMOLのコマンド入力欄から確認してみましょう。コマンドは通常のpythonと同じように
 
@@ -27,7 +27,7 @@ PyMOL>print(sys.version)
 
 のようになりました。`print(sys.path)`で表示されたPATHからはモジュールをimportすることができます。
 
-### PythonスクリプトをPyMOL上で実行する
+## PythonスクリプトをPyMOL上で実行する
 
 PyMOLコマンドラインからは`python`と`python end`という入力の間に任意のpythonスクリプトを挟むことで、PyMOL上で擬似インタラクティブにコマンドを実行することができます。ただし、一度`python`を入力した後は`python end`を入力するまではフィードバックが得られないことに注意しましょう。
 
@@ -68,7 +68,7 @@ for file in glob("*.cif"):
 python end
 ```
 
-### コマンドを外部ファイルに保存し、PyMOLからスクリプトを呼び出す
+## コマンドを外部ファイルに保存し、PyMOLからスクリプトを呼び出す
 
 上で挙げた一括ロードのPythonスクリプトを繰り返し使いたいときは、別ファイルにスクリプトを保存しておいてそれを呼び出すような形にすれば、毎回入力しなくて済むようになります。この場合は、`python`と`python end`の間の部分だけを別のファイル（名前は`cifload.py`とします）に書いておきます。
 
@@ -81,7 +81,7 @@ for file in glob("*.cif"):
 
 これをPyMOL上から呼び出すときには、コマンドラインから`run /path/to/cifload.py`として呼び出します（`/path/to/`の部分は`cifload.py`が存在するディレクトリパスに適宜置き換えてください）。
 
-### 拡張コマンドを使えるように読み込む
+## 拡張コマンドを使えるように読み込む
 
 発展的な内容ですが、上記の方法を使えばPyMOLWikiのScript Libraryなどで公開されている拡張コマンドを即座に使えるようにすることもできます。例として, タンパク質の色分けをアミノ酸の疎水性〜親水性に応じて行う`color_h`, `color_h2`コマンド（[https://pymolwiki.org/index.php/Color_h](https://pymolwiki.org/index.php/Color_h)）を使えるようにします。
 

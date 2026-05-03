@@ -1,7 +1,10 @@
-## DSSPプラグイン
+# DSSPプラグイン
+
 [プラグインのインストール方法](installation.md)の手順に従ってpsicoのインストールがうまく行っていれば、改めて起動した後にPyMOLのコマンドラインで`dssp`というコマンドが使えるようになっているはずです。このコマンドは開いているタンパク質に対して二次構造アサインメントプログラムの**DSSP**をかけてくれて、その計算結果をもとに表示を切り替えてくれます。ただし利用するためにはあらかじめ`mkdssp`コマンドがインストールされ、かつ動作することが条件です。現在、最新版のDSSPは以下のHomebrewコマンドからインストールすることができます。
 
-    brew install brewsci/bio/dssp
+```bash
+brew install brewsci/bio/dssp
+```
 
 このdsspパッケージの中に`mkdssp`コマンドが入っています。ちなみにCentOS 7の方は、`yum -y install dssp`とすれば簡単に`mkdssp`コマンドがインストールできます。バージョンがちょっと古いですけど問題なく動作するはずです。
 
@@ -46,6 +49,7 @@ SEE ALSO
 
     dss, stride
 ```
+
 と表示されます。colorがデフォルトでONになっています。二次構造についての色分けを自動でしてほしくない場合には、`dssp color=0`と打てば、さっきのような色分けをしないで二次構造表示だけ変更してくれます（←地味によく使う）。
 
 ### DSSPプラグインの設定を変更してみる
@@ -62,30 +66,32 @@ DESCRIPTION
     Secondary structure assignment with DSSP.
     http://swift.cmbi.ru.nl/gv/dssp/
 ```
+
 ここで`color=1`となっていますが、`dssp`コマンドを打ってみた時に、デフォルトでカラーリングを変えてほしくない場合はここを`color=0`としておくとよいでしょう。
 この下をさらに見てみると、色分け設定をしている部分が見られます。
 
 ```python
-    # if color=1
-    if color == 1:
-        cmd.color('gray', selection)
-        cmd.set_color('H_color', [220, 50, 47])
-        cmd.color('H_color', raw+' H')
-        cmd.set_color('G_color', [211, 54, 130])
-        cmd.color('G_color', raw+' G')
-        cmd.set_color('I_color', [255, 170, 170])
-        cmd.color('I_color', raw+' I')
-        cmd.set_color('E_color', [196, 177, 3])
-        cmd.color('E_color', raw+' E')
-        cmd.set_color('B_color', [42, 161, 152])
-        cmd.color('B_color', raw+' B')
-        cmd.set_color('T_color', [38, 139, 210])
-        cmd.color('T_color', raw+' T')
-        cmd.set_color('G_color', [211, 54, 130])
-        cmd.color('G_color', raw+' G')
-        cmd.set_color('S_color', [133, 153, 0])
-        cmd.color('S_color', raw+' S')
-        cmd.set('cartoon_discrete_colors', '1')
-        cmd.util.cnc(selection)
+# if color=1
+if color == 1:
+    cmd.color('gray', selection)
+    cmd.set_color('H_color', [220, 50, 47])
+    cmd.color('H_color', raw+' H')
+    cmd.set_color('G_color', [211, 54, 130])
+    cmd.color('G_color', raw+' G')
+    cmd.set_color('I_color', [255, 170, 170])
+    cmd.color('I_color', raw+' I')
+    cmd.set_color('E_color', [196, 177, 3])
+    cmd.color('E_color', raw+' E')
+    cmd.set_color('B_color', [42, 161, 152])
+    cmd.color('B_color', raw+' B')
+    cmd.set_color('T_color', [38, 139, 210])
+    cmd.color('T_color', raw+' T')
+    cmd.set_color('G_color', [211, 54, 130])
+    cmd.color('G_color', raw+' G')
+    cmd.set_color('S_color', [133, 153, 0])
+    cmd.color('S_color', raw+' S')
+    cmd.set('cartoon_discrete_colors', '1')
+    cmd.util.cnc(selection)
 ```
+
 `cmd.set_color`はPyMOLに最初から実装されているコマンド`set_color`そのものであり、ここでは`H_color`という名前でRGB色使いの`(220, 50, 47)`を定義しています。詳しい説明は[PyMOLWiki](https://pymolwiki.org/index.php/Set_Color)を読んでね。DSSPの定義で、αヘリックスはH、βシートはEという一文字表記になっているので、ここでの`cmd.color('H_color', raw+' H')`部分は、「DSSPでHと判定された残基をH_colorで色付けする」という意味になっています。つまり、ここの色の値を変えれば、DSSPの二次構造判定に対して思い通りの色分けを行うことができます。
