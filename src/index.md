@@ -16,8 +16,8 @@ PyMOLの機能をまとめた本です。
 
 ## Change log
 
+- 2026年 5月 6日 [3.9 Wizard](ch03/wizard.md)にAppearanceを追加。
 - 2025年11月16日 [pair fittingでリガンドの位置を重ねる](ch05/pairfitting.md)を追加。
-- 2024年12月 5日 細かいところ更新中
 - 2022年 5月 3日 [5.2 APBSプラグインを使った表面電荷表示](ch05/apbs.md)を更新。
 - 2021年12月13日 [6.4 pLDDTカラーリングプラグイン](ch06/plddt.md)を追加。
 - 2021年12月11日 [5.3 動画の作成方法](ch05/movieschool.md)を追加。
