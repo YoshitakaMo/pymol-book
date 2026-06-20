@@ -1,8 +1,9 @@
 # 第7章 設定値
 
 設定値を色々確認してみます。
+特にPyMOLの設定値で一番気になるのは、きれいな生体分子の画像を生成するにはどう設定すればよいかというところでしょう。PyMOLは、デフォルトの設定値で十分にきれいな画像を生成することができますが、設定値を変更することでさらに美しい画像を生成することができます。この章では、PyMOLの設定値を変更することで、より美しい画像を生成する方法を説明します。
 
-{{#include general.md}}
-{{#include sphere.md}}
-{{#include cartoon.md}}
-{{#include surface.md}}
+1. [概論](general.md)
+2. [sphere描画関連](sphere.md)
+3. [cartoon描画関連](cartoon.md)
+4. [surface描画関連](surface.md)

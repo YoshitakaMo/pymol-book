@@ -9,7 +9,7 @@ PyMOLは追加のプラグインを使って機能を拡張させることがで
 
 ----
 
-- [PyMOLプラグインのインストール方法](installation.md) --- 結晶構造の電子密度マップを表示する
-- [DSSPプラグイン](dssp.md) --- pair fittingでリガンドの位置を重ねる
-- [PyVOL GUIプラグイン](pyvol.md) --- APBSプラグインを使った表面電荷表示
-- [pLDDTカラーリングプラグイン](plddt.md) --- 動画の作成方法
+1. [PyMOLプラグインのインストール方法](installation.md) --- 結晶構造の電子密度マップを表示する
+2. [DSSPプラグイン](dssp.md) --- pair fittingでリガンドの位置を重ねる
+3. [PyVOL GUIプラグイン](pyvol.md) --- APBSプラグインを使った表面電荷表示
+4. [pLDDTカラーリングプラグイン](plddt.md) --- 動画の作成方法
